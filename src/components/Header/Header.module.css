@@ -1,0 +1,25 @@
+body {
+  background-color: #f2f4ee;
+  max-width: 1192px;
+  margin: 0 auto;
+}
+
+.header {
+  box-shadow: 1.5px 2.598px 3px 0px rgba(1, 1, 0, 0.12);
+  background-color: rgb(255, 255, 255);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoItem {
+  display: flex;
+  justify-content: flex-start;
+  list-style-type: none;
+  width: 140px;
+}
+
+.headerText {
+  font-family: sans-serif;
+}
