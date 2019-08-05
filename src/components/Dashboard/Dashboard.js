@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import Home from '../pages/Home';
-import Stats from '../pages/Stats';
+import Home from '../../pages/Home';
+import Stats from '../../pages/Stats';
 
 class Dashboard extends Component {
   state = {};
