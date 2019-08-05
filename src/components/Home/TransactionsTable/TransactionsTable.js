@@ -1,8 +1,23 @@
 /*eslint-disable*/
 
 import React from 'react';
-import styles from './Table.module.css';
-import ob from '../Components/ob.json';
+import styles from './TransactionsTable.module.css';
+// import ob from '../Components/ob.json';
+
+const ob = [
+  {
+    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
+    type: '+',
+    amount: '527.80',
+    ' currency': 'ALL',
+  },
+  {
+    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
+    type: '-',
+    amount: '527.80',
+    ' currency': 'ALL',
+  },
+];
 
 const TransactionHistory = () => {
   return (
@@ -21,7 +36,12 @@ const TransactionHistory = () => {
           </thead>
           <tbody>
             {ob.map(item => (
-              <tr className={styles.tr}>
+              <tr
+                className={
+                  styles.tr
+                  // item.type === '-' ? styles.income : styles.consumption
+                }
+              >
                 <td className={styles.td} data-label="Дата">
                   {item.type}
                 </td>

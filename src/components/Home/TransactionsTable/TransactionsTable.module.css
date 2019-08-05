@@ -1,7 +1,6 @@
 .container {
   width: 790px;
   height: 500px;
-  background-color: #ececec;
   overflow-y: scroll;
 }
 
@@ -26,16 +25,20 @@
 
 .table {
   border: 1px solid #ccc;
-  width: 100%;
+  width: 768px;
   margin: 0;
   padding: 0;
   border-collapse: collapse;
   border-spacing: 0;
+  color: #3f4040;
 }
 
 .tr {
-  border: 1px solid #ddd;
   padding: 5px;
+}
+
+tr:nth-last-child(even) {
+  background-color: #f3f6f6;
 }
 
 .th,
@@ -52,7 +55,7 @@
 
 @media screen and (max-width: 600px) {
   .container {
-    width: 350px;
+    width: 306px;
   }
 
   .button {
@@ -76,6 +79,7 @@
 
   .table {
     border: 0;
+    width: 306px;
   }
 
   .thead {
@@ -85,14 +89,22 @@
   .tr {
     margin-bottom: 10px;
     display: block;
-    border-bottom: 2px solid #ddd;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+  }
+
+  tr:nth-last-child(even) {
+    background-color: #fff;
+  }
+
+  td:nth-last-child(even) {
+    background-color: #f3f6f6;
   }
 
   .td {
     display: block;
     text-align: right;
     font-size: 13px;
-    border-bottom: 1px dotted #ccc;
   }
 
   .td:last-child {
