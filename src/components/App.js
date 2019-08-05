@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Header from './Header/Header';
+import Dashboard from './Dashboard/Dashboard';
 
-class App extends Component {
-  state = {};
-
-  render() {
-    return (
-      <div>
-        <p>App</p>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div>
+    <p>App</p>
+    <Header />
+    <Dashboard />
+  </div>
+);
 
 export default App;
