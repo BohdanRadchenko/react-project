@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import StatsDiagram from '../components/Stats/StatsDiagram/StatsDiagram';
 import StatsTable from '../components/Stats/StatsTable/StatsTable';
 import db from '../db.json';
+import Datetime from 'react-datetime';
 
 const stateSum = items => {
   const depositsArr = items.filter(el => el.type === '+');
@@ -45,8 +46,10 @@ class Stats extends Component {
     console.log(deposits);
     console.log(withdrow);
     console.log(items[0]);
+
     return (
       <div>
+        <Datetime />
         <StatsDiagram items={items} />
         <StatsTable items={items} />
       </div>
