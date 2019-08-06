@@ -1,0 +1,69 @@
+@media screen and (min-width: 320px) {
+  .balanceDiv {
+    padding: 0px;
+    margin: 0 auto;
+    width: 306px;
+    height: 90px;
+    color: #fff;
+    background-color: rgba(58, 83, 116, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+
+  .balanceText {
+    margin: 0px;
+    margin-bottom: 8px;
+    padding: 0px;
+  }
+
+  .balanceValue {
+    margin: 0px;
+    padding: 0px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .balanceDiv {
+    background-color: rgba(251, 253, 252, 0);
+    color: #000;
+    width: 176px;
+    height: 80px;
+    margin: 0px;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .balanceText {
+    margin: 0px;
+    margin-right: 4px;
+    margin-left: 12px;
+    color: #74858b;
+  }
+
+  .balanceValue {
+    color: #8895ac;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .balanceDiv {
+    width: 312px;
+    height: 90px;
+    background-color: #284060;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .balanceText {
+    color: #fff;
+    margin-left: 30px;
+  }
+
+  .balanceValue {
+    color: #fff;
+    margin-right: 30px;
+  }
+}

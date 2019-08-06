@@ -2,7 +2,7 @@ import React from 'react';
 
 const StatsDiagram = () => (
   <div>
-    <p>Stats Table</p>
+    <p>Stats Diagramm</p>
   </div>
 );
 
