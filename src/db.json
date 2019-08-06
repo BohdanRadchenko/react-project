@@ -10,6 +10,16 @@
     "balanceAfter": 50789798
   },
   {
+    "id": "d9b75572-3c28-4f85-abb1-715ca121f069",
+    "amount": 789798,
+    "date": 1565010475139,
+    "category": "Regular Income",
+    "comments": "asdasd",
+    "type": "+",
+    "isAmountNull": false,
+    "balanceAfter": 50789798
+  },
+  {
     "id": "76645dfa-4554-49f1-8314-a3cf674d079b",
     "amount": 50000000,
     "date": 1565010475139,

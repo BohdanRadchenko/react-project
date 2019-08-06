@@ -9,6 +9,7 @@ export default class App extends Component {
 
   handleChange = selectedOption => {
     this.setState({ selectedOption });
+    this.props.handleSelect(selectedOption);
   };
 
   render() {
