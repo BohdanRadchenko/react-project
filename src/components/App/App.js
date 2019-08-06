@@ -1,15 +1,15 @@
 import React from 'react';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
+// import Home from '../Home/Home';
 
-//
-import TransactionHistory from '../Home/TransactionsTable/TransactionsTable';
+import Home from '../Home/Home';
 
 const App = () => (
   <>
     <header>
       <Header />
-      <TransactionHistory />
+      <Home />
     </header>
     <Dashboard />
   </>

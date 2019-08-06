@@ -4,6 +4,8 @@ import React from 'react';
 import styles from './TransactionsTable.module.css';
 // import ob from '../Components/ob.json';
 
+// import AddButton from '../AddButton/AddButton';
+
 const ob = [
   {
     id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
@@ -64,8 +66,6 @@ const TransactionHistory = () => {
             ))}
           </tbody>
         </table>
-
-        <button className={styles.button}>+</button>
       </div>
     </>
   );
