@@ -16,7 +16,90 @@ const ob = [
     amount: '527.80',
     ' currency': 'ALL',
   },
+  {
+    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
+    type: '+',
+    amount: '527.80',
+    ' currency': 'ALL',
+  },
+  {
+    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
+    type: '-',
+    amount: '527.80',
+    ' currency': 'ALL',
+  },
+  {
+    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
+    type: '+',
+    amount: '527.80',
+    ' currency': 'ALL',
+  },
+  {
+    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
+    type: '-',
+    amount: '527.80',
+    ' currency': 'ALL',
+  },
+  {
+    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
+    type: '+',
+    amount: '527.80',
+    ' currency': 'ALL',
+  },
+  {
+    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
+    type: '-',
+    amount: '527.80',
+    ' currency': 'ALL',
+  },
+  {
+    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
+    type: '+',
+    amount: '527.80',
+    ' currency': 'ALL',
+  },
+  {
+    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
+    type: '-',
+    amount: '527.80',
+    ' currency': 'ALL',
+  },
+  {
+    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
+    type: '+',
+    amount: '527.80',
+    ' currency': 'ALL',
+  },
+  {
+    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
+    type: '-',
+    amount: '527.80',
+    ' currency': 'ALL',
+  },
+  {
+    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
+    type: '+',
+    amount: '527.80',
+    ' currency': 'ALL',
+  },
+  {
+    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
+    type: '-',
+    amount: '527.80',
+    ' currency': 'ALL',
+  },
 ];
+
+const styleByType = {
+  classBase: styles.tr,
+  inc: styles.inc,
+  con: styles.con,
+  incColor: styles.incColor,
+  conColor: styles.conColor,
+  amount: styles.td,
+};
+
+console.log(styleByType.classBase);
 
 const TransactionHistory = () => {
   return (
@@ -37,8 +120,9 @@ const TransactionHistory = () => {
             {ob.map(item => (
               <tr
                 className={
-                  styles.tr
-                  // item.type === '-' ? styles.income : styles.consumption
+                  item.type === '-'
+                    ? styleByType.classBase + ' ' + styleByType.con
+                    : styleByType.classBase + ' ' + styleByType.inc
                 }
               >
                 <td className={styles.td} data-label="Дата">
@@ -53,8 +137,16 @@ const TransactionHistory = () => {
                 <td className={styles.td} data-label="Комментарий">
                   {item.amount}
                 </td>
-                <td className={styles.td} data-label="Сума">
-                  {item.amount}
+                <td className={styleByType.amount} data-label="Сума">
+                  <span
+                    className={
+                      item.type === '-'
+                        ? styleByType.conColor
+                        : styleByType.incColor
+                    }
+                  >
+                    {item.amount}
+                  </span>
                 </td>
                 <td className={styles.td} data-label="Баланс">
                   {item.amount}
