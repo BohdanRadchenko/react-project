@@ -1,3 +1,3 @@
-const getTransactions = state => state.transactions;
+export const getTransactions = state => state.finance.data;
 
-export default getTransactions;
+export const getError = state => state.finance.error;

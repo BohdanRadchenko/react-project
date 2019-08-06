@@ -16,6 +16,7 @@ export default class Modal extends Component {
     comments: '',
     date: new Date(),
     category: null,
+    error: null,
   };
 
   backdropRef = createRef();
@@ -67,7 +68,7 @@ export default class Modal extends Component {
       date,
       comments,
     };
-    this.props.postTransaction(transactionToAdd);
+    this.props.postTransaction(transactionToAdd, this.props.token);
     this.reset();
   };
 
@@ -76,7 +77,7 @@ export default class Modal extends Component {
       isCost: false,
       type: transactions.INCOME,
       amount: '',
-      comment: '',
+      comments: '',
       date: new Date(),
       category: null,
     });
@@ -90,7 +91,7 @@ export default class Modal extends Component {
           amount={amount}
           type={type}
           date={date}
-          comment={comments}
+          comments={comments}
           handleRadioChange={this.handleRadioChange}
           handleTextChange={this.handleTextChange}
           handleSelectChange={this.handleSelectChange}

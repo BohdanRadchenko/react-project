@@ -1,26 +1,35 @@
+/* eslint-disable */
 import axios from 'axios';
 import {
   postTransactionRequest,
   postTransactionSuccesss,
   postTransactionError,
 } from './financeActions';
-import headers from '../../assets/json/financeHeaders.json';
 
-const id = '5d497be8c547022d6a641dee';
-
-const postTransaction = transaction => dispatch => {
+const postTransaction = (transaction, token) => dispatch => {
   dispatch(postTransactionRequest());
-  const transactionToPost = {
-    ...transaction,
-    test: 'test',
-  };
-  axios
+  const { type, amount, category, date, comments } = transaction;
+  return axios
     .post(
-      `https://mywallet.goit.co.ua/api/finance/${id}`,
-      transactionToPost,
-      JSON.stringify(headers),
+      'https://mywallet.goit.co.ua/api/finance',
+      {
+        type,
+        amount,
+        category,
+        // date,
+        comments,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      },
     )
-    .then(dispatch(postTransactionSuccesss(transactionToPost)))
+    .then(response => {
+      console.log(response.data.finance.data);
+      dispatch(postTransactionSuccesss(transaction));
+    })
     .catch(error => dispatch(postTransactionError(error)));
 };
 

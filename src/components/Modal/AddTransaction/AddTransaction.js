@@ -9,7 +9,7 @@ const AddTransaction = ({
   amount,
   type,
   isCost,
-  comment,
+  comments,
   date,
   handleRadioChange,
   handleTextChange,
@@ -50,14 +50,13 @@ const AddTransaction = ({
       onChange={handleDateChange}
       maxDate={new Date()}
       format="MM/dd/yyyy"
-      locale="it"
-      returnValue="range"
+      locale="en"
     />
     <textarea
-      name="comment"
+      name="comments"
       cols="20"
       rows="2"
-      value={comment}
+      value={comments}
       placeholder="Add a comment..."
       onChange={handleTextChange}
     />
