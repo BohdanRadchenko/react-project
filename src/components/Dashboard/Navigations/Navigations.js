@@ -8,14 +8,23 @@ import Styles from './Navigations.module.css';
 const Navigations = () => {
   return (
     <div className={Styles.nav}>
-      <NavLink className={Styles.navLink} to="/home">
-        Главная
+      <NavLink to="/home" className={Styles.navLink}>
+        <button
+          type="button"
+          className={`${Styles.navLinkBtn} ${Styles.navLinkBtnHome}`}
+        />
       </NavLink>
-      <NavLink className={Styles.navLink} to="/stats">
-        Статистика
+      <NavLink to="/stats" className={Styles.navLink}>
+        <button
+          type="button"
+          className={`${Styles.navLinkBtn} ${Styles.navLinkBtnStats}`}
+        />
       </NavLink>
-      <NavLink className={Styles.navLink} to="/currencies">
-        Валюта
+      <NavLink to="/currencies">
+        <button
+          type="button"
+          className={`${Styles.navLinkBtn} ${Styles.navLinkBtnCurr}`}
+        />
       </NavLink>
     </div>
   );

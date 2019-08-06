@@ -4,7 +4,7 @@ import Navigations from '../Navigations/Navigations';
 const Sidebar = () => (
   <div>
     <Navigations />
-    <p>Sidebar</p>
+    {/* <p>Sidebar</p> */}
   </div>
 );
 

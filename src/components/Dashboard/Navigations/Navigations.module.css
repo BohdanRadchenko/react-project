@@ -3,12 +3,33 @@
   height: 40px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   background-color: #3a5374;
 }
 
 .navLink {
-  color: #ffffff;
-  text-decoration: none;
+  margin-right: 13px;
+}
+
+.navLinkBtn {
+  width: 30px;
+  height: 25px;
+  background-color: #2a4262;
+  border: none;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.navLinkBtnHome {
+  background-image: url('../../../Assets/PNG/home/1x/baseline_home_black_18dp.png');
+}
+
+.navLinkBtnStats {
+  background-image: url('../../../Assets/PNG/diagrams/1x/baseline_timeline_black_18dp.png');
+}
+
+.navLinkBtnCurr {
+  background-image: url('../../../Assets/PNG/currency/1x/baseline_attach_money_black_18dp.png');
 }
