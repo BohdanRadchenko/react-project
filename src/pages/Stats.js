@@ -10,8 +10,6 @@ import OptionsMonth from '../components/Stats/Options/OptionsMonth';
 import OptionsYears from '../components/Stats/Options/OptionsYear';
 
 const stateSum = items => {
-  // const items = transactions.filter(el => e)
-
   const depositsArr = items.filter(el => el.type === '+');
   const depositsSumm = depositsArr.reduce((acc, el) => (acc += el.amount), 0);
   const withdrowArr = items.filter(el => el.type === '-');
@@ -46,6 +44,20 @@ class Stats extends Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { items, month, year } = this.state;
+    if (prevState.month !== month || prevState.year !== year) {
+      this.filterItems(items, year, month);
+    }
+    // if (prevState.items !== items) {
+    //   this.setState({
+    //     balance: stateSum(items).balance,
+    //     deposits: stateSum(items).deposits,
+    //     withdrow: stateSum(items).withdrow,
+    //   });
+    // }
+  }
+
   getSelectMonth = ({ value }) => {
     this.setState({
       month: value,
@@ -58,8 +70,42 @@ class Stats extends Component {
     });
   };
 
+  filterItems = (transactions, year, month) => {
+    const items = transactions.filter(
+      el =>
+        el.data.split('-')[0] === `${year}` &&
+        el.data.split('-')[1] === `${month}`,
+    );
+    this.setState({
+      items: items,
+    });
+  };
+
+  // filterItems = items => {
+  //   if (items.length > 0) {
+  //     const month = '01';
+  //     const year = `2018`;
+  //     const filterYear = items.filter(
+  //       el => el.data.split('-')[0] === `${year}`,
+  //     );
+  //     console.log(filterYear);
+  //     const filterMonth = filterYear.filter(
+  //       el => el.data.split('-')[1] === `${month}`,
+  //     );
+  //     console.log(filterMonth);
+
+  //     const it = items.filter(
+  //       el =>
+  //         el.data.split('-')[0] === `${year}` &&
+  //         el.data.split('-')[1] === `${month}`,
+  //     );
+  //     console.log(it);
+  //   }
+  // };
+
   render() {
     const { items } = this.state;
+
     return (
       <div>
         <DatePicker />
