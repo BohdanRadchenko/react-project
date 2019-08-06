@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Loader from './Loader';
 import SideBar from './Sidebar/Sidebar';
 import db from '../../db.json';
+import Header from '../Header/Header';
 
 const AsyncHome = Loadable({
   loader: () => import('../../pages/Home' /* webpackChunkName: "home-page" */),
@@ -70,6 +71,7 @@ class Dashboard extends Component {
     const balance = stateSum(items).balance;
     return (
       <>
+        {/* <Header history={history} /> */}
         <SideBar balance={balance} />
 
         <Switch>

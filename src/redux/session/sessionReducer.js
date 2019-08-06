@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ActionTypes } from './sessionActions';
+import { ActionTypes, TypeName } from './sessionActions';
 
 const user = (state = {}, { type, payload }) => {
   switch (type) {
@@ -46,9 +46,19 @@ const authentificated = (state = false, { type }) => {
   }
 };
 
+const getUser = (state = {}, { type, payload }) => {
+  switch (type) {
+    case TypeName.GET_USER:
+      return payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   user,
   token,
   error,
   authentificated,
+  getUser,
 });

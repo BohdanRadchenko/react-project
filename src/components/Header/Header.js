@@ -1,14 +1,20 @@
-import React from 'react';
-import styles from './Header.module.css';
+/* eslint-disable react/prop-types */
+import React, { Component } from 'react';
+import UserLog from './UserLog';
 
-const Header = () => (
-  <div className={styles.header}>
-    <h2 className={styles.headerText}>Wallet</h2>
-    <ul className={styles.logoItem}>
-      <li>Имя</li>
-      <li>Выйти</li>
-    </ul>
-  </div>
-);
+class Header extends Component {
+  state = { isLogOut: false };
+
+  handleLogOut = () => {
+    if (this.state.isLogOut === true) {
+      localStorage.clear();
+      this.props.history.push('/SignUp');
+    }
+  };
+
+  render() {
+    return <UserLog />;
+  }
+}
 
 export default Header;

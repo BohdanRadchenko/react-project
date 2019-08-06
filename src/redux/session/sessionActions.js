@@ -7,6 +7,10 @@ export const ActionTypes = {
   SIGN_IN_ERROR: 'session/SIGN_IN_ERROR',
 };
 
+export const TypeName = {
+  GET_USER: 'GET_USER',
+};
+
 //
 //  Sign UP
 //
@@ -41,4 +45,11 @@ export const signInSuccesss = response => ({
 export const signInError = error => ({
   type: ActionTypes.SIGN_IN_ERROR,
   payload: { error },
+});
+
+// Get User Name
+
+export const getUser = user => ({
+  type: TypeName.GET_USER,
+  payload: user,
 });
