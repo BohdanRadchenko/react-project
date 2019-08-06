@@ -14,7 +14,7 @@ const user = (state = {}, { type, payload }) => {
 const token = (state = null, { type, payload }) => {
   switch (type) {
     case ActionTypes.SIGN_IN_SUCCESS:
-      return payload.token;
+      return payload.response.token;
 
     default:
       return state;
@@ -24,7 +24,12 @@ const token = (state = null, { type, payload }) => {
 const error = (state = null, { type, payload }) => {
   switch (type) {
     case ActionTypes.SIGN_UP_ERROR:
-      return payload.erorr;
+    case ActionTypes.SIGN_IN_ERROR:
+      return payload.error.message;
+
+    case ActionTypes.SIGN_IN_SUCCESS:
+    case ActionTypes.SIGN_UP_SUCCESS:
+      return null;
 
     default:
       return state;
