@@ -1,4 +1,4 @@
-const options = [
+const OptionsMonth = [
   { value: 'january', label: 'january' },
   { value: 'february', label: 'february' },
   { value: 'march', label: 'march' },
@@ -13,4 +13,4 @@ const options = [
   { value: 'december', label: 'december' },
 ];
 
-export default options;
+export default OptionsMonth;

@@ -1,6 +1,6 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import Select from 'react-select';
-import options from '../SelectOptions';
 
 export default class App extends Component {
   state = {
@@ -13,6 +13,7 @@ export default class App extends Component {
 
   render() {
     const { selectedOption } = this.state;
+    const { options } = this.props;
     return (
       <Select
         value={selectedOption}

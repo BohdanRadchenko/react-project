@@ -6,6 +6,8 @@ import StatsTable from '../components/Stats/StatsTable/StatsTable';
 import StatsSelect from '../components/Stats/StatsSelect/StatsSelect';
 import db from '../db.json';
 import DatePicker from 'react-date-picker';
+import OptionsMonth from '../components/Stats/Options/OptionsMonth';
+import OptionsYear from '../components/Stats/Options/OptionsYear';
 
 const stateSum = items => {
   const depositsArr = items.filter(el => el.type === '+');
@@ -45,7 +47,8 @@ class Stats extends Component {
     return (
       <div>
         <DatePicker />
-        <StatsSelect />
+        <StatsSelect options={OptionsMonth} />
+        <StatsSelect options={OptionsYear} />
         <StatsDiagram items={items} />
         <StatsTable items={items} />
       </div>
