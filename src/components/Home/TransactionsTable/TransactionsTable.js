@@ -3,27 +3,6 @@
 import React from 'react';
 import styles from './TransactionsTable.module.css';
 
-const ob = [
-  {
-    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
-    type: '+',
-    amount: '527.80',
-    ' currency': 'ALL',
-    comment: 'dsfsfsdffsdfdfd',
-    date: '12.12.12',
-    category: 'fdfddfdfd',
-  },
-  {
-    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
-    type: '-',
-    amount: '527.80',
-    ' currency': 'ALL',
-    comment: 'dsfsfsdffsdfdfd',
-    date: '12/12/12',
-    category: 'fdfddfdfd',
-  },
-];
-
 // const currentBalance =(balance,tr,type)=>{
 // // if(type === '-'){
 // //   return balance - tr
@@ -31,6 +10,13 @@ const ob = [
 
 // type ==='-'?balance-tr?bala
 // }
+
+const substring = str => {
+  const newStr = String(str);
+  return newStr.substr(0, 8);
+};
+
+// console.log('13:45.1.1.11 PM'.substr(0, 8));
 
 const styleByType = {
   classBase: styles.tr,
@@ -46,8 +32,6 @@ const styleByType = {
 // comment: '',
 // date: new Date(),
 // category: null,
-
-// console.log(styleByType.classBase);
 
 const TransactionHistory = ({ items }) => {
   return (
@@ -74,7 +58,7 @@ const TransactionHistory = ({ items }) => {
                 }
               >
                 <td className={styles.td} data-label="Дата">
-                  {item.date}
+                  {substring(item.date)}
                 </td>
                 <td className={styles.td} data-label="Тип">
                   {item.type}
