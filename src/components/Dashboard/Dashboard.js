@@ -67,7 +67,10 @@ class Dashboard extends Component {
 
   render() {
     const { items } = this.state;
-    const balance = stateSum(items).balance;
+    const balance = new Intl.NumberFormat('UAH', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(stateSum(items).balance);
     return (
       <>
         <SideBar balance={balance} />
