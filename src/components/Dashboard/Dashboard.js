@@ -11,7 +11,8 @@ const AsyncHome = Loadable({
 });
 
 const AsyncStats = Loadable({
-  loader: () => import('../../pages/Stats' /* webpackChunkName: "home-page" */),
+  loader: () =>
+    import('../../pages/Stats' /* webpackChunkName: "stats-page" */),
   loading: Loader,
   timeout: 10000,
   delay: 200,
@@ -19,7 +20,7 @@ const AsyncStats = Loadable({
 
 const AsyncSignUp = Loadable({
   loader: () =>
-    import('../../pages/SignUpPage' /* webpackChunkName: "home-page" */),
+    import('../../pages/SignUpPage' /* webpackChunkName: "signUp-page" */),
   loading: Loader,
   timeout: 10000,
   delay: 200,
@@ -27,7 +28,7 @@ const AsyncSignUp = Loadable({
 
 const AsyncSignIn = Loadable({
   loader: () =>
-    import('../../pages/SignInPage' /* webpackChunkName: "home-page" */),
+    import('../../pages/SignInPage' /* webpackChunkName: "signIn-page" */),
   loading: Loader,
   timeout: 10000,
   delay: 200,

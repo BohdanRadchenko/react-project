@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import StatsDiagram from '../components/Stats/StatsDiagram/StatsDiagram';
 import StatsTable from '../components/Stats/StatsTable/StatsTable';
+import StatsSelect from '../components/Stats/StatsSelect/StatsSelect';
 import db from '../db.json';
 import DatePicker from 'react-date-picker';
 
@@ -44,6 +45,7 @@ class Stats extends Component {
     return (
       <div>
         <DatePicker />
+        <StatsSelect />
         <StatsDiagram items={items} />
         <StatsTable items={items} />
       </div>
