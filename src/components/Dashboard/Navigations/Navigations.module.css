@@ -1,0 +1,14 @@
+.nav {
+  width: 320px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #3a5374;
+}
+
+.navLink {
+  color: #ffffff;
+  text-decoration: none;
+}
