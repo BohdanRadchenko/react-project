@@ -1,11 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Balance.module.css';
-// balance
-const Balance = () => (
+
+const Balance = ({ balance }) => (
   <div className={styles.balanceDiv}>
     <p className={styles.balanceText}>Баланс:</p>
-    <p className={styles.balanceValue}> грн</p>
+    <p className={styles.balanceValue}> {balance} грн</p>
   </div>
 );
+
+Balance.propTypes = {
+  balance: PropTypes.string.isRequired,
+};
 
 export default Balance;
