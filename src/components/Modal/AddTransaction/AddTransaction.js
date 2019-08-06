@@ -1,17 +1,21 @@
 /*eslint-disable*/
 import React from 'react';
 import Select from 'react-select';
-// import Datetime from 'react-datetime';
+import DatePicker from 'react-date-picker';
 import categories from '../../../constans/modalConstants';
 import { transactions } from '../Modal';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const AddTransaction = ({
-  value,
+  amount,
   type,
   isCost,
+  comment,
+  date,
   handleRadioChange,
   handleTextChange,
   handleSelectChange,
+  handleDateChange,
   handleSubmit,
 }) => (
   <form onSubmit={handleSubmit}>
@@ -38,15 +42,23 @@ const AddTransaction = ({
     <input
       name="amount"
       type="text"
-      value={value}
+      value={amount}
       onChange={handleTextChange}
       required
     />
-    {/* <Datetime /> */}
+    <DatePicker
+      value={date}
+      onChange={handleDateChange}
+      maxDate={new Date()}
+      format="MM/dd/yyyy"
+      locale="it"
+      returnValue="range"
+    />
     <textarea
       name="comment"
       cols="20"
       rows="2"
+      value={comment}
       placeholder="Add a comment..."
       onChange={handleTextChange}
     />
