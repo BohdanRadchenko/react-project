@@ -52,5 +52,18 @@
   .balanceDiv {
     width: 312px;
     height: 90px;
+    background-color: #284060;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .balanceText {
+    color: #fff;
+    margin-left: 30px;
+  }
+
+  .balanceValue {
+    color: #fff;
+    margin-right: 30px;
   }
 }
