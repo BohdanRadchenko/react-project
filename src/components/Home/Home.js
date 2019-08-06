@@ -5,6 +5,7 @@ import TransactionsTable from './TransactionsTable/TransactionsTable';
 import AddButton from './AddButton/AddButton';
 import Modal from '../Modal/Modal';
 import db from '../../db.json';
+import styles from './Home.module.css';
 
 class Home extends Component {
   state = {
@@ -31,10 +32,12 @@ class Home extends Component {
     const { isOpenModal, items } = this.state;
     console.log(items);
     return (
-      <div>
+      <div className={styles.container_home}>
+        {/* <div className={styles.container_table}> */}
         <TransactionsTable items={items} />
-        <AddButton onOpen={this.handleOpen} />
         {isOpenModal && <Modal onClose={this.handleClose} />}
+        <AddButton onOpen={this.handleOpen} />
+        {/* </div> */}
       </div>
     );
   }

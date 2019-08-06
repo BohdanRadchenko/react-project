@@ -3,20 +3,10 @@
 import React from 'react';
 import styles from './TransactionsTable.module.css';
 
-// const currentBalance =(balance,tr,type)=>{
-// // if(type === '-'){
-// //   return balance - tr
-// // }else
-
-// type ==='-'?balance-tr?bala
-// }
-
 const substring = str => {
   const newStr = String(str);
   return newStr.substr(0, 8);
 };
-
-// console.log('13:45.1.1.11 PM'.substr(0, 8));
 
 const styleByType = {
   classBase: styles.tr,
@@ -27,16 +17,10 @@ const styleByType = {
   amount: styles.td,
 };
 
-// type: transactions.INCOME,
-// amount: '',
-// comment: '',
-// date: new Date(),
-// category: null,
-
 const TransactionHistory = ({ items }) => {
   return (
     <>
-      <div className={styles.container}>
+      <div>
         <table className={styles.table}>
           <thead className={styles.thead}>
             <tr className={styles.tr}>
@@ -67,7 +51,7 @@ const TransactionHistory = ({ items }) => {
                   {item.category}
                 </td>
                 <td className={styles.td} data-label="Комментарий">
-                  {item.comment}
+                  {item.comments}
                 </td>
                 <td className={styleByType.amount} data-label="Сума">
                   <span
@@ -81,7 +65,7 @@ const TransactionHistory = ({ items }) => {
                   </span>
                 </td>
                 <td className={styles.td} data-label="Баланс">
-                  {item.amount}
+                  {item.balanceAfter}
                 </td>
               </tr>
             ))}

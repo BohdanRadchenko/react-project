@@ -1,17 +1,20 @@
 .container {
-  width: 790px;
-  height: 500px;
+  margin: 0 auto;
+  width: 600px;
+  height: 800px;
   overflow-y: scroll;
 }
 
 .table {
   border: 1px solid #ccc;
-  width: 768px;
+  background-color: #fff;
+  /* width: 768px; */
   margin: 0;
   padding: 0;
   border-collapse: collapse;
   border-spacing: 0;
   color: #3f4040;
+  /* box-shadow: 11px 7px 16px -6px rgba(158, 158, 158, 1); */
 }
 
 .incColor {
@@ -44,7 +47,7 @@ tr:nth-last-child(even) {
 
 @media screen and (max-width: 600px) {
   .container {
-    width: 306px;
+    width: 340px;
   }
 
   .button {
@@ -80,6 +83,7 @@ tr:nth-last-child(even) {
     display: block;
     background-color: #ffffff;
     margin-bottom: 20px;
+    box-shadow: 11px 7px 16px -6px rgba(158, 158, 158, 1);
   }
 
   .inc {
