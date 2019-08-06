@@ -1,6 +1,6 @@
 import { transactionTypes } from './ModalActions';
 
-const modalReducer = (state = [], { type, payload }) => {
+const financeReducer = (state = [], { type, payload }) => {
   switch (type) {
     case transactionTypes.COST:
     case transactionTypes.INCOME:
@@ -10,4 +10,4 @@ const modalReducer = (state = [], { type, payload }) => {
   }
 };
 
-export default modalReducer;
+export default financeReducer;

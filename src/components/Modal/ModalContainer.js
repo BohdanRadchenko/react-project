@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {
   addIncomeTransaction,
   addCostTransaction,
-} from '../../redux/Modal/ModalActions';
+} from '../../redux/finance/financeActions';
 import Modal from './Modal';
 
 const mapDispatchToProps = {
