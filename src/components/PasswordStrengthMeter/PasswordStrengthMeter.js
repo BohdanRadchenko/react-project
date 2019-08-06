@@ -32,12 +32,6 @@ const PasswordStrengthMeter = ({ password }) => {
           testedResult,
         )}`}
       />
-      {password && (
-        <>
-          <strong>Password strength:</strong>
-          {createPasswordLabel(testedResult)}
-        </>
-      )}
     </div>
   );
 };

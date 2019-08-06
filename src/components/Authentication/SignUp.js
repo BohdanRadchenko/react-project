@@ -3,13 +3,19 @@ import { connect } from 'react-redux';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import PropTypes from 'prop-types';
 import { signUp } from '../../redux/session/sessionOperations';
+import { getError } from '../../redux/session/sessionSelectors';
 import './test.css';
 import PasswordStrengthMeter from '../PasswordStrengthMeter/PasswordStrengthMeter';
 
 class SignUp extends Component {
+  static defaultProps = {
+    errorMessage: '',
+  };
+
   static propTypes = {
     onSignUp: PropTypes.func.isRequired,
     history: ReactRouterPropTypes.history.isRequired,
+    errorMessage: PropTypes.string,
   };
 
   state = {
@@ -40,8 +46,8 @@ class SignUp extends Component {
 
     this.props.onSignUp({ email, name, password }).then(data => {
       if (!data) return;
-      const { success } = data.payload.response;
-      if (success) this.props.history.push('/signin');
+      if (data.payload.error) return;
+      this.props.history.push('/signin');
     });
   };
 
@@ -61,6 +67,7 @@ class SignUp extends Component {
 
   render() {
     const { name, password, email, passwordConfirm, isEmailValid } = this.state;
+    const { errorMessage } = this.props;
     return (
       <form
         onSubmit={this.handleSubmit}
@@ -103,16 +110,21 @@ class SignUp extends Component {
           onBlur={this.handleValidation}
         />
         <button type="submit">Регистация</button>
+        <p>{errorMessage}</p>
       </form>
     );
   }
 }
+
+const mSTP = state => ({
+  errorMessage: getError(state),
+});
 
 const mDTP = {
   onSignUp: signUp,
 };
 
 export default connect(
-  null,
+  mSTP,
   mDTP,
 )(SignUp);
