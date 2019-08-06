@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Balance.module.css';
-
+// balance
 const Balance = () => (
   <div className={styles.balanceDiv}>
     <p className={styles.balanceText}>Баланс:</p>
