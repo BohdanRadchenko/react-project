@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
-import SignUpPage from '../../pages/SignUpPage';
-import SignInPage from '../../pages/SignInPage';
 import Loader from './Loader';
 
 const AsyncHome = Loadable({
@@ -19,6 +17,22 @@ const AsyncStats = Loadable({
   delay: 200,
 });
 
+const AsyncSignUp = Loadable({
+  loader: () =>
+    import('../../pages/SignUpPage' /* webpackChunkName: "home-page" */),
+  loading: Loader,
+  timeout: 10000,
+  delay: 200,
+});
+
+const AsyncSignIn = Loadable({
+  loader: () =>
+    import('../../pages/SignInPage' /* webpackChunkName: "home-page" */),
+  loading: Loader,
+  timeout: 10000,
+  delay: 200,
+});
+
 class Dashboard extends Component {
   state = {};
 
@@ -26,8 +40,8 @@ class Dashboard extends Component {
     return (
       <Switch>
         <Route path="/" exact component={AsyncHome} />
-        <Route path="/signup" component={SignUpPage} />
-        <Route path="/signin" component={SignInPage} />
+        <Route path="/signup" component={AsyncSignUp} />
+        <Route path="/signin" component={AsyncSignIn} />
         <Route path="/stats" component={AsyncStats} />
         <Redirect to="/" />
       </Switch>
