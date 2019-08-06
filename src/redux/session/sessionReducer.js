@@ -6,6 +6,9 @@ const user = (state = {}, { type, payload }) => {
     case ActionTypes.SIGN_IN_SUCCESS:
       return payload.response.user;
 
+    case TypeName.LOGOUT_SUCCESS:
+      return state;
+
     default:
       return state;
   }

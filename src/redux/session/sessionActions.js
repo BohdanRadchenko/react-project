@@ -9,6 +9,7 @@ export const ActionTypes = {
 
 export const TypeName = {
   GET_USER: 'GET_USER',
+  LOGOUT_SUCCESS: 'session/LOGOUT_SUCCESS',
 };
 
 //
@@ -52,4 +53,8 @@ export const signInError = error => ({
 export const getUser = user => ({
   type: TypeName.GET_USER,
   payload: user,
+});
+
+export const logOut = () => ({
+  type: TypeName.LOGOUT_SUCCESS,
 });

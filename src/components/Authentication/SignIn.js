@@ -1,8 +1,14 @@
+/* eslint-disable no-shadow */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { signIn } from '../../redux/session/sessionOperations';
-import { getError } from '../../redux/session/sessionSelectors';
+import {
+  getError,
+  isAthentificated,
+} from '../../redux/session/sessionSelectors';
 
 class SignIn extends Component {
   static defaultProps = {
@@ -17,7 +23,15 @@ class SignIn extends Component {
   state = {
     email: '',
     password: '',
+    isAthentificated: false,
   };
+
+  componentDidUpdate() {
+    const { isAthentificated } = this.props;
+    if (isAthentificated) {
+      this.props.history.push('/dashboard');
+    }
+  }
 
   handleChange = ({ target: { name, value } }) =>
     this.setState({ [name]: value });
@@ -60,7 +74,10 @@ class SignIn extends Component {
   }
 }
 
-const mSTP = state => ({ errorMessage: getError(state) });
+const mSTP = state => ({
+  errorMessage: getError(state),
+  isAthentificated: isAthentificated(state),
+});
 
 const mDTP = {
   onSignIn: signIn,

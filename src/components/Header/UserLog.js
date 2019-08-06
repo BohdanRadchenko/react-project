@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import * as nameSelector from '../../redux/session/sessionSelectors';
 // import { getUser } from '../../redux/session/sessionActions';
 import styles from './Header.module.css';
+import * as sessionActions from '../../redux/session/sessionActions';
 
 const logo = require('../../logo.svg');
 
@@ -46,11 +47,13 @@ const mapStateToProps = state => ({
   user: nameSelector.getUserName(state),
 });
 
-// const mapDispatchToProps = { getUser };
+const mapDispatchToProps = {
+  onLogOut: sessionActions.logOut,
+};
 
 export default connect(
   mapStateToProps,
-  null,
+  mapDispatchToProps,
 )(UserLog);
 //   mapDispatchToProps,;
 //   mapStateToProps,
