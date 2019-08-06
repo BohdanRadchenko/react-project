@@ -13,7 +13,7 @@ export default class Modal extends Component {
     isCost: false,
     type: transactions.INCOME,
     amount: '',
-    comment: '',
+    comments: '',
     date: new Date(),
     category: null,
   };
@@ -58,30 +58,16 @@ export default class Modal extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { type, category, amount, comment, date } = this.state;
+    const { category, amount, comments, date } = this.state;
 
-    if (category) {
-      const transactionToAdd = {
-        type,
-        amount,
-        category,
-        date,
-      };
-      if (comment) {
-        transactionToAdd.comment = comment;
-      }
-      this.props.addCostTransaction(transactionToAdd);
-    } else {
-      const transactionToAdd = {
-        type,
-        amount,
-        date,
-      };
-      if (comment) {
-        transactionToAdd.comment = comment;
-      }
-      this.props.addIncomeTransaction(transactionToAdd);
-    }
+    const transactionToAdd = {
+      type: category ? '-' : '+',
+      amount,
+      category,
+      date,
+      comments,
+    };
+    this.props.postTransaction(transactionToAdd);
     this.reset();
   };
 
@@ -96,7 +82,7 @@ export default class Modal extends Component {
     });
 
   render() {
-    const { isCost, type, comment, amount, date } = this.state;
+    const { isCost, type, comments, amount, date } = this.state;
     return (
       <div ref={this.backdropRef}>
         <AddTransaction
@@ -104,7 +90,7 @@ export default class Modal extends Component {
           amount={amount}
           type={type}
           date={date}
-          comment={comment}
+          comment={comments}
           handleRadioChange={this.handleRadioChange}
           handleTextChange={this.handleTextChange}
           handleSelectChange={this.handleSelectChange}

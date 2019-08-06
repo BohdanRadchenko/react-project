@@ -4,7 +4,6 @@ import Select from 'react-select';
 import DatePicker from 'react-date-picker';
 import categories from '../../../constans/modalConstants';
 import { transactions } from '../Modal';
-import 'react-datepicker/dist/react-datepicker.css';
 
 const AddTransaction = ({
   amount,

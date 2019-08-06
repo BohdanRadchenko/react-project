@@ -1,13 +1,9 @@
 import { connect } from 'react-redux';
-import {
-  addIncomeTransaction,
-  addCostTransaction,
-} from '../../redux/finance/financeActions';
 import Modal from './Modal';
+import postTransaction from '../../redux/finance/financeOperations';
 
 const mapDispatchToProps = {
-  addIncomeTransaction,
-  addCostTransaction,
+  postTransaction,
 };
 
 export default connect(
