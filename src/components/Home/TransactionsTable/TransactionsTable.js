@@ -9,86 +9,28 @@ const ob = [
     type: '+',
     amount: '527.80',
     ' currency': 'ALL',
+    comment: 'dsfsfsdffsdfdfd',
+    date: '12.12.12',
+    category: 'fdfddfdfd',
   },
   {
     id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
     type: '-',
     amount: '527.80',
     ' currency': 'ALL',
-  },
-  {
-    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
-    type: '+',
-    amount: '527.80',
-    ' currency': 'ALL',
-  },
-  {
-    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
-    type: '-',
-    amount: '527.80',
-    ' currency': 'ALL',
-  },
-  {
-    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
-    type: '+',
-    amount: '527.80',
-    ' currency': 'ALL',
-  },
-  {
-    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
-    type: '-',
-    amount: '527.80',
-    ' currency': 'ALL',
-  },
-  {
-    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
-    type: '+',
-    amount: '527.80',
-    ' currency': 'ALL',
-  },
-  {
-    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
-    type: '-',
-    amount: '527.80',
-    ' currency': 'ALL',
-  },
-  {
-    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
-    type: '+',
-    amount: '527.80',
-    ' currency': 'ALL',
-  },
-  {
-    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
-    type: '-',
-    amount: '527.80',
-    ' currency': 'ALL',
-  },
-  {
-    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
-    type: '+',
-    amount: '527.80',
-    ' currency': 'ALL',
-  },
-  {
-    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
-    type: '-',
-    amount: '527.80',
-    ' currency': 'ALL',
-  },
-  {
-    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
-    type: '+',
-    amount: '527.80',
-    ' currency': 'ALL',
-  },
-  {
-    id: 'ea8ed3dc-2b68-4a53-905a-53ecb0adef33',
-    type: '-',
-    amount: '527.80',
-    ' currency': 'ALL',
+    comment: 'dsfsfsdffsdfdfd',
+    date: '12/12/12',
+    category: 'fdfddfdfd',
   },
 ];
+
+// const currentBalance =(balance,tr,type)=>{
+// // if(type === '-'){
+// //   return balance - tr
+// // }else
+
+// type ==='-'?balance-tr?bala
+// }
 
 const styleByType = {
   classBase: styles.tr,
@@ -99,9 +41,15 @@ const styleByType = {
   amount: styles.td,
 };
 
-console.log(styleByType.classBase);
+// type: transactions.INCOME,
+// amount: '',
+// comment: '',
+// date: new Date(),
+// category: null,
 
-const TransactionHistory = () => {
+// console.log(styleByType.classBase);
+
+const TransactionHistory = ({ items }) => {
   return (
     <>
       <div className={styles.container}>
@@ -117,7 +65,7 @@ const TransactionHistory = () => {
             </tr>
           </thead>
           <tbody>
-            {ob.map(item => (
+            {items.map(item => (
               <tr
                 className={
                   item.type === '-'
@@ -126,16 +74,16 @@ const TransactionHistory = () => {
                 }
               >
                 <td className={styles.td} data-label="Дата">
-                  {item.type}
+                  {item.date}
                 </td>
                 <td className={styles.td} data-label="Тип">
-                  {item.amount}
+                  {item.type}
                 </td>
                 <td className={styles.td} data-label="Категория">
-                  {item.amount}
+                  {item.category}
                 </td>
                 <td className={styles.td} data-label="Комментарий">
-                  {item.amount}
+                  {item.comment}
                 </td>
                 <td className={styleByType.amount} data-label="Сума">
                   <span
