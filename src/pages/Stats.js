@@ -47,7 +47,6 @@ class Stats extends Component {
   render() {
     const { search, items } = this.state;
     const filtredItems = filterItems(items, search.year, search.month);
-    console.log(filtredItems);
     return (
       <div>
         <StatsSelect
@@ -58,12 +57,8 @@ class Stats extends Component {
           options={OptionsYears}
           handleSelect={this.getSelectYears}
         />
-        {filterItems.map(el => (
-          <>
-            <StatsDiagram {...el} />
-            <StatsTable {...el} />
-          </>
-        ))}
+        <StatsDiagram items={filtredItems} />
+        <StatsTable items={filtredItems} />
       </div>
     );
   }
