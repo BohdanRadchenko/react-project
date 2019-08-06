@@ -9,9 +9,9 @@ const App = () => (
   <>
     <header>
       <Header />
-      <Home />
     </header>
     <Dashboard />
+    <Home />
   </>
 );
 

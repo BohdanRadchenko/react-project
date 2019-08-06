@@ -2,9 +2,6 @@
 
 import React from 'react';
 import styles from './TransactionsTable.module.css';
-// import ob from '../Components/ob.json';
-
-// import AddButton from '../AddButton/AddButton';
 
 const ob = [
   {

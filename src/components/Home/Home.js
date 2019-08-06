@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import TransactionsTable from './TransactionsTable/TransactionsTable';
 import AddButton from './AddButton/AddButton';
+import Modal from '../Modal/Modal';
 
 class Home extends Component {
   state = {
@@ -10,7 +11,6 @@ class Home extends Component {
 
   handleOpen = () => {
     this.setState({ isOpenModal: true });
-    // console.log('open');
   };
 
   handleClose = () => {
@@ -19,11 +19,11 @@ class Home extends Component {
 
   render() {
     const { isOpenModal } = this.state;
-    console.log(isOpenModal);
     return (
       <div>
         <TransactionsTable />
-        <AddButton onOpenModal={this.handleOpen} />
+        <AddButton onOpen={this.handleOpen} />
+        {isOpenModal && <Modal onClose={this.handleClose} />}
       </div>
     );
   }
