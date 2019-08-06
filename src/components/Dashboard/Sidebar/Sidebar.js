@@ -10,7 +10,7 @@ const Sidebar = ({ balance }) => (
 );
 
 Sidebar.propTypes = {
-  balance: PropTypes.string.isRequired,
+  balance: PropTypes.number.isRequired,
 };
 
 export default Sidebar;

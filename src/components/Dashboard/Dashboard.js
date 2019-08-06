@@ -62,12 +62,12 @@ class Dashboard extends Component {
     const { transactions } = this.props;
     this.setState({
       items: [...transactions],
-      balance: stateSum(transactions).balance,
     });
   }
 
   render() {
-    const { items, balance } = this.state;
+    const { items } = this.state;
+    const balance = stateSum(items).balance;
     return (
       <>
         <SideBar balance={balance} />
