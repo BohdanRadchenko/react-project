@@ -1,0 +1,20 @@
+.container_table {
+  position: relative;
+  margin: 0 auto;
+  height: auto;
+  width: 320px;
+}
+
+@media screen and (min-width: 768px) {
+  .container_table {
+    width: 748px;
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container_table {
+    width: 860px;
+    height: auto;
+  }
+}
