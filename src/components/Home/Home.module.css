@@ -1,21 +1,2 @@
 .container_home {
-  background-color: #f7f9fb;
-  height: 100vh;
 }
-
-/* .container_table {
-  position: relative;
-  background-color: rgb(228, 137, 137);
-  height: 350px;
-  margin: 0 auto;
-  width: 320px;
-  overflow-y: scroll;
-  padding: 20px;
-} */
-
-/* @media (min-width: 768px) {
-  .container_table {
-    height: 800px;
-    width: 720px;
-  }
-} */

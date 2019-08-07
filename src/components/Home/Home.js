@@ -30,7 +30,6 @@ class Home extends Component {
 
   render() {
     const { isOpenModal, items } = this.state;
-    console.log(items);
     return (
       <div className={styles.container_home}>
         {/* <div className={styles.container_table}> */}
