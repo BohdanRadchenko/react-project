@@ -31,8 +31,8 @@ class Home extends Component {
 
   render() {
     const { finance } = this.props;
-    console.log(finance);
-    console.log('render');
+    // console.log(finance);
+    // console.log('render');
 
     const { isOpenModal } = this.state;
     return (

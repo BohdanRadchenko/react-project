@@ -36,6 +36,7 @@ const TransactionHistory = ({ items }) => {
           <tbody>
             {items.map(item => (
               <tr
+                key={item.date}
                 className={
                   item.type === '-'
                     ? styleByType.classBase + ' ' + styleByType.con
