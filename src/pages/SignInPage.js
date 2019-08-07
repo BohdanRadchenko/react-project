@@ -1,12 +1,13 @@
 import React from 'react';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
-// import SignIn from '../components/Authentication/SignIn';
+import SignIn from '../components/Authentication/SignIn';
 import { signIn } from '../redux/session/sessionOperations';
 
-const SignInPage = ({ onSignIn }) => (
+const SignInPage = ({ onSignIn, history }) => (
   <Formik
     initialValues={{
       email: '',
@@ -29,12 +30,13 @@ const SignInPage = ({ onSignIn }) => (
         .required('Password is required'),
     })}
   >
-    {/* {props => <SignIn {...props} />} */}
+    {props => <SignIn {...props} history={history} />}
   </Formik>
 );
 
 SignInPage.propTypes = {
   onSignIn: PropTypes.func.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
 };
 
 const mDTP = {

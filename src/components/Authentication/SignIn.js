@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getError } from '../../redux/session/sessionSelectors';
+import ReactRouterPropTypes from 'react-router-prop-types';
+import {
+  getError,
+  isAuthentificated,
+} from '../../redux/session/sessionSelectors';
 
 class SignIn extends Component {
   static defaultProps = {
@@ -16,10 +20,19 @@ class SignIn extends Component {
     values: PropTypes.objectOf(PropTypes.string).isRequired,
     errors: PropTypes.objectOf(PropTypes.string).isRequired,
     touched: PropTypes.objectOf(PropTypes.any).isRequired,
+    history: ReactRouterPropTypes.history.isRequired,
+    authentificated: PropTypes.bool.isRequired,
   };
 
   componentDidMount() {
     document.body.addEventListener('keydown', this.handleEnterSubmit);
+  }
+
+  componentDidUpdate() {
+    const { authentificated, history } = this.props;
+    if (authentificated) {
+      history.replace('/dashboard');
+    }
   }
 
   componentWillUnmount() {
@@ -81,6 +94,9 @@ class SignIn extends Component {
   }
 }
 
-const mSTP = state => ({ errorMessage: getError(state) });
+const mSTP = state => ({
+  errorMessage: getError(state),
+  authentificated: isAuthentificated(state),
+});
 
 export default connect(mSTP)(SignIn);
