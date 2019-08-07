@@ -6,13 +6,13 @@ const StatsTable = ({ items }) => {
     <ul>
       {items.map(el => (
         <li key={el.id}>
-          <p>{el.amount}</p>
-          <p>{el.balanceAfter}</p>
-          <p>{el.category}</p>
-          <p>{el.comments}</p>
-          <p>{el.data}</p>
-          <p>{el.isAmountNull}</p>
-          <p>{el.type}</p>
+          <p>amount: {el.amount}</p>
+          <p>balanceAfter: {el.balanceAfter}</p>
+          <p>category: {el.category}</p>
+          <p>comments: {el.comments}</p>
+          <p>data: {el.data}</p>
+          <p>isAmountNull: {el.isAmountNull}</p>
+          <p>type: {el.type}</p>
         </li>
       ))}
     </ul>
