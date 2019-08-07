@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import Loader from './Loader';
 import SideBar from './Sidebar/Sidebar';
 import db from '../../db.json';
+import statisticsCount from '../../helpers/statisticsCount';
+import styles from './Dashboard.module.css';
 
 const AsyncHome = Loadable({
   loader: () => import('../../pages/Home' /* webpackChunkName: "home-page" */),
@@ -38,21 +40,6 @@ const AsyncSignIn = Loadable({
   delay: 200,
 });
 
-const stateSum = items => {
-  const depositsArr = items.filter(el => el.type === '+');
-  const depositsSumm = depositsArr.reduce((acc, el) => (acc += el.amount), 0);
-  const withdrowArr = items.filter(el => el.type === '-');
-  const withdrowSumm = withdrowArr.reduce((acc, el) => (acc += el.amount), 0);
-  const newBalance = depositsSumm - withdrowSumm;
-
-  const stateObj = {
-    balance: newBalance,
-    deposits: depositsSumm,
-    withdrow: withdrowSumm,
-  };
-  return stateObj;
-};
-
 class Dashboard extends Component {
   state = {
     items: [],
@@ -72,17 +59,20 @@ class Dashboard extends Component {
       maximumFractionDigits: 2,
     }).format(stateSum(items).balance);
     return (
-      <>
-        <SideBar balance={balance} />
-
-        <Switch>
-          <Route path="/" exact component={AsyncHome} />
-          <Route path="/signup" component={AsyncSignUp} />
-          <Route path="/signin" component={AsyncSignIn} />
-          <Route path="/stats" component={AsyncStats} />
-          <Redirect to="/" />
-        </Switch>
-      </>
+      <div className={styles.container}>
+        <div className={styles.leftSideBar}>
+          <SideBar balance={balance} />
+        </div>
+        <div className={styles.rightSideBar}>
+          <Switch>
+            <Route path="/" exact component={AsyncHome} />
+            <Route path="/signup" component={AsyncSignUp} />
+            <Route path="/signin" component={AsyncSignIn} />
+            <Route path="/stats" component={AsyncStats} />
+            <Redirect to="/" />
+          </Switch>
+        </div>
+      </div>
     );
   }
 }
