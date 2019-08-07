@@ -48,14 +48,15 @@ const TransactionHistory = ({ items }) => {
                 <td className={styles.td} data-label="Тип">
                   {item.type}
                 </td>
-                {item.type === '-' && (
-                  <td className={styles.td} data-label="Категория">
-                    {item.category}
-                  </td>
-                )}
+
+                <td className={styles.td} data-label="Категория">
+                  {item.type === '-' ? item.category : 'Pегулярный доход'}
+                </td>
+
                 <td className={styles.td} data-label="Комментарий">
                   {item.comments}
                 </td>
+
                 <td className={styleByType.amount} data-label="Сума">
                   <span
                     className={
