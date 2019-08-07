@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
-// import Currencies from '../Dashboard/Currencies/Currencies';
+import Currencies from '../Dashboard/Currencies/Currencies';
 import styles from '../Header/Header.module.css';
 // import Modal from '../Modal/ModalContainer';
 
@@ -11,7 +11,7 @@ const App = () => (
       <Header />
     </header>
     <Dashboard />
-    {/* <Currencies /> */}
+    <Currencies />
     {/* <Modal /> */}
   </>
 );
