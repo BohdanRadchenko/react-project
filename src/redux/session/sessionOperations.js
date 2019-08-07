@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 import {
   signUpRequest,
@@ -26,23 +27,31 @@ export const signIn = credentials => dispatch => {
     .catch(error => dispatch(signInError(error.response.data)));
 };
 
-// const setToken = token => ({
+// export const requestUserLogin = credendials => {
+//   return axios
+//     .post('https://mywallet.goit.co.ua/api/login', credendials)
+//     .then(data => data)
+//     .catch(({ response }) => response);
+// };
+
+// const isToken = token => ({
 //   headers: {
 //     Authorization: `Bearer ${token}`,
 //   },
 // });
 
-// export const clearHeader = () => {
+// export const headersDefault = () => {
 //   axios.defaults.headers.common.Autorization === null;
 // };
 
 // export const signOut = token => {
 //   return axios
-//     .get('https://mywallet.goit.co.ua/api/auth/logout', setToken(token))
+//     .get('https://mywallet.goit.co.ua/api/logout', isToken(token))
 //     .then(({ data, status }) => {
-//       if (status === 200) {
+
 //         return data;
-//       }
+
+//       // console.log(error);
 //     })
-//     // .catch(error => console.log(error));
+//     .catch(error => console.log(error.response.data));
 // };

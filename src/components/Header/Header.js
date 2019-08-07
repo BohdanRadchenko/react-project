@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 
 import UserLog from './UserLog';
-// import { signOut } from '../../redux/session/sessionOperations';
 
 class Header extends Component {
   state = {};
@@ -18,13 +17,14 @@ class Header extends Component {
   //     if (message === 'User successfully logout') {
   //       localStorage.clear();
   //       this.props.logout();
+  //       // headersDefault();
   //       this.props.history.push('/signup');
   //     }
   //   });
   // };
 
   render() {
-    return <UserLog onLogOut={this.handleLogOut} />;
+    return <UserLog />;
   }
 }
 

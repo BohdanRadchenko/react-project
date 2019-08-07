@@ -50,11 +50,6 @@ export const signInError = error => ({
 
 // Get User Name
 
-export const getUser = user => ({
-  type: TypeName.GET_USER,
-  payload: user,
-});
-
 export const logOut = () => ({
   type: TypeName.LOGOUT_SUCCESS,
 });

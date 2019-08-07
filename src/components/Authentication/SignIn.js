@@ -1,13 +1,11 @@
-/* eslint-disable no-shadow */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+// import ReactRouterPropTypes from 'react-router-prop-types';
 import { signIn } from '../../redux/session/sessionOperations';
 import {
   getError,
-  isAthentificated,
+  isAuthentificated,
 } from '../../redux/session/sessionSelectors';
 
 class SignIn extends Component {
@@ -18,20 +16,22 @@ class SignIn extends Component {
   static propTypes = {
     onSignIn: PropTypes.func.isRequired,
     errorMessage: PropTypes.string,
+    // history: ReactRouterPropTypes.history.isRequired,
+    // isAuthentificated: PropTypes.bool.isRequired,
   };
 
   state = {
     email: '',
     password: '',
-    isAthentificated: false,
+    isAuthentificated: false,
   };
 
-  componentDidUpdate() {
-    const { isAthentificated } = this.props;
-    if (isAthentificated) {
-      this.props.history.push('/dashboard');
-    }
-  }
+  // componentDidUpdate() {
+  //   const { isAuthentificated, history } = this.props;
+  //   if (!isAuthentificated) {
+  //     history.replace('/dashboard');
+  //   }
+  // }
 
   handleChange = ({ target: { name, value } }) =>
     this.setState({ [name]: value });
@@ -76,7 +76,7 @@ class SignIn extends Component {
 
 const mSTP = state => ({
   errorMessage: getError(state),
-  isAthentificated: isAthentificated(state),
+  isAutentificate: isAuthentificated(state),
 });
 
 const mDTP = {

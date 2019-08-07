@@ -18,7 +18,7 @@ const UserLog = ({ user, onLogOut }) => (
       </div>
     </div>
     <div className={styles.headerName}>
-      <p className={styles.headerUser}>{user.name}</p>
+      <p className={styles.headerUser}>{user}</p>
       <button type="button" className={styles.headerButton} onClick={onLogOut}>
         Выйти
       </button>
@@ -27,19 +27,11 @@ const UserLog = ({ user, onLogOut }) => (
 );
 
 UserLog.defaultProps = {
-  user: PropTypes.shape({
-    id: '',
-    email: '',
-    name: '',
-  }),
+  user: '',
 };
 
 UserLog.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.string,
-    email: PropTypes.string,
-    name: PropTypes.string,
-  }),
+  user: PropTypes.string,
   onLogOut: PropTypes.func.isRequired,
 };
 
@@ -55,5 +47,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(UserLog);
-//   mapDispatchToProps,;
-//   mapStateToProps,

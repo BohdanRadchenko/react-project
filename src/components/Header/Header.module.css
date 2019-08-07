@@ -11,6 +11,7 @@ body {
 }
 
 .header {
+  height: 80px;
   display: flex;
   align-items: center;
   padding: 7px 10px 9px 11px;
@@ -20,7 +21,7 @@ body {
 }
 
 .headerLogo,
-.headerUser {
+.headerName {
   display: flex;
   align-items: center;
   justify-content: center;

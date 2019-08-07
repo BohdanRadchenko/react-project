@@ -1,13 +1,18 @@
 import { combineReducers } from 'redux';
 import { ActionTypes, TypeName } from './sessionActions';
 
+// const stateReq = {
+//   isAthentificated: false,
+//   token: '',
+// };
+
 const user = (state = {}, { type, payload }) => {
   switch (type) {
     case ActionTypes.SIGN_IN_SUCCESS:
       return payload.response.user;
-
+    // { token: payload.data.key, isAthentificated: true }
     case TypeName.LOGOUT_SUCCESS:
-      return state;
+      return {};
 
     default:
       return state;
@@ -49,19 +54,9 @@ const authentificated = (state = false, { type }) => {
   }
 };
 
-const getUser = (state = {}, { type, payload }) => {
-  switch (type) {
-    case TypeName.GET_USER:
-      return payload;
-    default:
-      return state;
-  }
-};
-
 export default combineReducers({
   user,
   token,
   error,
   authentificated,
-  getUser,
 });
