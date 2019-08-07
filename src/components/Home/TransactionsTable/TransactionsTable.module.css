@@ -1,14 +1,8 @@
-.container {
-  margin: 0 auto;
-  width: 600px;
-  height: 800px;
-  overflow-y: scroll;
-}
-
 .table {
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   background-color: #fff;
   /* width: 768px; */
+  width: 100%;
   margin: 0;
   padding: 0;
   border-collapse: collapse;
@@ -45,33 +39,32 @@ tr:nth-last-child(even) {
   letter-spacing: 1px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 768px) {
   .container {
-    width: 340px;
+    margin: 0 auto;
+    width: 95%;
+    height: 700px;
+    overflow-y: scroll;
   }
-
-  .button {
-    position: fixed;
-    left: 150px;
-    top: 100px;
-    background-color: #f24537;
-    width: 50px;
-    height: 50px;
-    border: none;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 30px;
-    outline: none;
+  .th,
+  .td {
+    padding: 20px;
   }
+}
 
-  .button:hover {
-    background: linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
-    background-color: #c62d1f;
+@media screen and (max-width: 768px) {
+  .container {
+    width: 320px;
+    margin: 200px auto;
+    height: 400px;
+    overflow-y: scroll;
   }
 
   .table {
-    border: 0;
+    margin-top: 40px;
+    border: none;
     width: 306px;
+    /* width: 90%; */
   }
 
   .thead {
@@ -119,3 +112,32 @@ tr:nth-last-child(even) {
     font-weight: bold;
   }
 }
+
+@media screen and (min-width: 1200px) {
+  .container {
+    background-color: rgb(153, 144, 144);
+    margin: 0 auto;
+    width: 853px;
+    height: 500px;
+    overflow-y: scroll;
+  }
+  .table {
+    /* border: 1px solid #ccc; */
+    background-color: #fff;
+    /* width: 768px; */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: #3f4040;
+    /* box-shadow: 11px 7px 16px -6px rgba(158, 158, 158, 1); */
+  }
+}
+
+/* .container {
+  margin: 0 auto;
+  width: 80%;
+  height: 800px;
+  overflow-y: scroll;
+} */

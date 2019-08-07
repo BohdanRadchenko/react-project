@@ -58,5 +58,35 @@
     "type": "-",
     "isAmountNull": false,
     "balanceAfter": 2000
+  },
+  {
+    "id": "d9b75572-3c28-4f85-abb1-715ca121f069",
+    "amount": 1000,
+    "date": "07.01.19",
+    "category": "Нерегулярний доход",
+    "comments": "Подарок на др",
+    "type": "+",
+    "isAmountNull": false,
+    "balanceAfter": 2000
+  },
+  {
+    "id": "d9b75572-3c28-4f85-abb1-715ca121f069",
+    "amount": 1000,
+    "date": "07.01.19",
+    "category": "Нерегулярний доход",
+    "comments": "Подарок на др",
+    "type": "+",
+    "isAmountNull": false,
+    "balanceAfter": 2000
+  },
+  {
+    "id": "d9b75572-3c28-4f85-abb1-715ca121f069",
+    "amount": 1000,
+    "date": "07.01.19",
+    "category": "Нерегулярний доход",
+    "comments": "Подарок на др",
+    "type": "+",
+    "isAmountNull": false,
+    "balanceAfter": 2000
   }
 ]

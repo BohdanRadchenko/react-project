@@ -20,7 +20,7 @@ const styleByType = {
 const TransactionHistory = ({ items }) => {
   return (
     <>
-      <div>
+      <div className={styles.container}>
         <table className={styles.table}>
           <thead className={styles.thead}>
             <tr className={styles.tr}>
