@@ -32,11 +32,11 @@ class Home extends Component {
     const { isOpenModal, items } = this.state;
     return (
       <div className={styles.container_home}>
-        {/* <div className={styles.container_table}> */}
-        <TransactionsTable items={items} />
+        <div className={styles.container_table}>
+          <TransactionsTable items={items} />
+          <AddButton onOpen={this.handleOpen} />
+        </div>
         {isOpenModal && <Modal onClose={this.handleClose} />}
-        <AddButton onOpen={this.handleOpen} />
-        {/* </div> */}
       </div>
     );
   }

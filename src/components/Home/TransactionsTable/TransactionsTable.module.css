@@ -38,12 +38,8 @@ tr:nth-last-child(even) {
 }
 
 @media screen and (min-width: 768px) {
-  .container {
-    margin: 0 auto;
-    width: 95%;
-    height: 500px;
-    overflow-y: scroll;
-  }
+  /* .container {
+  } */
   .th,
   .td {
     padding: 20px;
@@ -52,10 +48,12 @@ tr:nth-last-child(even) {
 
 @media screen and (max-width: 768px) {
   .container {
+    position: relative;
     width: 320px;
     margin: 200px auto;
     height: 400px;
     overflow-y: scroll;
+    background-color: #424242;
   }
 
   .table {

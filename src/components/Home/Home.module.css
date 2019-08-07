@@ -1,2 +1,26 @@
 .container_home {
 }
+
+.container_table {
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .container_table {
+    background-color: green;
+    /* width: 700px;
+    height: 700px; */
+    margin: 0 auto;
+    width: 95%;
+    height: 500px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container_table {
+    background-color: rgb(147, 199, 147);
+    margin: 0 auto;
+    width: 853px;
+    height: 700px;
+  }
+}
