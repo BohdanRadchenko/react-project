@@ -2,8 +2,8 @@
 import React from 'react';
 import Select from 'react-select';
 import DatePicker from 'react-date-picker';
-import categories from '../../../constans/modalConstants';
-import { transactions } from '../Modal';
+import { categories, transactions } from '../../../constans/modalConstants';
+import styles from '../Modal.module.css';
 
 const AddTransaction = ({
   amount,
@@ -17,51 +17,53 @@ const AddTransaction = ({
   handleDateChange,
   handleSubmit,
 }) => (
-  <form onSubmit={handleSubmit}>
-    <h2>Add a transaction</h2>
-    <div>
+  <div className={styles.modal}>
+    <form onSubmit={handleSubmit}>
+      <h2>Add a transaction</h2>
+      <div>
+        <input
+          type="radio"
+          id="income"
+          name="transaction"
+          checked={type === transactions.INCOME}
+          onChange={handleRadioChange}
+        />
+        <label htmlFor="income">Income</label>
+        <input
+          type="radio"
+          id="cost"
+          name="transaction"
+          checked={type === transactions.COST}
+          onChange={handleRadioChange}
+        />
+        <label htmlFor="cost">Cost</label>
+      </div>
+      {isCost && <Select options={categories} onChange={handleSelectChange} />}
       <input
-        type="radio"
-        id="income"
-        name="transaction"
-        checked={type === transactions.INCOME}
-        onChange={handleRadioChange}
+        name="amount"
+        type="text"
+        value={amount}
+        onChange={handleTextChange}
+        required
       />
-      <label htmlFor="income">Income</label>
-      <input
-        type="radio"
-        id="cost"
-        name="transaction"
-        checked={type === transactions.COST}
-        onChange={handleRadioChange}
+      <DatePicker
+        value={date}
+        onChange={handleDateChange}
+        maxDate={new Date()}
+        format="MM/dd/yyyy"
+        locale="en"
       />
-      <label htmlFor="cost">Cost</label>
-    </div>
-    {isCost && <Select options={categories} onChange={handleSelectChange} />}
-    <input
-      name="amount"
-      type="text"
-      value={amount}
-      onChange={handleTextChange}
-      required
-    />
-    <DatePicker
-      value={date}
-      onChange={handleDateChange}
-      maxDate={new Date()}
-      format="MM/dd/yyyy"
-      locale="en"
-    />
-    <textarea
-      name="comments"
-      cols="20"
-      rows="2"
-      value={comments}
-      placeholder="Add a comment..."
-      onChange={handleTextChange}
-    />
-    <button type="submit">Add</button>
-  </form>
+      <textarea
+        name="comments"
+        cols="20"
+        rows="2"
+        value={comments}
+        placeholder="Add a comment..."
+        onChange={handleTextChange}
+      />
+      <button type="submit">Add</button>
+    </form>
+  </div>
 );
 
 export default AddTransaction;

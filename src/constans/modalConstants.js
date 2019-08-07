@@ -1,4 +1,4 @@
-const categories = [
+export const categories = [
   { value: 'regular', label: 'Regular' },
   { value: 'food', label: 'Food' },
   { value: 'automobile', label: 'Automobile' },
@@ -9,4 +9,7 @@ const categories = [
   { value: 'other', label: 'Other' },
 ];
 
-export default categories;
+export const transactions = {
+  INCOME: 'INCOME',
+  COST: 'COST',
+};

@@ -1,16 +1,12 @@
 /*eslint-disable*/
 import React, { Component, createRef } from 'react';
 import AddTransaction from './AddTransaction/AddTransaction';
+import { transactions } from '../../constans/modalConstants';
 import {
   countBalanceAfter,
   countTypeBalanceAfter,
 } from '../../helpers/countBalanceAfter';
 import styles from './Modal.module.css';
-
-export const transactions = {
-  INCOME: 'INCOME',
-  COST: 'COST',
-};
 
 export default class Modal extends Component {
   state = {
@@ -98,7 +94,7 @@ export default class Modal extends Component {
   render() {
     const { isCost, type, comments, amount, date } = this.state;
     return (
-      <div ref={this.backdropRef}>
+      <div ref={this.backdropRef} className={styles.backdrop}>
         <AddTransaction
           isCost={isCost}
           amount={amount}
