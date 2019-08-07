@@ -60,9 +60,23 @@ const authentificated = (state = false, { type }) => {
   }
 };
 
+const tokenDliaMarusi = (state = true, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.SIGN_IN_SUCCESS:
+    case ActionTypes.SIGN_UP_SUCCESS:
+      return payload.response.token;
+
+    case ActionTypes.LOGOUT_SUCCESS:
+      return null;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   user,
   token,
   error,
   authentificated,
+  tokenDliaMarusi,
 });
