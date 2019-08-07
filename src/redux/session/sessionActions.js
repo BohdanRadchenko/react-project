@@ -5,6 +5,9 @@ export const ActionTypes = {
   SIGN_IN_REQUEST: 'session/SIGN_IN_REQUEST',
   SIGN_IN_SUCCESS: 'session/SIGN_IN_SUCCESS',
   SIGN_IN_ERROR: 'session/SIGN_IN_ERROR',
+  REFRESH_USER_SUCCESS: 'REFRESH_USER_SUCCESS',
+  REFRESH_USER_ERROR: 'REFRESH_USER_ERROR',
+  REFRESH_USER_REQUEST: 'REFRESH_USER_REQUEST',
 };
 
 //
@@ -42,3 +45,7 @@ export const signInError = error => ({
   type: ActionTypes.SIGN_IN_ERROR,
   payload: { error },
 });
+
+//
+// refresh user
+//
