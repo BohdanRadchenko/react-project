@@ -66,11 +66,11 @@ const TransactionHistory = ({ items }) => {
                         : styleByType.incColor
                     }
                   >
-                    {item.amount}
+                    {item.amount.toFixed(2)}
                   </span>
                 </td>
                 <td className={styles.td} data-label="Баланс">
-                  {item.balanceAfter}
+                  {item.balanceAfter.toFixed(2)}
                 </td>
               </tr>
             ))}

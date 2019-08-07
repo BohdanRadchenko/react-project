@@ -8,20 +8,6 @@ body {
   box-sizing: inherit;
 }
 
-@media screen and (max-width: 767px) {
-  .backdrop {
-    display: none;
-  }
-
-  .modal {
-    width: 100%;
-  }
-
-  .form {
-    width: 90vw;
-  }
-}
-
 .backdrop {
   position: fixed;
   top: 0;
@@ -37,10 +23,169 @@ body {
 
 .modal {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
-  padding: 24px;
-  max-width: 480px;
+  flex-direction: column;
+  justify-content: flex-start;
   width: 100%;
   background-color: #fff;
+}
+
+.title {
+  margin: 0;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.radiosDiv {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.innerRadioDiv {
+  width: 63px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.radio + label {
+  font-family: sans-serif;
+  font-size: 14px;
+  opacity: 0.5;
+}
+
+.radio:checked + label {
+  color: #284060;
+  opacity: 1;
+}
+
+.radioCost:checked + label {
+  color: #fc842c;
+}
+
+.select {
+  margin-top: 30px;
+  width: 280px;
+  border: solid 1px #b9c9d4;
+  border-radius: 6px;
+}
+
+.inputsDiv {
+  width: 280px;
+  margin-top: 34px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input {
+  width: 130px;
+  height: 38px;
+  border: solid 2px #b9c9d4;
+  border-radius: 6px;
+}
+
+.amountInput {
+  padding: 0 22px;
+  text-align: right;
+  font-size: 12px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.dateInput {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment {
+  width: 280px;
+  margin: 0;
+  margin-top: 30px;
+  font-family: sans-serif;
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.textarea {
+  width: 280px;
+  margin-top: 18px;
+  padding: 6px;
+  resize: none;
+  border: solid 2px #b9c9d4;
+  border-radius: 6px;
+  line-height: 18px;
+}
+
+.addButton {
+  width: 280px;
+  height: 40px;
+}
+
+@media screen and (max-width: 767px) {
+  .backdrop {
+    /* top: 40px; */
+    /* height: 100%; */
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .modal {
+    position: relative;
+    background-color: #ffffff;
+    width: 100%;
+    height: 93%;
+    flex-direction: column;
+  }
+
+  .titleDiv {
+    width: 100%;
+    height: 40px;
+    padding-left: 50px;
+    background-color: #3a5374;
+  }
+
+  .title {
+    margin-top: 14px;
+    color: #fff;
+  }
+
+  .radiosDiv {
+    width: 184px;
+  }
+
+  .buttonDiv {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 68px;
+    background-color: #738397;
+    text-align: center;
+  }
+
+  .addButton {
+    margin-top: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #fc842c;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .addButton:active {
+    background-color: #e27a2b;
+    box-shadow: 0 3px 0 3px rgba(226, 122, 43, 0.2);
+  }
 }

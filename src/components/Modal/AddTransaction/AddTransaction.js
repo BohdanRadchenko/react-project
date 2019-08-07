@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import DatePicker from 'react-date-picker';
+import DatePicker from 'react-date-picker/dist/entry.nostyle';
 import { categories, transactions } from '../../../constans/modalConstants';
 import styles from '../Modal.module.css';
 
@@ -19,42 +19,64 @@ const AddTransaction = ({
   handleSubmit,
 }) => (
   <div className={styles.modal}>
-    <h2>Add a transaction</h2>
-    <form onSubmit={handleSubmit} className={styles.modal}>
-      <div>
-        <input
-          type="radio"
-          id="income"
-          name="transaction"
-          checked={type === transactions.INCOME}
-          onChange={handleRadioChange}
-        />
-        <label htmlFor="income">Income</label>
-        <input
-          type="radio"
-          id="cost"
-          name="transaction"
-          checked={type === transactions.COST}
-          onChange={handleRadioChange}
-        />
-        <label htmlFor="cost">Cost</label>
+    <div className={styles.titleDiv}>
+      <h2 className={styles.title}>Add a transaction</h2>
+    </div>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <div className={styles.radiosDiv}>
+        <div className={styles.innerRadioDiv}>
+          <input
+            type="radio"
+            id="income"
+            name="transaction"
+            checked={type === transactions.INCOME}
+            onChange={handleRadioChange}
+            className={styles.radio}
+          />
+          <label htmlFor="income">Income</label>
+        </div>
+        |
+        <div className={styles.innerRadioDiv}>
+          <input
+            className={`${styles.radio} ${styles.radioCost}`}
+            type="radio"
+            id="cost"
+            name="transaction"
+            checked={type === transactions.COST}
+            onChange={handleRadioChange}
+          />
+          <label htmlFor="cost">Cost</label>
+        </div>
       </div>
-      {isCost && <Select options={categories} onChange={handleSelectChange} />}
-      <input
-        name="amount"
-        type="number"
-        value={Number(amount).toFixed(2)}
-        onChange={handleTextChange}
-        required
-      />
-      <DatePicker
-        value={date}
-        onChange={handleDateChange}
-        maxDate={new Date()}
-        format="dd/MM/yyyy"
-        locale="en"
-        required
-      />
+      {isCost && (
+        <Select
+          className={styles.select}
+          options={categories}
+          onChange={handleSelectChange}
+        />
+      )}
+      <div className={styles.inputsDiv}>
+        <input
+          name="amount"
+          type="number"
+          value={Number(amount).toFixed(2)}
+          step={0.01}
+          min={0}
+          onChange={handleTextChange}
+          className={`${styles.input} ${styles.amountInput}`}
+          required
+        />
+        <DatePicker
+          value={date}
+          onChange={handleDateChange}
+          maxDate={new Date()}
+          format="dd/MM/yyyy"
+          locale="en"
+          className={`${styles.input} ${styles.dateInput}`}
+          required
+        />
+      </div>
+      <h2 className={styles.comment}>Comment</h2>
       <textarea
         name="comments"
         cols="20"
@@ -62,8 +84,13 @@ const AddTransaction = ({
         value={comments}
         placeholder="Add a comment..."
         onChange={handleTextChange}
+        className={styles.textarea}
       />
-      <button type="submit">Add</button>
+      <div className={styles.buttonDiv}>
+        <button className={styles.addButton} type="submit">
+          Add
+        </button>
+      </div>
     </form>
   </div>
 );
