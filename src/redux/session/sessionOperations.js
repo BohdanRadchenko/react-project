@@ -7,9 +7,19 @@ import {
   signInRequest,
   signInSuccesss,
   signInError,
+  refreshUserRequest,
 } from './sessionActions';
+import { getToken } from './sessionSelectors';
 
 axios.defaults.baseURL = 'https://mywallet.goit.co.ua/api/';
+
+// const setAuthToken = token => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
+
+// const clearAuthToken = () => {
+//   axios.defaults.header.common.Authorization = null;
+// };
 
 export const signUp = credentials => dispatch => {
   dispatch(signUpRequest());
@@ -27,22 +37,24 @@ export const signIn = credentials => dispatch => {
     .catch(error => dispatch(signInError(error.response.data)));
 };
 
-// export const requestUserLogin = credendials => {
-//   return axios
-//     .post('https://mywallet.goit.co.ua/api/login', credendials)
-//     .then(data => data)
-//     .catch(({ response }) => response);
-// };
+export const refreshUser = credendials => (dispatch, getState) => {
+  dispatch(refreshUserRequest());
+
+  const token = getToken(getState());
+
+  console.log(token);
+
+  return axios
+    .post('https://mywallet.goit.co.ua/api/login', credendials)
+    .then(console.log)
+    .catch(console.log);
+};
 
 // const isToken = token => ({
 //   headers: {
 //     Authorization: `Bearer ${token}`,
 //   },
 // });
-
-// export const headersDefault = () => {
-//   axios.defaults.headers.common.Autorization === null;
-// };
 
 // export const signOut = token => {
 //   return axios
