@@ -1,5 +1,5 @@
 .table {
-  /* border: 1px solid #ccc; */
+  border: 1px solid #ccc;
   background-color: #fff;
   /* width: 768px; */
   width: 100%;
@@ -8,7 +8,6 @@
   border-collapse: collapse;
   border-spacing: 0;
   color: #3f4040;
-  /* box-shadow: 11px 7px 16px -6px rgba(158, 158, 158, 1); */
 }
 
 .incColor {
@@ -43,7 +42,7 @@ tr:nth-last-child(even) {
   .container {
     margin: 0 auto;
     width: 95%;
-    height: 700px;
+    height: 500px;
     overflow-y: scroll;
   }
   .th,

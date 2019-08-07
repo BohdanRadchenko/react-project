@@ -4,6 +4,7 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import { connect } from 'react-redux';
 import Loader from './Loader';
+import SideBar from './Sidebar/Sidebar';
 import db from '../../db.json';
 
 const AsyncHome = Loadable({
@@ -61,15 +62,16 @@ class Dashboard extends Component {
     const { transactions } = this.props;
     this.setState({
       items: [...transactions],
-      balance: stateSum(transactions).balance,
     });
   }
 
   render() {
-    const { items, balance } = this.state;
+    const { items } = this.state;
+    const balance = stateSum(items).balance;
     return (
-      <div>
-        {/* <Balance balance={balance} /> */}
+      <>
+        <SideBar balance={balance} />
+
         <Switch>
           <Route path="/" exact component={AsyncHome} />
           <Route path="/signup" component={AsyncSignUp} />
@@ -77,7 +79,7 @@ class Dashboard extends Component {
           <Route path="/stats" component={AsyncStats} />
           <Redirect to="/" />
         </Switch>
-      </div>
+      </>
     );
   }
 }
