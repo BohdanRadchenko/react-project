@@ -8,6 +8,8 @@ import SideBar from './Sidebar/Sidebar';
 import db from '../../db.json';
 import statisticsCount from '../../helpers/statisticsCount';
 import styles from './Dashboard.module.css';
+import Currencies from './Currencies/Currencies';
+import Home from '../Home/Home';
 
 const AsyncHome = Loadable({
   loader: () => import('../../pages/Home' /* webpackChunkName: "home-page" */),
@@ -59,8 +61,10 @@ class Dashboard extends Component {
       <div className={styles.container}>
         <div className={styles.leftSideBar}>
           <SideBar balance={balance} />
+          <Currencies />
         </div>
         <div className={styles.rightSideBar}>
+          <Home />
           <Switch>
             <Route path="/" exact component={AsyncHome} />
             <Route path="/signup" component={AsyncSignUp} />

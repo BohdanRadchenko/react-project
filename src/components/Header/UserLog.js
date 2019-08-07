@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './Header.module.css';
 import * as nameSelector from '../../redux/session/sessionSelectors';
-import * as sessionActions from '../../redux/session/sessionActions';
+import { signOut } from '../../redux/session/sessionOperations';
 
-const logo = require('../../logo.svg');
+const logo = require('./Img/logo.svg');
+const iconLogout = require('./Img/exit.svg');
 
 const UserLog = ({ user, onLogOut }) => (
   <>
@@ -19,7 +20,8 @@ const UserLog = ({ user, onLogOut }) => (
     <div className={styles.headerName}>
       <p className={styles.headerUser}>{user}</p>
       <button type="button" className={styles.headerButton} onClick={onLogOut}>
-        Выйти
+        <img src={iconLogout} alt="logo" className={styles.logout} />
+        Logout
       </button>
     </div>
   </>
@@ -39,7 +41,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  onLogOut: sessionActions.logOut,
+  onLogOut: signOut,
 };
 
 export default connect(

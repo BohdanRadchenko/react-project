@@ -7,7 +7,7 @@
     "comments": "asdasd",
     "type": "+",
     "isAmountNull": false,
-    "balanceAfter": 50789798
+    "balanceAfter": 2000
   },
   {
     "id": "d9b75572-3c28-4f85-abb1-715ca121f069",
@@ -17,7 +17,7 @@
     "comments": "asdasd",
     "type": "+",
     "isAmountNull": false,
-    "balanceAfter": 50789798
+    "balanceAfter": 2000
   },
   {
     "id": "76645dfa-4554-49f1-8314-a3cf674d079b",
@@ -27,7 +27,7 @@
     "comments": "asdasdasd",
     "type": "+",
     "isAmountNull": false,
-    "balanceAfter": 50000000
+    "balanceAfter": 2000
   },
   {
     "id": "a8263220-b9cf-421c-9bcb-137df33766e9",
@@ -36,9 +36,8 @@
     "category": "Household Products",
     "comments": "123asd",
     "type": "-",
-    "isAmountBigger": false,
     "isAmountNull": false,
-    "balanceAfter": 50789363
+    "balanceAfter": 2000
   },
   {
     "id": "e79f4d91-22d7-4e45-857f-e1a2390f4617",
@@ -58,8 +57,47 @@
     "category": "Main Expenses",
     "comments": "asdasd",
     "type": "-",
-    "isAmountBigger": false,
     "isAmountNull": false,
-    "balanceAfter": 50789675
+    "balanceAfter": 2000
+  },
+  {
+    "id": "d9b75572-3c28-4f85-abb1-715ca121f069",
+    "amount": 1000,
+    "date": "07.01.19",
+    "category": "Нерегулярний доход",
+    "comments": "Подарок на др",
+    "type": "-",
+    "isAmountNull": false,
+    "balanceAfter": 2000
+  },
+  {
+    "id": "d9b75572-3c28-4f85-abb1-715ca121f069",
+    "amount": 1000,
+    "date": "07.01.19",
+    "category": "Нерегулярний доход",
+    "comments": "Подарок на др",
+    "type": "+",
+    "isAmountNull": false,
+    "balanceAfter": 2000
+  },
+  {
+    "id": "d9b75572-3c28-4f85-abb1-715ca121f069",
+    "amount": 1000,
+    "date": "07.01.19",
+    "category": "Нерегулярний доход",
+    "comments": "Подарок на др",
+    "type": "+",
+    "isAmountNull": false,
+    "balanceAfter": 2000
+  },
+  {
+    "id": "d9b75572-3c28-4f85-abb1-715ca121f069",
+    "amount": 1000,
+    "date": "07.01.19",
+    "category": "Нерегулярний доход",
+    "comments": "Подарок на др",
+    "type": "+",
+    "isAmountNull": false,
+    "balanceAfter": 2000
   }
 ]

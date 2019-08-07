@@ -7,9 +7,24 @@ import {
   signInRequest,
   signInSuccesss,
   signInError,
+  refreshUserRequest,
+  logOutRequest,
+  logOutSuccess,
+  logOutError,
+  refreshUserSuccess,
+  refreshUserError,
 } from './sessionActions';
+import { getToken } from './sessionSelectors';
 
 axios.defaults.baseURL = 'https://mywallet.goit.co.ua/api/';
+
+const setAuthToken = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+const clearAuthToken = () => {
+  axios.defaults.headers.common.Authorization = null;
+};
 
 export const signUp = credentials => dispatch => {
   dispatch(signUpRequest());
@@ -27,31 +42,37 @@ export const signIn = credentials => dispatch => {
     .catch(error => dispatch(signInError(error.response.data)));
 };
 
-// export const requestUserLogin = credendials => {
-//   return axios
-//     .post('https://mywallet.goit.co.ua/api/login', credendials)
-//     .then(data => data)
-//     .catch(({ response }) => response);
-// };
+export const refreshUser = () => (dispatch, getState) => {
+  dispatch(refreshUserRequest());
 
-// const isToken = token => ({
-//   headers: {
-//     Authorization: `Bearer ${token}`,
-//   },
-// });
+  const token = getToken(getState());
 
-// export const headersDefault = () => {
-//   axios.defaults.headers.common.Autorization === null;
-// };
+  if (!token) return;
+  setAuthToken(token);
+  console.log(token);
 
-// export const signOut = token => {
-//   return axios
-//     .get('https://mywallet.goit.co.ua/api/logout', isToken(token))
-//     .then(({ data, status }) => {
+  axios
+    .get('finance', token)
+    .then(response => dispatch(refreshUserSuccess(response.data)))
+    .catch(error => dispatch(refreshUserError(error.message)));
+};
 
-//         return data;
+export const signOut = () => (dispatch, getState) => {
+  dispatch(logOutRequest());
 
-//       // console.log(error);
-//     })
-//     .catch(error => console.log(error.response.data));
-// };
+  const token = getToken(getState());
+  if (!token) return;
+  console.log(token);
+  setAuthToken(token);
+
+  axios
+    .get('logout')
+    .then(() => {
+      dispatch(logOutSuccess());
+      clearAuthToken();
+    })
+    .catch(error => {
+      dispatch(logOutError());
+      console.log(error);
+    });
+};

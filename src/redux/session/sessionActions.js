@@ -5,11 +5,12 @@ export const ActionTypes = {
   SIGN_IN_REQUEST: 'session/SIGN_IN_REQUEST',
   SIGN_IN_SUCCESS: 'session/SIGN_IN_SUCCESS',
   SIGN_IN_ERROR: 'session/SIGN_IN_ERROR',
-};
-
-export const TypeName = {
-  GET_USER: 'GET_USER',
-  LOGOUT_SUCCESS: 'session/LOGOUT_SUCCESS',
+  REFRESH_USER_REQUEST: 'REFRESH_USER_REQUEST',
+  REFRESH_USER_SUCCESS: 'REFRESH_USER_SUCCESS',
+  REFRESH_USER_ERROR: 'REFRESH_USER_ERROR',
+  LOGOUT_REQUEST: 'LOGOUT_REQUEST',
+  LOGOUT_SUCCESS: 'LOGOUT_SUCCESS',
+  LOGOUT_ERROR: 'LOGOUT_ERROR',
 };
 
 //
@@ -48,8 +49,36 @@ export const signInError = error => ({
   payload: { error },
 });
 
-// Get User Name
+//
+// LogOUT
+//
 
-export const logOut = () => ({
-  type: TypeName.LOGOUT_SUCCESS,
+export const logOutRequest = () => ({
+  type: ActionTypes.LOGOUT_REQUEST,
+});
+
+export const logOutSuccess = () => ({
+  type: ActionTypes.LOGOUT_SUCCESS,
+});
+
+export const logOutError = () => ({
+  type: ActionTypes.LOGOUT_ERROR,
+});
+
+//
+// refresh user
+//
+
+export const refreshUserRequest = () => ({
+  type: ActionTypes.REFRESH_USER_REQUEST,
+});
+
+export const refreshUserSuccess = response => ({
+  type: ActionTypes.REFRESH_USER_SUCCESS,
+  payload: { response },
+});
+
+export const refreshUserError = error => ({
+  type: ActionTypes.REFRESH_USER_ERROR,
+  payload: { error },
 });
