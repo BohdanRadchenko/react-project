@@ -1,0 +1,65 @@
+[
+  {
+    "id": "d9b75572-3c28-4f85-abb1-715ca121f069",
+    "amount": 789798,
+    "data": "2019-03-09T11:20:00.932Z",
+    "category": "Regular Income",
+    "comments": "asdasd",
+    "type": "+",
+    "isAmountNull": false,
+    "balanceAfter": 50789798
+  },
+  {
+    "id": "d9b75572-3c28-4f85-abb1-715ca121f069",
+    "amount": 789798,
+    "data": "2019-01-09T10:20:00.932Z",
+    "category": "Regular Income",
+    "comments": "asdasd",
+    "type": "+",
+    "isAmountNull": false,
+    "balanceAfter": 50789798
+  },
+  {
+    "id": "76645dfa-4554-49f1-8314-a3cf674d079b",
+    "amount": 50000000,
+    "data": "2019-01-09T09:20:00.932Z",
+    "category": "Regular Income",
+    "comments": "asdasdasd",
+    "type": "+",
+    "isAmountNull": false,
+    "balanceAfter": 50000000
+  },
+  {
+    "id": "a8263220-b9cf-421c-9bcb-137df33766e9",
+    "amount": 312,
+    "data": "2019-02-09T08:20:00.932Z",
+    "category": "Household Products",
+    "comments": "123asd",
+    "type": "-",
+    "isAmountBigger": false,
+    "isAmountNull": false,
+    "balanceAfter": 50789363
+  },
+  {
+    "id": "e79f4d91-22d7-4e45-857f-e1a2390f4617",
+    "amount": 123,
+    "data": "2019-02-09T07:20:00.932Z",
+    "category": "Main Expenses",
+    "comments": "asdasd",
+    "type": "-",
+    "isAmountBigger": false,
+    "isAmountNull": false,
+    "balanceAfter": 50789675
+  },
+  {
+    "id": "e79f4d91-22d7-4e45-857f-e1a2390f4617",
+    "amount": 123,
+    "data": "2018-03-09T07:20:00.932Z",
+    "category": "Main Expenses",
+    "comments": "asdasd",
+    "type": "-",
+    "isAmountBigger": false,
+    "isAmountNull": false,
+    "balanceAfter": 50789675
+  }
+]

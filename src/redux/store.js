@@ -1,11 +1,18 @@
-import { createStore } from 'redux';
-// import { combineReducers } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import ReduxThunk from 'redux-thunk';
+import sessionReducer from './session/sessionReducer';
+import financeReducer from './finance/financeReducer';
 
-const rootReducer = () => ({
-  user: null,
+const rootReducer = combineReducers({
+  session: sessionReducer,
+  finance: financeReducer,
 });
 
-const store = createStore(rootReducer, composeWithDevTools());
+const middleware = [ReduxThunk];
+
+const enhancer = applyMiddleware(...middleware);
+
+const store = createStore(rootReducer, composeWithDevTools(enhancer));
 
 export default store;
