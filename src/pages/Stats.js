@@ -9,6 +9,7 @@ import OptionsMonth from '../components/Stats/Options/OptionsMonth';
 import OptionsYears from '../components/Stats/Options/OptionsYear';
 import statisticsCount from '../helpers/statisticsCount';
 import filterItems from '../helpers/filterItems';
+import styles from '../components/Stats/Stats.module.css';
 
 class Stats extends Component {
   state = {
@@ -48,17 +49,22 @@ class Stats extends Component {
     const { search, items } = this.state;
     const filtredItems = filterItems(items, search.year, search.month);
     return (
-      <div>
-        <StatsSelect
-          options={OptionsMonth}
-          handleSelect={this.getSelectMonth}
-        />
-        <StatsSelect
-          options={OptionsYears}
-          handleSelect={this.getSelectYears}
-        />
-        <StatsDiagram items={filtredItems} />
-        <StatsTable items={filtredItems} />
+      <div className={styles.container}>
+        <h2 className={styles.innerTitle}>Статистика</h2>
+        <div className={styles.innerSelect}>
+          <StatsSelect
+            options={OptionsMonth}
+            handleSelect={this.getSelectMonth}
+          />
+          <StatsSelect
+            options={OptionsYears}
+            handleSelect={this.getSelectYears}
+          />
+        </div>
+        <div className={styles.innerStats}>
+          <StatsDiagram items={filtredItems} />
+          <StatsTable items={filtredItems} />
+        </div>
       </div>
     );
   }
