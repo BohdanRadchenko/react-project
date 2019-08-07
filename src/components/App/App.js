@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
 import styles from '../Header/Header.module.css';
+// import Modal from '../Modal/ModalContainer';
 
 const App = () => (
   <>
@@ -9,6 +10,7 @@ const App = () => (
       <Header />
     </header>
     <Dashboard />
+    {/* <Modal /> */}
   </>
 );
 

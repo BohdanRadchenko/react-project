@@ -2,9 +2,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as nameSelector from '../../redux/session/sessionSelectors';
-// import { getUser } from '../../redux/session/sessionActions';
 import styles from './Header.module.css';
+import * as nameSelector from '../../redux/session/sessionSelectors';
 import * as sessionActions from '../../redux/session/sessionActions';
 
 const logo = require('../../logo.svg');
