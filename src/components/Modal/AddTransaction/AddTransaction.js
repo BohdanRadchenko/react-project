@@ -19,8 +19,8 @@ const AddTransaction = ({
   handleSubmit,
 }) => (
   <div className={styles.modal}>
+    <h2>Add a transaction</h2>
     <form onSubmit={handleSubmit} className={styles.modal}>
-      <h2>Add a transaction</h2>
       <div>
         <input
           type="radio"
