@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import ReactRouterPropTypes from 'react-router-prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { signIn } from '../../redux/session/sessionOperations';
 import {
   getError,
@@ -16,22 +16,22 @@ class SignIn extends Component {
   static propTypes = {
     onSignIn: PropTypes.func.isRequired,
     errorMessage: PropTypes.string,
-    // history: ReactRouterPropTypes.history.isRequired,
-    // isAuthentificated: PropTypes.bool.isRequired,
+    history: ReactRouterPropTypes.history.isRequired,
+    authentificated: PropTypes.bool.isRequired,
   };
 
   state = {
     email: '',
     password: '',
-    isAuthentificated: false,
+    authentificated: false,
   };
 
-  // componentDidUpdate() {
-  //   const { isAuthentificated, history } = this.props;
-  //   if (!isAuthentificated) {
-  //     history.replace('/dashboard');
-  //   }
-  // }
+  componentDidUpdate() {
+    const { authentificated, history } = this.props;
+    if (authentificated) {
+      history.replace('/dashboard');
+    }
+  }
 
   handleChange = ({ target: { name, value } }) =>
     this.setState({ [name]: value });
@@ -76,7 +76,7 @@ class SignIn extends Component {
 
 const mSTP = state => ({
   errorMessage: getError(state),
-  isAutentificate: isAuthentificated(state),
+  authentificated: isAuthentificated(state),
 });
 
 const mDTP = {
