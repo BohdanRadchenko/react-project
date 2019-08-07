@@ -32,7 +32,6 @@
     background-color: rgba(251, 253, 252, 0);
     color: #000;
     width: 176px;
-    /* height: 80px; */
     height: auto;
     margin: 0px;
     flex-direction: row;
@@ -47,7 +46,7 @@
   }
 
   .balanceValue {
-    color: #8895ac;
+    color: var(--NotSelectedPage_Balance_page);
     font-size: 15px;
     text-align: center;
   }
@@ -57,7 +56,7 @@
   .balanceDiv {
     width: 312px;
     height: 90px;
-    background-color: #284060;
+    background-color: var(--SidebarElemBGColor);
     display: flex;
     justify-content: space-between;
   }
