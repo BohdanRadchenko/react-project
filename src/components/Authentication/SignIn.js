@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { signIn } from '../../redux/session/sessionOperations';
 import { getError } from '../../redux/session/sessionSelectors';
 
 class SignIn extends Component {
@@ -10,30 +9,42 @@ class SignIn extends Component {
   };
 
   static propTypes = {
-    onSignIn: PropTypes.func.isRequired,
+    handleBlur: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
     errorMessage: PropTypes.string,
+    values: PropTypes.objectOf(PropTypes.string).isRequired,
+    errors: PropTypes.objectOf(PropTypes.string).isRequired,
+    touched: PropTypes.objectOf(PropTypes.any).isRequired,
   };
 
-  state = {
-    email: '',
-    password: '',
-  };
+  componentDidMount() {
+    document.body.addEventListener('keydown', this.handleEnterSubmit);
+  }
 
-  handleChange = ({ target: { name, value } }) =>
-    this.setState({ [name]: value });
+  componentWillUnmount() {
+    document.body.removeEventListener('keydown', this.handleEnterSubmit);
+  }
 
-  handleFormSubmit = e => {
-    e.preventDefault();
-
-    this.props.onSignIn({ ...this.state });
-  };
+  handleEnterSubmit = ({ code }) =>
+    code === 'Enter' || code === 'NumpadEnter'
+      ? this.props.handleSubmit()
+      : null;
 
   render() {
-    const { email, password } = this.state;
-    const { errorMessage } = this.props;
+    const {
+      errorMessage,
+      values,
+      handleBlur,
+      handleChange,
+      handleSubmit,
+      errors,
+      touched,
+    } = this.props;
+
     return (
       <form
-        onSubmit={this.handleFormSubmit}
+        onSubmit={handleSubmit}
         style={{
           display: 'flex',
           margin: 'auto',
@@ -44,15 +55,25 @@ class SignIn extends Component {
         <input
           type="email"
           name="email"
-          value={email}
-          onChange={this.handleChange}
+          value={values.email}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          placeholder="email"
         />
+        {errors.email && touched.email && (
+          <div className="input-feedback">{errors.email}</div>
+        )}
         <input
           type="password"
           name="password"
-          value={password}
-          onChange={this.handleChange}
+          value={values.password}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          placeholder="password"
         />
+        {errors.password && touched.password && (
+          <div className="input-feedback">{errors.password}</div>
+        )}
         <button type="submit">Войти</button>
         <p>{errorMessage}</p>
       </form>
@@ -62,11 +83,4 @@ class SignIn extends Component {
 
 const mSTP = state => ({ errorMessage: getError(state) });
 
-const mDTP = {
-  onSignIn: signIn,
-};
-
-export default connect(
-  mSTP,
-  mDTP,
-)(SignIn);
+export default connect(mSTP)(SignIn);
