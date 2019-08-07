@@ -8,17 +8,19 @@ import Styles from './Navigations.module.css';
 const Navigations = () => {
   return (
     <div className={Styles.nav}>
-      <NavLink to="/home" className={Styles.navLink}>
+      <NavLink to="/home" exact className={Styles.navLink}>
         <button
           type="button"
           className={`${Styles.navLinkBtn} ${Styles.navLinkBtnHome}`}
         />
+        <p className={Styles.navText}>Главная</p>
       </NavLink>
       <NavLink to="/stats" className={Styles.navLink}>
         <button
           type="button"
           className={`${Styles.navLinkBtn} ${Styles.navLinkBtnStats}`}
         />
+        <p className={Styles.navText}>Статистика</p>
       </NavLink>
       <NavLink to="/currencies">
         <button
