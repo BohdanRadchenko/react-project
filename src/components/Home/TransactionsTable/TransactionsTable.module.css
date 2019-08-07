@@ -1,7 +1,6 @@
 .table {
   border: 1px solid #ccc;
   background-color: #fff;
-  /* width: 768px; */
   width: 100%;
   margin: 0;
   padding: 0;
@@ -63,7 +62,6 @@ tr:nth-last-child(even) {
     margin-top: 40px;
     border: none;
     width: 306px;
-    /* width: 90%; */
   }
 
   .thead {
@@ -114,29 +112,15 @@ tr:nth-last-child(even) {
 
 @media screen and (min-width: 1200px) {
   .container {
-    background-color: rgb(153, 144, 144);
     margin: 0 auto;
     width: 853px;
     height: 500px;
-    overflow-y: scroll;
   }
   .table {
-    /* border: 1px solid #ccc; */
     background-color: #fff;
-    /* width: 768px; */
     width: 100%;
     margin: 0;
     padding: 0;
-    border-collapse: collapse;
-    border-spacing: 0;
     color: #3f4040;
-    /* box-shadow: 11px 7px 16px -6px rgba(158, 158, 158, 1); */
   }
 }
-
-/* .container {
-  margin: 0 auto;
-  width: 80%;
-  height: 800px;
-  overflow-y: scroll;
-} */
