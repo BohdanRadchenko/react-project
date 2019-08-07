@@ -2,7 +2,7 @@
   {
     "id": "d9b75572-3c28-4f85-abb1-715ca121f069",
     "amount": 789798,
-    "date": 1565010475139,
+    "data": "2019-03-09T11:20:00.932Z",
     "category": "Regular Income",
     "comments": "asdasd",
     "type": "+",
@@ -12,7 +12,7 @@
   {
     "id": "d9b75572-3c28-4f85-abb1-715ca121f069",
     "amount": 789798,
-    "date": 1565010475139,
+    "data": "2019-01-09T10:20:00.932Z",
     "category": "Regular Income",
     "comments": "asdasd",
     "type": "+",
@@ -22,7 +22,7 @@
   {
     "id": "76645dfa-4554-49f1-8314-a3cf674d079b",
     "amount": 50000000,
-    "date": 1565010475139,
+    "data": "2019-01-09T09:20:00.932Z",
     "category": "Regular Income",
     "comments": "asdasdasd",
     "type": "+",
@@ -32,7 +32,7 @@
   {
     "id": "a8263220-b9cf-421c-9bcb-137df33766e9",
     "amount": 312,
-    "date": 1565010475138,
+    "data": "2019-02-09T08:20:00.932Z",
     "category": "Household Products",
     "comments": "123asd",
     "type": "-",
@@ -43,7 +43,18 @@
   {
     "id": "e79f4d91-22d7-4e45-857f-e1a2390f4617",
     "amount": 123,
-    "date": 1565010475138,
+    "data": "2019-02-09T07:20:00.932Z",
+    "category": "Main Expenses",
+    "comments": "asdasd",
+    "type": "-",
+    "isAmountBigger": false,
+    "isAmountNull": false,
+    "balanceAfter": 50789675
+  },
+  {
+    "id": "e79f4d91-22d7-4e45-857f-e1a2390f4617",
+    "amount": 123,
+    "data": "2018-03-09T07:20:00.932Z",
     "category": "Main Expenses",
     "comments": "asdasd",
     "type": "-",
