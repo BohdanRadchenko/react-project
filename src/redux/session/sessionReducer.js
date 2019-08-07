@@ -4,6 +4,7 @@ import { ActionTypes } from './sessionActions';
 const user = (state = {}, { type, payload }) => {
   switch (type) {
     case ActionTypes.SIGN_IN_SUCCESS:
+    case ActionTypes.SIGN_UP_SUCCESS:
       return payload.response.user;
 
     default:
@@ -14,6 +15,7 @@ const user = (state = {}, { type, payload }) => {
 const token = (state = null, { type, payload }) => {
   switch (type) {
     case ActionTypes.SIGN_IN_SUCCESS:
+    case ActionTypes.SIGN_UP_SUCCESS:
       return payload.response.token;
 
     default:
@@ -39,6 +41,7 @@ const error = (state = null, { type, payload }) => {
 const authentificated = (state = false, { type }) => {
   switch (type) {
     case ActionTypes.SIGN_IN_SUCCESS:
+    case ActionTypes.SIGN_UP_SUCCESS:
       return true;
 
     default:
