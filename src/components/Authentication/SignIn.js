@@ -84,15 +84,3 @@ class SignIn extends Component {
 const mSTP = state => ({ errorMessage: getError(state) });
 
 export default connect(mSTP)(SignIn);
-
-// history: ReactRouterPropTypes.history.isRequired,
-// authentificated: PropTypes.bool.isRequired,
-
-// componentDidUpdate() {
-//   const { authentificated, history } = this.props;
-//   if (authentificated) {
-//     history.replace('/dashboard');
-//   }
-// }
-
-// authentificated: isAuthentificated(state),
