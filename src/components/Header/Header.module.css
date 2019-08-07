@@ -1,0 +1,55 @@
+body {
+  background-color: #f2f4ee;
+  max-width: 1192px;
+  margin: 0 auto;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 7px 10px 9px 11px;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 1.5px 2.598px 3px 0px rgba(1, 1, 0, 0.12);
+}
+
+.headerLogo,
+.headerName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.login {
+}
+
+.headerUser {
+  font-size: 15px;
+  margin-right: 10px;
+  padding-top: 10px;
+}
+
+.headerText {
+  font-size: 20px;
+  margin: 0;
+
+  font-family: sans-serif;
+}
+
+.headerButton {
+  border: none;
+  padding-top: 12px;
+}

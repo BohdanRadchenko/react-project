@@ -50,19 +50,29 @@ class Stats extends Component {
     const filtredItems = filterItems(items, search.year, search.month);
     return (
       <div className={styles.container}>
-        <h2 className={styles.innerTitle}>Статистика</h2>
-        <div className={styles.innerSelect}>
-          <StatsSelect
-            options={OptionsMonth}
-            handleSelect={this.getSelectMonth}
-          />
-          <StatsSelect
-            options={OptionsYears}
-            handleSelect={this.getSelectYears}
-          />
+        <div className={styles.innerTitle}>
+          <h2 className={styles.title}>Статистика</h2>
         </div>
+
         <div className={styles.innerStats}>
+          <div className={styles.innerSelectMonth}>
+            <StatsSelect
+              options={OptionsMonth}
+              handleSelect={this.getSelectMonth}
+            />
+          </div>
+          <div className={styles.innerSelectYear}>
+            <StatsSelect
+              options={OptionsYears}
+              handleSelect={this.getSelectYears}
+            />
+          </div>
+        </div>
+
+        <div className={styles.innerDiagram}>
           <StatsDiagram items={filtredItems} />
+        </div>
+        <div className={styles.innerTable}>
           <StatsTable items={filtredItems} />
         </div>
       </div>

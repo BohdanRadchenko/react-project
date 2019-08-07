@@ -1,11 +1,19 @@
 import { combineReducers } from 'redux';
-import { ActionTypes } from './sessionActions';
+import { ActionTypes, TypeName } from './sessionActions';
+
+// const stateReq = {
+//   isAthentificated: false,
+//   token: '',
+// };
 
 const user = (state = {}, { type, payload }) => {
   switch (type) {
     case ActionTypes.SIGN_IN_SUCCESS:
     case ActionTypes.SIGN_UP_SUCCESS:
       return payload.response.user;
+    // { token: payload.data.key, isAthentificated: true }
+    case TypeName.LOGOUT_SUCCESS:
+      return {};
 
     default:
       return state;
