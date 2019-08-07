@@ -8,7 +8,15 @@ import {
 
 const postTransaction = (transaction, token) => dispatch => {
   dispatch(postTransactionRequest());
-  const { type, amount, category, date, comments } = transaction;
+  const {
+    type,
+    amount,
+    category,
+    date,
+    comments,
+    balanceAfter,
+    typeBalanceAfter,
+  } = transaction;
   return axios
     .post(
       'https://mywallet.goit.co.ua/api/finance',
@@ -18,6 +26,8 @@ const postTransaction = (transaction, token) => dispatch => {
         category,
         // date,
         comments,
+        balanceAfter,
+        typeBalanceAfter,
       },
       {
         headers: {
@@ -27,7 +37,7 @@ const postTransaction = (transaction, token) => dispatch => {
       },
     )
     .then(response => {
-      console.log(response.data.finance.data);
+      console.log(response.data);
       dispatch(postTransactionSuccesss(transaction));
     })
     .catch(error => dispatch(postTransactionError(error)));

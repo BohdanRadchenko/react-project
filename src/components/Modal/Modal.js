@@ -1,6 +1,10 @@
 /*eslint-disable*/
 import React, { Component, createRef } from 'react';
 import AddTransaction from './AddTransaction/AddTransaction';
+import {
+  countBalanceAfter,
+  countTypeBalanceAfter,
+} from '../../helpers/countBalanceAfter';
 import styles from './Modal.module.css';
 
 export const transactions = {
@@ -63,11 +67,20 @@ export default class Modal extends Component {
 
     const transactionToAdd = {
       type: category ? '-' : '+',
-      amount,
+      amount: Number(amount),
       category,
       date,
       comments,
     };
+    const balanceAfter = countBalanceAfter(
+      this.props.transactions,
+      transactionToAdd,
+    );
+    const typeBalanceAfter = countTypeBalanceAfter(balanceAfter);
+
+    transactionToAdd.balanceAfter = balanceAfter;
+    transactionToAdd.typeBalanceAfter = typeBalanceAfter;
+
     this.props.postTransaction(transactionToAdd, this.props.token);
     this.reset();
   };

@@ -16,7 +16,7 @@ export const postTransactionRequest = () => ({
 
 export const postTransactionSuccesss = transaction => ({
   type: transactionActionTypes.POST_TRANSACTION_SUCCESS,
-  payload: { transaction },
+  payload: transaction,
 });
 
 export const postTransactionError = error => ({
