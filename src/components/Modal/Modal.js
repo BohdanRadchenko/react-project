@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React, { Component, createRef } from 'react';
+import { toast } from 'react-toastify';
 import AddTransaction from './AddTransaction/AddTransaction';
 import { transactions } from '../../constans/modalConstants';
 import {
@@ -7,11 +8,15 @@ import {
   countTypeBalanceAfter,
 } from '../../helpers/countBalanceAfter';
 import styles from './Modal.module.css';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 export default class Modal extends Component {
   state = {
     isCost: false,
     type: transactions.INCOME,
+    // amountValue: '',
     amount: '',
     comments: '',
     date: new Date(),
@@ -48,8 +53,23 @@ export default class Modal extends Component {
       type: id === 'cost' ? transactions.COST : transactions.INCOME,
     });
 
-  handleTextChange = ({ target: { value, name } }) =>
+  handleTextChange = ({ target: { value, name } }) => {
+    if (name === 'amount' && value < 0) {
+      toast.error('Invalid input!');
+    } else if (name === 'amount' && value.length > 10) {
+      const toFixed = Number(value).toFixed();
+      if (toFixed.length > 10) {
+        toast.warn('Too many symbols!');
+        return;
+      } else {
+        this.setState({ [name]: value });
+      }
+    } else if (name === 'comments' && value.length > 40) {
+      toast.warn('Too many symbols!');
+      return;
+    }
     this.setState({ [name]: value });
+  };
 
   handleSelectChange = e => this.setState({ category: e.value });
 
@@ -92,9 +112,13 @@ export default class Modal extends Component {
     });
 
   render() {
-    const { isCost, type, comments, amount, date } = this.state;
+    const { isCost, type, comments, amount, amountValue, date } = this.state;
     return (
-      <div ref={this.backdropRef} className={styles.backdrop}>
+      <div
+        ref={this.backdropRef}
+        onClick={this.handleBackdropClick}
+        className={styles.backdrop}
+      >
         <AddTransaction
           isCost={isCost}
           amount={amount}

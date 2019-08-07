@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React from 'react';
+import PropTypes from 'prop-types';
 import Select from 'react-select';
 import DatePicker from 'react-date-picker';
 import { categories, transactions } from '../../../constans/modalConstants';
@@ -18,7 +19,7 @@ const AddTransaction = ({
   handleSubmit,
 }) => (
   <div className={styles.modal}>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.modal}>
       <h2>Add a transaction</h2>
       <div>
         <input
@@ -41,8 +42,8 @@ const AddTransaction = ({
       {isCost && <Select options={categories} onChange={handleSelectChange} />}
       <input
         name="amount"
-        type="text"
-        value={amount}
+        type="number"
+        value={Number(amount).toFixed(2)}
         onChange={handleTextChange}
         required
       />
@@ -50,8 +51,9 @@ const AddTransaction = ({
         value={date}
         onChange={handleDateChange}
         maxDate={new Date()}
-        format="MM/dd/yyyy"
+        format="dd/MM/yyyy"
         locale="en"
+        required
       />
       <textarea
         name="comments"
@@ -65,5 +67,9 @@ const AddTransaction = ({
     </form>
   </div>
 );
+
+AddTransaction.propTypes = {
+  amount: PropTypes.string.isRequired,
+};
 
 export default AddTransaction;

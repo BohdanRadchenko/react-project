@@ -1,3 +1,27 @@
+body {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+@media screen and (max-width: 767px) {
+  .backdrop {
+    display: none;
+  }
+
+  .modal {
+    width: 100vw;
+  }
+
+  .form {
+    width: 90vw;
+  }
+}
+
 .backdrop {
   position: fixed;
   top: 0;
