@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
-// import SignIn from '../components/Authentication/SignIn';
+import SignIn from '../components/Authentication/SignIn';
 import { signIn } from '../redux/session/sessionOperations';
 
 const SignInPage = ({ onSignIn }) => (
@@ -29,7 +29,7 @@ const SignInPage = ({ onSignIn }) => (
         .required('Password is required'),
     })}
   >
-    {/* {props => <SignIn {...props} />} */}
+    {props => <SignIn {...props} />}
   </Formik>
 );
 

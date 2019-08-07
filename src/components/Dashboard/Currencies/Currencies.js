@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react';
 import axios from 'axios';
 import style from './Currencies.module.css';
@@ -15,6 +14,7 @@ class Currencies extends React.Component {
   componentDidMount() {
     this.getCurrencies();
   }
+
   getCurrencies = () => {
     this.setState({
       wait: true,
@@ -31,14 +31,16 @@ class Currencies extends React.Component {
     const curr = currencies.filter(el => el.ccy !== 'BTC');
     return (
       <div className={style.form}>
+        {wait && <Loaders />}
         <table className={style.history}>
           <thead>
             <tr className={style.historyTr}>
-              <th>Валюта</th> <th>Покупка</th> <th>Продажа</th>
+              <th>Валюта</th>
+              <th>Покупка</th>
+              <th>Продажа</th>
             </tr>
           </thead>
           <tbody className={style.tBody}>
-            {wait && <Loaders />}
             {!wait &&
               curr.map(el => {
                 return (
