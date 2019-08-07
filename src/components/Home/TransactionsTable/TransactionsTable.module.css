@@ -38,8 +38,12 @@ tr:nth-last-child(even) {
 }
 
 @media screen and (min-width: 768px) {
-  /* .container {
-  } */
+  .container {
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    overflow-y: scroll;
+  }
   .th,
   .td {
     padding: 20px;
@@ -50,16 +54,15 @@ tr:nth-last-child(even) {
   .container {
     position: relative;
     width: 320px;
-    margin: 200px auto;
+    margin: 0 auto;
     height: 400px;
     overflow-y: scroll;
-    background-color: #424242;
   }
 
   .table {
     margin-top: 40px;
     border: none;
-    width: 306px;
+    width: 300px;
   }
 
   .thead {
@@ -111,8 +114,9 @@ tr:nth-last-child(even) {
 @media screen and (min-width: 1200px) {
   .container {
     margin: 0 auto;
-    width: 853px;
-    height: 500px;
+    width: 883px;
+    height: auto;
+    overflow-y: scroll;
   }
   .table {
     background-color: #fff;
