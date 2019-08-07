@@ -16,7 +16,6 @@ export default class Modal extends Component {
   state = {
     isCost: false,
     type: transactions.INCOME,
-    // amountValue: '',
     amount: '',
     comments: '',
     date: new Date(),
@@ -112,7 +111,7 @@ export default class Modal extends Component {
     });
 
   render() {
-    const { isCost, type, comments, amount, amountValue, date } = this.state;
+    const { isCost, type, comments, amount, date } = this.state;
     return (
       <div
         ref={this.backdropRef}
