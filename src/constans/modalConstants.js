@@ -6,6 +6,7 @@ export const categories = [
   { value: 'children', label: 'Children' },
   { value: 'home', label: 'Home' },
   { value: 'education', label: 'Education' },
+  { value: 'enterteinment', label: 'Enterteinment' },
   { value: 'other', label: 'Other' },
 ];
 
