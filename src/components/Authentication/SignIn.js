@@ -34,10 +34,6 @@ class SignIn extends Component {
     if (authentificated) {
       history.replace('/dashboard');
     }
-
-    // if (!authentificated) {
-    //   return <Redirect to="/signup" />;
-    // }
   }
 
   componentWillUnmount() {
