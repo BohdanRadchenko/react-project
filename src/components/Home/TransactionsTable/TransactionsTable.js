@@ -2,7 +2,6 @@
 
 import React from 'react';
 import styles from './TransactionsTable.module.css';
-// import AddButton from '../AddButton/AddButton'
 
 const substring = str => {
   const newStr = String(str);
