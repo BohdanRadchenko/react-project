@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as Yup from 'yup';
 import SignIn from '../components/Authentication/SignIn';
 import { signIn } from '../redux/session/sessionOperations';
+import authRedirectHoc from '../components/authRedirectHoc/authRedirectHoc';
 
 const SignInPage = ({ onSignIn }) => (
   <Formik
@@ -44,4 +45,4 @@ const mDTP = {
 export default connect(
   null,
   mDTP,
-)(SignInPage);
+)(authRedirectHoc(SignInPage));

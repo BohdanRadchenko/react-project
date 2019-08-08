@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import axios from 'axios';
 import {
   signUpRequest,
@@ -59,7 +58,6 @@ export const signOut = () => (dispatch, getState) => {
 
   const token = getToken(getState());
   if (!token) return;
-  console.log(token);
   setAuthToken(token);
 
   axios
@@ -69,7 +67,6 @@ export const signOut = () => (dispatch, getState) => {
       clearAuthToken();
     })
     .catch(error => {
-      dispatch(logOutError());
-      console.log(error);
+      dispatch(logOutError(error));
     });
 };
