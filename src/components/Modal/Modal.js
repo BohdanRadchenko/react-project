@@ -130,6 +130,7 @@ export default class Modal extends Component {
           handleSelectChange={this.handleSelectChange}
           handleDateChange={this.handleDateChange}
           handleSubmit={this.handleSubmit}
+          handleClose={this.props.onClose}
         />
       </div>
     );
