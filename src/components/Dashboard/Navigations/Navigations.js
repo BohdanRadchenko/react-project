@@ -10,14 +10,14 @@ const Navigations = () => {
           type="button"
           className={`${Styles.navLinkBtn} ${Styles.navLinkBtnHome}`}
         />
-        <p className={Styles.navText}>Главная</p>
+        <p className={Styles.navText}>Home</p>
       </NavLink>
       <NavLink to="/dashboard/stats" className={Styles.navLink}>
         <button
           type="button"
           className={`${Styles.navLinkBtn} ${Styles.navLinkBtnStats}`}
         />
-        <p className={Styles.navText}>Статистика</p>
+        <p className={Styles.navText}>Statistics</p>
       </NavLink>
       <NavLink to="/dashboard/currencies">
         <button
