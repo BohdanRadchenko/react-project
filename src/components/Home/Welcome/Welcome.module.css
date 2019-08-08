@@ -1,0 +1,50 @@
+.div {
+  width: 320px;
+  height: 500px;
+  /* background-color: purple; */
+  font-size: 20px;
+  text-align: center;
+  padding-top: 100px;
+  vertical-align: text-bottom;
+  font-family: sans-serif;
+  color: #455d7c;
+}
+
+.text {
+  font-size: 13px;
+}
+
+.title {
+  padding-bottom: 20px;
+}
+
+/* mwidth: 320px; */
+/* width: 706px; */
+
+@media screen and (min-width: 768px) {
+  .div {
+    width: 706px;
+    height: 500px;
+    font-size: 35px;
+
+    /* background-color: yellow; */
+  }
+
+  .text {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .div {
+    width: 854px;
+    height: 500px;
+    font-size: 40px;
+
+    /* background-color: rgb(117, 228, 236); */
+  }
+
+  .text {
+    font-size: 20px;
+  }
+}

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import styles from './TransactionsTable.module.css';
-// import AddButton from '../AddButton/AddButton'
 
 const substring = str => {
   const newStr = String(str);
@@ -25,12 +24,12 @@ const TransactionHistory = ({ items }) => {
         <table className={styles.table}>
           <thead className={styles.thead}>
             <tr className={styles.tr}>
-              <th className={styles.th}>Дата</th>
-              <th className={styles.th}>Тип</th>
-              <th className={styles.th}>Категория</th>
-              <th className={styles.th}>Комментарий</th>
-              <th className={styles.th}>Сума</th>
-              <th className={styles.th}>Баланс</th>
+              <th className={styles.th}>Date</th>
+              <th className={styles.th}>Type</th>
+              <th className={styles.th}>Category</th>
+              <th className={styles.th}>Comments</th>
+              <th className={styles.th}>Amount</th>
+              <th className={styles.th}>Balance</th>
             </tr>
           </thead>
           <tbody>
@@ -43,22 +42,22 @@ const TransactionHistory = ({ items }) => {
                     : styleByType.classBase + ' ' + styleByType.inc
                 }
               >
-                <td className={styles.td} data-label="Дата">
+                <td className={styles.td} data-label="Date">
                   {substring(item.date)}
                 </td>
-                <td className={styles.td} data-label="Тип">
+                <td className={styles.td} data-label="Type">
                   {item.type}
                 </td>
 
-                <td className={styles.td} data-label="Категория">
-                  {item.type === '-' ? item.category : 'Pегулярный доход'}
+                <td className={styles.td} data-label="Category">
+                  {item.type === '-' ? item.category : 'Regular income'}
                 </td>
 
-                <td className={styles.td} data-label="Комментарий">
+                <td className={styles.td} data-label="Comments">
                   {item.comments}
                 </td>
 
-                <td className={styleByType.amount} data-label="Сума">
+                <td className={styleByType.amount} data-label="Amount">
                   <span
                     className={
                       item.type === '-'
@@ -66,11 +65,11 @@ const TransactionHistory = ({ items }) => {
                         : styleByType.incColor
                     }
                   >
-                    {item.amount}
+                    {item.amount.toFixed(2)}
                   </span>
                 </td>
-                <td className={styles.td} data-label="Баланс">
-                  {item.balanceAfter}
+                <td className={styles.td} data-label="Balance">
+                  {item.balanceAfter.toFixed(2)}
                 </td>
               </tr>
             ))}

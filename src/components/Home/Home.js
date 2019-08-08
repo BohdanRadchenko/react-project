@@ -6,6 +6,7 @@ import AddButton from './AddButton/AddButton';
 import Modal from '../Modal/ModalContainer';
 // import db from '../../db.json';
 import styles from './Home.module.css';
+import Welcome from './Welcome/Welcome';
 
 class Home extends Component {
   state = {
@@ -38,7 +39,9 @@ class Home extends Component {
     return (
       <div className={styles.container_home}>
         <div className={styles.container_table}>
-          <TransactionsTable items={finance} />
+          {finance.length === 0 && <Welcome />}
+          {finance.length !== 0 && <TransactionsTable items={finance} />}
+          {/* <TransactionsTable items={finance} /> */}
           <AddButton onOpen={this.handleOpen} />
         </div>
         {isOpenModal && <Modal onClose={this.handleClose} />}
