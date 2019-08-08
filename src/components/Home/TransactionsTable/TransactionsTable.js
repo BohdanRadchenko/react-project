@@ -1,11 +1,36 @@
 /*eslint-disable*/
-
 import React from 'react';
 import styles from './TransactionsTable.module.css';
 
-const substring = str => {
-  const newStr = String(str);
-  return newStr.substr(0, 8);
+const getMonth = month => {
+  switch (month) {
+    case 'Jan':
+      return '01';
+    case 'Feb':
+      return '02';
+    case 'Mar':
+      return '03';
+    case 'Apr':
+      return '04';
+    case 'May':
+      return '05';
+    case 'Jun':
+      return '06';
+    case 'Jul':
+      return '07';
+    case 'Aug':
+      return '08';
+    case 'Sep':
+      return '09';
+    case 'Oct':
+      return '10';
+    case 'Nov':
+      return '11';
+    case 'Dec':
+      return '12';
+    default:
+      return 'Hello';
+  }
 };
 
 const styleByType = {
@@ -15,6 +40,17 @@ const styleByType = {
   incColor: styles.incColor,
   conColor: styles.conColor,
   amount: styles.td,
+};
+
+const date = date => {
+  const newDate = new Date(date);
+  const dateRes = String(newDate);
+  const month = dateRes.substr(4, 3);
+  const day = dateRes.substr(8, 2);
+  const year = dateRes.substr(10, 5);
+  const yearRes = year.substr(1);
+  const result = `${day}.${getMonth(month)}.${yearRes}`;
+  return result;
 };
 
 const TransactionHistory = ({ items }) => {
@@ -43,7 +79,7 @@ const TransactionHistory = ({ items }) => {
                 }
               >
                 <td className={styles.td} data-label="Date">
-                  {substring(item.date)}
+                  {date(item.date)}
                 </td>
                 <td className={styles.td} data-label="Type">
                   {item.type}
@@ -65,17 +101,16 @@ const TransactionHistory = ({ items }) => {
                         : styleByType.incColor
                     }
                   >
-                    {item.amount.toFixed(2)}
+                    {item.amount}
                   </span>
                 </td>
                 <td className={styles.td} data-label="Balance">
-                  {item.balanceAfter.toFixed(2)}
+                  {item.balanceAfter}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        {/* <AddButton /> */}
       </div>
     </>
   );
