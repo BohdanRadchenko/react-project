@@ -1,0 +1,140 @@
+.table {
+  /* border: 1px solid #ccc; */
+  background-color: #fff;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: #3f4040;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+
+.incColor {
+  color: #415b7d;
+  font-weight: 800;
+}
+
+.conColor {
+  color: #dd881f;
+  font-weight: 800;
+}
+
+.tr {
+  padding: 10px;
+}
+
+tr:nth-last-child(even) {
+  background-color: #f3f6f6;
+}
+
+.th,
+.td {
+  padding: 15px;
+  text-align: center;
+}
+
+.th {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    position: relative;
+    margin: 0 auto;
+    height: 500px;
+    width: 320px;
+    /* background-color: #424242; */
+    overflow-y: auto;
+  }
+
+  .table {
+    margin-top: 40px;
+    /* border: none; */
+    width: 306px;
+  }
+
+  .thead {
+    display: none;
+  }
+
+  .tr {
+    margin-bottom: 10px;
+    display: block;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    box-shadow: 11px 7px 16px -6px rgba(158, 158, 158, 1);
+  }
+
+  .inc {
+    border-left: 7px solid #7e8c9e;
+  }
+
+  .con {
+    border-left: 7px solid #dd881f;
+  }
+
+  .tr:nth-last-child(even) {
+    background-color: #fff;
+  }
+
+  td:nth-last-child(even) {
+    background-color: #f3f6f6;
+  }
+
+  .tr {
+    /* padding: 10px; */
+  }
+
+  .td {
+    display: block;
+    text-align: right;
+    font-size: 13px;
+  }
+
+  .td:last-child {
+    border-bottom: 0;
+  }
+
+  .td:before {
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 706px;
+    height: 500px;
+    overflow-y: auto;
+  }
+  .th,
+  .td {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 854px;
+    height: 500px;
+    overflow-y: auto;
+  }
+  .thead {
+    background-color: #fff;
+  }
+
+  .table {
+    background-color: #f2f4ee;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #3f4040;
+    font-size: 13px;
+  }
+}

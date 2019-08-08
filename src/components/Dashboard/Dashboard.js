@@ -40,6 +40,16 @@ const AsyncSignIn = Loadable({
   delay: 200,
 });
 
+const AsyncCurrencies = Loadable({
+  loader: () =>
+    import(
+      '../../components/Dashboard/Currencies/Currencies' /* webpackChunkName: "currencies-page" */
+    ),
+  loading: Loader,
+  timeout: 10000,
+  delay: 200,
+});
+
 class Dashboard extends Component {
   state = {
     items: [],
@@ -69,6 +79,7 @@ class Dashboard extends Component {
             <Route path="/signup" component={AsyncSignUp} />
             <Route path="/signin" component={AsyncSignIn} />
             <Route path="/stats" component={AsyncStats} />
+            <Route path="/currencies" component={AsyncCurrencies} />
             <Redirect to="/" />
           </Switch>
         </div>
