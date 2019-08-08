@@ -11,6 +11,8 @@
 }
 
 .container {
+  position: absolute;
+  top: 10px;
   width: 100%;
   background-color: #ffffff;
   padding-top: 20px;
@@ -128,7 +130,7 @@
   .innerDiagram {
     position: absolute;
     left: 40px;
-    width: 420px;
+    width: 400px;
     height: 460px;
   }
 
