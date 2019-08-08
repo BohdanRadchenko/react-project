@@ -4,7 +4,12 @@ import { ActionTypes } from './sessionActions';
 const user = (state = {}, { type, payload }) => {
   switch (type) {
     case ActionTypes.SIGN_IN_SUCCESS:
+    case ActionTypes.SIGN_UP_SUCCESS:
+    case ActionTypes.REFRESH_USER_SUCCESS:
       return payload.response.user;
+
+    case ActionTypes.LOGOUT_SUCCESS:
+      return {};
 
     default:
       return state;
@@ -14,8 +19,11 @@ const user = (state = {}, { type, payload }) => {
 const token = (state = null, { type, payload }) => {
   switch (type) {
     case ActionTypes.SIGN_IN_SUCCESS:
+    case ActionTypes.SIGN_UP_SUCCESS:
       return payload.response.token;
 
+    case ActionTypes.LOGOUT_SUCCESS:
+      return null;
     default:
       return state;
   }
@@ -25,10 +33,12 @@ const error = (state = null, { type, payload }) => {
   switch (type) {
     case ActionTypes.SIGN_UP_ERROR:
     case ActionTypes.SIGN_IN_ERROR:
+    case ActionTypes.REFRESH_USER_ERROR:
       return payload.error.message;
 
     case ActionTypes.SIGN_IN_SUCCESS:
     case ActionTypes.SIGN_UP_SUCCESS:
+    case ActionTypes.REFRESH_USER_SUCCESS:
       return null;
 
     default:
@@ -39,8 +49,30 @@ const error = (state = null, { type, payload }) => {
 const authentificated = (state = false, { type }) => {
   switch (type) {
     case ActionTypes.SIGN_IN_SUCCESS:
+    case ActionTypes.SIGN_UP_SUCCESS:
+    case ActionTypes.REFRESH_USER_SUCCESS:
       return true;
 
+    case ActionTypes.LOGOUT_SUCCESS:
+      return false;
+    default:
+      return state;
+  }
+};
+
+const tokenDliaMarusi = (state = true, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.SIGN_IN_SUCCESS:
+    case ActionTypes.SIGN_UP_SUCCESS:
+      return payload.response.token;
+    case ActionTypes.REFRESH_USER_SUCCESS:
+      return JSON.parse(localStorage.getItem('persist:root'))
+        .token.split('')
+        .filter(el => el !== '"')
+        .join('');
+
+    case ActionTypes.LOGOUT_SUCCESS:
+      return null;
     default:
       return state;
   }
@@ -51,4 +83,5 @@ export default combineReducers({
   token,
   error,
   authentificated,
+  tokenDliaMarusi,
 });

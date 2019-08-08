@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.leftSideBar {
+  border: 1px solid green;
+  display: block;
+  width: 30%;
+}
+
+.rigthSideBar {
+  display: block;
+  width: 70px;
+  border: 1px solid red;
+}

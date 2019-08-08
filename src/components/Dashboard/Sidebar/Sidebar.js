@@ -6,7 +6,6 @@ import Balance from '../Balance/Balance';
 const Sidebar = ({ balance }) => (
   <div>
     <Navigations />
-    <p>Sidebar</p>
     <Balance balance={balance} />
   </div>
 );

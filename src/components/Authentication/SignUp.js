@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import PropTypes from 'prop-types';
-import { signUp } from '../../redux/session/sessionOperations';
 import { getError } from '../../redux/session/sessionSelectors';
 import './test.css';
 import PasswordStrengthMeter from '../PasswordStrengthMeter/PasswordStrengthMeter';
@@ -13,19 +11,13 @@ class SignUp extends Component {
   };
 
   static propTypes = {
-    onSignUp: PropTypes.func.isRequired,
-    history: ReactRouterPropTypes.history.isRequired,
+    handleBlur: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
     errorMessage: PropTypes.string,
-  };
-
-  state = {
-    email: '',
-    isEmailValid: true,
-    password: '',
-    // isPaswordValid: true,
-    passwordConfirm: '',
-    // isPasswordEqual: true,
-    name: '',
+    values: PropTypes.objectOf(PropTypes.string).isRequired,
+    errors: PropTypes.objectOf(PropTypes.string).isRequired,
+    touched: PropTypes.objectOf(PropTypes.any).isRequired,
   };
 
   componentDidMount() {
@@ -36,41 +28,24 @@ class SignUp extends Component {
     document.body.removeEventListener('keydown', this.handleEnterSubmit);
   }
 
-  handleChange = ({ target: { name, value } }) =>
-    this.setState({ [name]: value });
-
-  handleSubmit = e => {
-    if (e) e.preventDefault();
-
-    const { email, name, password } = this.state;
-
-    this.props.onSignUp({ email, name, password }).then(data => {
-      if (!data) return;
-      if (data.payload.error) return;
-      this.props.history.push('/signin');
-    });
-  };
-
   handleEnterSubmit = ({ code }) =>
-    code === 'Enter' || code === 'NumpadEnter' ? this.handleSubmit() : null;
-
-  handleValidation = ({ target: { name } }) => {
-    if (name === 'email') {
-      if (!this.state.email.includes('@'))
-        return this.setState({ isEmailValid: false });
-
-      return this.setState({ isEmailValid: true });
-    }
-
-    return null;
-  };
+    code === 'Enter' || code === 'NumpadEnter'
+      ? this.props.handleSubmit()
+      : null;
 
   render() {
-    const { name, password, email, passwordConfirm, isEmailValid } = this.state;
     const { errorMessage } = this.props;
+    const {
+      values,
+      handleBlur,
+      handleChange,
+      handleSubmit,
+      errors,
+      touched,
+    } = this.props;
     return (
       <form
-        onSubmit={this.handleSubmit}
+        onSubmit={handleSubmit}
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -82,33 +57,48 @@ class SignUp extends Component {
         <input
           type="email"
           name="email"
-          value={email}
-          onChange={this.handleChange}
-          onBlur={this.handleValidation}
+          value={values.email}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          placeholder="email*"
         />
-        {!isEmailValid && <p>Email is not valid</p>}
+        {errors.email && touched.email && (
+          <div className="input-feedback">{errors.email}</div>
+        )}
         <input
           type="password"
           name="password"
-          value={password}
-          onChange={this.handleChange}
-          onBlur={this.handleValidation}
+          value={values.password}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          placeholder="password*"
         />
-        <PasswordStrengthMeter password={password} />
+        <PasswordStrengthMeter password={values.password} />
+        {errors.password && touched.password && (
+          <div className="input-feedback">{errors.password}</div>
+        )}
         <input
           type="password"
           name="passwordConfirm"
-          value={passwordConfirm}
-          onChange={this.handleChange}
-          onBlur={this.handleValidation}
+          value={values.passwordConfirm}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          placeholder="confirm password*"
         />
+        {errors.passwordConfirm && touched.passwordConfirm && (
+          <div className="input-feedback">{errors.passwordConfirm}</div>
+        )}
         <input
           type="text"
           name="name"
-          value={name}
-          onChange={this.handleChange}
-          onBlur={this.handleValidation}
+          value={values.name}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          placeholder="name*"
         />
+        {errors.name && touched.name && (
+          <div className="input-feedback">{errors.name}</div>
+        )}
         <button type="submit">Регистация</button>
         <p>{errorMessage}</p>
       </form>
@@ -120,11 +110,4 @@ const mSTP = state => ({
   errorMessage: getError(state),
 });
 
-const mDTP = {
-  onSignUp: signUp,
-};
-
-export default connect(
-  mSTP,
-  mDTP,
-)(SignUp);
+export default connect(mSTP)(SignUp);
