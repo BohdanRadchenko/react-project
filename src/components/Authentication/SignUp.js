@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { getError } from '../../redux/session/sessionSelectors';
 import './test.css';
 import PasswordStrengthMeter from '../PasswordStrengthMeter/PasswordStrengthMeter';
@@ -99,7 +100,7 @@ class SignUp extends Component {
         {errors.name && touched.name && (
           <div className="input-feedback">{errors.name}</div>
         )}
-        <button type="submit">Регистация</button>
+        <button type="submit">Sign up</button>
         <p>{errorMessage}</p>
       </form>
     );
