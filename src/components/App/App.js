@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
-import Currencies from '../Dashboard/Currencies/Currencies';
 import styles from '../Header/Header.module.css';
 import { refreshUser } from '../../redux/session/sessionOperations';
 // import Modal from '../Modal/ModalContainer';
@@ -26,7 +25,7 @@ class App extends Component {
           <Header />
         </header>
         <Dashboard />
-        <Currencies />
+        {/* <Currencies /> */}
         {/* <Home /> */}
         {/* <Modal /> */}
       </>

@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React, { Component, createRef } from 'react';
+import { toast } from 'react-toastify';
 import AddTransaction from './AddTransaction/AddTransaction';
 import { transactions } from '../../constans/modalConstants';
 import {
@@ -7,11 +8,14 @@ import {
   countTypeBalanceAfter,
 } from '../../helpers/countBalanceAfter';
 import styles from './Modal.module.css';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 export default class Modal extends Component {
   state = {
-    isCost: false,
-    type: transactions.INCOME,
+    isCost: true,
+    type: transactions.COST,
     amount: '',
     comments: '',
     date: new Date(),
@@ -48,8 +52,20 @@ export default class Modal extends Component {
       type: id === 'cost' ? transactions.COST : transactions.INCOME,
     });
 
-  handleTextChange = ({ target: { value, name } }) =>
+  handleTextChange = ({ target: { value, name } }) => {
+    if (name === 'amount' && value.length > 10) {
+      const toFixed = Number(value).toFixed();
+      if (toFixed.length > 10) {
+        toast.warn('Too many symbols!');
+        return;
+      } else {
+        this.setState({ [name]: value });
+      }
+    } else if (name === 'comments' && value.length > 40) {
+      return;
+    }
     this.setState({ [name]: value });
+  };
 
   handleSelectChange = e => this.setState({ category: e.value });
 
@@ -60,10 +76,14 @@ export default class Modal extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { category, amount, comments, date } = this.state;
+    if (Number(amount) <= 0) {
+      toast.error('Invalid input!');
+      return;
+    }
 
     const transactionToAdd = {
       type: category ? '-' : '+',
-      amount: Number(amount),
+      amount: parseFloat(Number(amount).toFixed(2)),
       category,
       date,
       comments,
@@ -83,8 +103,8 @@ export default class Modal extends Component {
 
   reset = () =>
     this.setState({
-      isCost: false,
-      type: transactions.INCOME,
+      isCost: true,
+      type: transactions.COST,
       amount: '',
       comments: '',
       date: new Date(),

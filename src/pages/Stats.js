@@ -151,7 +151,7 @@ class Stats extends Component {
     }));
   };
   // test = (category, arr) => {
-  //   const array = [null, null, null, null, null, null, null, null];
+  //   const array = [null, null, null, null, null, null, null];
 
   //   const categoryReducer = arr
   //     .filter(el => el.category === category)
