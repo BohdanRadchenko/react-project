@@ -55,7 +55,7 @@
 @media screen and (min-width: 1280px) {
   .balanceDiv {
     margin: 0 auto;
-    width: 312px;
+    width: 314px;
     height: 90px;
     background-color: var(--SidebarElemBGColor);
     display: flex;
