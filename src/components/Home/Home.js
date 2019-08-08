@@ -7,7 +7,7 @@ import Modal from '../Modal/ModalContainer';
 // import db from '../../db.json';
 import styles from './Home.module.css';
 import Welcome from './Welcome/Welcome';
-
+import ModalQuotes from '../Quotes/QuotesModal';
 class Home extends Component {
   state = {
     isOpenModal: false,
@@ -38,6 +38,7 @@ class Home extends Component {
     const { isOpenModal } = this.state;
     return (
       <div className={styles.container_home}>
+        <ModalQuotes />
         <div className={styles.container_table}>
           {finance.length === 0 && <Welcome />}
           {finance.length !== 0 && <TransactionsTable items={finance} />}

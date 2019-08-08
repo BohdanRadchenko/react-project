@@ -1,4 +1,5 @@
-/*eslint-disable */
+// /*eslint-disable */
+
 // import React from 'react';
 // import Button from '@material-ui/core/Button';
 // import Dialog from '@material-ui/core/Dialog';
@@ -14,7 +15,7 @@
 // });
 
 // export default function AlertDialogSlide() {
-//   const [open, setOpen] = React.useState(false);
+//   const [open, setOpen] = React.useState(true);
 //   function handleClickOpen() {
 //     setOpen(true);
 //   }
@@ -25,9 +26,9 @@
 
 //   return (
 //     <div>
-//       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+//       {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
 //         Slide in alert dialog
-//       </Button>
+//       </Button> */}
 //       <Dialog
 //         open={open}
 //         TransitionComponent={Transition}
