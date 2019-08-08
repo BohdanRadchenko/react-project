@@ -8,9 +8,7 @@ import SideBar from './Sidebar/Sidebar';
 import db from '../../db.json';
 import statisticsCount from '../../helpers/statisticsCount';
 import styles from './Dashboard.module.css';
-import Currencies from './Currencies/Currencies';
-import Home from '../Home/Home';
-import ProtectedComponent from './hoc/PrivateRoute';
+// import ProtectedComponent from './hoc/PrivateRoute';
 // import PrivateRoute from './PrivateRoute';
 
 const AsyncHome = Loadable({
@@ -23,22 +21,6 @@ const AsyncHome = Loadable({
 const AsyncStats = Loadable({
   loader: () =>
     import('../../pages/Stats' /* webpackChunkName: "stats-page" */),
-  loading: Loader,
-  timeout: 10000,
-  delay: 200,
-});
-
-const AsyncSignUp = Loadable({
-  loader: () =>
-    import('../../pages/SignUpPage' /* webpackChunkName: "signUp-page" */),
-  loading: Loader,
-  timeout: 10000,
-  delay: 200,
-});
-
-const AsyncSignIn = Loadable({
-  loader: () =>
-    import('../../pages/SignInPage' /* webpackChunkName: "signIn-page" */),
   loading: Loader,
   timeout: 10000,
   delay: 200,
@@ -79,17 +61,11 @@ class Dashboard extends Component {
           <SideBar balance={balance} />
         </div>
         <div className={styles.rightSideBar}>
-          {/* <Home /> */}
           <Switch>
-            <ProtectedComponent path="/" exact component={AsyncHome} />
-            <Route path="/signup" component={AsyncSignUp} />
-            <Route path="/signin" component={AsyncSignIn} />
-            <ProtectedComponent path="/stats" component={AsyncStats} />
-            <ProtectedComponent
-              path="/currencies"
-              component={AsyncCurrencies}
-            />
-            <Redirect to="/" />
+            <Route path="/dashboard/home" component={AsyncHome} />
+            <Route path="/dashboard/stats" component={AsyncStats} />
+            <Route path="/dashboard/currencies" component={AsyncCurrencies} />
+            <Redirect to="/dashboard/home" />
           </Switch>
         </div>
       </div>

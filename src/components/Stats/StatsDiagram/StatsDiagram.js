@@ -1,7 +1,8 @@
+/* eslint-disable */
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import 'chartjs-plugin-labels';
-/*eslint-disable*/
+
 const options = {
   plugins: {
     labels: [
