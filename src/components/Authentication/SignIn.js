@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+// import { Redirect } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import {
   getError,
@@ -33,6 +34,10 @@ class SignIn extends Component {
     if (authentificated) {
       history.replace('/dashboard');
     }
+
+    // if (!authentificated) {
+    //   return <Redirect to="/signup" />;
+    // }
   }
 
   componentWillUnmount() {

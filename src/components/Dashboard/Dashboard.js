@@ -10,6 +10,8 @@ import statisticsCount from '../../helpers/statisticsCount';
 import styles from './Dashboard.module.css';
 import Currencies from './Currencies/Currencies';
 import Home from '../Home/Home';
+import ProtectedComponent from './hoc/PrivateRoute';
+// import PrivateRoute from './PrivateRoute';
 
 const AsyncHome = Loadable({
   loader: () => import('../../pages/Home' /* webpackChunkName: "home-page" */),
@@ -64,12 +66,12 @@ class Dashboard extends Component {
           <Currencies />
         </div>
         <div className={styles.rightSideBar}>
-          <Home />
+          {/* <Home /> */}
           <Switch>
-            <Route path="/" exact component={AsyncHome} />
+            <ProtectedComponent path="/" exact component={AsyncHome} />
             <Route path="/signup" component={AsyncSignUp} />
             <Route path="/signin" component={AsyncSignIn} />
-            <Route path="/stats" component={AsyncStats} />
+            <ProtectedComponent path="/stats" component={AsyncStats} />
             <Redirect to="/" />
           </Switch>
         </div>
