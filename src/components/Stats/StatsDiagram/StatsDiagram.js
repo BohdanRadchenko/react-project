@@ -1,40 +1,29 @@
+/* eslint-disable */
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Pie } from 'react-chartjs-2';
+import 'chartjs-plugin-labels';
 
-const StatsDiagram = ({ items }) => {
-  return (
-    <ul>
-      {items.map(el => (
-        <li key={el.id}>
-          <p>amount: {el.amount}</p>
-          <p>balanceAfter: {el.balanceAfter}</p>
-          <p>category: {el.category}</p>
-          <p>comments: {el.comments}</p>
-          <p>data: {el.data}</p>
-          <p>isAmountNull: {el.isAmountNull}</p>
-          <p>type: {el.type}</p>
-        </li>
-      ))}
-    </ul>
-  );
+const options = {
+  plugins: {
+    labels: [
+      {
+        render: 'percent',
+        position: 'outside',
+        overlap: true,
+        fontSize: 10,
+      },
+    ],
+  },
+  maintainAspectRatio: false,
+  responsive: true,
+  legend: {
+    position: 'bottom',
+    display: true,
+    labels: {
+      boxWidth: 12,
+    },
+  },
 };
 
-StatsDiagram.defaultProps = {
-  items: [],
-};
-
-StatsDiagram.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      amount: PropTypes.number,
-      balanceAfter: PropTypes.number,
-      category: PropTypes.string,
-      comments: PropTypes.string,
-      data: PropTypes.string,
-      isAmountNull: PropTypes.bool,
-      type: PropTypes.string,
-    }),
-  ),
-};
-
-export default StatsDiagram;
+const Chart = props => <Pie data={props.items} options={options} />;
+export default Chart;
