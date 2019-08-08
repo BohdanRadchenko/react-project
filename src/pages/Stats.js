@@ -79,7 +79,7 @@ class Stats extends Component {
           })),
       ],
       chart: {
-        labels: [...filteredCost.map(el => el.category)],
+        labels: [...new Set(filteredCost.map(el => el.category))],
         datasets: [
           {
             data: [
@@ -90,7 +90,7 @@ class Stats extends Component {
               ),
             ],
             backgroundColor: [
-              ...filteredCost.map(el => this.colorSwitch(el.category)),
+              ...new Set(filteredCost.map(el => this.colorSwitch(el.category))),
             ],
           },
         ],
