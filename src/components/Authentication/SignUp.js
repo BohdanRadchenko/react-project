@@ -100,7 +100,7 @@ class SignUp extends Component {
         {errors.name && touched.name && (
           <div className="input-feedback">{errors.name}</div>
         )}
-        <button type="submit">Регистация</button>
+        <button type="submit">Sign up</button>
         <p>{errorMessage}</p>
       </form>
     );

@@ -92,7 +92,7 @@ class SignIn extends Component {
         {errors.password && touched.password && (
           <div className="input-feedback">{errors.password}</div>
         )}
-        <button type="submit">Войти</button>
+        <button type="submit">Sign in</button>
         <p>{errorMessage}</p>
       </form>
     );
