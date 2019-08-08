@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import React, { Component, createRef } from 'react';
 import { toast } from 'react-toastify';
+import lodash from 'lodash';
 import AddTransaction from './AddTransaction/AddTransaction';
 import { transactions } from '../../constans/modalConstants';
 import {
@@ -52,20 +53,42 @@ export default class Modal extends Component {
       type: id === 'cost' ? transactions.COST : transactions.INCOME,
     });
 
-  handleTextChange = ({ target: { value, name } }) => {
-    if (name === 'amount' && value.length > 10) {
+  handleAmountInput = value => {
+    if (value.length > 10) {
       const toFixed = Number(value).toFixed();
       if (toFixed.length > 10) {
         toast.warn('Too many symbols!');
         return;
-      } else {
-        this.setState({ [name]: value });
       }
-    } else if (name === 'comments' && value.length > 40) {
+    }
+    this.setState({ amount: value });
+  };
+
+  handleTextareaInput = ({ target: { value } }) => {
+    if (value.length > 40) {
+      lodash.throttle(toast.warn('Too many symbols!'), 2000);
       return;
     }
-    this.setState({ [name]: value });
+    this.setState({ comments: value });
   };
+
+  // handleTextChange = e => {
+  // handleTextChange = ({ target: { name, value } }) => {
+  // console.log(e);
+  //   if (name === 'amount' && value.length > 10) {
+  //     const toFixed = Number(value).toFixed();
+  //     if (toFixed.length > 10) {
+  //       toast.warn('Too many symbols!');
+  //       return;
+  //     } else {
+  //       this.setState({ [name]: value });
+  //     }
+  //   } else if (name === 'comments' && value.length > 40) {
+  //     lodash.throttle(toast.warn('Too many symbols!'), 2000);
+  //     return;
+  //   }
+  //   this.setState({ [name]: value });
+  // };
 
   handleSelectChange = e => this.setState({ category: e.value });
 
@@ -127,7 +150,8 @@ export default class Modal extends Component {
           date={date}
           comments={comments}
           handleRadioChange={this.handleRadioChange}
-          handleTextChange={this.handleTextChange}
+          handleAmountInput={this.handleAmountInput}
+          handleTextareaInput={this.handleTextareaInput}
           handleSelectChange={this.handleSelectChange}
           handleDateChange={this.handleDateChange}
           handleSubmit={this.handleSubmit}

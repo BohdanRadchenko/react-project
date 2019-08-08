@@ -32,27 +32,29 @@ class Currencies extends React.Component {
     return (
       <div className={style.form}>
         {wait && <Loaders />}
-        <table className={style.history}>
-          <thead>
-            <tr className={style.historyTr}>
-              <th>Currency</th>
-              <th>Buy</th>
-              <th>Sale</th>
-            </tr>
-          </thead>
-          <tbody className={style.tBody}>
-            {!wait &&
-              curr.map(el => {
-                return (
-                  <tr key={el.ccy} className={style.currTr}>
-                    <th>{el.ccy}</th>
-                    <th>{Number(el.buy).toFixed(4)}</th>
-                    <th>{Number(el.sale).toFixed(4)}</th>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
+        {!wait && (
+          <table className={style.history}>
+            <thead>
+              <tr className={style.historyTr}>
+                <th>Currency</th>
+                <th>Buy</th>
+                <th>Sale</th>
+              </tr>
+            </thead>
+            <tbody className={style.tBody}>
+              {!wait &&
+                curr.map(el => {
+                  return (
+                    <tr key={el.ccy} className={style.currTr}>
+                      <th>{el.ccy}</th>
+                      <th>{Number(el.buy).toFixed(4)}</th>
+                      <th>{Number(el.sale).toFixed(4)}</th>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        )}
       </div>
     );
   }
