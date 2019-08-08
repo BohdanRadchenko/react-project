@@ -1,4 +1,5 @@
 .header {
+  min-width: 1192px;
   height: 80px;
   display: flex;
   align-items: center;
@@ -23,19 +24,48 @@
 }
 
 .headerUser {
-  font-size: 15px;
+  font-size: 17px;
   margin-right: 10px;
   padding-top: 10px;
+  font-family: sans-serif;
+}
+
+.headerUser::after {
+  content: '';
+  width: 0;
+  height: 1px;
+  border: 1px solid black;
+  margin-left: 20px;
+  background-color: rgb(107, 125, 131);
 }
 
 .headerText {
   font-size: 20px;
   margin: 0;
-
   font-family: sans-serif;
 }
 
 .headerButton {
   border: none;
   padding-top: 12px;
+  font-size: 16px;
+}
+
+.logout {
+  width: 16px;
+  height: 16px;
+  margin: 0 10px;
+}
+
+@media (min-width: 768px) {
+  .header {
+    background-color: rgb(255, 255, 255);
+    padding: 24px 33px 32px 32px;
+    /* margin-bottom: 3px; */
+  }
+
+  .logo {
+    font-size: 20px;
+    /* margin: 0; */
+  }
 }

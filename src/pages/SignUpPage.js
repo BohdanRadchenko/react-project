@@ -3,8 +3,10 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
+
 import SignUp from '../components/Authentication/SignUp';
 import { signUp } from '../redux/session/sessionOperations';
+import authRedirectHoc from '../components/authRedirectHoc/authRedirectHoc';
 
 const SignUpPage = ({ onSignUp }) => (
   <Formik
@@ -50,4 +52,4 @@ const mDTP = {
 export default connect(
   null,
   mDTP,
-)(SignUpPage);
+)(authRedirectHoc(SignUpPage));

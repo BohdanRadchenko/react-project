@@ -51,14 +51,14 @@ const DiagramTable = props => {
 
 export default DiagramTable;
 
-// DiagramTable.defaultProps = {
-//   items: [],
-// };
-// DiagramTable.propTypes = {
-//   items: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       category: PropTypes.string.isRequired,
-//       amount: PropTypes.number.isRequired,
-//     }),
-//   ),
-// };
+DiagramTable.defaultProps = {
+  items: [],
+};
+DiagramTable.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      category: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+    }),
+  ),
+};
