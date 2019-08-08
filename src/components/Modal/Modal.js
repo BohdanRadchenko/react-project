@@ -103,8 +103,8 @@ export default class Modal extends Component {
 
   reset = () =>
     this.setState({
-      isCost: false,
-      type: transactions.INCOME,
+      isCost: true,
+      type: transactions.COST,
       amount: '',
       comments: '',
       date: new Date(),
