@@ -53,9 +53,7 @@ export default class Modal extends Component {
     });
 
   handleTextChange = ({ target: { value, name } }) => {
-    if (name === 'amount' && value < 0) {
-      toast.error('Invalid input!');
-    } else if (name === 'amount' && value.length > 10) {
+    if (name === 'amount' && value.length > 10) {
       const toFixed = Number(value).toFixed();
       if (toFixed.length > 10) {
         toast.warn('Too many symbols!');
@@ -64,7 +62,6 @@ export default class Modal extends Component {
         this.setState({ [name]: value });
       }
     } else if (name === 'comments' && value.length > 40) {
-      toast.warn('Too many symbols!');
       return;
     }
     this.setState({ [name]: value });
@@ -79,6 +76,10 @@ export default class Modal extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { category, amount, comments, date } = this.state;
+    if (Number(amount) <= 0) {
+      toast.error('Invalid input!');
+      return;
+    }
 
     const transactionToAdd = {
       type: category ? '-' : '+',

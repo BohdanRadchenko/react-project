@@ -6,16 +6,10 @@ const countSum = (transactions, type) =>
 export const countBalanceAfter = (transactions, transactionToAdd) => {
   if (transactions) {
     return (
-      countSum(transactions, '+') -
-      countSum(transactions, '-') +
-      (transactionToAdd.type === '+'
-        ? transactionToAdd.amount
-        : -transactionToAdd.amount)
+      countSum(transactions, transactionToAdd.type) + transactionToAdd.amount
     );
   }
-  return transactionToAdd.type === '+'
-    ? transactionToAdd.amount
-    : -transactionToAdd.amount;
+  return transactionToAdd.amount;
 };
 
 export const countTypeBalanceAfter = balance => (balance >= 0 ? '+' : '-');
