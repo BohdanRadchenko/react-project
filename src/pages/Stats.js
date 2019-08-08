@@ -21,6 +21,7 @@ class Stats extends Component {
       month: null,
       year: null,
     },
+    costsFilter: [],
     chart: {
       labels: [],
       datasets: [
@@ -57,13 +58,20 @@ class Stats extends Component {
   };
   componentDidMount() {
     const transactions = this.props.transactions;
+    const filteredCost = transactions
+      .filter(el => el.type === '-')
+      .map(el => ({
+        category: `${el.category}`,
+        amount: el.amount,
+      }));
+
     this.setState({
       items: [...this.props.transactions],
       balance: statisticsCount(transactions).balance,
       deposits: statisticsCount(transactions).deposits,
       withdrow: statisticsCount(transactions).withdrow,
-      test: [
-        ...this.props.transactions
+      costsFilter: [
+        ...transactions
           .filter(el => el.type === '-')
           .map(el => ({
             category: `${el.category}`,
@@ -71,28 +79,35 @@ class Stats extends Component {
           })),
       ],
       chart: {
-        labels: [...new Set(a.map(el => el.category))],
+        labels: [...new Set(filteredCost.map(el => el.category))],
         datasets: [
           {
             data: [
-              ...new Set(a.map(el => this.reduceSwitcher(el.category, a))),
+              ...new Set(
+                filteredCost.map(el =>
+                  this.reduceSwitcher(el.category, filteredCost),
+                ),
+              ),
             ],
             backgroundColor: [
-              ...new Set(a.map(el => this.colorSwitch(el.category))),
+              ...new Set(filteredCost.map(el => this.colorSwitch(el.category))),
             ],
           },
         ],
       },
     });
-    const statsTableLines = document.getElementsByClassName('rt-tr');
-    for (let item of statsTableLines) {
-      console.log(item.children[0].textContent);
-      item.insertAdjacentHTML(
-        'afterbegin',
-        `<div style="background-color: ${this.colorSwitch(
-          item.children[0].textContent,
-        )}" class="two"></div>`,
-      );
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.costsFilter) {
+      const statsTableLines = document.getElementsByClassName('rt-tr');
+      for (let item of statsTableLines) {
+        item.insertAdjacentHTML(
+          'afterbegin',
+          `<div style="background-color: ${this.colorSwitch(
+            item.children[0].textContent,
+          )}" class="two"></div>`,
+        );
+      }
     }
   }
 
@@ -135,9 +150,42 @@ class Stats extends Component {
       search: Object.assign(state.search, { year: value }),
     }));
   };
+  // test = (category, arr) => {
+  //   const array = [null, null, null, null, null, null, null, null];
+
+  //   const categoryReducer = arr
+  //     .filter(el => el.category === category)
+  //     .map(el => el.amount)
+  //     .reduce(function(result, num) {
+  //       return result + num;
+  //     }, 0);
+
+  //   switch (category) {
+  //     case 'regular':
+  //       return console.log(categoryReducer);
+  //     case 'food':
+  //       return console.log(categoryReducer);
+  //     case 'automobile':
+  //       return console.log(categoryReducer);
+  //     case 'self care':
+  //       return console.log(categoryReducer);
+  //     case 'children':
+  //       return console.log(categoryReducer);
+  //     case 'home':
+  //       return console.log(categoryReducer);
+  //     case 'education':
+  //       return console.log(categoryReducer);
+  //     case 'enterteinment':
+  //       return console.log(categoryReducer);
+  //     case 'other':
+  //       return console.log(categoryReducer);
+  //   }
+  // }
 
   render() {
-    console.log(a);
+    // this.state.costsFilter.map(el =>
+    //   this.test(el.category, this.state.costsFilter),
+    // );
 
     const { search, items } = this.state;
     const filtredItems = filterItems(items, search.year, search.month);
@@ -169,7 +217,7 @@ class Stats extends Component {
               </div>
             </div>
             <div className={styles.innerTable}>
-              <StatsTable items={this.state.test} />
+              <StatsTable items={this.state.costsFilter} />
             </div>
             <div className={styles.total}>
               <div className={styles.containerText}>
@@ -200,6 +248,7 @@ class Stats extends Component {
 
 const mapStateToProps = state => ({
   transactions: db,
+  // transactions: state.finance.data,
 });
 
 export default connect(

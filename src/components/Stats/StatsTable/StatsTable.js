@@ -22,12 +22,12 @@ import './StatsTable.css';
 //   // { category: 'education', amount: 563 },
 // ];
 
-const DiagramTable = ({ items = [] }) => {
-  console.log(items);
-
+const DiagramTable = props => {
+  const { items } = props;
   return (
     <>
       <ReactTable
+        key={items.length}
         data={items.reverse()}
         columns={[
           {
@@ -49,14 +49,15 @@ const DiagramTable = ({ items = [] }) => {
 };
 
 export default DiagramTable;
-DiagramTable.defaultProps = {
-  items: [],
-};
-DiagramTable.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      category: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
-    }),
-  ),
-};
+
+// DiagramTable.defaultProps = {
+//   items: [],
+// };
+// DiagramTable.propTypes = {
+//   items: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       category: PropTypes.string.isRequired,
+//       amount: PropTypes.number.isRequired,
+//     }),
+//   ),
+// };
