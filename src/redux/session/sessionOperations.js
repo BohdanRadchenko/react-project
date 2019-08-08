@@ -43,14 +43,11 @@ export const signIn = credentials => dispatch => {
 };
 
 export const refreshUser = () => (dispatch, getState) => {
-  dispatch(refreshUserRequest());
-
   const token = getToken(getState());
 
   if (!token) return;
   setAuthToken(token);
-  console.log(token);
-
+  dispatch(refreshUserRequest());
   axios
     .get('finance', token)
     .then(response => dispatch(refreshUserSuccess(response.data)))
