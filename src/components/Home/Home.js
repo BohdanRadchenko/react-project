@@ -12,6 +12,7 @@ class Home extends Component {
   state = {
     isOpenModal: false,
     items: [],
+    firstOpen: true,
   };
 
   // componentDidMount() {
