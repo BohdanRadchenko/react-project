@@ -1,46 +1,37 @@
 /*eslint-disable*/
-
 import React from 'react';
 import styles from './TransactionsTable.module.css';
-// import AddButton from '../AddButton/AddButton'
-
-// const substring = str => {
-//   const newStr = String(str);
-//   return newStr.substr(0, 8);
-// };
 
 const getMonth = month => {
   switch (month) {
-    case 'January':
+    case 'Jan':
       return '01';
-    case 'February':
+    case 'Feb':
       return '02';
-    case 'March':
+    case 'Mar':
       return '03';
-    case 'April':
+    case 'Apr':
       return '04';
     case 'May':
       return '05';
-    case 'June':
+    case 'Jun':
       return '06';
-    case 'July':
+    case 'Jul':
       return '07';
-    case 'August':
+    case 'Aug':
       return '08';
-    case 'September':
+    case 'Sep':
       return '09';
-    case 'October':
+    case 'Oct':
       return '10';
-    case 'November':
+    case 'Nov':
       return '11';
-    case 'December':
+    case 'Dec':
       return '12';
     default:
       return 'Hello';
   }
 };
-
-// console.log(getMonth('May'));
 
 const styleByType = {
   classBase: styles.tr,
@@ -62,8 +53,6 @@ const date = date => {
   return result;
 };
 
-console.log(date(1557904270000));
-
 const TransactionHistory = ({ items }) => {
   return (
     <>
@@ -82,7 +71,7 @@ const TransactionHistory = ({ items }) => {
           <tbody>
             {items.map(item => (
               <tr
-                key={item._id}
+                key={item.date}
                 className={
                   item.type === '-'
                     ? styleByType.classBase + ' ' + styleByType.con
@@ -90,7 +79,7 @@ const TransactionHistory = ({ items }) => {
                 }
               >
                 <td className={styles.td} data-label="Date">
-                  {date(1557904270000)}
+                  {date(item.date)}
                 </td>
                 <td className={styles.td} data-label="Type">
                   {item.type}
@@ -122,7 +111,6 @@ const TransactionHistory = ({ items }) => {
             ))}
           </tbody>
         </table>
-        {/* <AddButton /> */}
       </div>
     </>
   );
