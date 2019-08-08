@@ -94,7 +94,11 @@ export default class Modal extends Component {
   render() {
     const { isCost, type, comments, amount, date } = this.state;
     return (
-      <div ref={this.backdropRef} className={styles.backdrop}>
+      <div
+        ref={this.backdropRef}
+        onClick={this.handleBackdropClick}
+        className={styles.backdrop}
+      >
         <AddTransaction
           isCost={isCost}
           amount={amount}

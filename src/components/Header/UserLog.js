@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './Header.module.css';
 import * as nameSelector from '../../redux/session/sessionSelectors';
-import * as sessionActions from '../../redux/session/sessionActions';
+import { signOut } from '../../redux/session/sessionOperations';
 
 const logo = require('../../logo.svg');
 
@@ -39,7 +39,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  onLogOut: sessionActions.logOut,
+  onLogOut: signOut,
 };
 
 export default connect(
