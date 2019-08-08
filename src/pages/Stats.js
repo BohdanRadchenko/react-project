@@ -150,37 +150,6 @@ class Stats extends Component {
       search: Object.assign(state.search, { year: options.value }),
     }));
   };
-  // test = (category, arr) => {
-  //   const array = [null, null, null, null, null, null, null];
-
-  //   const categoryReducer = arr
-  //     .filter(el => el.category === category)
-  //     .map(el => el.amount)
-  //     .reduce(function(result, num) {
-  //       return result + num;
-  //     }, 0);
-
-  //   switch (category) {
-  //     case 'regular':
-  //       return console.log(categoryReducer);
-  //     case 'food':
-  //       return console.log(categoryReducer);
-  //     case 'automobile':
-  //       return console.log(categoryReducer);
-  //     case 'self care':
-  //       return console.log(categoryReducer);
-  //     case 'children':
-  //       return console.log(categoryReducer);
-  //     case 'home':
-  //       return console.log(categoryReducer);
-  //     case 'education':
-  //       return console.log(categoryReducer);
-  //     case 'enterteinment':
-  //       return console.log(categoryReducer);
-  //     case 'other':
-  //       return console.log(categoryReducer);
-  //   }
-  // }
 
   render() {
     const { search, items, selectedOption } = this.state;
@@ -203,12 +172,14 @@ class Stats extends Component {
                 <StatsSelect
                   options={OptionsMonth}
                   handleSelect={this.getSelectMonth}
+                  label={'Month'}
                 />
               </div>
               <div className={styles.innerSelectYear}>
                 <StatsSelect
                   options={OptionsYears}
                   handleSelect={this.getSelectYears}
+                  label={'Year'}
                 />
               </div>
             </div>
