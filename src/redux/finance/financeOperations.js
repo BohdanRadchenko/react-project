@@ -24,7 +24,7 @@ const postTransaction = (transaction, token) => dispatch => {
         type,
         amount,
         category,
-        // date,
+        date,
         comments,
         balanceAfter,
         typeBalanceAfter,

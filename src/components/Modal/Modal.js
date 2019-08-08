@@ -85,7 +85,7 @@ export default class Modal extends Component {
       type: category ? '-' : '+',
       amount: parseFloat(Number(amount).toFixed(2)),
       category,
-      date,
+      date: new Date(String(date)).getTime(),
       comments,
     };
     const balanceAfter = countBalanceAfter(
@@ -97,6 +97,7 @@ export default class Modal extends Component {
     transactionToAdd.balanceAfter = balanceAfter;
     transactionToAdd.typeBalanceAfter = typeBalanceAfter;
 
+    console.log(transactionToAdd);
     this.props.postTransaction(transactionToAdd, this.props.token);
     this.reset();
   };
