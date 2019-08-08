@@ -32,6 +32,7 @@ class Stats extends Component {
       ],
     },
   };
+
   colorSwitch = value => {
     switch (value) {
       case 'Category':
@@ -56,6 +57,7 @@ class Stats extends Component {
         return '#507C3A';
     }
   };
+
   componentDidMount() {
     const transactions = this.props.transactions;
     const filteredCost = transactions
@@ -64,33 +66,64 @@ class Stats extends Component {
         category: `${el.category}`,
         amount: el.amount,
       }));
+    const reducedCategory = value =>
+      filteredCost
+        .filter(el => el.category === value)
+        .map(el => el.amount)
+        .reduce(function(result, num) {
+          return result + num;
+        }, 0);
+    const colorAuto = value => this.colorSwitch(value);
+    const labels = value => {
+      if (filteredCost.map(el => el.category === value)) {
+        return value;
+      } else {
+        ('');
+      }
+    };
 
     this.setState({
       items: [...this.props.transactions],
       balance: statisticsCount(transactions).balance,
       deposits: statisticsCount(transactions).deposits,
       withdrow: statisticsCount(transactions).withdrow,
-      costsFilter: [
-        ...transactions
-          .filter(el => el.type === '-')
-          .map(el => ({
-            category: `${el.category}`,
-            amount: el.amount,
-          })),
-      ],
+      costsFilter: [...filteredCost],
       chart: {
-        labels: [...new Set(filteredCost.map(el => el.category))],
+        labels: [
+          labels('regular'),
+          labels('food'),
+          labels('automobile'),
+          labels('self care'),
+          labels('children'),
+          labels('home'),
+          labels('education'),
+          labels('enterteinment'),
+          labels('other'),
+        ],
+
         datasets: [
           {
             data: [
-              ...new Set(
-                filteredCost.map(el =>
-                  this.reduceSwitcher(el.category, filteredCost),
-                ),
-              ),
+              reducedCategory('regular'),
+              reducedCategory('food'),
+              reducedCategory('automobile'),
+              reducedCategory('self care'),
+              reducedCategory('children'),
+              reducedCategory('home'),
+              reducedCategory('education'),
+              reducedCategory('enterteinment'),
+              reducedCategory('other'),
             ],
             backgroundColor: [
-              ...new Set(filteredCost.map(el => this.colorSwitch(el.category))),
+              colorAuto('regular'),
+              colorAuto('food'),
+              colorAuto('automobile'),
+              colorAuto('self care'),
+              colorAuto('children'),
+              colorAuto('home'),
+              colorAuto('education'),
+              colorAuto('enterteinment'),
+              colorAuto('other'),
             ],
           },
         ],
@@ -110,34 +143,6 @@ class Stats extends Component {
       }
     }
   }
-
-  reduceSwitcher = (category, arr) => {
-    const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    const categoryReducer = arr
-      .filter(el => el.category === category)
-      .map(el => el.amount)
-      .reduce(reducer);
-    switch (category) {
-      case 'regular':
-        return categoryReducer;
-      case 'food':
-        return categoryReducer;
-      case 'automobile':
-        return categoryReducer;
-      case 'self care':
-        return categoryReducer;
-      case 'children':
-        return categoryReducer;
-      case 'home':
-        return categoryReducer;
-      case 'education':
-        return categoryReducer;
-      case 'enterteinment':
-        return categoryReducer;
-      case 'other':
-        return categoryReducer;
-    }
-  };
 
   getSelectMonth = options => {
     this.setState(state => ({
