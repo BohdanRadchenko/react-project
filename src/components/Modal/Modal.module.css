@@ -216,7 +216,12 @@ body {
   }
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
+  .backdrop {
+    width: 100%;
+    height: 100%;
+  }
+
   .modal {
     width: 66%;
     padding-bottom: 54px;
