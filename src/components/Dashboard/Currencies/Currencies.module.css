@@ -43,9 +43,10 @@
   background-repeat: no-repeat;
   background-position-x: 60%;
   background-position-y: 140%;
-  position: absolute;
+  border-radius: 3px;
+  /* position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 0; */
 }
 
 @media (max-width: 768px) {
