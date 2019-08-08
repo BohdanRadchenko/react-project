@@ -17,6 +17,7 @@ export default class App extends Component {
     const { options } = this.props;
     return (
       <Select
+        blurInputOnSelect
         value={selectedOption}
         onChange={this.handleChange}
         options={options}
