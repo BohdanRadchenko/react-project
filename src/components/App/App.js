@@ -9,15 +9,18 @@ import { refreshUser } from '../../redux/session/sessionOperations';
 
 // import Modal from '../Modal/ModalContainer';
 // import Home from '../Home/Home';
+import { getTransactions } from '../../redux/finance/financeOperations';
 
 class App extends Component {
   static propTypes = {
     handleRefreshUser: PropTypes.func.isRequired,
+    handleGetTransactions: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
-    const { handleRefreshUser } = this.props;
+    const { handleRefreshUser, handleGetTransactions } = this.props;
     handleRefreshUser();
+    handleGetTransactions();
   }
 
   render() {
@@ -37,6 +40,7 @@ class App extends Component {
 
 const mDTP = {
   handleRefreshUser: refreshUser,
+  handleGetTransactions: getTransactions,
 };
 
 export default connect(
