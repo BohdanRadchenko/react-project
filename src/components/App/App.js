@@ -14,6 +14,7 @@ import { refreshUser } from '../../redux/session/sessionOperations';
 // import Modal from '../Modal/ModalContainer';
 // import Home from '../Home/Home';
 import { getTransactions } from '../../redux/finance/financeOperations';
+import { isAuthentificated } from '../../redux/session/sessionSelectors';
 
 const AsyncDashboard = Loadable({
   loader: () =>
@@ -43,12 +44,18 @@ class App extends Component {
   static propTypes = {
     handleRefreshUser: PropTypes.func.isRequired,
     handleGetTransactions: PropTypes.func.isRequired,
+    authentificated: PropTypes.bool.isRequired,
   };
 
   componentDidMount() {
     const { handleRefreshUser, handleGetTransactions } = this.props;
     handleRefreshUser();
     handleGetTransactions();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { authentificated, handleGetTransactions } = this.props;
+    if (prevProps.authentificated !== authentificated) handleGetTransactions();
   }
 
   render() {
@@ -68,12 +75,16 @@ class App extends Component {
   }
 }
 
+const mSTP = state => ({
+  authentificated: isAuthentificated(state),
+});
+
 const mDTP = {
   handleRefreshUser: refreshUser,
   handleGetTransactions: getTransactions,
 };
 
 export default connect(
-  null,
+  mSTP,
   mDTP,
 )(App);

@@ -1,7 +1,7 @@
 /*eslint-disable*/
 import React, { Component, createRef } from 'react';
 import { toast } from 'react-toastify';
-import lodash from 'lodash';
+// import lodash from 'lodash';
 import AddTransaction from './AddTransaction/AddTransaction';
 import { transactions } from '../../constans/modalConstants';
 import {
@@ -66,7 +66,7 @@ export default class Modal extends Component {
 
   handleTextareaInput = ({ target: { value } }) => {
     if (value.length > 40) {
-      lodash.throttle(toast.warn('Too many symbols!'), 2000);
+      // lodash.throttle(toast.warn('Too many symbols!'), 2000);
       return;
     }
     this.setState({ comments: value });
