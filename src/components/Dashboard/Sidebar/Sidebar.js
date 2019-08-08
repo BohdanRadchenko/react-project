@@ -7,6 +7,7 @@ const Sidebar = ({ balance }) => (
   <div>
     <Navigations />
     <Balance balance={balance} />
+    {/* <Currencies /> */}
   </div>
 );
 
