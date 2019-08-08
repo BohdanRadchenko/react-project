@@ -1,7 +1,7 @@
 /*eslint-disable*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import StatsDiagram from '../components/Stats/StatsSelect/StatsDiagram';
+import StatsDiagram from '../components/Stats/StatsDiagram/StatsDiagram';
 import StatsTable from '../components/Stats/StatsTable/StatsTable';
 import StatsSelect from '../components/Stats/StatsSelect/StatsSelect';
 import db from '../db.json';
@@ -139,51 +139,20 @@ class Stats extends Component {
     }
   };
 
-  getSelectMonth = ({ value }) => {
+  getSelectMonth = options => {
     this.setState(state => ({
-      search: Object.assign(state.search, { month: value }),
+      search: Object.assign(state.search, { month: options.value }),
     }));
   };
 
-  getSelectYears = ({ value }) => {
+  getSelectYears = options => {
     this.setState(state => ({
-      search: Object.assign(state.search, { year: value }),
+      search: Object.assign(state.search, { year: options.value }),
     }));
   };
-  // test = (category, arr) => {
-  //   const array = [null, null, null, null, null, null, null];
-
-  //   const categoryReducer = arr
-  //     .filter(el => el.category === category)
-  //     .map(el => el.amount)
-  //     .reduce(function(result, num) {
-  //       return result + num;
-  //     }, 0);
-
-  //   switch (category) {
-  //     case 'regular':
-  //       return console.log(categoryReducer);
-  //     case 'food':
-  //       return console.log(categoryReducer);
-  //     case 'automobile':
-  //       return console.log(categoryReducer);
-  //     case 'self care':
-  //       return console.log(categoryReducer);
-  //     case 'children':
-  //       return console.log(categoryReducer);
-  //     case 'home':
-  //       return console.log(categoryReducer);
-  //     case 'education':
-  //       return console.log(categoryReducer);
-  //     case 'enterteinment':
-  //       return console.log(categoryReducer);
-  //     case 'other':
-  //       return console.log(categoryReducer);
-  //   }
-  // }
 
   render() {
-    const { search, items } = this.state;
+    const { search, items, selectedOption } = this.state;
     const filtredItems = filterItems(items, search.year, search.month);
     return (
       <div className={styles.container}>
@@ -203,12 +172,14 @@ class Stats extends Component {
                 <StatsSelect
                   options={OptionsMonth}
                   handleSelect={this.getSelectMonth}
+                  label={'Month'}
                 />
               </div>
               <div className={styles.innerSelectYear}>
                 <StatsSelect
                   options={OptionsYears}
                   handleSelect={this.getSelectYears}
+                  label={'Year'}
                 />
               </div>
             </div>

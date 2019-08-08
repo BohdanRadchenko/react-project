@@ -4,7 +4,7 @@ import Select from 'react-select';
 
 export default class App extends Component {
   state = {
-    selectedOption: null,
+    selectedOption: { value: ' ', label: this.props.label },
   };
 
   handleChange = selectedOption => {
