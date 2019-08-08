@@ -37,23 +37,23 @@ class Stats extends Component {
     switch (value) {
       case 'Category':
         return 'transparent';
-      case 'regular':
+      case 'Main Expenses':
         return '#ECB22A';
-      case 'food':
+      case 'Food':
         return '#E28B20';
-      case 'automobile':
+      case 'Car':
         return '#D25925';
-      case 'self care':
+      case 'Self Care':
         return '#67B7D0';
-      case 'children':
+      case 'Child Care':
         return '#5593D7';
-      case 'home':
+      case 'House':
         return '#3E6BA8';
-      case 'education':
+      case 'Education':
         return '#9CC254';
-      case 'enterteinment':
+      case 'Enterteinment':
         return '#73AD57';
-      case 'other':
+      case 'Others':
         return '#507C3A';
     }
   };
@@ -90,40 +90,40 @@ class Stats extends Component {
       costsFilter: [...filteredCost],
       chart: {
         labels: [
-          labels('regular'),
-          labels('food'),
-          labels('automobile'),
-          labels('self care'),
-          labels('children'),
-          labels('home'),
-          labels('education'),
-          labels('enterteinment'),
-          labels('other'),
+          labels('Main Expenses'),
+          labels('Food'),
+          labels('Car'),
+          labels('Self Care'),
+          labels('Child Care'),
+          labels('House'),
+          labels('Education'),
+          labels('Enterteinment'),
+          labels('Others'),
         ],
 
         datasets: [
           {
             data: [
-              reducedCategory('regular'),
-              reducedCategory('food'),
-              reducedCategory('automobile'),
-              reducedCategory('self care'),
-              reducedCategory('children'),
-              reducedCategory('home'),
-              reducedCategory('education'),
-              reducedCategory('enterteinment'),
-              reducedCategory('other'),
+              reducedCategory('Main Expenses'),
+              reducedCategory('Food'),
+              reducedCategory('Car'),
+              reducedCategory('Self Care'),
+              reducedCategory('Child Care'),
+              reducedCategory('House'),
+              reducedCategory('Education'),
+              reducedCategory('Enterteinment'),
+              reducedCategory('Others'),
             ],
             backgroundColor: [
-              colorAuto('regular'),
-              colorAuto('food'),
-              colorAuto('automobile'),
-              colorAuto('self care'),
-              colorAuto('children'),
-              colorAuto('home'),
-              colorAuto('education'),
-              colorAuto('enterteinment'),
-              colorAuto('other'),
+              colorAuto('Main Expenses'),
+              colorAuto('Food'),
+              colorAuto('Car'),
+              colorAuto('Self Care'),
+              colorAuto('Child Care'),
+              colorAuto('House'),
+              colorAuto('Education'),
+              colorAuto('Enterteinment'),
+              colorAuto('Others'),
             ],
           },
         ],
@@ -219,8 +219,8 @@ class Stats extends Component {
 }
 
 const mapStateToProps = state => ({
-  transactions: db,
-  // transactions: state.finance.data,
+  // transactions: db,
+  transactions: state.finance.data,
 });
 
 export default connect(
