@@ -65,6 +65,11 @@ const tokenDliaMarusi = (state = true, { type, payload }) => {
     case ActionTypes.SIGN_IN_SUCCESS:
     case ActionTypes.SIGN_UP_SUCCESS:
       return payload.response.token;
+    case ActionTypes.REFRESH_USER_SUCCESS:
+      return JSON.parse(localStorage.getItem('persist:root'))
+        .token.split('')
+        .filter(el => el !== '"')
+        .join('');
 
     case ActionTypes.LOGOUT_SUCCESS:
       return null;
