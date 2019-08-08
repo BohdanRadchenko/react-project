@@ -183,10 +183,6 @@ class Stats extends Component {
   // }
 
   render() {
-    // this.state.costsFilter.map(el =>
-    //   this.test(el.category, this.state.costsFilter),
-    // );
-
     const { search, items } = this.state;
     const filtredItems = filterItems(items, search.year, search.month);
     return (
