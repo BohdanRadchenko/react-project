@@ -64,10 +64,11 @@ class Dashboard extends Component {
 
   render() {
     const { items } = this.state;
+
     const balance = new Intl.NumberFormat('UAH', {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
-    }).format(stateSum(items).balance);
+    }).format(statisticsCount(items).balance);
     return (
       <div className={styles.container}>
         <div className={styles.leftSideBar}>
