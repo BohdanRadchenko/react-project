@@ -12,7 +12,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: 5px;
   }
 
   .balanceText {
@@ -42,7 +42,7 @@
     margin: 0px;
     margin-right: 2px;
     margin-left: 8px;
-    color: #74858b;
+    color: var(--NotSelectedPage_Balance_page);
   }
 
   .balanceValue {
@@ -55,7 +55,7 @@
 @media screen and (min-width: 1280px) {
   .balanceDiv {
     margin: 0 auto;
-    width: 312px;
+    width: 314px;
     height: 90px;
     background-color: var(--SidebarElemBGColor);
     display: flex;
