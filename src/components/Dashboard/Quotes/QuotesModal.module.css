@@ -1,0 +1,155 @@
+@import url('../../../styles/colors.css');
+
+@media screen and (min-width: 320px) {
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 24px;
+    max-width: 300px;
+    width: 80%;
+    background-color: #fff;
+    text-align: center;
+    border: 4px solid var(--SidebarElemBGColor);
+  }
+
+  .modalId {
+    background-color: var(--SidebarElemHoverColor);
+    color: #fff;
+    text-align: left;
+    width: 100%;
+    font-size: 10px;
+    padding: 10px;
+  }
+
+  .modalTitle {
+    background-color: var(--SidebarElemHoverColor);
+    color: #fff;
+    width: 100%;
+    padding: 4px;
+    padding-bottom: 30px;
+    font-size: 16px;
+  }
+
+  .modalText {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 24px;
+    max-width: 480px;
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    border: 4px solid var(--SidebarElemBGColor);
+  }
+
+  .modalId {
+    background-color: var(--SidebarElemHoverColor);
+    color: #fff;
+    text-align: left;
+    width: 100%;
+    font-size: 10px;
+    padding: 14px;
+  }
+
+  .modalTitle {
+    background-color: var(--SidebarElemHoverColor);
+    color: #fff;
+    width: 100%;
+    padding: 4px;
+    padding-bottom: 30px;
+    font-size: 18px;
+  }
+
+  .modalText {
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 24px;
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    text-align: center;
+    border: 4px solid var(--SidebarElemBGColor);
+  }
+
+  .modalId {
+    background-color: var(--SidebarElemHoverColor);
+    color: #fff;
+    text-align: left;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .modalTitle {
+    background-color: var(--SidebarElemHoverColor);
+    color: #fff;
+    width: 100%;
+    padding: 4px;
+    padding-bottom: 30px;
+    font-size: 20px;
+  }
+
+  .modalText {
+    padding: 10px;
+    font-size: 18px;
+  }
+}
