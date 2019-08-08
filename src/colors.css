@@ -1,0 +1,47 @@
+:root {
+  /* LogIn / Registration */
+  --ButtonColor_orange: #e18337;
+  --ModalBGColor: #f8faf7;
+  --BgColor: #f9fffc;
+  --InputsBG: #f9fbfb;
+  --InputsText: #dbe1e6;
+  /* MainPage */
+  --BGCol: #eaf4f2;
+  /* Header */
+  --BGColor: #ffffff;
+  --UserLogouttext: #7f8e94;
+  --WalletText: #282828;
+  /* Sidebar */
+  --SidebarElemBGColor: #284060;
+  --SidebarElemHoverColor: #3a5374;
+  --SidebarText: #ffffff;
+  /* Home */
+  --TableHeadGB: white;
+  --TableOddLineBG: #eaedef;
+  --TableEvenLineBG: #f3f6f6;
+  --TableText: black;
+  --TableSumSecomdColor: #f9b482;
+  --ModalButtonCol: #ff9344;
+  /* Add TransactionModal */
+  --HeadBG: #f3fafa;
+  --BG: #fffffe;
+  --DepositWithdrawNotActiveText: #f2f2f1;
+  --DepositWithdrawActiveText: #ffb57f;
+  --AddButtonBG: #415b7d;
+  --InputsOutline: #b9c9d4;
+
+  /* Tablet */
+  /* Home  */
+  /* Sidebar */
+  --SelectedPageText: #b9c9d4;
+  --NotSelectedPage_Balance_page: #a5b0b3;
+
+  /* Mobile */
+  --HeaderBG: #284060;
+  --HeaderText: #758397;
+  --ElementHeaderGB: #79879a;
+  --ElemnetHeaderText: white;
+
+  /* AddIncomePage */
+  --ButtonCol: #fc842c;
+}
