@@ -7,8 +7,6 @@ import Loader from '../Dashboard/Loader';
 import ProtectedComponent from '../Dashboard/hoc/PrivateRoute';
 
 // import ReactRouterPropTypes from 'react-router-prop-types';
-import Header from '../Header/Header';
-import styles from '../Header/Header.module.css';
 import { refreshUser } from '../../redux/session/sessionOperations';
 
 // import Modal from '../Modal/ModalContainer';
@@ -61,9 +59,9 @@ class App extends Component {
   render() {
     return (
       <>
-        <header className={styles.header}>
+        {/* <header className={styles.header}>
           <Header />
-        </header>
+        </header> */}
         <Switch>
           <Route path="/signup" component={AsyncSignUp} />
           <Route path="/signin" component={AsyncSignIn} />
