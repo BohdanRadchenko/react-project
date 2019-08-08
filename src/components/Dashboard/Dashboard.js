@@ -26,15 +26,15 @@ const AsyncStats = Loadable({
   delay: 200,
 });
 
-// const AsyncCurrencies = Loadable({
-//   loader: () =>
-//     import(
-//       '../../components/Dashboard/Currencies/Currencies' /* webpackChunkName: "currencies-page" */
-//     ),
-//   loading: Loader,
-//   timeout: 10000,
-//   delay: 200,
-// });
+const AsyncCurrencies = Loadable({
+  loader: () =>
+    import(
+      '../../components/Dashboard/Currencies/Currencies' /* webpackChunkName: "currencies-page" */
+    ),
+  loading: Loader,
+  timeout: 10000,
+  delay: 200,
+});
 
 class Dashboard extends Component {
   state = {
@@ -64,6 +64,7 @@ class Dashboard extends Component {
           <Switch>
             <Route path="/dashboard/home" component={AsyncHome} />
             <Route path="/dashboard/stats" component={AsyncStats} />
+            <Route path="/dashboard/currencies" component={AsyncCurrencies} />
             <Redirect to="/dashboard/home" />
           </Switch>
         </div>

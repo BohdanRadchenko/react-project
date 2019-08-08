@@ -19,7 +19,7 @@ const Navigations = () => {
         />
         <p className={Styles.navText}>Статистика</p>
       </NavLink>
-      <NavLink to="/currencies">
+      <NavLink to="/dashboard/currencies">
         <button
           type="button"
           className={`${Styles.navLinkBtn} ${Styles.navLinkBtnCurr}`}
