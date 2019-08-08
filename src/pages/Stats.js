@@ -33,20 +33,20 @@ class Stats extends Component {
     });
   }
 
-  getSelectMonth = ({ value }) => {
+  getSelectMonth = options => {
     this.setState(state => ({
-      search: Object.assign(state.search, { month: value }),
+      search: Object.assign(state.search, { month: options.value }),
     }));
   };
 
-  getSelectYears = ({ value }) => {
+  getSelectYears = options => {
     this.setState(state => ({
-      search: Object.assign(state.search, { year: value }),
+      search: Object.assign(state.search, { year: options.value }),
     }));
   };
 
   render() {
-    const { search, items } = this.state;
+    const { search, items, selectedOption } = this.state;
     const filtredItems = filterItems(items, search.year, search.month);
     return (
       <div className={styles.container}>
@@ -58,11 +58,13 @@ class Stats extends Component {
           <div className={styles.innerSelectMonth}>
             <StatsSelect
               options={OptionsMonth}
+              label={'Month'}
               handleSelect={this.getSelectMonth}
             />
           </div>
           <div className={styles.innerSelectYear}>
             <StatsSelect
+              label={'Year'}
               options={OptionsYears}
               handleSelect={this.getSelectYears}
             />
