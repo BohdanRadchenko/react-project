@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 import * as nameSelector from '../../redux/session/sessionSelectors';
 import { signOut } from '../../redux/session/sessionOperations';
@@ -12,10 +13,12 @@ const iconLogout = require('./Img/exit.svg');
 const UserLog = ({ user, onLogOut }) => (
   <>
     <div className={styles.headerLogo}>
-      <img src={logo} alt="logo" className={styles.logo} />
-      <div className={styles.headerText}>
-        <p>Wallet</p>
-      </div>
+      <Link to="/home" className={styles.headerLogoLink}>
+        <img src={logo} alt="logo" className={styles.logo} />
+        <div className={styles.headerText}>
+          <p>Wallet</p>
+        </div>
+      </Link>
     </div>
     <div className={styles.headerName}>
       <p className={styles.headerUser}>{user}</p>

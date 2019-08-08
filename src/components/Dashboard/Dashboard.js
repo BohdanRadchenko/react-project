@@ -77,7 +77,6 @@ class Dashboard extends Component {
       <div className={styles.container}>
         <div className={styles.leftSideBar}>
           <SideBar balance={balance} />
-          <Currencies />
         </div>
         <div className={styles.rightSideBar}>
           {/* <Home /> */}
