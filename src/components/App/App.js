@@ -7,7 +7,7 @@ import Currencies from '../Dashboard/Currencies/Currencies';
 import styles from '../Header/Header.module.css';
 import { refreshUser } from '../../redux/session/sessionOperations';
 // import Modal from '../Modal/ModalContainer';
-import Home from '../Home/Home';
+// import Home from '../Home/Home';
 
 class App extends Component {
   static propTypes = {
@@ -27,7 +27,7 @@ class App extends Component {
         </header>
         <Dashboard />
         <Currencies />
-        <Home />
+        {/* <Home /> */}
         {/* <Modal /> */}
       </>
     );
