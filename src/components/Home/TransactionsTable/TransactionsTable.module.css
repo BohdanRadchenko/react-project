@@ -1,5 +1,5 @@
 .table {
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   background-color: #fff;
   width: 100%;
   margin: 0;
@@ -7,18 +7,22 @@
   border-collapse: collapse;
   border-spacing: 0;
   color: #3f4040;
+  font-family: sans-serif;
+  font-size: 11px;
 }
 
 .incColor {
-  color: #7e8c9e;
+  color: #415b7d;
+  font-weight: 800;
 }
 
 .conColor {
   color: #dd881f;
+  font-weight: 800;
 }
 
 .tr {
-  padding: 5px;
+  padding: 10px;
 }
 
 tr:nth-last-child(even) {
@@ -27,7 +31,7 @@ tr:nth-last-child(even) {
 
 .th,
 .td {
-  padding: 10px;
+  padding: 15px;
   text-align: center;
 }
 
@@ -37,32 +41,20 @@ tr:nth-last-child(even) {
   letter-spacing: 1px;
 }
 
-@media screen and (min-width: 768px) {
-  .container {
-    margin: 0 auto;
-    width: 100%;
-    height: auto;
-    overflow-y: scroll;
-  }
-  .th,
-  .td {
-    padding: 20px;
-  }
-}
-
 @media screen and (max-width: 768px) {
   .container {
     position: relative;
-    width: 320px;
     margin: 0 auto;
-    height: 400px;
-    overflow-y: scroll;
+    height: 500px;
+    width: 320px;
+    /* background-color: #424242; */
+    overflow-y: auto;
   }
 
   .table {
     margin-top: 40px;
-    border: none;
-    width: 300px;
+    /* border: none; */
+    width: 306px;
   }
 
   .thead {
@@ -78,11 +70,11 @@ tr:nth-last-child(even) {
   }
 
   .inc {
-    border-left: 5px solid #7e8c9e;
+    border-left: 7px solid #7e8c9e;
   }
 
   .con {
-    border-left: 5px solid #dd881f;
+    border-left: 7px solid #dd881f;
   }
 
   .tr:nth-last-child(even) {
@@ -91,6 +83,10 @@ tr:nth-last-child(even) {
 
   td:nth-last-child(even) {
     background-color: #f3f6f6;
+  }
+
+  .tr {
+    /* padding: 10px; */
   }
 
   .td {
@@ -111,18 +107,34 @@ tr:nth-last-child(even) {
   }
 }
 
+@media screen and (min-width: 768px) {
+  .container {
+    width: 706px;
+    height: 500px;
+    overflow-y: auto;
+  }
+  .th,
+  .td {
+    padding: 20px;
+  }
+}
+
 @media screen and (min-width: 1200px) {
   .container {
-    margin: 0 auto;
-    width: 883px;
-    height: auto;
-    overflow-y: scroll;
+    width: 854px;
+    height: 500px;
+    overflow-y: auto;
   }
-  .table {
+  .thead {
     background-color: #fff;
+  }
+
+  .table {
+    background-color: #f2f4ee;
     width: 100%;
     margin: 0;
     padding: 0;
     color: #3f4040;
+    font-size: 13px;
   }
 }
