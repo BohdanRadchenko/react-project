@@ -44,8 +44,8 @@ class Currencies extends React.Component {
                 return (
                   <tr key={el.ccy} className={style.currTr}>
                     <th>{el.ccy}</th>
-                    <th>{Number(el.buy).toFixed(2)}</th>
-                    <th>{Number(el.sale).toFixed(2)}</th>
+                    <th>{Number(el.buy).toFixed(3)}</th>
+                    <th>{Number(el.sale).toFixed(3)}</th>
                   </tr>
                 );
               })}
