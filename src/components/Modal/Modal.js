@@ -14,8 +14,8 @@ toast.configure();
 
 export default class Modal extends Component {
   state = {
-    isCost: false,
-    type: transactions.INCOME,
+    isCost: true,
+    type: transactions.COST,
     amount: '',
     comments: '',
     date: new Date(),
