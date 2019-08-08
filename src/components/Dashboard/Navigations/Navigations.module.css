@@ -1,0 +1,109 @@
+/*eslint-disable*/
+.nav {
+  width: 320px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #3a5374;
+}
+
+.navLink {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 13px;
+  text-decoration: none;
+}
+
+.navText {
+  display: none;
+  margin: 0;
+  padding-top: 9px;
+}
+
+.navLinkBtn {
+  width: 30px;
+  height: 25px;
+  padding: 0;
+  background-color: #2a4262;
+  border: none;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.navLinkBtn:focus {
+  background-color: #66778e;
+}
+
+.navLinkBtnHome {
+  background-image: url('../../../Assets/PNG/home/home.svg');
+}
+
+.navLinkBtnHome:focus {
+  background-image: url('../../../Assets/PNG/home/homeFocus.svg');
+}
+
+.navLinkBtnStats {
+  background-image: url('../../../Assets/PNG/diagrams/lineChart.svg');
+}
+
+.navLinkBtnStats:focus {
+  background-image: url('../../../Assets/PNG/diagrams/lineChartFocus.svg');
+}
+
+.navLinkBtnCurr {
+  background-image: url('../../../Assets/PNG/currency/dollarSymbol.svg');
+}
+
+.navLinkBtnCurr:focus {
+  background-image: url('../../../Assets/PNG/currency/dollarSymbolFocus.svg');
+}
+
+@media screen and (min-width: 768px) {
+  .nav {
+    margin: 0 auto;
+    background-color: transparent;
+  }
+  .navLink {
+    margin-right: 34px;
+    position: relative;
+  }
+  .navLink::after {
+    content: '|';
+    font-size: 25px;
+    color: #a0aab9;
+    position: absolute;
+    right: -22px;
+    bottom: -4px;
+  }
+  .navLink:focus .navText {
+    color: #3a5374;
+  }
+  .navText {
+    display: block;
+    font-size: 15px;
+    color: #a0aab9;
+  }
+  /* .navText:focus {
+    color: #3a5374;
+  } */
+  .navLinkBtn {
+    background-color: transparent;
+    margin-right: 14px;
+  }
+  .navLinkBtn:focus {
+    background-color: transparent;
+  }
+  .navLinkBtnHome:focus {
+    background-image: url('../../../Assets/PNG/home/homeTabletFocus.svg');
+  }
+  .navLinkBtnStats:focus {
+    background-image: url('../../../Assets/PNG/diagrams/lineChartTabletFocus.svg');
+  }
+  .navLinkBtnCurr {
+    display: none;
+  }
+}
