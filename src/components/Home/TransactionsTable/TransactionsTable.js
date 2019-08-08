@@ -2,11 +2,27 @@
 
 import React from 'react';
 import styles from './TransactionsTable.module.css';
+// import AddButton from '../AddButton/AddButton'
 
-const substring = str => {
-  const newStr = String(str);
-  return newStr.substr(0, 8);
+// const substring = str => {
+//   const newStr = String(str);
+//   return newStr.substr(0, 8);
+// };
+
+const getMonth = month => {
+  switch (month) {
+    case 'May':
+      return '01';
+    case month === 'sfsf':
+      return '02';
+    case month === 'fsfs':
+      return '03';
+    default:
+      return 'Hello';
+  }
 };
+
+// console.log(getMonth('May'));
 
 const styleByType = {
   classBase: styles.tr,
@@ -16,6 +32,19 @@ const styleByType = {
   conColor: styles.conColor,
   amount: styles.td,
 };
+
+const date = date => {
+  const newDate = new Date(date);
+  const dateRes = String(newDate);
+  const month = dateRes.substr(4, 3);
+  const day = dateRes.substr(8, 2);
+  const year = dateRes.substr(10, 5);
+  const yearRes = year.substr(1);
+  const result = `${day}.${getMonth(month)}.${yearRes}`;
+  return result;
+};
+
+console.log(date(1557904270000));
 
 const TransactionHistory = ({ items }) => {
   return (
@@ -43,7 +72,7 @@ const TransactionHistory = ({ items }) => {
                 }
               >
                 <td className={styles.td} data-label="Date">
-                  {substring(item.date)}
+                  {date(1557904270000)}
                 </td>
                 <td className={styles.td} data-label="Type">
                   {item.type}
