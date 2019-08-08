@@ -1,7 +1,8 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import 'chartjs-plugin-labels';
-/*eslint-disable*/
+import PropTypes from 'prop-types';
+
 const options = {
   plugins: {
     labels: [
@@ -24,5 +25,21 @@ const options = {
   },
 };
 
-const Chart = props => <Pie data={props.items} options={options} />;
+const Chart = props => {
+  const { items } = props;
+  return <Pie data={items} options={options} />;
+};
 export default Chart;
+
+Chart.defaultProps = { items: {} };
+Chart.propTypes = {
+  items: PropTypes.shape({
+    labels: PropTypes.arrayOf,
+    datasets: PropTypes.arrayOf(
+      PropTypes.shape({
+        data: PropTypes.arrayOf,
+        backgroundColor: PropTypes.arrayOf,
+      }),
+    ),
+  }),
+};

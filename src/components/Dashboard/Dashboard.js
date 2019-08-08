@@ -44,6 +44,16 @@ const AsyncSignIn = Loadable({
   delay: 200,
 });
 
+const AsyncCurrencies = Loadable({
+  loader: () =>
+    import(
+      '../../components/Dashboard/Currencies/Currencies' /* webpackChunkName: "currencies-page" */
+    ),
+  loading: Loader,
+  timeout: 10000,
+  delay: 200,
+});
+
 class Dashboard extends Component {
   state = {
     items: [],
@@ -58,7 +68,11 @@ class Dashboard extends Component {
 
   render() {
     const { items } = this.state;
-    const balance = statisticsCount(items).balance;
+
+    const balance = new Intl.NumberFormat('UAH', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(statisticsCount(items).balance);
     return (
       <div className={styles.container}>
         <div className={styles.leftSideBar}>
@@ -72,6 +86,10 @@ class Dashboard extends Component {
             <Route path="/signup" component={AsyncSignUp} />
             <Route path="/signin" component={AsyncSignIn} />
             <ProtectedComponent path="/stats" component={AsyncStats} />
+            <ProtectedComponent
+              path="/currencies"
+              component={AsyncCurrencies}
+            />
             <Redirect to="/" />
           </Switch>
         </div>

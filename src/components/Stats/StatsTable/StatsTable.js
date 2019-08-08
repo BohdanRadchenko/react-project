@@ -1,40 +1,63 @@
 import React from 'react';
+import ReactTable from 'react-table';
 import PropTypes from 'prop-types';
+import './StatsTable.css';
 
-const StatsTable = ({ items }) => {
+// const a = [
+//   // { category: 'education', amount: 522 },
+//   // { category: 'home', amount: 420 },
+//   // { category: 'self care', amount: 499 },
+//   // { category: 'enterteinment', amount: 563 },
+//   // { category: 'food', amount: 526 },
+//   // { category: 'education', amount: 563 },
+//   // { category: 'other', amount: 888 },
+//   // { category: 'education', amount: 563 },
+//   // { category: 'education', amount: 522 },
+//   // { category: 'home', amount: 420 },
+//   { category: 'self care', amount: 499 },
+//   // { category: 'enterteinment', amount: 563 },
+//   { category: 'food', amount: 526 },
+//   // { category: 'education', amount: 563 },
+//   { category: 'other', amount: 888 },
+//   // { category: 'education', amount: 563 },
+// ];
+
+const DiagramTable = props => {
+  const { items } = props;
   return (
-    <ul>
-      {items.map(el => (
-        <li key={el.id}>
-          <p>amount: {el.amount}</p>
-          <p>balanceAfter: {el.balanceAfter}</p>
-          <p>category: {el.category}</p>
-          <p>comments: {el.comments}</p>
-          <p>data: {el.data}</p>
-          <p>isAmountNull: {el.isAmountNull}</p>
-          <p>type: {el.type}</p>
-        </li>
-      ))}
-    </ul>
+    <>
+      <ReactTable
+        key={items.length}
+        data={items.reverse()}
+        columns={[
+          {
+            Header: 'Category',
+            accessor: 'category',
+          },
+          {
+            Header: 'Amount',
+            accessor: 'amount',
+          },
+        ]}
+        defaultPageSize={items.length}
+        showPagination={false}
+        filtered={[]}
+        onClick={() => null}
+      />
+    </>
   );
 };
 
-StatsTable.defaultProps = {
+export default DiagramTable;
+
+DiagramTable.defaultProps = {
   items: [],
 };
-
-StatsTable.propTypes = {
+DiagramTable.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      amount: PropTypes.number,
-      balanceAfter: PropTypes.number,
-      category: PropTypes.string,
-      comments: PropTypes.string,
-      data: PropTypes.string,
-      isAmountNull: PropTypes.bool,
-      type: PropTypes.string,
+      category: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
     }),
   ),
 };
-
-export default StatsTable;

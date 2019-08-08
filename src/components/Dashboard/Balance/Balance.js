@@ -10,7 +10,7 @@ const Balance = ({ balance }) => (
 );
 
 Balance.propTypes = {
-  balance: PropTypes.number.isRequired,
+  balance: PropTypes.string.isRequired,
 };
 
 export default Balance;

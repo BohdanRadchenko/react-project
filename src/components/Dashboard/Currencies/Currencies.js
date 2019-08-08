@@ -35,8 +35,8 @@ class Currencies extends React.Component {
         <table className={style.history}>
           <thead>
             <tr className={style.historyTr}>
-              <th>Сurrency</th>
-              <th>Purchase</th>
+              <th>Currency</th>
+              <th>Buy</th>
               <th>Sale</th>
             </tr>
           </thead>
@@ -46,8 +46,8 @@ class Currencies extends React.Component {
                 return (
                   <tr key={el.ccy} className={style.currTr}>
                     <th>{el.ccy}</th>
-                    <th>{Number(el.buy).toFixed(2)}</th>
-                    <th>{Number(el.sale).toFixed(2)}</th>
+                    <th>{Number(el.buy).toFixed(4)}</th>
+                    <th>{Number(el.sale).toFixed(4)}</th>
                   </tr>
                 );
               })}
