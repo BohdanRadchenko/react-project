@@ -73,6 +73,7 @@
     padding: 0px;
     display: block;
     width: 98%;
+    height: 680px;
     margin-left: auto;
     background-color: #ffffff;
     border-radius: 6px;
@@ -121,15 +122,15 @@
 
   .innerDiagramContainer {
     width: 54%;
-    padding-top: 80px;
+    padding-top: 30px;
     position: relative;
   }
 
   .innerDiagram {
     position: absolute;
     left: 40px;
-    width: 400px;
-    height: 460px;
+    width: 340px;
+    height: 480px;
   }
 
   .total {

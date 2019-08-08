@@ -32,30 +32,32 @@ class Stats extends Component {
       ],
     },
   };
+
   colorSwitch = value => {
     switch (value) {
       case 'Category':
         return 'transparent';
-      case 'regular':
+      case 'Main Expenses':
         return '#ECB22A';
-      case 'food':
+      case 'Food':
         return '#E28B20';
-      case 'automobile':
+      case 'Car':
         return '#D25925';
-      case 'self care':
+      case 'Self Care':
         return '#67B7D0';
-      case 'children':
+      case 'Child Care':
         return '#5593D7';
-      case 'home':
+      case 'House':
         return '#3E6BA8';
-      case 'education':
+      case 'Education':
         return '#9CC254';
-      case 'enterteinment':
+      case 'Enterteinment':
         return '#73AD57';
-      case 'other':
+      case 'Others':
         return '#507C3A';
     }
   };
+
   componentDidMount() {
     const transactions = this.props.transactions;
     const filteredCost = transactions
@@ -64,33 +66,64 @@ class Stats extends Component {
         category: `${el.category}`,
         amount: el.amount,
       }));
+    const reducedCategory = value =>
+      filteredCost
+        .filter(el => el.category === value)
+        .map(el => el.amount)
+        .reduce(function(result, num) {
+          return result + num;
+        }, 0);
+    const colorAuto = value => this.colorSwitch(value);
+    const labels = value => {
+      if (filteredCost.map(el => el.category === value)) {
+        return value;
+      } else {
+        ('');
+      }
+    };
 
     this.setState({
       items: [...this.props.transactions],
       balance: statisticsCount(transactions).balance,
       deposits: statisticsCount(transactions).deposits,
       withdrow: statisticsCount(transactions).withdrow,
-      costsFilter: [
-        ...transactions
-          .filter(el => el.type === '-')
-          .map(el => ({
-            category: `${el.category}`,
-            amount: el.amount,
-          })),
-      ],
+      costsFilter: [...filteredCost],
       chart: {
-        labels: [...new Set(filteredCost.map(el => el.category))],
+        labels: [
+          labels('Main Expenses'),
+          labels('Food'),
+          labels('Car'),
+          labels('Self Care'),
+          labels('Child Care'),
+          labels('House'),
+          labels('Education'),
+          labels('Enterteinment'),
+          labels('Others'),
+        ],
+
         datasets: [
           {
             data: [
-              ...new Set(
-                filteredCost.map(el =>
-                  this.reduceSwitcher(el.category, filteredCost),
-                ),
-              ),
+              reducedCategory('Main Expenses'),
+              reducedCategory('Food'),
+              reducedCategory('Car'),
+              reducedCategory('Self Care'),
+              reducedCategory('Child Care'),
+              reducedCategory('House'),
+              reducedCategory('Education'),
+              reducedCategory('Enterteinment'),
+              reducedCategory('Others'),
             ],
             backgroundColor: [
-              ...new Set(filteredCost.map(el => this.colorSwitch(el.category))),
+              colorAuto('Main Expenses'),
+              colorAuto('Food'),
+              colorAuto('Car'),
+              colorAuto('Self Care'),
+              colorAuto('Child Care'),
+              colorAuto('House'),
+              colorAuto('Education'),
+              colorAuto('Enterteinment'),
+              colorAuto('Others'),
             ],
           },
         ],
@@ -110,34 +143,6 @@ class Stats extends Component {
       }
     }
   }
-
-  reduceSwitcher = (category, arr) => {
-    const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    const categoryReducer = arr
-      .filter(el => el.category === category)
-      .map(el => el.amount)
-      .reduce(reducer);
-    switch (category) {
-      case 'regular':
-        return categoryReducer;
-      case 'food':
-        return categoryReducer;
-      case 'automobile':
-        return categoryReducer;
-      case 'self care':
-        return categoryReducer;
-      case 'children':
-        return categoryReducer;
-      case 'home':
-        return categoryReducer;
-      case 'education':
-        return categoryReducer;
-      case 'enterteinment':
-        return categoryReducer;
-      case 'other':
-        return categoryReducer;
-    }
-  };
 
   getSelectMonth = options => {
     this.setState(state => ({
@@ -214,8 +219,8 @@ class Stats extends Component {
 }
 
 const mapStateToProps = state => ({
-  transactions: db,
-  // transactions: state.finance.data,
+  // transactions: db,
+  transactions: state.finance.data,
 });
 
 export default connect(
