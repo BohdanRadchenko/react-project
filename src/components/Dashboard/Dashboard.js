@@ -8,7 +8,7 @@ import SideBar from './Sidebar/Sidebar';
 import db from '../../db.json';
 import statisticsCount from '../../helpers/statisticsCount';
 import styles from './Dashboard.module.css';
-import ProtectedComponent from './hoc/PrivateRoute';
+// import ProtectedComponent from './hoc/PrivateRoute';
 // import PrivateRoute from './PrivateRoute';
 
 const AsyncHome = Loadable({
@@ -26,31 +26,15 @@ const AsyncStats = Loadable({
   delay: 200,
 });
 
-const AsyncSignUp = Loadable({
-  loader: () =>
-    import('../../pages/SignUpPage' /* webpackChunkName: "signUp-page" */),
-  loading: Loader,
-  timeout: 10000,
-  delay: 200,
-});
-
-const AsyncSignIn = Loadable({
-  loader: () =>
-    import('../../pages/SignInPage' /* webpackChunkName: "signIn-page" */),
-  loading: Loader,
-  timeout: 10000,
-  delay: 200,
-});
-
-const AsyncCurrencies = Loadable({
-  loader: () =>
-    import(
-      '../../components/Dashboard/Currencies/Currencies' /* webpackChunkName: "currencies-page" */
-    ),
-  loading: Loader,
-  timeout: 10000,
-  delay: 200,
-});
+// const AsyncCurrencies = Loadable({
+//   loader: () =>
+//     import(
+//       '../../components/Dashboard/Currencies/Currencies' /* webpackChunkName: "currencies-page" */
+//     ),
+//   loading: Loader,
+//   timeout: 10000,
+//   delay: 200,
+// });
 
 class Dashboard extends Component {
   state = {
@@ -78,15 +62,9 @@ class Dashboard extends Component {
         </div>
         <div className={styles.rightSideBar}>
           <Switch>
-            <ProtectedComponent path="/" exact component={AsyncHome} />
-            <Route path="/signup" component={AsyncSignUp} />
-            <Route path="/signin" component={AsyncSignIn} />
-            <ProtectedComponent path="/stats" component={AsyncStats} />
-            <ProtectedComponent
-              path="/currencies"
-              component={AsyncCurrencies}
-            />
-            <Redirect to="/" />
+            <Route path="/dashboard/home" component={AsyncHome} />
+            <Route path="/dashboard/stats" component={AsyncStats} />
+            <Redirect to="/dashboard/home" />
           </Switch>
         </div>
       </div>

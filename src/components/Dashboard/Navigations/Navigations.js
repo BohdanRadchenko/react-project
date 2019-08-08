@@ -5,14 +5,14 @@ import Styles from './Navigations.module.css';
 const Navigations = () => {
   return (
     <div className={Styles.nav}>
-      <NavLink to="/home" exact className={Styles.navLink}>
+      <NavLink to="/dashboard/home" exact className={Styles.navLink}>
         <button
           type="button"
           className={`${Styles.navLinkBtn} ${Styles.navLinkBtnHome}`}
         />
         <p className={Styles.navText}>Главная</p>
       </NavLink>
-      <NavLink to="/stats" className={Styles.navLink}>
+      <NavLink to="/dashboard/stats" className={Styles.navLink}>
         <button
           type="button"
           className={`${Styles.navLinkBtn} ${Styles.navLinkBtnStats}`}
