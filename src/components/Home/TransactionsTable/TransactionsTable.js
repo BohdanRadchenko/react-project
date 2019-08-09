@@ -64,16 +64,14 @@ const filterAmount = n => {
     const n = result.substring(0, from);
 
     if (newstr.length === 2) {
-      newResult = `${n + newstr}0`;
+      return (newResult = `${n + newstr}0`);
     } else {
-      newResult = `${n + newstr}`;
+      return (newResult = `${n + newstr}`);
     }
   } else {
     return `${result}.00`;
   }
 };
-
-filterAmount(1007057);
 
 const TransactionsTable = ({ items }) => {
   return (
