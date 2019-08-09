@@ -71,6 +71,7 @@ class Stats extends Component {
   };
 
   render() {
+    const { items } = this.state;
     return (
       <div className={styles.container}>
         <div className={styles.innerTitle}>
@@ -100,7 +101,7 @@ class Stats extends Component {
               </div>
               <div className={styles.innerSelectYear}>
                 <StatsSelect
-                  options={OptionsYears}
+                  options={OptionsYears(items)}
                   handleSelect={this.getSelectYears}
                   label={'Year'}
                 />
