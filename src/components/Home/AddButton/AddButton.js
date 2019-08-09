@@ -1,5 +1,5 @@
-/*eslint-disable*/
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './AddButton.module.css';
 
 const AddButton = ({ onOpen }) => (
@@ -7,5 +7,9 @@ const AddButton = ({ onOpen }) => (
     +
   </button>
 );
+
+AddButton.propTypes = {
+  onOpen: PropTypes.func.isRequired,
+};
 
 export default AddButton;

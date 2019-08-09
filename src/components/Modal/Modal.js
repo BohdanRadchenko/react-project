@@ -30,6 +30,8 @@ export default class Modal extends Component {
     window.addEventListener('keydown', this.handleKeyPress);
   }
 
+  // little comment
+
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyPress);
   }
