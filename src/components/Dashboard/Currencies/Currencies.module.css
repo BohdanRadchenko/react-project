@@ -50,18 +50,6 @@
   bottom: 0; */
 }
 
-@media (max-width: 1197px) {
-  .form {
-    width: 350px;
-    height: 190px;
-    /* background-image: none; */
-  }
-
-  .historyTr {
-    font-size: 11px;
-  }
-}
-
 @media (max-width: 767px) {
   .bgi {
     background-image: url('../../../assets/img/bg.png');
@@ -76,5 +64,17 @@
     width: 100%;
     background-image: url('../../../assets/img/bg.png');
     background-position-y: 100%;
+  }
+}
+
+@media (max-width: 1192px) {
+  .form {
+    width: 350px;
+    height: 190px;
+    /* background-image: none; */
+  }
+
+  .historyTr {
+    font-size: 11px;
   }
 }
