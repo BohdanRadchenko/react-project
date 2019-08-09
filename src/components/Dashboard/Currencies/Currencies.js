@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import style from './Currencies.module.css';
 import Loaders from './loaders';
 
@@ -16,13 +16,12 @@ class Currencies extends React.Component {
   }
 
   getCurrencies = () => {
-    this.setState({
-      wait: true,
-    });
-    axios
-      .get(API)
-      .then(response =>
-        this.setState({ currencies: response.data, wait: false }),
+    fetch(API)
+      .then(response => response.json())
+      .then(data =>
+        this.setState({
+          currencies: data,
+        }),
       );
   };
 
@@ -32,29 +31,27 @@ class Currencies extends React.Component {
     return (
       <div className={style.form}>
         {wait && <Loaders />}
-        {!wait && (
-          <table className={style.history}>
-            <thead>
-              <tr className={style.historyTr}>
-                <th>Currency</th>
-                <th>Buy</th>
-                <th>Sale</th>
-              </tr>
-            </thead>
-            <tbody className={style.tBody}>
-              {!wait &&
-                curr.map(el => {
-                  return (
-                    <tr key={el.ccy} className={style.currTr}>
-                      <th>{el.ccy}</th>
-                      <th>{Number(el.buy).toFixed(4)}</th>
-                      <th>{Number(el.sale).toFixed(4)}</th>
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </table>
-        )}
+        <table className={style.history}>
+          <thead>
+            <tr className={style.historyTr}>
+              <th>Currency</th>
+              <th>Buy</th>
+              <th>Sale</th>
+            </tr>
+          </thead>
+          <tbody className={style.tBody}>
+            {!wait &&
+              curr.map(el => {
+                return (
+                  <tr key={el.ccy} className={style.currTr}>
+                    <th>{el.ccy}</th>
+                    <th>{Number(el.buy).toFixed(2)}</th>
+                    <th>{Number(el.sale).toFixed(2)}</th>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
       </div>
     );
   }
