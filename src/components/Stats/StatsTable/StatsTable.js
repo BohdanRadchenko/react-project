@@ -20,6 +20,14 @@ const DiagramTable = props => {
         amount: el.amount,
       })),
     );
+  const a = type =>
+    Object.assign(
+      [],
+      filterBy(type).map(el => ({
+        category: el.category,
+        amount: el.amount,
+      })),
+    );
 
   const withdrawTotal = data('-')
     .map(el => el.amount)
@@ -60,15 +68,15 @@ const DiagramTable = props => {
         </div>
         <div className={styles.containerAmount}>
           <p className={styles.costsTotal}>
-            {new Intl.NumberFormat('ru', {
+            {new Intl.NumberFormat('en', {
               style: 'currency',
-              currency: 'USD',
+              currency: 'UAH',
             }).format(withdrawTotal)}
           </p>
           <p className={styles.incomeTotal}>
-            {new Intl.NumberFormat('ru', {
+            {new Intl.NumberFormat('en', {
               style: 'currency',
-              currency: 'USD',
+              currency: 'UAH',
             }).format(depositsTotal)}
           </p>
         </div>
