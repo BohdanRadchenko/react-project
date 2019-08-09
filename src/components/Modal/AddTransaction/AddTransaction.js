@@ -1,45 +1,25 @@
-import React, { Component, createRef } from 'react';
+/*eslint-disable*/
+import React, { Component, createRef, useState } from 'react';
 import Media from 'react-media';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import NumericInput from 'react-numeric-input';
+import InputNumber from 'react-input-number';
 import DatePicker from 'react-date-picker/dist/entry.nostyle';
 import { categories, transactions } from '../../../constans/modalConstants';
 import styles from '../Modal.module.css';
-
-const inputStyles = { style: false };
 
 export default class AddTransaction extends Component {
   state = {};
 
   btnRef = createRef();
 
-  static propTypes = {
-    amount: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
-    isCost: PropTypes.bool.isRequired,
-    comments: PropTypes.string.isRequired,
-    category: PropTypes.shapeOf({
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    }).isRequired,
-    date: PropTypes.shape(PropTypes.any).isRequired,
-    handleRadioChange: PropTypes.func.isRequired,
-    handleAmountInput: PropTypes.func.isRequired,
-    handleSelectChange: PropTypes.func.isRequired,
-    handleDateChange: PropTypes.func.isRequired,
-    handleTextareaInput: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    handleClose: PropTypes.func.isRequired,
-  };
-
   render() {
+    // const [num, setNum] = useState(Number(0).toFixed(2));
     const {
       amount,
       type,
       isCost,
       comments,
-      category,
       date,
       handleRadioChange,
       handleAmountInput,
@@ -57,7 +37,6 @@ export default class AddTransaction extends Component {
             query="(max-width: 766px)"
             render={() => (
               <button
-                type="button"
                 className={styles.backBtn}
                 refs={this.btnRef}
                 onClick={handleClose}
@@ -71,13 +50,13 @@ export default class AddTransaction extends Component {
             <div className={styles.innerRadioDiv}>
               <input
                 type="radio"
-                id="incomeID"
+                id="income"
                 name="transaction"
                 checked={type === transactions.INCOME}
                 onChange={handleRadioChange}
                 className={styles.radio}
               />
-              <label htmlFor="incomeID">Income</label>
+              <label htmlFor="income">Income</label>
             </div>
             |
             <div className={styles.innerRadioDiv}>
@@ -94,7 +73,6 @@ export default class AddTransaction extends Component {
           </div>
           {isCost && (
             <Select
-              value={category}
               className={styles.select}
               options={categories}
               onChange={handleSelectChange}
@@ -102,17 +80,23 @@ export default class AddTransaction extends Component {
             />
           )}
           <div className={styles.inputsDiv}>
-            <NumericInput
-              // style={false}
-              {...inputStyles}
-              className="form-control"
+            {/* <input
+              name="amount"
+              type="number"
+              value={Number(amount).toFixed(2)}
+              // step={0.01}
               min={0}
-              precision={2}
+              onChange={handleTextChange}
+              className={`${styles.input} ${styles.amountInput}`}
+              required
+            /> */}
+            <InputNumber
+              name="amount"
+              min={0}
               value={amount}
               onChange={handleAmountInput}
-              require="true"
-              strict
-              maxLength={13}
+              enableMobileNumericKeyboard
+              required
             />
             <DatePicker
               value={date}
@@ -126,6 +110,7 @@ export default class AddTransaction extends Component {
           </div>
           <h2 className={styles.comment}>Comment</h2>
           <textarea
+            name="comments"
             cols="20"
             rows="2"
             value={comments}
@@ -143,3 +128,7 @@ export default class AddTransaction extends Component {
     );
   }
 }
+
+AddTransaction.propTypes = {
+  amount: PropTypes.string.isRequired,
+};
