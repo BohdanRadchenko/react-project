@@ -123,7 +123,7 @@ class SignUp extends Component {
               <div className="input-feedback">{errors.name}</div>
             )}
             <button className={style.signInButton} type="submit">
-              Регистация
+              Sign up
             </button>
             <p>{errorMessage}</p>
           </form>

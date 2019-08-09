@@ -110,7 +110,7 @@ class SignIn extends Component {
               <div className="input-feedback">{errors.password}</div>
             )}
             <button className={style.signInButton} type="submit">
-              Войти
+              Sign in
             </button>
             <p>{errorMessage}</p>
           </form>
