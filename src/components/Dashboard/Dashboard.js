@@ -93,7 +93,12 @@ class Dashboard extends Component {
             <Switch>
               <Route path="/dashboard/home" component={AsyncHome} />
               <Route path="/dashboard/stats" component={AsyncStats} />
-              <Route path="/dashboard/currencies" component={AsyncCurrencies} />
+              <div className={css.AsyncCurrencies}>
+                <Route
+                  path="/dashboard/currencies"
+                  component={AsyncCurrencies}
+                />
+              </div>
               <Redirect to="/dashboard/home" />
             </Switch>
           </div>
