@@ -50,11 +50,11 @@
   bottom: 0; */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1197px) {
   .form {
     width: 350px;
     height: 190px;
-    background-image: none;
+    /* background-image: none; */
   }
 
   .historyTr {
@@ -62,11 +62,17 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 767px) {
   .form {
     height: 100%;
     width: 100%;
     background-image: url('../../../assets/img/bg.png');
     background-position-y: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1197px) {
+  .form {
+    background-image: none;
   }
 }
