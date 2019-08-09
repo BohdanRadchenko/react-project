@@ -12,7 +12,6 @@
     justify-content: center;
     align-items: center;
     z-index: 999;
-    overflow: hidden;
   }
 
   .modal {
@@ -41,14 +40,9 @@
     background-color: var(--SidebarElemHoverColor);
     color: #fff;
     width: 100%;
-    padding: 4px;
+    padding: 10px;
     padding-bottom: 30px;
     font-size: 16px;
-  }
-
-  .modalText {
-    padding: 10px;
-    font-size: 14px;
   }
 }
 
@@ -84,7 +78,7 @@
     color: #fff;
     text-align: left;
     width: 100%;
-    font-size: 10px;
+    font-size: 14px;
     padding: 14px;
   }
 
