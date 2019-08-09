@@ -1,7 +1,6 @@
 /*eslint-disable*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
 import TransactionsTable from './TransactionsTable/TransactionsTable';
 import AddButton from './AddButton/AddButton';
 import Modal from '../Modal/ModalContainer';
@@ -12,18 +11,6 @@ class Home extends Component {
   state = {
     isOpenModal: false,
   };
-
-  // static propTypes = {
-  //   finance: PropTypes.array.isRequired,
-  // };
-
-  // static propTypes = {
-  //   finance: PropTypes.arrayOf(
-  //     PropTypes.shape({
-  //       items: PropTypes.object.isRequired,
-  //     }).isRequired,
-  //   ).isRequired,
-  // };
 
   handleOpen = () => {
     this.setState({ isOpenModal: true });
