@@ -59,9 +59,6 @@ class App extends Component {
   render() {
     return (
       <>
-        {/* <header className={styles.header}>
-          <Header />
-        </header> */}
         <Switch>
           <Route path="/signup" component={AsyncSignUp} />
           <Route path="/signin" component={AsyncSignIn} />

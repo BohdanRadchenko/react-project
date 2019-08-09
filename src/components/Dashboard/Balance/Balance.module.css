@@ -60,6 +60,8 @@
     display: flex;
     justify-content: space-between;
 
+    margin-bottom: 30px;
+
     -webkit-box-shadow: 0px 38px 69px -12px rgba(0, 0, 0, 0.6);
     -moz-box-shadow: 0px 38px 69px -12px rgba(0, 0, 0, 0.6);
     box-shadow: 0px 38px 69px -12px rgba(0, 0, 0, 0.6);

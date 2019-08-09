@@ -24,7 +24,7 @@ const UserLog = ({ user, onLogOut }) => (
       <p className={styles.headerUser}>{user}</p>
       <button type="button" className={styles.headerButton} onClick={onLogOut}>
         <img src={iconLogout} alt="logo" className={styles.logout} />
-        Logout
+        <span className={styles.logoutText}>Logout</span>
       </button>
     </div>
   </>
