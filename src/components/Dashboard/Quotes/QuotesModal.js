@@ -102,12 +102,12 @@ export default class Modal extends Component {
             Usefull advice &#8470;{selectedQuote.id}
           </p>
           <h2 className={styles.modalTitle}>{selectedQuote.title}</h2>
-          <button type="button" onClick={this.handleOpenDescription}>
+          {/* <button type="button" onClick={this.handleOpenDescription}>
             More...
           </button>
           {isDescriptionOpen && (
             <p className={styles.modalText}>{selectedQuote.body}</p>
-          )}
+          )} */}
         </div>
       </div>
     );
