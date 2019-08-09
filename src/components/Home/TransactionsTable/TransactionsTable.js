@@ -56,14 +56,24 @@ const date = date => {
 
 const crutchInCode = n => {
   const result = String(n).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+  let newResult;
   if (result.includes('.')) {
-    console.log('crutch');
+    const from = result.indexOf('.');
+    const to = result.length;
+    const newstr = result.substring(from, to);
+    const n = result.substring(0, from);
+
+    if (newstr.length === 2) {
+      newResult = console.log(`${n + newstr}0`);
+    } else {
+      newResult = console.log(`${n + newstr}`);
+    }
   } else {
-    return result;
+    return console.log(`${result}.00`);
   }
 };
 
-crutchInCode(1000.5);
+crutchInCode(1007057);
 
 // const separationNumber = n => {
 //   // const result = n.toLocaleString('usd');
@@ -151,7 +161,7 @@ const TransactionsTable = ({ items }) => {
                   </span>
                 </td>
                 <td className={styles.td} data-label="Balance">
-                  {item.balanceAfter.toFixed(2)}
+                  {item.amount}
                 </td>
               </tr>
             ))}
