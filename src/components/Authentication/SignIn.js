@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import style from './Authentication.module.css';
+import { NavLink } from 'react-router-dom';
+
 // import { Redirect } from 'react-router-dom';
 import {
   getError,
@@ -112,6 +114,11 @@ class SignIn extends Component {
             <button className={style.signInButton} type="submit">
               Sign in
             </button>
+            <NavLink to="/signUp">
+              <button type="button" className={style.signUpLink}>
+                Регистрация
+              </button>
+            </NavLink>
             <p>{errorMessage}</p>
           </form>
         </div>
