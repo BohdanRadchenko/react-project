@@ -1,3 +1,17 @@
+.button {
+  text-decoration: none;
+  border: none;
+  background-color: #fff;
+  font-size: 17px;
+  color: #3f4040;
+  cursor: pointer;
+  outline: none;
+}
+
+.button:hover {
+  color: #dd881f;
+}
+
 .table {
   background-color: #fff;
   width: 100%;

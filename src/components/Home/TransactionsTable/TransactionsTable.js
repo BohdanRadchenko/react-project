@@ -73,7 +73,7 @@ const filterAmount = n => {
   }
 };
 
-const TransactionsTable = ({ items }) => {
+const TransactionsTable = ({ items, onTypeClick }) => {
   return (
     <>
       <div className={styles.container}>
@@ -81,7 +81,11 @@ const TransactionsTable = ({ items }) => {
           <thead className={styles.thead}>
             <tr className={styles.tr}>
               <th className={styles.th}>Date</th>
-              <th className={styles.th}>Type</th>
+              <th className={styles.th}>
+                <button onClick={onTypeClick} className={styles.button}>
+                  Type
+                </button>
+              </th>
               <th className={styles.th}>Category</th>
               <th className={styles.th}>Comments</th>
               <th className={styles.th}>Amount</th>

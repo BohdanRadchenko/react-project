@@ -25,9 +25,42 @@ class Home extends Component {
     this.setState({ isOpenModal: false });
   };
 
+  handleTypeClick = () => {
+    console.log('click');
+  };
+
   render() {
     const { finance } = this.props;
     const arr = [...finance].reverse();
+
+    // const compare=( a, b )=> {
+    //   if ( a.last_nom < b.last_nom ){
+    //     return -1;
+    //   }
+    //   if ( a.last_nom > b.last_nom ){
+    //     return 1;
+    //   }
+    //   return 0;
+    // }
+
+    // objs.sort( compare );
+
+    const newArr = [...arr];
+
+    function dynamicSort(property) {
+      let sortOrder = 1;
+      if (property[0] === '-') {
+        sortOrder = -1;
+        property = property.substr(1);
+      }
+      return function(a, b) {
+        let result =
+          a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+        return result * sortOrder;
+      };
+    }
+
+    const R = newArr.sort(dynamicSort('type'));
 
     const { isOpenModal } = this.state;
 
@@ -35,7 +68,9 @@ class Home extends Component {
       <div className={styles.container_home}>
         <div className={styles.container_table}>
           {finance.length === 0 && <Welcome />}
-          {finance.length !== 0 && <TransactionsTable items={arr} />}
+          {finance.length !== 0 && (
+            <TransactionsTable items={R} onTypeClick={this.handleTypeClick} />
+          )}
           <AddButton onOpen={this.handleOpen} />
         </div>
         <Media
