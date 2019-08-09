@@ -63,7 +63,6 @@ export default class Modal extends Component {
 
   handleTextareaInput = ({ target: { value } }) => {
     if (value.length > 40) {
-      lodash.throttle(toast.warn('Too many symbols!'), 2000);
       return;
     }
     this.setState({ comments: value });

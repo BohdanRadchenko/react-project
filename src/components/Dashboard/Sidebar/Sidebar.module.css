@@ -21,3 +21,13 @@
     left: 0;
   }
 }
+
+@media screen and (min-width: 1192px) {
+  .container {
+    display: inline-block;
+    flex-direction: row;
+  }
+
+  .innerCurrencies {
+  }
+}

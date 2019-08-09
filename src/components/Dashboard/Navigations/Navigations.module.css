@@ -121,23 +121,52 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1192px) {
   .nav {
-    width: 320px;
-    height: 142px;
-    display: flex;
+    width: 314px;
+    height: 144px;
+    background-color: #284060;
+    margin-bottom: 30px;
+    border-radius: 5px;
     flex-direction: column;
     align-items: flex-start;
-    border-radius: 4px;
-    background-color: #3a5374;
-    padding: 0 0 0 0;
   }
-
-  /* .navLink {
-    padding-left: 30px;
-  } */
-
+  .navLink {
+    width: 314px;
+    height: 40px;
+    margin-right: 0;
+    padding-left: 28px;
+  }
+  .navLink:nth-child(2) {
+    margin-bottom: 0;
+  }
   .navLink::after {
     content: '';
+  }
+  .navLink:focus {
+    background-color: #3a5374;
+  }
+  .navLink:focus .navText {
+    color: #ffffff;
+  }
+  .navLink:focus .navLinkBtnHome {
+    background-image: url('../../../assets/PNG/home/homeFocusDT.svg');
+  }
+  .navLink:focus .navLinkBtnStats {
+    background-image: url('../../../assets/PNG/diagrams/lineChartFocusDT.svg');
+  }
+  .navLinkBtn {
+    width: 15px;
+    height: 15px;
+    margin-right: 20px;
+  }
+  .navLinkBtnHome {
+    background-image: url('../../../assets/PNG/home/homeDT.svg');
+  }
+  .navLinkBtnStats {
+    background-image: url('../../../assets/PNG/diagrams/lineChartDT.svg');
+  }
+  .navText {
+    padding-top: 2px;
   }
 }
