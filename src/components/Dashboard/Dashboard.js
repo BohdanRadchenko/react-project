@@ -64,7 +64,11 @@ class Dashboard extends Component {
 
   render() {
     const { items } = this.state;
-    const balance = statisticsCount(items).balance;
+
+    const balance = new Intl.NumberFormat('UAH', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(statisticsCount(items).balance);
     return (
       <div className={styles.container}>
         <div className={styles.leftSideBar}>
