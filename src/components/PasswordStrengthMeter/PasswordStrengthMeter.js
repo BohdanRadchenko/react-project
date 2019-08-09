@@ -1,7 +1,9 @@
 import React from 'react';
 import zxcvbn from 'zxcvbn';
 import PropTypes from 'prop-types';
+import style from '../Authentication/Authentication.module.css';
 
+// eslint-disable-next-line no-unused-vars
 const createPasswordLabel = result => {
   switch (result.score) {
     case 0:
@@ -26,11 +28,12 @@ const PasswordStrengthMeter = ({ password }) => {
     <div className="password-strength-meter">
       <br />
       <progress
+        className={style.inputFeedback}
         value={testedResult.score}
         max="4"
-        className={`password-strength-meter-progress strength-${createPasswordLabel(
-          testedResult,
-        )}`}
+        // className={`password-strength-meter-progress strength-${createPasswordLabel(
+        //   testedResult,
+        // )}`}
       />
     </div>
   );

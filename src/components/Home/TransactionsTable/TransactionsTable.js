@@ -30,7 +30,7 @@ const getMonth = month => {
     case 'Dec':
       return '12';
     default:
-      return 'Hello';
+      return 'Month';
   }
 };
 
@@ -52,6 +52,25 @@ const date = date => {
   const yearRes = year.substr(1);
   const result = `${day}.${getMonth(month)}.${yearRes}`;
   return result;
+};
+
+const filterAmount = n => {
+  const result = String(n).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+  let newResult;
+  if (result.includes('.')) {
+    const from = result.indexOf('.');
+    const to = result.length;
+    const newstr = result.substring(from, to);
+    const n = result.substring(0, from);
+
+    if (newstr.length === 2) {
+      return (newResult = `${n + newstr}0`);
+    } else {
+      return (newResult = `${n + newstr}`);
+    }
+  } else {
+    return `${result}.00`;
+  }
 };
 
 const TransactionsTable = ({ items }) => {
@@ -102,11 +121,11 @@ const TransactionsTable = ({ items }) => {
                         : styleByType.incColor
                     }
                   >
-                    {item.amount.toFixed(2)}
+                    {filterAmount(item.amount)}
                   </span>
                 </td>
                 <td className={styles.td} data-label="Balance">
-                  {item.balanceAfter.toFixed(2)}
+                  {filterAmount(item.amount)}
                 </td>
               </tr>
             ))}

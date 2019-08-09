@@ -73,7 +73,9 @@ class Dashboard extends Component {
   render() {
     const { items, quotesModalIsOpen } = this.state;
 
-    const balance = new Intl.NumberFormat('UAH', {
+    const balance = new Intl.NumberFormat('en', {
+      style: 'currency',
+      currency: 'UAH',
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     }).format(statisticsCount(items).balance);
@@ -93,7 +95,12 @@ class Dashboard extends Component {
             <Switch>
               <Route path="/dashboard/home" component={AsyncHome} />
               <Route path="/dashboard/stats" component={AsyncStats} />
-              <Route path="/dashboard/currencies" component={AsyncCurrencies} />
+              <div className={css.AsyncCurrencies}>
+                <Route
+                  path="/dashboard/currencies"
+                  component={AsyncCurrencies}
+                />
+              </div>
               <Redirect to="/dashboard/home" />
             </Switch>
           </div>
