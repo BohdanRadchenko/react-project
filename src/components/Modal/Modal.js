@@ -1,7 +1,6 @@
 /*eslint-disable*/
 import React, { Component, createRef } from 'react';
 import { toast } from 'react-toastify';
-// import lodash from 'lodash';
 import AddTransaction from './AddTransaction/AddTransaction';
 import { transactions } from '../../constans/modalConstants';
 import {
@@ -54,43 +53,23 @@ export default class Modal extends Component {
     });
 
   handleAmountInput = value => {
-    if (value.length > 10) {
-      const toFixed = Number(value).toFixed();
-      if (toFixed.length > 10) {
-        toast.warn('Too many symbols!');
-        return;
-      }
+    if (!value) {
+      return;
+    } else if (Number.isNaN(value)) {
+      return;
     }
-    this.setState({ amount: value });
+    this.setState({ amount: String(value) });
   };
 
   handleTextareaInput = ({ target: { value } }) => {
     if (value.length > 40) {
-      // lodash.throttle(toast.warn('Too many symbols!'), 2000);
+      lodash.throttle(toast.warn('Too many symbols!'), 2000);
       return;
     }
     this.setState({ comments: value });
   };
 
-  // handleTextChange = e => {
-  // handleTextChange = ({ target: { name, value } }) => {
-  // console.log(e);
-  //   if (name === 'amount' && value.length > 10) {
-  //     const toFixed = Number(value).toFixed();
-  //     if (toFixed.length > 10) {
-  //       toast.warn('Too many symbols!');
-  //       return;
-  //     } else {
-  //       this.setState({ [name]: value });
-  //     }
-  //   } else if (name === 'comments' && value.length > 40) {
-  //     lodash.throttle(toast.warn('Too many symbols!'), 2000);
-  //     return;
-  //   }
-  //   this.setState({ [name]: value });
-  // };
-
-  handleSelectChange = e => this.setState({ category: e.value });
+  handleSelectChange = e => this.setState({ category: e });
 
   handleDateChange = date => {
     this.setState({ date });
@@ -98,16 +77,21 @@ export default class Modal extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { category, amount, comments, date } = this.state;
+    const { type, category, amount, comments, date } = this.state;
     if (Number(amount) <= 0) {
       toast.error('Invalid input!');
+      return;
+    }
+
+    if (type === transactions.COST && !category) {
+      toast.error('Enter category!');
       return;
     }
 
     const transactionToAdd = {
       type: category ? '-' : '+',
       amount: parseFloat(Number(amount).toFixed(2)),
-      category,
+      category: category.value,
       date: new Date(String(date)).getTime(),
       comments,
     };
@@ -136,7 +120,7 @@ export default class Modal extends Component {
     });
 
   render() {
-    const { isCost, type, comments, amount, date } = this.state;
+    const { isCost, type, comments, amount, date, category } = this.state;
     return (
       <div
         ref={this.backdropRef}
@@ -145,7 +129,8 @@ export default class Modal extends Component {
       >
         <AddTransaction
           isCost={isCost}
-          amount={amount}
+          amount={Number(amount)}
+          category={category}
           type={type}
           date={date}
           comments={comments}

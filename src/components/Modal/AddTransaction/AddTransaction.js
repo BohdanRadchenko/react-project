@@ -1,9 +1,9 @@
 /*eslint-disable*/
-import React, { Component, createRef, useState } from 'react';
+import React, { Component, createRef } from 'react';
 import Media from 'react-media';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import InputNumber from 'react-input-number';
+import NumericInput from 'react-numeric-input';
 import DatePicker from 'react-date-picker/dist/entry.nostyle';
 import { categories, transactions } from '../../../constans/modalConstants';
 import styles from '../Modal.module.css';
@@ -14,12 +14,12 @@ export default class AddTransaction extends Component {
   btnRef = createRef();
 
   render() {
-    // const [num, setNum] = useState(Number(0).toFixed(2));
     const {
       amount,
       type,
       isCost,
       comments,
+      category,
       date,
       handleRadioChange,
       handleAmountInput,
@@ -73,6 +73,7 @@ export default class AddTransaction extends Component {
           </div>
           {isCost && (
             <Select
+              value={category}
               className={styles.select}
               options={categories}
               onChange={handleSelectChange}
@@ -80,23 +81,16 @@ export default class AddTransaction extends Component {
             />
           )}
           <div className={styles.inputsDiv}>
-            {/* <input
-              name="amount"
-              type="number"
-              value={Number(amount).toFixed(2)}
-              // step={0.01}
+            <NumericInput
+              style={false}
+              className="form-control"
               min={0}
-              onChange={handleTextChange}
-              className={`${styles.input} ${styles.amountInput}`}
-              required
-            /> */}
-            <InputNumber
-              name="amount"
-              min={0}
+              precision={2}
               value={amount}
               onChange={handleAmountInput}
-              enableMobileNumericKeyboard
-              required
+              require="true"
+              strict
+              maxLength={13}
             />
             <DatePicker
               value={date}
@@ -110,7 +104,6 @@ export default class AddTransaction extends Component {
           </div>
           <h2 className={styles.comment}>Comment</h2>
           <textarea
-            name="comments"
             cols="20"
             rows="2"
             value={comments}
@@ -130,5 +123,5 @@ export default class AddTransaction extends Component {
 }
 
 AddTransaction.propTypes = {
-  amount: PropTypes.string.isRequired,
+  amount: PropTypes.number.isRequired,
 };
