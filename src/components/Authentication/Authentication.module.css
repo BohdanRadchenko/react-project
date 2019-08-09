@@ -80,7 +80,7 @@
 }
 
 .signInLogo {
-  margin-top: 7px;
+  margin-top: 25px;
   width: 26px;
   height: 24px;
   margin-right: 10px;
@@ -89,7 +89,6 @@
 .signInLogoContainer {
   display: flex;
   justify-content: center;
-  margin: 38px 0px 30px;
 }
 
 .signInEmail {
@@ -145,14 +144,6 @@
   height: 100vh;
   width: 45%;
 }
-
-/* .financePar {
-  position: fixed;
-  color: rgb(251, 250, 250);
-  bottom: 5%;
-  left: 16%;
-  font-size: 24px;
-} */
 
 .inputFeedback {
   width: 100%;
