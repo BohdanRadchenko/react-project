@@ -19,8 +19,11 @@ const rootReducer = combineReducers({
 
 const middleware = [ReduxThunk];
 
-const enhancer = applyMiddleware(...middleware);
+const enhancer =
+  process.env.NODE_ENV === 'development'
+    ? composeWithDevTools(applyMiddleware(...middleware))
+    : applyMiddleware(...middleware);
 
-export const store = createStore(rootReducer, composeWithDevTools(enhancer));
+export const store = createStore(rootReducer, enhancer);
 
 export const persistor = persistStore(store);

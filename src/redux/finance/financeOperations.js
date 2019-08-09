@@ -10,7 +10,10 @@ import {
 } from './financeActions';
 import { getToken } from '../session/sessionSelectors';
 
-export const postTransaction = (transaction, token) => dispatch => {
+export const postTransaction = transaction => (dispatch, getState) => {
+  const token = getToken(getState());
+
+  if (!token) return;
   dispatch(postTransactionRequest());
   const {
     type,
