@@ -32,6 +32,7 @@
     "redux": "^4.0.4",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
+    "shortid": "^2.2.14",
     "yup": "^0.27.0",
     "zxcvbn": "^4.4.2"
   },

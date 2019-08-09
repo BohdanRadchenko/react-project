@@ -35,13 +35,15 @@ class Home extends Component {
 
   render() {
     const { finance } = this.props;
+    const arr = [...finance].reverse();
 
     const { isOpenModal } = this.state;
+
     return (
       <div className={styles.container_home}>
         <div className={styles.container_table}>
           {finance.length === 0 && <Welcome />}
-          {finance.length !== 0 && <TransactionsTable items={finance} />}
+          {finance.length !== 0 && <TransactionsTable items={arr} />}
           <AddButton onOpen={this.handleOpen} />
         </div>
         {isOpenModal && <Modal onClose={this.handleClose} />}
