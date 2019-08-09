@@ -1,5 +1,5 @@
-/*eslint-disable*/
 import React, { Component, createRef } from 'react';
+import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import AddTransaction from './AddTransaction/AddTransaction';
 import { transactions } from '../../constans/modalConstants';
@@ -21,6 +21,13 @@ export default class Modal extends Component {
     date: new Date(),
     category: null,
     error: null,
+  };
+
+  static propTypes = {
+    onClose: PropTypes.func.isRequired,
+    transactions: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    postTransaction: PropTypes.func.isRequired,
+    token: PropTypes.string.isRequired,
   };
 
   backdropRef = createRef();
@@ -48,14 +55,15 @@ export default class Modal extends Component {
 
   handleRadioChange = ({ target: { id } }) =>
     this.setState({
-      isCost: id === 'income' ? false : true,
+      isCost: id !== 'income',
       type: id === 'cost' ? transactions.COST : transactions.INCOME,
     });
 
   handleAmountInput = value => {
     if (!value) {
       return;
-    } else if (Number.isNaN(value)) {
+    }
+    if (Number.isNaN(value)) {
       return;
     }
     this.setState({ amount: String(value) });
@@ -104,7 +112,6 @@ export default class Modal extends Component {
     transactionToAdd.balanceAfter = balanceAfter;
     transactionToAdd.typeBalanceAfter = typeBalanceAfter;
 
-    console.log(transactionToAdd);
     this.props.postTransaction(transactionToAdd, this.props.token);
     this.reset();
   };
@@ -120,13 +127,27 @@ export default class Modal extends Component {
     });
 
   render() {
-    const { isCost, type, comments, amount, date, category } = this.state;
+    const {
+      isCost,
+      type,
+      comments,
+      amount,
+      date,
+      category,
+      error,
+    } = this.state;
+    const { onClose } = this.props;
+
     return (
       <div
         ref={this.backdropRef}
         onClick={this.handleBackdropClick}
         className={styles.backdrop}
+        onKeyPress={this.handleKeyPress}
+        role="button"
+        tabIndex="-1"
       >
+        {error && <h1>{error.message}</h1>}
         <AddTransaction
           isCost={isCost}
           amount={Number(amount)}
@@ -140,7 +161,7 @@ export default class Modal extends Component {
           handleSelectChange={this.handleSelectChange}
           handleDateChange={this.handleDateChange}
           handleSubmit={this.handleSubmit}
-          handleClose={this.props.onClose}
+          handleClose={onClose}
         />
       </div>
     );
