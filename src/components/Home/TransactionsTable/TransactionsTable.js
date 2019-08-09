@@ -30,7 +30,7 @@ const getMonth = month => {
     case 'Dec':
       return '12';
     default:
-      return 'Hello';
+      return 'Month';
   }
 };
 
@@ -53,6 +53,27 @@ const date = date => {
   const result = `${day}.${getMonth(month)}.${yearRes}`;
   return result;
 };
+
+const separationNumber = n => {
+  // const result = n.toLocaleString('usd');
+
+  const result = String(n).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+
+  return result;
+};
+
+// const rr = 1000.55;
+const x = 12232313131.313131;
+const res = x =>
+  x.replace(/.+?(?=\D|$)/, function(f) {
+    return f.replace(/(\d)(?=(?:\d\d\d)+$)/g, '$1 ');
+  });
+
+console.log(res(x));
+
+// console.log(separationNumber(1000.5));
+
+// console.log('result', separationNumber(1000));
 
 const TransactionsTable = ({ items }) => {
   return (
@@ -102,7 +123,7 @@ const TransactionsTable = ({ items }) => {
                         : styleByType.incColor
                     }
                   >
-                    {item.amount.toFixed(2)}
+                    {item.amount}
                   </span>
                 </td>
                 <td className={styles.td} data-label="Balance">

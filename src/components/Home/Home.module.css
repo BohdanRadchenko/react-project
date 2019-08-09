@@ -8,13 +8,13 @@
 @media screen and (min-width: 768px) {
   .container_table {
     width: 740px;
-    height: 600px;
+    height: 580px;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .container_table {
     width: 830px;
-    height: 600px;
+    height: 570px;
   }
 }
