@@ -11,6 +11,9 @@ import QuotesModal from './Quotes/QuotesModal';
 import styles from './Dashboard.module.css';
 // import ProtectedComponent from './hoc/PrivateRoute';
 // import PrivateRoute from './PrivateRoute';
+import Header from '../Header/Header';
+import css from '../Header/Header.module.css';
+import { getTransactions } from '../../redux/finance/financeSelectors';
 
 const AsyncHome = Loadable({
   loader: () => import('../../pages/Home' /* webpackChunkName: "home-page" */),
@@ -59,6 +62,14 @@ class Dashboard extends Component {
     this.setState({ quotesModalIsOpen: false });
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.transactions !== this.props.transactions) {
+      const { transactions } = this.props;
+      this.setState({
+        items: [...transactions],
+      });
+    }
+  }
   render() {
     const { items, quotesModalIsOpen } = this.state;
 
@@ -67,21 +78,25 @@ class Dashboard extends Component {
       maximumFractionDigits: 2,
     }).format(statisticsCount(items).balance);
     return (
-      <div className={styles.container}>
-        {quotesModalIsOpen && (
-          <QuotesModal onClose={this.handleQuotesModalClose} />
-        )}
-        >
-        <div className={styles.leftSideBar}>
-          <SideBar balance={balance} />
-        </div>
-        <div className={styles.rightSideBar}>
-          <Switch>
-            <Route path="/dashboard/home" component={AsyncHome} />
-            <Route path="/dashboard/stats" component={AsyncStats} />
-            <Route path="/dashboard/currencies" component={AsyncCurrencies} />
-            <Redirect to="/dashboard/home" />
-          </Switch>
+      <div className={css.innerContainer}>
+        <header className={css.header}>
+          <Header />
+        </header>
+        <div className={styles.container}>
+          {quotesModalIsOpen && (
+            <QuotesModal onClose={this.handleQuotesModalClose} />
+          )}
+          <div className={styles.leftSideBar}>
+            <SideBar balance={balance} />
+          </div>
+          <div className={styles.rightSideBar}>
+            <Switch>
+              <Route path="/dashboard/home" component={AsyncHome} />
+              <Route path="/dashboard/stats" component={AsyncStats} />
+              <Route path="/dashboard/currencies" component={AsyncCurrencies} />
+              <Redirect to="/dashboard/home" />
+            </Switch>
+          </div>
         </div>
       </div>
     );
@@ -89,7 +104,8 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-  transactions: db,
+  // transactions: db,
+  transactions: getTransactions(state),
 });
 
 export default connect(
