@@ -85,9 +85,9 @@ class Dashboard extends Component {
           <Header />
         </header>
         <div className={styles.container}>
-          {/* {quotesModalIsOpen && (
+          {quotesModalIsOpen && (
             <QuotesModal onClose={this.handleQuotesModalClose} />
-          )} */}
+          )}
           <div className={styles.leftSideBar}>
             <SideBar balance={balance} />
           </div>
