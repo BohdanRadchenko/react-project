@@ -53,7 +53,7 @@ const date = date => {
   return result;
 };
 
-const TransactionHistory = ({ items }) => {
+const TransactionsTable = ({ items }) => {
   return (
     <>
       <div className={styles.container}>
@@ -74,8 +74,8 @@ const TransactionHistory = ({ items }) => {
                 key={item.date}
                 className={
                   item.type === '-'
-                    ? styleByType.classBase + ' ' + styleByType.con
-                    : styleByType.classBase + ' ' + styleByType.inc
+                    ? `${styleByType.classBase} ${styleByType.con}`
+                    : `${styleByType.classBase} ${styleByType.inc}`
                 }
               >
                 <td className={styles.td} data-label="Date">
@@ -116,4 +116,4 @@ const TransactionHistory = ({ items }) => {
   );
 };
 
-export default TransactionHistory;
+export default TransactionsTable;
