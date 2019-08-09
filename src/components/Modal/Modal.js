@@ -1,5 +1,6 @@
-/*eslint-disable*/
 import React, { Component, createRef } from 'react';
+import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 import AddTransaction from './AddTransaction/AddTransaction';
 import { transactions } from '../../constans/modalConstants';
 import {
@@ -7,16 +8,26 @@ import {
   countTypeBalanceAfter,
 } from '../../helpers/countBalanceAfter';
 import styles from './Modal.module.css';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 export default class Modal extends Component {
   state = {
-    isCost: false,
-    type: transactions.INCOME,
+    isCost: true,
+    type: transactions.COST,
     amount: '',
     comments: '',
     date: new Date(),
     category: null,
     error: null,
+  };
+
+  static propTypes = {
+    onClose: PropTypes.func.isRequired,
+    transactions: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    postTransaction: PropTypes.func.isRequired,
+    token: PropTypes.string.isRequired,
   };
 
   backdropRef = createRef();
@@ -44,14 +55,29 @@ export default class Modal extends Component {
 
   handleRadioChange = ({ target: { id } }) =>
     this.setState({
-      isCost: id === 'income' ? false : true,
+      isCost: id !== 'income',
       type: id === 'cost' ? transactions.COST : transactions.INCOME,
     });
 
-  handleTextChange = ({ target: { value, name } }) =>
-    this.setState({ [name]: value });
+  handleAmountInput = value => {
+    if (!value) {
+      return;
+    }
+    if (Number.isNaN(value)) {
+      return;
+    }
+    this.setState({ amount: String(value) });
+  };
 
-  handleSelectChange = e => this.setState({ category: e.value });
+  handleTextareaInput = ({ target: { value } }) => {
+    if (value.length > 40) {
+      // lodash.throttle(toast.warn('Too many symbols!'), 2000);
+      return;
+    }
+    this.setState({ comments: value });
+  };
+
+  handleSelectChange = e => this.setState({ category: e });
 
   handleDateChange = date => {
     this.setState({ date });
@@ -59,13 +85,22 @@ export default class Modal extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { category, amount, comments, date } = this.state;
+    const { type, category, amount, comments, date } = this.state;
+    if (Number(amount) <= 0) {
+      toast.error('Invalid input!');
+      return;
+    }
+
+    if (type === transactions.COST && !category) {
+      toast.error('Enter category!');
+      return;
+    }
 
     const transactionToAdd = {
       type: category ? '-' : '+',
-      amount: Number(amount),
-      category,
-      date,
+      amount: parseFloat(Number(amount).toFixed(2)),
+      category: category.value,
+      date: new Date(String(date)).getTime(),
       comments,
     };
     const balanceAfter = countBalanceAfter(
@@ -83,8 +118,8 @@ export default class Modal extends Component {
 
   reset = () =>
     this.setState({
-      isCost: false,
-      type: transactions.INCOME,
+      isCost: true,
+      type: transactions.COST,
       amount: '',
       comments: '',
       date: new Date(),
@@ -92,24 +127,41 @@ export default class Modal extends Component {
     });
 
   render() {
-    const { isCost, type, comments, amount, date } = this.state;
+    const {
+      isCost,
+      type,
+      comments,
+      amount,
+      date,
+      category,
+      error,
+    } = this.state;
+    const { onClose } = this.props;
+
     return (
       <div
         ref={this.backdropRef}
         onClick={this.handleBackdropClick}
         className={styles.backdrop}
+        onKeyPress={this.handleKeyPress}
+        role="button"
+        tabIndex="-1"
       >
+        {error && <h1>{error.message}</h1>}
         <AddTransaction
           isCost={isCost}
-          amount={amount}
+          amount={Number(amount)}
+          category={category}
           type={type}
           date={date}
           comments={comments}
           handleRadioChange={this.handleRadioChange}
-          handleTextChange={this.handleTextChange}
+          handleAmountInput={this.handleAmountInput}
+          handleTextareaInput={this.handleTextareaInput}
           handleSelectChange={this.handleSelectChange}
           handleDateChange={this.handleDateChange}
           handleSubmit={this.handleSubmit}
+          handleClose={onClose}
         />
       </div>
     );
