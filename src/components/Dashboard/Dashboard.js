@@ -67,7 +67,7 @@ class Dashboard extends Component {
       maximumFractionDigits: 2,
     }).format(statisticsCount(items).balance);
     return (
-      <>
+      <div className={css.innerContainer}>
         <header className={css.header}>
           <Header />
         </header>
@@ -84,7 +84,7 @@ class Dashboard extends Component {
             </Switch>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

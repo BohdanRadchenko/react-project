@@ -9,7 +9,9 @@ const Sidebar = ({ balance }) => (
   <div className={css.container}>
     <Navigations />
     <Balance balance={balance} />
-    <Currencies />
+    <div className={css.innerCurrencies}>
+      <Currencies />
+    </div>
   </div>
 );
 
