@@ -91,7 +91,7 @@ export default class Modal extends Component {
     const transactionToAdd = {
       type: category ? '-' : '+',
       amount: parseFloat(Number(amount).toFixed(2)),
-      category: category.value,
+      category: category ? category.value : null,
       date: new Date(String(date)).getTime(),
       comments,
     };
