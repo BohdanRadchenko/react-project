@@ -12,6 +12,7 @@ export default class Modal extends Component {
 
   state = {
     quotes: Quotes,
+    isDescriptionOpen: false,
   };
 
   backdropRef = createRef();
@@ -22,8 +23,13 @@ export default class Modal extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyPress);
-    document.body.style.overflow = 'unset';
   }
+
+  handleOpenDescription = () => {
+    this.setState(prevState => ({
+      isDescriptionOpen: !prevState.isDescriptionOpen,
+    }));
+  };
 
   handleKeyPress = e => {
     if (e.code !== 'Escape') return;
@@ -42,7 +48,7 @@ export default class Modal extends Component {
   };
 
   render() {
-    const { quotes } = this.state;
+    const { quotes, isDescriptionOpen } = this.state;
     const selectedQuote =
       quotes[Math.floor(Math.random() * Math.floor(quotes.length))];
     return (
@@ -56,6 +62,12 @@ export default class Modal extends Component {
             Usefull advice &#8470;{selectedQuote.id}
           </p>
           <h2 className={styles.modalTitle}>{selectedQuote.title}</h2>
+          <button type="button" onClick={this.handleOpenDescription}>
+            More...
+          </button>
+          {isDescriptionOpen && (
+            <p className={styles.modalText}>{selectedQuote.body}</p>
+          )}
         </div>
       </div>
     );

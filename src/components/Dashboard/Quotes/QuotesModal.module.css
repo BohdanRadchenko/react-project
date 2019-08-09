@@ -44,6 +44,11 @@
     padding-bottom: 30px;
     font-size: 16px;
   }
+
+  .modalText {
+    padding: 10px;
+    font-size: 14px;
+  }
 }
 
 @media screen and (min-width: 768px) {
