@@ -54,22 +54,46 @@ const date = date => {
   return result;
 };
 
-const separationNumber = n => {
-  // const result = n.toLocaleString('usd');
-
+const crutchInCode = n => {
   const result = String(n).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
-
-  return result;
+  if (result.includes('.')) {
+    console.log('crutch');
+  } else {
+    return result;
+  }
 };
 
-// const rr = 1000.55;
-const x = 12232313131.313131;
-const res = x =>
-  x.replace(/.+?(?=\D|$)/, function(f) {
-    return f.replace(/(\d)(?=(?:\d\d\d)+$)/g, '$1 ');
-  });
+crutchInCode(1000.5);
 
-console.log(res(x));
+// const separationNumber = n => {
+//   // const result = n.toLocaleString('usd');
+
+//   const result = String(n).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+
+//   return result;
+// };
+
+// console.log(Number(separationNumber(100000.55)).toFixed(2));
+// var n = 34523453.345;
+// n.toLocaleString();
+// ('34,523,453.345');
+
+// function numberWithCommas(x) {
+//   var parts = x.toString().split('.');
+//   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+//   return parts.join('.');
+// }
+
+// console.log(numberWithCommas(12000.1));
+
+// // const rr = 1000.55;
+// const x = 12232313131.313131;
+// const res = x =>
+//   x.replace(/.+?(?=\D|$)/, function(f) {
+//     return f.replace(/(\d)(?=(?:\d\d\d)+$)/g, '$1 ');
+//   });
+
+// console.log(res(x));
 
 // console.log(separationNumber(1000.5));
 
