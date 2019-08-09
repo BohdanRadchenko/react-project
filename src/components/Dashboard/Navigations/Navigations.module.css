@@ -116,3 +116,56 @@
     display: none;
   }
 }
+
+@media screen and (min-width: 1280px) {
+  .nav {
+    width: 314px;
+    height: 144px;
+    background-color: #284060;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navLinkBtn {
+    width: 15px;
+    height: 15px;
+    margin-right: 20px;
+  }
+
+  .navLinkBtnHome {
+    background-image: url('../../../assets/PNG/home/homeDT.svg');
+  }
+  .navLinkBtnStats {
+    background-image: url('../../../assets/PNG/diagrams/lineChartDT.svg');
+  }
+
+  .navLink {
+    width: 314px;
+    height: 40px;
+    /* margin-bottom: 6px; */
+    margin-right: 0;
+    padding-left: 28px;
+  }
+  .navLink:nth-child(2) {
+    margin-bottom: 0;
+  }
+  .navLink::after {
+    content: '';
+  }
+  .navLink:focus {
+    background-color: #3a5374;
+  }
+  .navLink:focus .navText {
+    color: #ffffff;
+  }
+  .navLink:focus .navLinkBtnHome {
+    background-image: url('../../../assets/PNG/home/homeFocusDT.svg');
+  }
+  .navLink:focus .navLinkBtnStats {
+    background-image: url('../../../assets/PNG/diagrams/lineChartFocusDT.svg');
+  }
+  .navText {
+    padding-top: 3px;
+  }
+}
