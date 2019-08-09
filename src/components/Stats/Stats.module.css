@@ -11,8 +11,8 @@
 }
 
 .container {
-  position: absolute;
-  top: 10px;
+  /* position: absolute; */
+  /* top: 10px; */
   width: 100%;
   background-color: #ffffff;
   padding-top: 20px;
@@ -72,10 +72,9 @@
   .container {
     padding: 0px;
     display: block;
-    width: 80%;
-    height: 695px;
-    position: absolute;
-    right: -60px;
+    width: 98%;
+    height: 680px;
+    margin-left: auto;
     background-color: #ffffff;
     border-radius: 6px;
     -webkit-box-shadow: 0px 38px 69px -12px rgba(0, 0, 0, 0.6);
@@ -123,15 +122,15 @@
 
   .innerDiagramContainer {
     width: 54%;
-    padding-top: 80px;
+    padding-top: 30px;
     position: relative;
   }
 
   .innerDiagram {
     position: absolute;
     left: 40px;
-    width: 420px;
-    height: 460px;
+    width: 340px;
+    height: 480px;
   }
 
   .total {

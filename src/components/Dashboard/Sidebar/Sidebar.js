@@ -3,17 +3,20 @@ import PropTypes from 'prop-types';
 import Navigations from '../Navigations/Navigations';
 import Balance from '../Balance/Balance';
 import Currencies from '../Currencies/Currencies';
+import css from './Sidebar.module.css';
 
 const Sidebar = ({ balance }) => (
-  <div>
+  <div className={css.container}>
     <Navigations />
     <Balance balance={balance} />
-    <Currencies />
+    <div className={css.innerCurrencies}>
+      <Currencies />
+    </div>
   </div>
 );
 
 Sidebar.propTypes = {
-  balance: PropTypes.number.isRequired,
+  balance: PropTypes.string.isRequired,
 };
 
 export default Sidebar;

@@ -4,13 +4,13 @@ import styles from './Balance.module.css';
 
 const Balance = ({ balance }) => (
   <div className={styles.balanceDiv}>
-    <p className={styles.balanceText}>Баланс:</p>
+    <p className={styles.balanceText}>Balance:</p>
     <p className={styles.balanceValue}> {balance} грн</p>
   </div>
 );
 
 Balance.propTypes = {
-  balance: PropTypes.number.isRequired,
+  balance: PropTypes.string.isRequired,
 };
 
 export default Balance;

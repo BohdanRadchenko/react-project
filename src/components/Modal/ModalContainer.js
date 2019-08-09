@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Modal from './Modal';
-import postTransaction from '../../redux/finance/financeOperations';
+import { postTransaction } from '../../redux/finance/financeOperations';
 import { getToken } from '../../redux/session/sessionSelectors';
 import {
   getError,

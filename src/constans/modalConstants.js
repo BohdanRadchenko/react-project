@@ -1,13 +1,13 @@
 export const categories = [
-  { value: 'regular', label: 'Regular' },
-  { value: 'food', label: 'Food' },
-  { value: 'automobile', label: 'Automobile' },
-  { value: 'self care', label: 'Self care' },
-  { value: 'children', label: 'Children' },
-  { value: 'home', label: 'Home' },
-  { value: 'education', label: 'Education' },
-  { value: 'enterteinment', label: 'Enterteinment' },
-  { value: 'other', label: 'Other' },
+  { value: 'Main Expenses', label: 'Main Expenses' },
+  { value: 'Food', label: 'Food' },
+  { value: 'Car', label: 'Car' },
+  { value: 'Self Care', label: 'Self Care' },
+  { value: 'Child Care', label: 'Child Care' },
+  { value: 'House', label: 'House' },
+  { value: 'Education', label: 'Education' },
+  { value: 'Enterteinment', label: 'Enterteinment' },
+  { value: 'Others', label: 'Others' },
 ];
 
 export const transactions = {
