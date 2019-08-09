@@ -54,7 +54,7 @@ const date = date => {
   return result;
 };
 
-const crutchInCode = n => {
+const filterAmount = n => {
   const result = String(n).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
   let newResult;
   if (result.includes('.')) {
@@ -64,50 +64,16 @@ const crutchInCode = n => {
     const n = result.substring(0, from);
 
     if (newstr.length === 2) {
-      newResult = console.log(`${n + newstr}0`);
+      newResult = `${n + newstr}0`;
     } else {
-      newResult = console.log(`${n + newstr}`);
+      newResult = `${n + newstr}`;
     }
   } else {
-    return console.log(`${result}.00`);
+    return `${result}.00`;
   }
 };
 
-crutchInCode(1007057);
-
-// const separationNumber = n => {
-//   // const result = n.toLocaleString('usd');
-
-//   const result = String(n).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
-
-//   return result;
-// };
-
-// console.log(Number(separationNumber(100000.55)).toFixed(2));
-// var n = 34523453.345;
-// n.toLocaleString();
-// ('34,523,453.345');
-
-// function numberWithCommas(x) {
-//   var parts = x.toString().split('.');
-//   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-//   return parts.join('.');
-// }
-
-// console.log(numberWithCommas(12000.1));
-
-// // const rr = 1000.55;
-// const x = 12232313131.313131;
-// const res = x =>
-//   x.replace(/.+?(?=\D|$)/, function(f) {
-//     return f.replace(/(\d)(?=(?:\d\d\d)+$)/g, '$1 ');
-//   });
-
-// console.log(res(x));
-
-// console.log(separationNumber(1000.5));
-
-// console.log('result', separationNumber(1000));
+filterAmount(1007057);
 
 const TransactionsTable = ({ items }) => {
   return (
@@ -157,11 +123,11 @@ const TransactionsTable = ({ items }) => {
                         : styleByType.incColor
                     }
                   >
-                    {item.amount}
+                    {filterAmount(item.amount)}
                   </span>
                 </td>
                 <td className={styles.td} data-label="Balance">
-                  {item.amount}
+                  {filterAmount(item.amount)}
                 </td>
               </tr>
             ))}
