@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import StatsDiagram from '../components/Stats/StatsDiagram/StatsDiagram';
 import StatsTable from '../components/Stats/StatsTable/StatsTable';
 import StatsSelect from '../components/Stats/StatsSelect/StatsSelect';
-import db from '../db.json';
 import OptionsMonth from '../components/Stats/Options/OptionsMonth';
 import OptionsYears from '../components/Stats/Options/OptionsYear';
 import statisticsCount from '../helpers/statisticsCount';
@@ -21,16 +20,6 @@ class Stats extends Component {
     search: {
       month: null,
       year: null,
-    },
-    costsFilter: [],
-    chart: {
-      labels: [],
-      datasets: [
-        {
-          data: [],
-          backgroundColor: [],
-        },
-      ],
     },
   };
 
@@ -49,14 +38,6 @@ class Stats extends Component {
     if (items.length !== prevState.length) {
       this.test();
     }
-    // if (search.month !== null && search.year !== null) {
-    //   this.getFilteredItems();
-    //   if (
-    //     this.getFilteredItems() !== undefined &&
-    //     this.getFilteredItems().length > 0
-    //   ) {
-    //   }
-    // }
   }
 
   test = () => {
