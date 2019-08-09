@@ -44,7 +44,7 @@ tr:nth-last-child(even) {
   .container {
     position: relative;
     margin: 0 auto;
-    height: 500px;
+    height: 60vh;
     width: 320px;
     overflow-y: auto;
   }
