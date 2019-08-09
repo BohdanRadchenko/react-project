@@ -1,4 +1,5 @@
 /* eslint-disable */
+/* eslint-disable */
 import React from 'react';
 import ReactTable from 'react-table';
 import PropTypes from 'prop-types';
@@ -6,11 +7,24 @@ import './StatsTable.css';
 
 const DiagramTable = props => {
   const { items } = props;
+  // console.log(items);
+
+  const filterByWithdraw = items
+    .filter(el => el.type === '-')
+    .map(el => ({
+      category: `${el.category}`,
+      amount: el.amount,
+    }));
+  const data = Object.assign(
+    [],
+    filterByWithdraw.map(el => ({ category: el.category, amount: el.amount })),
+  );
+
   return (
     <>
       <ReactTable
-        key={items.length}
-        data={items.reverse()}
+        key={data.length}
+        data={data.reverse()}
         columns={[
           {
             Header: 'Category',
@@ -21,7 +35,7 @@ const DiagramTable = props => {
             accessor: 'amount',
           },
         ]}
-        defaultPageSize={items.length}
+        defaultPageSize={data.length}
         showPagination={false}
         filtered={[]}
         onClick={() => null}
