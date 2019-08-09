@@ -71,8 +71,6 @@ class Stats extends Component {
   };
 
   render() {
-    console.log(this.getFilteredItems());
-
     return (
       <div className={styles.container}>
         <div className={styles.innerTitle}>
@@ -117,7 +115,7 @@ class Stats extends Component {
                 }
               />
             </div>
-            <div className={styles.total}>
+            {/* <div className={styles.total}>
               <div className={styles.containerText}>
                 <p className={styles.costs}>Costs:</p>
                 <p className={styles.income}>Income:</p>
@@ -136,7 +134,7 @@ class Stats extends Component {
                   }).format(this.state.deposits)}
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
