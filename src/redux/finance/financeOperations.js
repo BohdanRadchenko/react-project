@@ -4,9 +4,16 @@ import {
   postTransactionRequest,
   postTransactionSuccesss,
   postTransactionError,
+  getTransactionRequest,
+  getTransactionSuccesss,
+  getTransactionError,
 } from './financeActions';
+import { getToken } from '../session/sessionSelectors';
 
-const postTransaction = (transaction, token) => dispatch => {
+export const postTransaction = transaction => (dispatch, getState) => {
+  const token = getToken(getState());
+
+  if (!token) return;
   dispatch(postTransactionRequest());
   const {
     type,
@@ -24,7 +31,7 @@ const postTransaction = (transaction, token) => dispatch => {
         type,
         amount,
         category,
-        // date,
+        date,
         comments,
         balanceAfter,
         typeBalanceAfter,
@@ -43,4 +50,22 @@ const postTransaction = (transaction, token) => dispatch => {
     .catch(error => dispatch(postTransactionError(error)));
 };
 
-export default postTransaction;
+export const getTransactions = () => (dispatch, getState) => {
+  const token = getToken(getState());
+
+  if (!token) return;
+
+  dispatch(getTransactionRequest());
+
+  axios
+    .get('https://mywallet.goit.co.ua/api/finance', {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then(response =>
+      dispatch(getTransactionSuccesss(response.data.finance.data)),
+    )
+    .catch(error => dispatch(getTransactionError(error)));
+};

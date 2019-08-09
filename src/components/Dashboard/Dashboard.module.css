@@ -77,33 +77,61 @@ body {
   font-style: normal;
   font-weight: 400;
   background-color: #f2f4ee;
-  max-width: 1192px;
+  /* max-width: 1192px; */
   margin: 0 auto;
 }
 
 .container {
   position: relative;
   display: flex;
-  justify-content: space-between;
-  width: 90%;
+  justify-content: space-around;
+  /* width: 98%; */
   margin: 0 auto;
+  /* min-height: 677px; */
   font-family: 'Baloo Bhaina';
   font-weight: normal;
+  /* padding-top: 8px; */
+  /* background-color: #f2f4ee; */
 }
 
-.leftSideBar {
-  /* border: 1px solid green; */
-  display: block;
-  width: 30%;
+@media screen and (max-width: 767px) {
+  .innerContainer {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+    margin: 0 auto;
+  }
 }
 
-/* .leftSideBarDown {
-  border: 1px solid red;
-  display: block;
-  width: 30%;
-} */
+@media screen and (min-width: 768px) {
+  body {
+    background-repeat: no-repeat;
+    background-image: url('../../assets/img/bg.png');
+    background-position: bottom;
+  }
+}
 
-.rigthSideBar {
-  display: block;
-  width: 500px;
+@media screen and (min-width: 1024px) {
+  body {
+    background-image: none;
+  }
+
+  .leftSideBar {
+    position: relative;
+    display: block;
+    width: 30%;
+    display: flex;
+  }
+
+  .rightSideBar {
+    position: relative;
+    display: block;
+    width: 70%;
+  }
 }

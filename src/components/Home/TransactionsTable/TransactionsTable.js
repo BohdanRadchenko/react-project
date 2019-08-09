@@ -1,11 +1,37 @@
 /*eslint-disable*/
-
 import React from 'react';
 import styles from './TransactionsTable.module.css';
+import shortid from 'shortid';
 
-const substring = str => {
-  const newStr = String(str);
-  return newStr.substr(0, 8);
+const getMonth = month => {
+  switch (month) {
+    case 'Jan':
+      return '01';
+    case 'Feb':
+      return '02';
+    case 'Mar':
+      return '03';
+    case 'Apr':
+      return '04';
+    case 'May':
+      return '05';
+    case 'Jun':
+      return '06';
+    case 'Jul':
+      return '07';
+    case 'Aug':
+      return '08';
+    case 'Sep':
+      return '09';
+    case 'Oct':
+      return '10';
+    case 'Nov':
+      return '11';
+    case 'Dec':
+      return '12';
+    default:
+      return 'Hello';
+  }
 };
 
 const styleByType = {
@@ -17,7 +43,18 @@ const styleByType = {
   amount: styles.td,
 };
 
-const TransactionHistory = ({ items }) => {
+const date = date => {
+  const newDate = new Date(date);
+  const dateRes = String(newDate);
+  const month = dateRes.substr(4, 3);
+  const day = dateRes.substr(8, 2);
+  const year = dateRes.substr(10, 5);
+  const yearRes = year.substr(1);
+  const result = `${day}.${getMonth(month)}.${yearRes}`;
+  return result;
+};
+
+const TransactionsTable = ({ items }) => {
   return (
     <>
       <div className={styles.container}>
@@ -35,15 +72,15 @@ const TransactionHistory = ({ items }) => {
           <tbody>
             {items.map(item => (
               <tr
-                key={item.date}
+                key={shortid.generate()}
                 className={
                   item.type === '-'
-                    ? styleByType.classBase + ' ' + styleByType.con
-                    : styleByType.classBase + ' ' + styleByType.inc
+                    ? `${styleByType.classBase} ${styleByType.con}`
+                    : `${styleByType.classBase} ${styleByType.inc}`
                 }
               >
                 <td className={styles.td} data-label="Date">
-                  {substring(item.date)}
+                  {date(item.date)}
                 </td>
                 <td className={styles.td} data-label="Type">
                   {item.type}
@@ -75,10 +112,9 @@ const TransactionHistory = ({ items }) => {
             ))}
           </tbody>
         </table>
-        {/* <AddButton /> */}
       </div>
     </>
   );
 };
 
-export default TransactionHistory;
+export default TransactionsTable;

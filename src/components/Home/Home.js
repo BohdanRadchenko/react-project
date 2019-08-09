@@ -1,26 +1,21 @@
 /*eslint-disable*/
 import React, { Component } from 'react';
+import Media from 'react-media';
+import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
 import TransactionsTable from './TransactionsTable/TransactionsTable';
 import AddButton from './AddButton/AddButton';
 import Modal from '../Modal/ModalContainer';
-// import db from '../../db.json';
 import styles from './Home.module.css';
 import Welcome from './Welcome/Welcome';
+import SlideTransition from './Slide.module.css';
 
 class Home extends Component {
   state = {
     isOpenModal: false,
     items: [],
+    firstOpen: true,
   };
-
-  // componentDidMount() {
-  //   const { finance } = this.props;
-  //   this.setState({
-  //     items: [...finance],
-  //   });
-
-  // }
 
   handleOpen = () => {
     this.setState({ isOpenModal: true });
@@ -32,19 +27,35 @@ class Home extends Component {
 
   render() {
     const { finance } = this.props;
-    // console.log(finance);
-    // console.log('render');
+    const arr = [...finance].reverse();
 
     const { isOpenModal } = this.state;
+
     return (
       <div className={styles.container_home}>
         <div className={styles.container_table}>
           {finance.length === 0 && <Welcome />}
-          {finance.length !== 0 && <TransactionsTable items={finance} />}
-          {/* <TransactionsTable items={finance} /> */}
+          {finance.length !== 0 && <TransactionsTable items={arr} />}
           <AddButton onOpen={this.handleOpen} />
         </div>
-        {isOpenModal && <Modal onClose={this.handleClose} />}
+        <Media
+          query="(max-width: 766px)"
+          render={() => (
+            <CSSTransition
+              in={isOpenModal}
+              timeout={200}
+              classNames={SlideTransition}
+              unmountOnExit
+            >
+              <Modal onClose={this.handleClose} />
+            </CSSTransition>
+          )}
+        />
+        <Media
+          query="(min-width: 767px)"
+          render={() => isOpenModal && <Modal onClose={this.handleClose} />}
+        />
+        {/* {isOpenModal && <Modal onClose={this.handleClose} />} */}
       </div>
     );
   }

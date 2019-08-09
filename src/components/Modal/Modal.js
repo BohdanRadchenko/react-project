@@ -52,22 +52,24 @@ export default class Modal extends Component {
       type: id === 'cost' ? transactions.COST : transactions.INCOME,
     });
 
-  handleTextChange = ({ target: { value, name } }) => {
-    if (name === 'amount' && value.length > 10) {
-      const toFixed = Number(value).toFixed();
-      if (toFixed.length > 10) {
-        toast.warn('Too many symbols!');
-        return;
-      } else {
-        this.setState({ [name]: value });
-      }
-    } else if (name === 'comments' && value.length > 40) {
+  handleAmountInput = value => {
+    if (!value) {
+      return;
+    } else if (Number.isNaN(value)) {
       return;
     }
-    this.setState({ [name]: value });
+    this.setState({ amount: String(value) });
   };
 
-  handleSelectChange = e => this.setState({ category: e.value });
+  handleTextareaInput = ({ target: { value } }) => {
+    if (value.length > 40) {
+      lodash.throttle(toast.warn('Too many symbols!'), 2000);
+      return;
+    }
+    this.setState({ comments: value });
+  };
+
+  handleSelectChange = e => this.setState({ category: e });
 
   handleDateChange = date => {
     this.setState({ date });
@@ -75,17 +77,22 @@ export default class Modal extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { category, amount, comments, date } = this.state;
+    const { type, category, amount, comments, date } = this.state;
     if (Number(amount) <= 0) {
       toast.error('Invalid input!');
+      return;
+    }
+
+    if (type === transactions.COST && !category) {
+      toast.error('Enter category!');
       return;
     }
 
     const transactionToAdd = {
       type: category ? '-' : '+',
       amount: parseFloat(Number(amount).toFixed(2)),
-      category,
-      date,
+      category: category ? category.value : null,
+      date: new Date(String(date)).getTime(),
       comments,
     };
     const balanceAfter = countBalanceAfter(
@@ -97,6 +104,7 @@ export default class Modal extends Component {
     transactionToAdd.balanceAfter = balanceAfter;
     transactionToAdd.typeBalanceAfter = typeBalanceAfter;
 
+    console.log(transactionToAdd);
     this.props.postTransaction(transactionToAdd, this.props.token);
     this.reset();
   };
@@ -112,7 +120,7 @@ export default class Modal extends Component {
     });
 
   render() {
-    const { isCost, type, comments, amount, date } = this.state;
+    const { isCost, type, comments, amount, date, category } = this.state;
     return (
       <div
         ref={this.backdropRef}
@@ -121,15 +129,18 @@ export default class Modal extends Component {
       >
         <AddTransaction
           isCost={isCost}
-          amount={amount}
+          amount={Number(amount)}
+          category={category}
           type={type}
           date={date}
           comments={comments}
           handleRadioChange={this.handleRadioChange}
-          handleTextChange={this.handleTextChange}
+          handleAmountInput={this.handleAmountInput}
+          handleTextareaInput={this.handleTextareaInput}
           handleSelectChange={this.handleSelectChange}
           handleDateChange={this.handleDateChange}
           handleSubmit={this.handleSubmit}
+          handleClose={this.props.onClose}
         />
       </div>
     );

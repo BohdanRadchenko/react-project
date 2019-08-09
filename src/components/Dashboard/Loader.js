@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React from 'react';
+import Loaders from '../Dashboard/Currencies/loaders';
 
 const Loading = ({ error, timedOut, pastDelay, retry }) => {
   if (error) {
@@ -25,7 +26,8 @@ const Loading = ({ error, timedOut, pastDelay, retry }) => {
   }
 
   if (pastDelay) {
-    return <div>Loading...</div>;
+    // return <div>Loading...</div>;
+    return <Loaders />;
   }
 
   return null;

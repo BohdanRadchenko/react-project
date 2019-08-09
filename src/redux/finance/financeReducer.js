@@ -3,6 +3,8 @@ import { transactionActionTypes } from './financeActions';
 
 export const data = (state = [], { type, payload }) => {
   switch (type) {
+    case transactionActionTypes.GET_TRANSACTION_SUCCESS:
+      return payload.response;
     case transactionActionTypes.POST_TRANSACTION_SUCCESS:
       return [...state, payload];
     default:

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { getError } from '../../redux/session/sessionSelectors';
 import style from './Authentication.module.css';
 import PasswordStrengthMeter from '../PasswordStrengthMeter/PasswordStrengthMeter';
