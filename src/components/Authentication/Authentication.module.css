@@ -102,8 +102,12 @@
   background-position-x: 15px;
   background-position-y: 16px;
   padding-left: 50px;
-  color: #dbe1e6;
+  color: black;
   font-size: 15px;
+}
+
+.signInEmail::placeholder {
+  color: #dbe1e6;
 }
 
 .signInPassword {
@@ -156,6 +160,7 @@
   bottom: 2%;
   left: 50%;
   transform: translateX(-50%);
+  color: #b7b8b9d7;
 }
 
 @media screen and (max-width: 1084px) {
