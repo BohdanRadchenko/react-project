@@ -1,8 +1,9 @@
 /*eslint-disable*/
-import React, { Component, createRef } from 'react';
+import React, { Component, createRef, useState } from 'react';
 import Media from 'react-media';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+import InputNumber from 'react-input-number';
 import DatePicker from 'react-date-picker/dist/entry.nostyle';
 import { categories, transactions } from '../../../constans/modalConstants';
 import styles from '../Modal.module.css';
@@ -13,6 +14,7 @@ export default class AddTransaction extends Component {
   btnRef = createRef();
 
   render() {
+    // const [num, setNum] = useState(Number(0).toFixed(2));
     const {
       amount,
       type,
@@ -20,9 +22,10 @@ export default class AddTransaction extends Component {
       comments,
       date,
       handleRadioChange,
-      handleTextChange,
+      handleAmountInput,
       handleSelectChange,
       handleDateChange,
+      handleTextareaInput,
       handleSubmit,
       handleClose,
     } = this.props;
@@ -77,7 +80,7 @@ export default class AddTransaction extends Component {
             />
           )}
           <div className={styles.inputsDiv}>
-            <input
+            {/* <input
               name="amount"
               type="number"
               value={Number(amount).toFixed(2)}
@@ -85,6 +88,14 @@ export default class AddTransaction extends Component {
               min={0}
               onChange={handleTextChange}
               className={`${styles.input} ${styles.amountInput}`}
+              required
+            /> */}
+            <InputNumber
+              name="amount"
+              min={0}
+              value={amount}
+              onChange={handleAmountInput}
+              enableMobileNumericKeyboard
               required
             />
             <DatePicker
@@ -104,7 +115,7 @@ export default class AddTransaction extends Component {
             rows="2"
             value={comments}
             placeholder="Add a comment..."
-            onChange={handleTextChange}
+            onChange={handleTextareaInput}
             className={styles.textarea}
           />
           <div className={styles.buttonDiv}>

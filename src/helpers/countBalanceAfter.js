@@ -1,4 +1,4 @@
-const countSum = (transactions, type) =>
+export const countSum = (transactions, type) =>
   transactions
     .filter(transaction => transaction.type === type)
     .reduce((acc, transaction) => transaction.amount + acc, 0);

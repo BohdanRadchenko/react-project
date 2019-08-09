@@ -10,6 +10,8 @@ import statisticsCount from '../../helpers/statisticsCount';
 import styles from './Dashboard.module.css';
 // import ProtectedComponent from './hoc/PrivateRoute';
 // import PrivateRoute from './PrivateRoute';
+import Header from '../Header/Header';
+import css from '../Header/Header.module.css';
 
 const AsyncHome = Loadable({
   loader: () => import('../../pages/Home' /* webpackChunkName: "home-page" */),
@@ -56,19 +58,24 @@ class Dashboard extends Component {
       maximumFractionDigits: 2,
     }).format(statisticsCount(items).balance);
     return (
-      <div className={styles.container}>
-        <div className={styles.leftSideBar}>
-          <SideBar balance={balance} />
+      <>
+        <header className={css.header}>
+          <Header />
+        </header>
+        <div className={styles.container}>
+          <div className={styles.leftSideBar}>
+            <SideBar balance={balance} />
+          </div>
+          <div className={styles.rightSideBar}>
+            <Switch>
+              <Route path="/dashboard/home" component={AsyncHome} />
+              <Route path="/dashboard/stats" component={AsyncStats} />
+              <Route path="/dashboard/currencies" component={AsyncCurrencies} />
+              <Redirect to="/dashboard/home" />
+            </Switch>
+          </div>
         </div>
-        <div className={styles.rightSideBar}>
-          <Switch>
-            <Route path="/dashboard/home" component={AsyncHome} />
-            <Route path="/dashboard/stats" component={AsyncStats} />
-            <Route path="/dashboard/currencies" component={AsyncCurrencies} />
-            <Redirect to="/dashboard/home" />
-          </Switch>
-        </div>
-      </div>
+      </>
     );
   }
 }
