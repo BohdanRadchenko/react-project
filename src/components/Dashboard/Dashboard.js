@@ -50,6 +50,9 @@ class Dashboard extends Component {
       items: [...transactions],
       quotesModalIsOpen: true,
     });
+    if (quotesModalIsOpen) {
+      document.body.style.overflow = 'hidden';
+    }
   }
 
   handleQuotesModalClose = () => {

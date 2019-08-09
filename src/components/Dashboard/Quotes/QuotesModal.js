@@ -22,6 +22,7 @@ export default class Modal extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyPress);
+    document.body.style.overflow = 'unset';
   }
 
   handleKeyPress = e => {
@@ -51,7 +52,9 @@ export default class Modal extends Component {
         onClick={this.handleBackdropClick}
       >
         <div className={styles.modal}>
-          <p className={styles.modalId}>Usefull advice {selectedQuote.id}</p>
+          <p className={styles.modalId}>
+            Usefull advice &#8470;{selectedQuote.id}
+          </p>
           <h2 className={styles.modalTitle}>{selectedQuote.title}</h2>
         </div>
       </div>
