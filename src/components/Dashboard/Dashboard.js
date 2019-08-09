@@ -12,6 +12,7 @@ import styles from './Dashboard.module.css';
 // import PrivateRoute from './PrivateRoute';
 import Header from '../Header/Header';
 import css from '../Header/Header.module.css';
+import { getTransactions } from '../../redux/finance/financeSelectors';
 
 const AsyncHome = Loadable({
   loader: () => import('../../pages/Home' /* webpackChunkName: "home-page" */),
@@ -50,6 +51,14 @@ class Dashboard extends Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.transactions !== this.props.transactions) {
+      const { transactions } = this.props;
+      this.setState({
+        items: [...transactions],
+      });
+    }
+  }
   render() {
     const { items } = this.state;
 
@@ -81,7 +90,8 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-  transactions: db,
+  // transactions: db,
+  transactions: getTransactions(state),
 });
 
 export default connect(

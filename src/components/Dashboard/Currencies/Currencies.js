@@ -19,20 +19,18 @@ class Currencies extends React.Component {
     this.setState({
       wait: true,
     });
-    setTimeout(() => {
-      fetch(API)
-        .then(response => response.json())
-        .then(data =>
-          this.setState({
-            currencies: data,
-          }),
-        )
-        .finally(
-          this.setState({
-            wait: false,
-          }),
-        );
-    }, 10000);
+    fetch(API)
+      .then(response => response.json())
+      .then(data =>
+        this.setState({
+          currencies: data,
+        }),
+      )
+      .finally(
+        this.setState({
+          wait: false,
+        }),
+      );
   };
 
   render() {
