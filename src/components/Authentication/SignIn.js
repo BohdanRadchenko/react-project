@@ -1,8 +1,10 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { Redirect } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import style from './Authentication.module.css';
+// import { Redirect } from 'react-router-dom';
 import {
   getError,
   isAuthentificated,
@@ -34,10 +36,6 @@ class SignIn extends Component {
     if (authentificated) {
       history.replace('/dashboard');
     }
-
-    // if (!authentificated) {
-    //   return <Redirect to="/signup" />;
-    // }
   }
 
   componentWillUnmount() {
@@ -61,40 +59,63 @@ class SignIn extends Component {
     } = this.props;
 
     return (
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          display: 'flex',
-          margin: 'auto',
-          width: 500,
-          flexDirection: 'column',
-        }}
-      >
-        <input
-          type="email"
-          name="email"
-          value={values.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          placeholder="email"
-        />
-        {errors.email && touched.email && (
-          <div className="input-feedback">{errors.email}</div>
-        )}
-        <input
-          type="password"
-          name="password"
-          value={values.password}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          placeholder="password"
-        />
-        {errors.password && touched.password && (
-          <div className="input-feedback">{errors.password}</div>
-        )}
-        <button type="submit">Sign in</button>
-        <p>{errorMessage}</p>
-      </form>
+      <div className={style.modal}>
+        <div>
+          <img
+            alt="Financ App"
+            className={style.backgroundIMG}
+            // eslint-disable-next-line global-require
+            src={require('./img/sq.png')}
+          />
+          <div className={style.iphoneIMG} />
+          <div className={style.test}>
+            <p className={style.financePar}>Finance App</p>
+          </div>
+        </div>
+
+        <div className={style.formContainer}>
+          <div className={style.signInLogoContainer}>
+            <img
+              src="/static/media/logo.49db5ab8.svg"
+              alt="logo"
+              className={style.signInLogo}
+            />
+            <h1>Wallet</h1>
+          </div>
+
+          <form onSubmit={handleSubmit} className={style.formSignIn}>
+            <input
+              className={style.signInEmail}
+              type="email"
+              name="email"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder="E-mail"
+            />
+
+            {errors.email && touched.email && (
+              <div className="input-feedback">{errors.email}</div>
+            )}
+            <input
+              className={style.signInName}
+              type="password"
+              name="password"
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder="Пароль"
+            />
+            {errors.password && touched.password && (
+              <div className="input-feedback">{errors.password}</div>
+            )}
+            <button className={style.signInButton} type="submit">
+              Войти
+            </button>
+            <p>{errorMessage}</p>
+          </form>
+        </div>
+      </div>
     );
   }
 }
