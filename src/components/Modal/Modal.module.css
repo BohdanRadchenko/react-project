@@ -72,7 +72,8 @@ body {
 
 .title {
   margin: 0;
-  font-family: 'Rubic';
+  font-family: 'Rubic', sans-serif;
+
   font-weight: normal;
   font-size: 12px;
   text-transform: uppercase;
