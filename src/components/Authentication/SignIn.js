@@ -52,8 +52,10 @@ class SignIn extends Component {
             // eslint-disable-next-line global-require
             src={require('./img/sq.png')}
           />
-          <p className={style.financePar}>Finance App</p>
           <div className={style.iphoneIMG} />
+          <div className={style.test}>
+            <p className={style.financePar}>Finance App</p>
+          </div>
         </div>
 
         <div className={style.formContainer}>

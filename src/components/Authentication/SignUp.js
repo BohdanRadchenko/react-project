@@ -52,8 +52,10 @@ class SignUp extends Component {
             // eslint-disable-next-line global-require
             src={require('./img/sq.png')}
           />
-          <p className={style.financePar}>Finance App</p>
           <div className={style.iphoneIMG} />
+          <div className={style.test}>
+            <p className={style.financePar}>Finance App</p>
+          </div>
         </div>
         <div
           style={{
@@ -69,17 +71,7 @@ class SignUp extends Component {
             />
             <h1>Wallet</h1>
           </div>
-          <form
-            className={style.formSignIn}
-            onSubmit={handleSubmit}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              padding: 10,
-              width: 500,
-              margin: 'auto',
-            }}
-          >
+          <form className={style.formSignIn} onSubmit={handleSubmit}>
             <input
               className={style.signInEmail}
               type="email"
