@@ -13,6 +13,8 @@ import SlideTransition from './Slide.module.css';
 class Home extends Component {
   state = {
     isOpenModal: false,
+    items: [],
+    firstOpen: true,
   };
 
   handleOpen = () => {
