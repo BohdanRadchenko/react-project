@@ -36,6 +36,7 @@
     margin: 0px;
     flex-direction: row;
     justify-content: flex-start;
+    margin-top: 8px;
   }
 
   .balanceText {
@@ -49,6 +50,7 @@
     color: var(--NotSelectedPage_Balance_page);
     font-size: 15px;
     text-align: center;
+    margin-top: 3px;
   }
 }
 
