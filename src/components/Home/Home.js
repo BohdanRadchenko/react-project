@@ -4,23 +4,13 @@ import { connect } from 'react-redux';
 import TransactionsTable from './TransactionsTable/TransactionsTable';
 import AddButton from './AddButton/AddButton';
 import Modal from '../Modal/ModalContainer';
-// import db from '../../db.json';
 import styles from './Home.module.css';
 import Welcome from './Welcome/Welcome';
 
 class Home extends Component {
   state = {
     isOpenModal: false,
-    items: [],
   };
-
-  // componentDidMount() {
-  //   const { finance } = this.props;
-  //   this.setState({
-  //     items: [...finance],
-  //   });
-
-  // }
 
   handleOpen = () => {
     this.setState({ isOpenModal: true });
@@ -32,16 +22,15 @@ class Home extends Component {
 
   render() {
     const { finance } = this.props;
-    // console.log(finance);
-    // console.log('render');
+    const arr = [...finance].reverse();
 
     const { isOpenModal } = this.state;
+
     return (
       <div className={styles.container_home}>
         <div className={styles.container_table}>
           {finance.length === 0 && <Welcome />}
-          {finance.length !== 0 && <TransactionsTable items={finance} />}
-          {/* <TransactionsTable items={finance} /> */}
+          {finance.length !== 0 && <TransactionsTable items={arr} />}
           <AddButton onOpen={this.handleOpen} />
         </div>
         {isOpenModal && <Modal onClose={this.handleClose} />}

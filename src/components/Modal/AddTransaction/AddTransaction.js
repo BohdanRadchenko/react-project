@@ -3,6 +3,7 @@ import React, { Component, createRef } from 'react';
 import Media from 'react-media';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+import NumericInput from 'react-numeric-input';
 import DatePicker from 'react-date-picker/dist/entry.nostyle';
 import { categories, transactions } from '../../../constans/modalConstants';
 import styles from '../Modal.module.css';
@@ -18,11 +19,13 @@ export default class AddTransaction extends Component {
       type,
       isCost,
       comments,
+      category,
       date,
       handleRadioChange,
-      handleTextChange,
+      handleAmountInput,
       handleSelectChange,
       handleDateChange,
+      handleTextareaInput,
       handleSubmit,
       handleClose,
     } = this.props;
@@ -70,6 +73,7 @@ export default class AddTransaction extends Component {
           </div>
           {isCost && (
             <Select
+              value={category}
               className={styles.select}
               options={categories}
               onChange={handleSelectChange}
@@ -77,15 +81,16 @@ export default class AddTransaction extends Component {
             />
           )}
           <div className={styles.inputsDiv}>
-            <input
-              name="amount"
-              type="number"
-              value={Number(amount).toFixed(2)}
-              // step={0.01}
+            <NumericInput
+              style={false}
+              className="form-control"
               min={0}
-              onChange={handleTextChange}
-              className={`${styles.input} ${styles.amountInput}`}
-              required
+              precision={2}
+              value={amount}
+              onChange={handleAmountInput}
+              require="true"
+              strict
+              maxLength={13}
             />
             <DatePicker
               value={date}
@@ -99,12 +104,11 @@ export default class AddTransaction extends Component {
           </div>
           <h2 className={styles.comment}>Comment</h2>
           <textarea
-            name="comments"
             cols="20"
             rows="2"
             value={comments}
             placeholder="Add a comment..."
-            onChange={handleTextChange}
+            onChange={handleTextareaInput}
             className={styles.textarea}
           />
           <div className={styles.buttonDiv}>
@@ -119,5 +123,5 @@ export default class AddTransaction extends Component {
 }
 
 AddTransaction.propTypes = {
-  amount: PropTypes.string.isRequired,
+  amount: PropTypes.number.isRequired,
 };

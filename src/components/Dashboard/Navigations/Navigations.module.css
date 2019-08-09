@@ -66,6 +66,7 @@
   .nav {
     margin: 0 auto;
     background-color: transparent;
+    margin-bottom: 30px;
   }
 
   .navLink {
@@ -114,5 +115,26 @@
 
   .navLinkBtnCurr {
     display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .nav {
+    width: 320px;
+    height: 142px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 4px;
+    background-color: #3a5374;
+    padding: 0 0 0 0;
+  }
+
+  /* .navLink {
+    padding-left: 30px;
+  } */
+
+  .navLink::after {
+    content: '';
   }
 }

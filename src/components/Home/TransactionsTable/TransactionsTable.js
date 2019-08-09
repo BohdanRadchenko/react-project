@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import React from 'react';
 import styles from './TransactionsTable.module.css';
+import shortid from 'shortid';
 
 const getMonth = month => {
   switch (month) {
@@ -53,7 +54,7 @@ const date = date => {
   return result;
 };
 
-const TransactionHistory = ({ items }) => {
+const TransactionsTable = ({ items }) => {
   return (
     <>
       <div className={styles.container}>
@@ -71,11 +72,11 @@ const TransactionHistory = ({ items }) => {
           <tbody>
             {items.map(item => (
               <tr
-                key={item.date}
+                key={shortid.generate()}
                 className={
                   item.type === '-'
-                    ? styleByType.classBase + ' ' + styleByType.con
-                    : styleByType.classBase + ' ' + styleByType.inc
+                    ? `${styleByType.classBase} ${styleByType.con}`
+                    : `${styleByType.classBase} ${styleByType.inc}`
                 }
               >
                 <td className={styles.td} data-label="Date">
@@ -101,11 +102,11 @@ const TransactionHistory = ({ items }) => {
                         : styleByType.incColor
                     }
                   >
-                    {item.amount}
+                    {item.amount.toFixed(2)}
                   </span>
                 </td>
                 <td className={styles.td} data-label="Balance">
-                  {item.balanceAfter}
+                  {item.balanceAfter.toFixed(2)}
                 </td>
               </tr>
             ))}
@@ -116,4 +117,4 @@ const TransactionHistory = ({ items }) => {
   );
 };
 
-export default TransactionHistory;
+export default TransactionsTable;
