@@ -41,7 +41,6 @@ export default class Modal extends Component {
   };
 
   render() {
-    // const { children } = this.props;
     const { quotes } = this.state;
     const selectedQuote =
       quotes[Math.floor(Math.random() * Math.floor(quotes.length))];
@@ -52,9 +51,8 @@ export default class Modal extends Component {
         onClick={this.handleBackdropClick}
       >
         <div className={styles.modal}>
-          <p className={styles.modalId}>Usefull advice №{selectedQuote.id}</p>
+          <p className={styles.modalId}>Usefull advice {selectedQuote.id}</p>
           <h2 className={styles.modalTitle}>{selectedQuote.title}</h2>
-          <p className={styles.modalText}>{selectedQuote.body}</p>
         </div>
       </div>
     );
