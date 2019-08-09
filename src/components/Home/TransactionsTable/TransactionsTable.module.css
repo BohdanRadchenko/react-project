@@ -10,6 +10,13 @@
   font-size: 11px;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+}
+
 .incColor {
   color: #415b7d;
   font-weight: 800;
