@@ -7,6 +7,7 @@ import Loader from './Loader';
 import SideBar from './Sidebar/Sidebar';
 import db from '../../db.json';
 import statisticsCount from '../../helpers/statisticsCount';
+import QuotesModal from './Quotes/QuotesModal';
 import styles from './Dashboard.module.css';
 // import ProtectedComponent from './hoc/PrivateRoute';
 // import PrivateRoute from './PrivateRoute';
@@ -42,14 +43,24 @@ const AsyncCurrencies = Loadable({
 class Dashboard extends Component {
   state = {
     items: [],
+    quotesModalIsOpen: false,
   };
 
   componentDidMount() {
     const { transactions } = this.props;
+    const { quotesModalIsOpen } = this.state;
     this.setState({
       items: [...transactions],
+      quotesModalIsOpen: true,
     });
+    if (quotesModalIsOpen) {
+      document.body.style.overflow = 'hidden';
+    }
   }
+
+  handleQuotesModalClose = () => {
+    this.setState({ quotesModalIsOpen: false });
+  };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.transactions !== this.props.transactions) {
@@ -60,7 +71,7 @@ class Dashboard extends Component {
     }
   }
   render() {
-    const { items } = this.state;
+    const { items, quotesModalIsOpen } = this.state;
 
     const balance = new Intl.NumberFormat('UAH', {
       minimumFractionDigits: 2,
@@ -72,6 +83,9 @@ class Dashboard extends Component {
           <Header />
         </header>
         <div className={styles.container}>
+          {quotesModalIsOpen && (
+            <QuotesModal onClose={this.handleQuotesModalClose} />
+          )}
           <div className={styles.leftSideBar}>
             <SideBar balance={balance} />
           </div>
