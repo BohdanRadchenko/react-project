@@ -46,7 +46,7 @@
   text-align: center;
   color: white;
   font-size: 24px;
-  bottom: 5%;
+  bottom: -3%;
 }
 
 .formSignIn {
@@ -102,8 +102,12 @@
   background-position-x: 15px;
   background-position-y: 16px;
   padding-left: 50px;
-  color: #dbe1e6;
+  color: black;
   font-size: 15px;
+}
+
+.signInEmail::placeholder {
+  color: #dbe1e6;
 }
 
 .signInPassword {
@@ -132,8 +136,8 @@
   left: 22.5%;
   transform: translate(-50%, -50%);
   position: absolute;
-  height: 650px;
-  width: 294px;
+  height: 100vh;
+  width: 20%;
   background-image: url('../Authentication/img/iPhone 62x.png');
   background-repeat: no-repeat;
   background-size: 100%;
@@ -147,6 +151,16 @@
 
 .inputFeedback {
   width: 100%;
+}
+
+.signUpLink,
+.signInLink {
+  display: block;
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #b7b8b9d7;
 }
 
 @media screen and (max-width: 1084px) {

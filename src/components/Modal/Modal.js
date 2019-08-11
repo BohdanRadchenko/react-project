@@ -12,6 +12,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure();
 
+const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
+
 export default class Modal extends Component {
   state = {
     isCost: true,
@@ -27,12 +29,51 @@ export default class Modal extends Component {
 
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyPress);
+    this.disableScroll();
   }
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyPress);
+    this.enableScroll();
   }
 
+  //_______________________
+  preventDefault = e => {
+    e = e || window.event;
+    if (e.preventDefault) e.preventDefault();
+    e.returnValue = false;
+  };
+
+  preventDefaultForScrollKeys = e => {
+    if (keys[e.keyCode]) {
+      this.preventDefault(e);
+      return false;
+    }
+  };
+
+  disableScroll = () => {
+    if (window.addEventListener)
+      // older FF
+      window.addEventListener('DOMMouseScroll', this.preventDefault, false);
+    document.addEventListener('wheel', this.preventDefault, { passive: false }); // Disable scrolling in Chrome
+    window.onwheel = this.preventDefault; // modern standard
+    window.onmousewheel = document.onmousewheel = this.preventDefault; // older browsers, IE
+    window.ontouchmove = this.preventDefault; // mobile
+    document.onkeydown = this.preventDefaultForScrollKeys;
+  };
+
+  enableScroll = () => {
+    if (window.removeEventListener)
+      window.removeEventListener('DOMMouseScroll', this.preventDefault, false);
+    document.removeEventListener('wheel', this.preventDefault, {
+      passive: false,
+    }); // Enable scrolling in Chrome
+    window.onmousewheel = document.onmousewheel = null;
+    window.onwheel = null;
+    window.ontouchmove = null;
+    document.onkeydown = null;
+  };
+  //_______________________
   handleKeyPress = e => {
     if (e.code !== 'Escape') return;
     this.props.onClose();

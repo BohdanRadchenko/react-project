@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 import { getError } from '../../redux/session/sessionSelectors';
 import style from './Authentication.module.css';
@@ -123,8 +124,13 @@ class SignUp extends Component {
               <div className="input-feedback">{errors.name}</div>
             )}
             <button className={style.signInButton} type="submit">
-              Регистация
+              Sign up
             </button>
+            <NavLink to="/signin">
+              <button type="button" className={style.signUpLink}>
+                Вход
+              </button>
+            </NavLink>
             <p>{errorMessage}</p>
           </form>
         </div>
