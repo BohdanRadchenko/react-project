@@ -17,6 +17,20 @@ class Home extends Component {
     firstOpen: true,
   };
 
+  componentDidMount = () => {
+    console.log('Mount');
+  };
+
+  componentDidUpdate = (prevProps, prevState) => {
+    console.log('update');
+    if (prevProps.finance !== prevState.items) {
+      this.setState({ items: [...prevProps.finance] });
+      console.log(prevState);
+    }
+
+    // this.setState({ items: [{}, {}] });
+  };
+
   handleOpen = () => {
     this.setState({ isOpenModal: true });
   };
@@ -27,9 +41,11 @@ class Home extends Component {
 
   handleTypeClick = () => {
     console.log('click');
+    this.setState({ items: [{}] });
   };
 
   render() {
+    console.log('render');
     const { finance } = this.props;
     const arr = [...finance].reverse();
 
@@ -69,7 +85,10 @@ class Home extends Component {
         <div className={styles.container_table}>
           {finance.length === 0 && <Welcome />}
           {finance.length !== 0 && (
-            <TransactionsTable items={R} onTypeClick={this.handleTypeClick} />
+            <TransactionsTable
+              items={finance}
+              onTypeClick={this.handleTypeClick}
+            />
           )}
           <AddButton onOpen={this.handleOpen} />
         </div>
