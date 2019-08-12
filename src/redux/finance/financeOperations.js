@@ -44,7 +44,6 @@ export const postTransaction = transaction => (dispatch, getState) => {
       },
     )
     .then(response => {
-      console.log(response.data);
       dispatch(postTransactionSuccesss(transaction));
     })
     .catch(error => dispatch(postTransactionError(error)));
