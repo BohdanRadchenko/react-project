@@ -1,7 +1,7 @@
-/*eslint-disable*/
 import React from 'react';
-import styles from './TransactionsTable.module.css';
 import shortid from 'shortid';
+import PropTypes from 'prop-types';
+import styles from './TransactionsTable.module.css';
 
 const getMonth = month => {
   switch (month) {
@@ -43,8 +43,8 @@ const styleByType = {
   amount: styles.td,
 };
 
-const date = date => {
-  const newDate = new Date(date);
+const date = d => {
+  const newDate = new Date(d);
   const dateRes = String(newDate);
   const month = dateRes.substr(4, 3);
   const day = dateRes.substr(8, 2);
@@ -56,24 +56,22 @@ const date = date => {
 
 const filterAmount = n => {
   const result = String(n).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
-  let newResult;
+
   if (result.includes('.')) {
     const from = result.indexOf('.');
     const to = result.length;
     const newstr = result.substring(from, to);
-    const n = result.substring(0, from);
+    const newDate = result.substring(0, from);
 
     if (newstr.length === 2) {
-      return (newResult = `${n + newstr}0`);
-    } else {
-      return (newResult = `${n + newstr}`);
+      return `${newDate + newstr}0`;
     }
-  } else {
-    return `${result}.00`;
+    return `${newDate + newstr}`;
   }
+  return `${result}.00`;
 };
 
-const TransactionsTable = ({ items, onTypeClick }) => {
+const TransactionsTable = ({ items }) => {
   return (
     <>
       <div className={styles.container}>
@@ -134,6 +132,19 @@ const TransactionsTable = ({ items, onTypeClick }) => {
       </div>
     </>
   );
+};
+
+TransactionsTable.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.string.isRequired,
+      date: PropTypes.number.isRequired,
+      category: PropTypes.string,
+      comments: PropTypes.string,
+      amount: PropTypes.number.isRequired,
+      balanceAfter: PropTypes.number.isRequired,
+    }).isRequired,
+  ).isRequired,
 };
 
 export default TransactionsTable;
