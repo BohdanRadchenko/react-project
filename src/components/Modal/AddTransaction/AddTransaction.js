@@ -105,6 +105,7 @@ export default class AddTransaction extends Component {
               options={categories}
               onChange={handleSelectChange}
               required
+              maxMenuHeight="100%"
             />
           )}
           <div className={styles.inputsDiv}>
