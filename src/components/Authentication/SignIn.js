@@ -1,12 +1,13 @@
-/*eslint-disable*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import { Link } from 'react-router-dom';
 import style from './Authentication.module.css';
-import { NavLink } from 'react-router-dom';
+import img from './img/sq.png';
 
-// import { Redirect } from 'react-router-dom';
+import css from './SignUp.module.css';
+
 import {
   getError,
   isAuthentificated,
@@ -63,15 +64,11 @@ class SignIn extends Component {
     return (
       <div className={style.modal}>
         <div>
-          <img
-            alt="Financ App"
-            className={style.backgroundIMG}
-            // eslint-disable-next-line global-require
-            src={require('./img/sq.png')}
-          />
-          <div className={style.iphoneIMG} />
-          <div className={style.test}>
-            <p className={style.financePar}>Finance App</p>
+          <img alt="Financ App" className={style.backgroundIMG} src={img} />
+          <div className={style.iphoneIMG}>
+            <div className={style.test}>
+              <p className={style.financePar}>Finance App</p>
+            </div>
           </div>
         </div>
 
@@ -87,7 +84,8 @@ class SignIn extends Component {
 
           <form onSubmit={handleSubmit} className={style.formSignIn}>
             <input
-              className={style.signInEmail}
+              className={`${style.signInEmail} ${errors.email &&
+                style.errorInput}`}
               type="email"
               name="email"
               value={values.email}
@@ -97,29 +95,30 @@ class SignIn extends Component {
             />
 
             {errors.email && touched.email && (
-              <div className="input-feedback">{errors.email}</div>
+              <div className={style.inputError}>{errors.email}</div>
             )}
             <input
-              className={style.signInName}
+              className={`${style.signInName} ${errors.password &&
+                style.errorInput}`}
               type="password"
               name="password"
               value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="Пароль"
+              placeholder="Password*"
             />
             {errors.password && touched.password && (
-              <div className="input-feedback">{errors.password}</div>
+              <div className={style.inputError}>{errors.password}</div>
             )}
+            <p className={style.inputError}>{errorMessage}</p>
             <button className={style.signInButton} type="submit">
               Sign in
             </button>
-            <NavLink to="/signUp">
-              <button type="button" className={style.signUpLink}>
-                Регистрация
-              </button>
-            </NavLink>
-            <p>{errorMessage}</p>
+            <Link to="/signup" className={css.link}>
+              <h2 type="button" className={css.linkText}>
+                Sign up
+              </h2>
+            </Link>
           </form>
         </div>
       </div>

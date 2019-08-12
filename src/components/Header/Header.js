@@ -11,6 +11,4 @@ class Header extends Component {
   }
 }
 
-// const mapStateToProps = state => ({});
-
 export default Header;
