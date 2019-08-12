@@ -1,6 +1,6 @@
 .button {
-  position: fixed;
   background-color: #f24537;
+  position: fixed;
   width: 60px;
   height: 60px;
   bottom: 50px;
@@ -20,12 +20,7 @@
 
 @media screen and (max-width: 767px) {
   .button {
-    left: 45%;
-  }
-}
-
-@media screen and (max-width: 470px) {
-  .button {
-    left: 41%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

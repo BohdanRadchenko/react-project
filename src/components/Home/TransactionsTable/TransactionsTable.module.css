@@ -4,12 +4,6 @@
   font-weight: bold;
 }
 
-/* @font-face {
-  font-family: MyHelveticaRoman;
-  src: url('../../assets/fonts/HelveticaNeueCyr-Roman.woff');
-  font-weight: bold;
-} */
-
 .table {
   background-color: #fff;
   width: 100%;
@@ -24,9 +18,7 @@
 
 ::-webkit-scrollbar {
   width: 0px;
-  /* Remove scrollbar space */
   background: transparent;
-  /* Optional: just make scrollbar invisible */
 }
 
 .incColor {
@@ -61,17 +53,16 @@ tr:nth-last-child(even) {
 
 @media screen and (max-width: 767px) {
   .container {
-    position: relative;
     margin: 0 auto;
     height: 60vh;
     width: 320px;
     overflow-y: auto;
-    margin-bottom: 50px;
   }
 
   .table {
     margin-top: 40px;
     width: 306px;
+    background-color: #f2f4ee;
   }
 
   .thead {
@@ -83,7 +74,7 @@ tr:nth-last-child(even) {
     display: block;
     background-color: #ffffff;
     margin-bottom: 20px;
-    box-shadow: 11px 7px 16px -6px rgba(158, 158, 158, 1);
+    box-shadow: 11px 7px 14px -8px rgba(158, 158, 158, 1);
   }
 
   .inc {
