@@ -74,8 +74,8 @@ class Dashboard extends Component {
     const { items, quotesModalIsOpen } = this.state;
 
     const balance = new Intl.NumberFormat('en', {
-      style: 'currency',
-      currency: 'UAH',
+      // style: 'currency',
+      // currency: 'UAH',
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     }).format(statisticsCount(items).balance);
