@@ -5,7 +5,10 @@ import styles from './Balance.module.css';
 const Balance = ({ balance }) => (
   <div className={styles.balanceDiv}>
     <p className={styles.balanceText}>Balance:</p>
-    <p className={styles.balanceValue}>{balance}</p>
+    <div className={styles.innerValue}>
+      <p className={styles.balanceValue}>{balance}</p>
+      <p className={styles.balanceCurr}>UAH</p>
+    </div>
   </div>
 );
 

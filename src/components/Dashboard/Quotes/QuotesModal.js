@@ -1,5 +1,3 @@
-/* eslint-disable*/
-
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import Quotes from '../../../assets/quotes.json';
@@ -15,6 +13,7 @@ export default class Modal extends Component {
   state = {
     quotes: Quotes,
     isDescriptionOpen: false,
+    // isOpen: false,
   };
 
   backdropRef = createRef();
@@ -34,9 +33,10 @@ export default class Modal extends Component {
       isDescriptionOpen: !prevState.isDescriptionOpen,
     }));
   };
+
   //---------------------------------------
+
   preventDefault = e => {
-    e = e || window.event;
     if (e.preventDefault) e.preventDefault();
     e.returnValue = false;
   };
@@ -44,8 +44,8 @@ export default class Modal extends Component {
   preventDefaultForScrollKeys = e => {
     if (keys[e.keyCode]) {
       this.preventDefault(e);
-      return false;
     }
+    return false;
   };
 
   disableScroll = () => {
@@ -54,7 +54,7 @@ export default class Modal extends Component {
       window.addEventListener('DOMMouseScroll', this.preventDefault, false);
     document.addEventListener('wheel', this.preventDefault, { passive: false }); // Disable scrolling in Chrome
     window.onwheel = this.preventDefault; // modern standard
-    window.onmousewheel = document.onmousewheel = this.preventDefault; // older browsers, IE
+    window.onmousewheel = this.preventDefault; // older browsers, IE
     window.ontouchmove = this.preventDefault; // mobile
     document.onkeydown = this.preventDefaultForScrollKeys;
   };
@@ -65,11 +65,12 @@ export default class Modal extends Component {
     document.removeEventListener('wheel', this.preventDefault, {
       passive: false,
     }); // Enable scrolling in Chrome
-    window.onmousewheel = document.onmousewheel = null;
+    window.onmousewheel = null;
     window.onwheel = null;
     window.ontouchmove = null;
     document.onkeydown = null;
   };
+
   //----------------------------------------
   handleKeyPress = e => {
     if (e.code !== 'Escape') return;
@@ -87,8 +88,13 @@ export default class Modal extends Component {
     this.props.onClose();
   };
 
+  // handleOpenButtonClick = e => {
+  //   const { isOpen } = this.state;
+  //   this.setState({ isOpen: !isOpen });
+  // };
+
   render() {
-    const { quotes, isDescriptionOpen } = this.state;
+    const { quotes } = this.state;
     const selectedQuote =
       quotes[Math.floor(Math.random() * Math.floor(quotes.length))];
     return (
@@ -96,18 +102,18 @@ export default class Modal extends Component {
         className={styles.backdrop}
         ref={this.backdropRef}
         onClick={this.handleBackdropClick}
+        onKeyPress={this.handleKeyPress}
+        role="button"
+        tabIndex={0}
       >
         <div className={styles.modal}>
           <p className={styles.modalId}>
             Usefull advice &#8470;{selectedQuote.id}
           </p>
           <h2 className={styles.modalTitle}>{selectedQuote.title}</h2>
-          {/* <button type="button" onClick={this.handleOpenDescription}>
-            More...
-          </button>
-          {isDescriptionOpen && (
-            <p className={styles.modalText}>{selectedQuote.body}</p>
-          )} */}
+          {/* <button type="button" onClick={this.handleOpenButtonClick}>
+            More ...
+          </button> */}
         </div>
       </div>
     );

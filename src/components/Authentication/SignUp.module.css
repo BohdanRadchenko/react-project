@@ -10,6 +10,15 @@
   margin: 0 auto;
 }
 
+.phoneBackground {
+  display: block;
+  height: auto;
+}
+
+.imgWrapp {
+  display: none;
+}
+
 .walletWrapp {
   margin-bottom: 24px;
   text-align: center;
@@ -28,11 +37,22 @@
 .form {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  width: 275px;
   margin-bottom: 30px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.financeTitle {
+  margin: 0;
+  padding: 0;
+  display: none;
 }
 
 .input {
   border-radius: 6px;
+  border: 1px solid transparent;
   position: relative;
   height: 48px;
   margin-bottom: 12px;
@@ -40,10 +60,15 @@
   border: none;
   background-color: #f9fbfb;
   padding-left: 58px;
+  outline: none;
+}
+
+.input:focus {
+  border-bottom: 1px solid #e18337;
 }
 
 .errorInput {
-  outline: 1px solid red;
+  border: 1px solid red;
 }
 
 .input::placeholder {
@@ -54,7 +79,7 @@
 .inputIcon {
   background-repeat: no-repeat;
   background-position-x: 15px;
-  background-position-y: 16px;
+  background-position-y: 15px;
 }
 
 .email {
@@ -83,10 +108,19 @@
   margin-top: 35px;
 }
 
+.button:focus,
+.button:hover {
+  border: 2px solid #e18337;
+  background-color: #fff;
+  color: #e18337;
+}
+
 .link {
   font-size: 12px;
-  text-aling: center;
-  margin: 0;
+  display: block;
+  width: 40px;
+  margin: 0 auto;
+  color: #6b7d83;
   padding: 0;
   text-decoration: underline;
 }
@@ -98,4 +132,110 @@
   text-aling: center;
   margin: 0;
   padding: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .signUpWrapp {
+    padding: 0;
+  }
+
+  .signUpWrapp {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    padding-top: 140px;
+    background-image: url('./img/tabletBackground.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .formWrapp {
+    width: 550px;
+    text-align: left;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 34px;
+    background-color: #ffffff;
+    padding: 30px 0;
+    border-radius: 10px;
+    box-shadow: 20px 40px 120px 0 rgba(112, 124, 130, 0.3);
+    margin-bottom: 100px;
+  }
+
+  .form {
+    width: 430px;
+  }
+
+  .input {
+    width: 430px;
+  }
+
+  .financeTitle {
+    display: block;
+    margin-bottom: 70px;
+    font-size: 24px;
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .signUpWrapp {
+    flex-direction: row;
+    padding: 0;
+  }
+
+  .imgWrapp {
+    height: 100vh;
+    display: block;
+    padding-top: 130px;
+    min-width: 47%;
+    background-image: url('./img/tabletBackground.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .signUpWrapp {
+    background-image: none;
+  }
+
+  .formWrapp {
+    margin-bottom: 0;
+  }
+
+  .walletWrapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon {
+    margin: 0;
+    margin-right: 14px;
+  }
+
+  .phoneBackground {
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+
+  .financeTitle {
+    display: none;
+  }
+
+  .financeDesctopTitle {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 70px;
+    font-size: 24px;
+    color: #fff;
+  }
 }
