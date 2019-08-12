@@ -152,17 +152,17 @@
     justify-content: space-between;
   }
 
-  /* .statsSelectContainer {
+  .statsSelectContainer {
     display: flex;
     width: 100%;
     margin-bottom: 18px;
     justify-content: space-between;
-  } */
-  /* 
+  }
+
   .innerSelectMonth,
   .innerSelectYear {
     width: 50%;
-  } */
+  }
 
   .innerStatsContainer {
     width: 362px;
@@ -186,7 +186,7 @@
     margin: 0;
   }
 
-  /* .total {
+  .total {
     font-family: MyHelveticaBold;
     margin-bottom: 20px;
     font-size: 15px;
@@ -194,20 +194,20 @@
     padding-right: 32px;
     display: flex;
     justify-content: space-between;
-  } */
+  }
 
-  /* .costs,
+  .costs,
   .costsTotal {
     margin-bottom: 6px;
-  } */
+  }
 
-  /* .costsTotal {
+  .costsTotal {
     text-align: right;
     color: #ff802a;
-  } */
+  }
 
-  /* .innerSelectMonth,
+  .innerSelectMonth,
   .innerSelectYear {
     width: 48%;
-  } */
+  }
 }
