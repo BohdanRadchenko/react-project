@@ -126,7 +126,8 @@
 .link {
   font-size: 12px;
   display: block;
-  width: 40px;
+  width: 80px;
+  text-align: center;
   margin: 0 auto;
   color: #6b7d83;
   padding: 0;
