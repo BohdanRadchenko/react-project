@@ -1,8 +1,8 @@
-/*eslint-disable*/
 import React, { Component } from 'react';
 import Media from 'react-media';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import TransactionsTable from './TransactionsTable/TransactionsTable';
 import AddButton from './AddButton/AddButton';
 import Modal from '../Modal/ModalContainer';
@@ -14,8 +14,19 @@ import { getTransactions } from '../../redux/finance/financeSelectors';
 class Home extends Component {
   state = {
     isOpenModal: false,
-    items: [],
-    firstOpen: true,
+  };
+
+  static propTypes = {
+    finance: PropTypes.arrayOf(
+      PropTypes.shape({
+        type: PropTypes.string.isRequired,
+        date: PropTypes.number.isRequired,
+        category: PropTypes.string,
+        comments: PropTypes.string,
+        amount: PropTypes.number.isRequired,
+        balanceAfter: PropTypes.number.isRequired,
+      }).isRequired,
+    ).isRequired,
   };
 
   handleOpen = () => {
@@ -28,9 +39,9 @@ class Home extends Component {
 
   render() {
     const { finance } = this.props;
-    const arr = [...finance].reverse();
-
     const { isOpenModal } = this.state;
+
+    const arr = [...finance].reverse();
 
     return (
       <div className={styles.container_home}>
