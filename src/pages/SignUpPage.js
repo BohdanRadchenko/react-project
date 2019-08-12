@@ -1,11 +1,8 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
-
-import css from '../components/Authentication/SignUp.module.css';
 
 import SignUp from '../components/Authentication/SignUp';
 import { signUp } from '../redux/session/sessionOperations';
@@ -43,9 +40,6 @@ const SignUpPage = ({ onSignUp }) => (
     >
       {props => <SignUp {...props} />}
     </Formik>
-    <Link to="/signin" className={css.link}>
-      <p className={css.linkText}>Sign in</p>
-    </Link>
   </div>
 );
 
