@@ -64,16 +64,13 @@
 }
 
 * {
-  font-family: 'Rubik';
-  font-style: normal;
-  font-weight: 400;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Nova Slim';
+  font-family: 'Rubik';
   font-style: normal;
   font-weight: 400;
   background-color: #f2f4ee;
@@ -88,7 +85,7 @@ body {
   width: 100%;
   margin: 0 auto;
   /* min-height: 677px; */
-  font-family: 'Baloo Bhaina';
+  font-family: 'Rubik';
   font-weight: normal;
   /* padding-top: 8px; */
   /* background-color: #f2f4ee; */
@@ -128,7 +125,7 @@ body {
   }
 }
 
-@media screen and (min-width: 1192px) {
+@media screen and (min-width: 1200px) {
   body {
     background-image: none;
   }
@@ -141,7 +138,7 @@ body {
     /* width: 100%; */
     flex-direction: row;
     margin: 0 auto;
-    font-family: 'Baloo Bhaina';
+    font-family: 'Rubik';
     font-weight: normal;
   }
 
