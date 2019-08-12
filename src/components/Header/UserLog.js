@@ -11,7 +11,7 @@ const logo = require('./Img/logo.svg');
 const iconLogout = require('./Img/exit.svg');
 
 const UserLog = ({ user, onLogOut }) => (
-  <>
+  <div className={styles.headerContainer}>
     <div className={styles.headerLogo}>
       <Link to="/home" className={styles.headerLogoLink}>
         <img src={logo} alt="logo" className={styles.logo} />
@@ -27,7 +27,7 @@ const UserLog = ({ user, onLogOut }) => (
         <span className={styles.logoutText}>Logout</span>
       </button>
     </div>
-  </>
+  </div>
 );
 
 UserLog.defaultProps = {
