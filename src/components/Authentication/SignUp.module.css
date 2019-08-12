@@ -1,0 +1,101 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.signUpWrapp {
+  padding: 50px 20px;
+  padding-bottom: 0;
+  margin: 0 auto;
+}
+
+.walletWrapp {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.walletTitle {
+  font-size: 24px;
+}
+
+.icon {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.input {
+  border-radius: 6px;
+  position: relative;
+  height: 48px;
+  margin-bottom: 12px;
+  width: 275px;
+  border: none;
+  background-color: #f9fbfb;
+  padding-left: 58px;
+}
+
+.errorInput {
+  outline: 1px solid red;
+}
+
+.input::placeholder {
+  font-size: 13px;
+  color: #b9c9d4;
+}
+
+.inputIcon {
+  background-repeat: no-repeat;
+  background-position-x: 15px;
+  background-position-y: 16px;
+}
+
+.email {
+  background-image: url('./icons/email.png');
+}
+
+.name {
+  background-image: url('./icons/name.png');
+}
+
+.password {
+  background-image: url('./icons/password.png');
+}
+
+.button {
+  box-shadow: 0px 3px 3px 0px rgba(226, 122, 43, 0.2);
+  width: 275px;
+  height: 39px;
+  margin: 0 auto;
+  background-color: #e18337;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 15px;
+  outline: none;
+  margin-top: 35px;
+}
+
+.link {
+  font-size: 12px;
+  text-aling: center;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.linkText {
+  text-decoration: none;
+  display: block;
+  font-size: 12px;
+  text-aling: center;
+  margin: 0;
+  padding: 0;
+}
