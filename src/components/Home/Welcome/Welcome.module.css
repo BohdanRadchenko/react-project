@@ -1,10 +1,11 @@
 .div {
   width: 320px;
-  height: 500px;
+  height: 380px;
   font-size: 20px;
   text-align: center;
   padding-top: 50px;
   vertical-align: text-bottom;
+
   color: #455d7c;
 }
 

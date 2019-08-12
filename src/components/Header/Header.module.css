@@ -118,6 +118,7 @@
   background-color: var(--BGColorMobile);
   border: none;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .logout {
