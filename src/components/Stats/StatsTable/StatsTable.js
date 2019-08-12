@@ -58,8 +58,8 @@ const DiagramTable = props => {
         ]}
         defaultPageSize={data('-').length}
         showPagination={false}
-        filtered={[]}
-        onClick={() => null}
+        // filtered={[]}
+        // onClick={() => null}
       />
       <div className={styles.total}>
         <div className={styles.containerText}>

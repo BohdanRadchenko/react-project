@@ -260,6 +260,7 @@ html {
   height: 14px;
   z-index: inherit;
   display: inline-block;
+  background-color: red;
 }
 
 /* .ReactTable .rt-tbody .rt-td:last-child {
