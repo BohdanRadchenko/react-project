@@ -56,7 +56,7 @@ export default class AddTransaction extends Component {
       <div className={styles.modal}>
         <div className={styles.titleDiv}>
           <Media
-            query="(max-width: 766px)"
+            query="(max-width: 767px)"
             render={() => (
               <button
                 className={styles.backBtn}

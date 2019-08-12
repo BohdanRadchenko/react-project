@@ -173,7 +173,7 @@ body {
   height: 40px;
 }
 
-@media screen and (max-width: 766px) {
+@media screen and (max-width: 767px) {
   .backdrop {
     width: 100vw;
     height: 100vh;
