@@ -35,7 +35,7 @@ html {
   width: 100%;
   min-width: auto;
   right: 0;
-  max-height: 450px;
+  max-height: 458px;
   margin-bottom: 16px;
 }
 
@@ -260,7 +260,6 @@ html {
   height: 14px;
   z-index: inherit;
   display: inline-block;
-  background-color: red;
 }
 
 /* .ReactTable .rt-tbody .rt-td:last-child {

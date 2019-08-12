@@ -94,24 +94,27 @@ body {
 }
 
 .innerRadioDiv {
-  width: 63px;
   display: flex;
   justify-content: space-between;
 }
 
-.radio + label {
+.radio {
+  margin-right: 6px;
+}
+
+.label {
   font-family: 'Rubik';
   font-weight: normal;
   font-size: 14px;
   opacity: 0.5;
 }
 
-.radio:checked + label {
+.radio:checked + .label {
   color: #284060;
   opacity: 1;
 }
 
-.radioCost:checked + label {
+.radioCost:checked + .label {
   color: #fc842c;
 }
 
@@ -170,7 +173,7 @@ body {
   height: 40px;
 }
 
-@media screen and (max-width: 766px) {
+@media screen and (max-width: 767px) {
   .backdrop {
     width: 100vw;
     height: 100vh;
