@@ -1,5 +1,5 @@
 .button {
-  position: absolute;
+  position: fixed;
   background-color: #f24537;
   width: 65px;
   height: 65px;

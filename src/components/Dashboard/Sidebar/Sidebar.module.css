@@ -6,12 +6,28 @@
   .innerCurrencies {
     display: block;
   }
+
+  .container {
+    display: flex;
+    justify-content: center;
+  }
 }
 
-@media (min-width: 768px) and (max-width: 1197px) {
+@media (min-width: 768px) and (max-width: 1190px) {
   .innerCurrencies {
-    display: block;
+    display: none;
     position: absolute;
     bottom: 0;
+    left: 0;
+  }
+}
+
+@media screen and (min-width: 1192px) {
+  .container {
+    display: inline-block;
+    flex-direction: row;
+  }
+
+  .innerCurrencies {
   }
 }

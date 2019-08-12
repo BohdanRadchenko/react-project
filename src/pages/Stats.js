@@ -38,6 +38,7 @@ class Stats extends Component {
     if (items.length !== prevState.length) {
       this.test();
     }
+    // console.log(document.getElementsByClassName('rt-td'));
   }
 
   test = () => {
@@ -46,6 +47,8 @@ class Stats extends Component {
       item.insertAdjacentHTML(
         'afterbegin',
         `<div style="background-color: ${colorSwitcher(
+          item.children[0].textContent,
+        )}" class="two"></div><div style="background-color: ${colorSwitcher(
           item.children[0].textContent,
         )}" class="two"></div>`,
       );
