@@ -32,7 +32,7 @@ const SignUpPage = ({ onSignUp }) => (
           .email()
           .required('Email is required'),
         password: Yup.string()
-          .min(4)
+          .min(6)
           .max(16)
           .required('Password is required'),
         passwordConfirm: Yup.string()

@@ -33,6 +33,7 @@
 
 .input {
   border-radius: 6px;
+  border: 1px solid transparent;
   position: relative;
   height: 48px;
   margin-bottom: 12px;
@@ -40,10 +41,15 @@
   border: none;
   background-color: #f9fbfb;
   padding-left: 58px;
+  outline: none;
+}
+
+.input:focus {
+  border-bottom: 1px solid #e18337;
 }
 
 .errorInput {
-  outline: 1px solid red;
+  border: 1px solid red;
 }
 
 .input::placeholder {
@@ -85,8 +91,10 @@
 
 .link {
   font-size: 12px;
-  text-aling: center;
-  margin: 0;
+  display: block;
+  width: 40px;
+  margin: 0 auto;
+  color: #6b7d83;
   padding: 0;
   text-decoration: underline;
 }

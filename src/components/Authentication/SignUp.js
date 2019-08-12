@@ -54,7 +54,9 @@ class SignUp extends Component {
         </div>
         <form className={css.form} onSubmit={handleSubmit}>
           <input
-            className={`${css.input} ${css.email} ${css.inputIcon}`}
+            className={`${css.input} ${css.email} ${
+              css.inputIcon
+            } ${errors.email && css.errorInput}`}
             type="email"
             name="email"
             value={values.email}
@@ -64,30 +66,38 @@ class SignUp extends Component {
           />
           {errors.email && touched.email && <div>{errors.email}</div>}
           <input
-            className={`${css.input} ${css.password} ${css.inputIcon}`}
+            className={`${css.input} ${css.password} ${
+              css.inputIcon
+            } ${errors.password && css.errorInput}`}
             type="password"
             name="password"
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
             placeholder="Password*"
+            autoComplete="off"
           />
           <PasswordStrengthMeter password={values.password} />
           {errors.password && touched.password && <div>{errors.password}</div>}
           <input
-            className={`${css.input} ${css.password} ${css.inputIcon}`}
+            className={`${css.input} ${css.password} ${
+              css.inputIcon
+            } ${errors.passwordConfirm && css.errorInput}`}
             type="password"
             name="passwordConfirm"
             value={values.passwordConfirm}
             onChange={handleChange}
             onBlur={handleBlur}
             placeholder="Confirm password*"
+            autoComplete="off"
           />
           {errors.passwordConfirm && touched.passwordConfirm && (
             <div>{errors.passwordConfirm}</div>
           )}
           <input
-            className={`${css.input} ${css.name} ${css.inputIcon}`}
+            className={`${css.input} ${css.name} ${
+              css.inputIcon
+            } ${errors.name && css.errorInput}`}
             type="text"
             name="name"
             value={values.name}
