@@ -37,8 +37,8 @@ class Currencies extends React.Component {
     const { currencies, wait } = this.state;
     const curr = currencies.filter(el => el.ccy !== 'BTC');
     return (
-      <div>
-        <div className={style.form}>
+      <div className={style.display}>
+        <div className={style.bgi}>
           {wait && <Loaders />}
           <table className={style.history}>
             <thead>
@@ -54,14 +54,13 @@ class Currencies extends React.Component {
                   return (
                     <tr key={el.ccy} className={style.currTr}>
                       <th>{el.ccy}</th>
-                      <th>{Number(el.buy).toFixed(2)}</th>
-                      <th>{Number(el.sale).toFixed(2)}</th>
+                      <th>{Number(el.buy).toFixed(4)}</th>
+                      <th>{Number(el.sale).toFixed(4)}</th>
                     </tr>
                   );
                 })}
             </tbody>
           </table>
-          <div className={style.bgi} />
         </div>
       </div>
     );
