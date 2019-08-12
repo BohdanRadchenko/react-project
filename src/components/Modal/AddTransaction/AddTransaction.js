@@ -7,16 +7,23 @@ import DatePicker from 'react-date-picker/dist/entry.nostyle';
 import { categories, transactions } from '../../../constans/modalConstants';
 import styles from '../Modal.module.css';
 
+const style = { style: false };
+
 export default class AddTransaction extends Component {
   state = {};
+
+  static defaultProps = {
+    category: null,
+    date: new Date(),
+  };
 
   static propTypes = {
     amount: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
     isCost: PropTypes.bool.isRequired,
     comments: PropTypes.string.isRequired,
-    category: PropTypes.shape(PropTypes.any).isRequired,
-    date: PropTypes.shape(PropTypes.any).isRequired,
+    category: PropTypes.objectOf(PropTypes.string),
+    date: PropTypes.objectOf(PropTypes.object),
     handleRadioChange: PropTypes.func.isRequired,
     handleAmountInput: PropTypes.func.isRequired,
     handleSelectChange: PropTypes.func.isRequired,
@@ -102,7 +109,7 @@ export default class AddTransaction extends Component {
           )}
           <div className={styles.inputsDiv}>
             <NumericInput
-              style={false}
+              {...style}
               className="form-control"
               min={0}
               precision={2}
