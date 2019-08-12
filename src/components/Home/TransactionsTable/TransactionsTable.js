@@ -81,11 +81,7 @@ const TransactionsTable = ({ items, onTypeClick }) => {
           <thead className={styles.thead}>
             <tr className={styles.tr}>
               <th className={styles.th}>Date</th>
-              <th className={styles.th}>
-                <button onClick={onTypeClick} className={styles.button}>
-                  Type
-                </button>
-              </th>
+              <th className={styles.th}>Type</th>
               <th className={styles.th}>Category</th>
               <th className={styles.th}>Comments</th>
               <th className={styles.th}>Amount</th>
@@ -129,7 +125,7 @@ const TransactionsTable = ({ items, onTypeClick }) => {
                   </span>
                 </td>
                 <td className={styles.td} data-label="Balance">
-                  {filterAmount(item.amount)}
+                  {filterAmount(item.balanceAfter)}
                 </td>
               </tr>
             ))}

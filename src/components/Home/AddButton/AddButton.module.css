@@ -1,8 +1,8 @@
 .button {
   position: fixed;
   background-color: #f24537;
-  width: 65px;
-  height: 65px;
+  width: 60px;
+  height: 60px;
   bottom: 50px;
   right: 50px;
   border: none;
@@ -20,6 +20,12 @@
 
 @media screen and (max-width: 767px) {
   .button {
-    left: 40%;
+    left: 45%;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .button {
+    left: 41%;
   }
 }

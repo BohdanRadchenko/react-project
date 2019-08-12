@@ -1,16 +1,14 @@
-.button {
-  text-decoration: none;
-  border: none;
-  background-color: #fff;
-  font-size: 17px;
-  color: #3f4040;
-  cursor: pointer;
-  outline: none;
+@font-face {
+  font-family: MyHelveticaBold;
+  src: url('../../../assets/fonts/HelveticaNeueCyr-Bold.woff');
+  font-weight: bold;
 }
 
-.button:hover {
-  color: #dd881f;
-}
+/* @font-face {
+  font-family: MyHelveticaRoman;
+  src: url('../../assets/fonts/HelveticaNeueCyr-Roman.woff');
+  font-weight: bold;
+} */
 
 .table {
   background-color: #fff;
@@ -20,7 +18,7 @@
   border-collapse: collapse;
   border-spacing: 0;
   color: #3f4040;
-  font-family: sans-serif;
+  font-family: MyHelveticaBold;
   font-size: 11px;
 }
 
