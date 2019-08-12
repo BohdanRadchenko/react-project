@@ -1,5 +1,9 @@
 @import url('../../../styles/colors.css');
 
+/* * {
+  border: 1px solid red;
+} */
+
 @media screen and (min-width: 320px) {
   .balanceDiv {
     padding: 0px;
@@ -29,9 +33,9 @@
 
 @media screen and (min-width: 768px) {
   .balanceDiv {
+    display: inline-flex;
     background-color: rgba(251, 253, 252, 0);
     color: #000;
-    width: 176px;
     height: auto;
     margin: 0px;
     flex-direction: row;
@@ -41,7 +45,7 @@
 
   .balanceText {
     margin: 0px;
-    margin-right: 2px;
+    margin-right: 8px;
     margin-left: 8px;
     color: #74858b;
     font-size: 15px;
