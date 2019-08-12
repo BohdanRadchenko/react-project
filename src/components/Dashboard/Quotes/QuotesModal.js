@@ -13,6 +13,7 @@ export default class Modal extends Component {
   state = {
     quotes: Quotes,
     isDescriptionOpen: false,
+    isOpen: false,
   };
 
   backdropRef = createRef();
@@ -87,25 +88,38 @@ export default class Modal extends Component {
     this.props.onClose();
   };
 
+  handleOpenButtonClick = e => {
+    e.preventDefault();
+    const { isOpen } = this.state;
+    this.setState({ isOpen: !isOpen });
+  };
+
   render() {
-    const { quotes } = this.state;
+    const { quotes, isOpen } = this.state;
     const selectedQuote =
       quotes[Math.floor(Math.random() * Math.floor(quotes.length))];
     return (
-      <button
+      <div
         className={styles.backdrop}
         ref={this.backdropRef}
         onClick={this.handleBackdropClick}
         onKeyPress={this.handleKeyPress}
-        type="button"
+        role="button"
+        tabIndex={0}
       >
         <div className={styles.modal}>
           <p className={styles.modalId}>
             Usefull advice &#8470;{selectedQuote.id}
           </p>
           <h2 className={styles.modalTitle}>{selectedQuote.title}</h2>
+          <button type="button" onClick={this.handleOpenButtonClick}>
+            {isOpen ? 'Hide' : 'Show more...'}
+          </button>
+          <p className={isOpen ? { display: 'none' } : {}}>
+            {selectedQuote.body}
+          </p>
         </div>
-      </button>
+      </div>
     );
   }
 }
