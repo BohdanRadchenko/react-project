@@ -35,6 +35,7 @@ export const signUp = credentials => dispatch => {
 
 export const signIn = credentials => dispatch => {
   dispatch(signInRequest());
+
   axios
     .post('login', credentials)
     .then(response => dispatch(signInSuccesss(response.data)))

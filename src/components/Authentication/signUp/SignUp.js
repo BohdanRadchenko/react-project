@@ -1,28 +1,18 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import css from './SignUp.module.css';
-import phone from './img/iPhone 62x.png';
-
-import { getError } from '../../redux/session/sessionSelectors';
-import PasswordStrengthMeter from '../PasswordStrengthMeter/PasswordStrengthMeter';
-
-import walletIcon from './img/walletIcon.png';
+import css from '../SignUp.module.css';
+import phone from '../img/iPhone 62x.png';
+import PasswordStrengthMeter from '../../PasswordStrengthMeter/PasswordStrengthMeter';
+import casualPropTypes from '../propTypes';
+import walletIcon from '../img/walletIcon.png';
+import SocialsAuth from '../SocialsAuth';
 
 class SignUp extends Component {
-  static defaultProps = {
-    errorMessage: '',
-  };
-
   static propTypes = {
-    handleBlur: PropTypes.func.isRequired,
-    handleChange: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    errorMessage: PropTypes.string,
-    values: PropTypes.objectOf(PropTypes.string).isRequired,
-    errors: PropTypes.objectOf(PropTypes.string).isRequired,
-    touched: PropTypes.objectOf(PropTypes.any).isRequired,
+    facebookAuth: PropTypes.func.isRequired,
+    googleAuth: PropTypes.func.isRequired,
+    ...casualPropTypes,
   };
 
   componentDidMount() {
@@ -32,6 +22,10 @@ class SignUp extends Component {
   componentWillUnmount() {
     document.body.removeEventListener('keydown', this.handleEnterSubmit);
   }
+
+  handleAuthFacebook = response => this.props.facebookAuth(response);
+
+  handleAuthGoogle = response => this.props.googleAuth(response);
 
   handleEnterSubmit = ({ code }) =>
     code === 'Enter' || code === 'NumpadEnter'
@@ -134,6 +128,12 @@ class SignUp extends Component {
               </div>
             )}
             <p className={css.errorText}>{errorMessage}</p>
+
+            <SocialsAuth
+              handleAuthFacebook={this.handleAuthFacebook}
+              handleAuthGoogle={this.handleAuthGoogle}
+            />
+
             <button type="submit" className={css.button}>
               Sign up
             </button>
@@ -148,8 +148,4 @@ class SignUp extends Component {
   }
 }
 
-const mSTP = state => ({
-  errorMessage: getError(state),
-});
-
-export default connect(mSTP)(SignUp);
+export default SignUp;

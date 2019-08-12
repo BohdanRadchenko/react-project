@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'Nova Slim';
+  font-style: normal;
+  font-weight: 100;
+  src: url('../../assets/fonts/nova-slim-v11-latin-regular.eot');
+}
+
+.wrapper {
+  padding-top: 10px;
+  font-family: 'Nova Slim';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUpText {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  margin-right: 20px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  display: block;
+  border: none;
+  background-color: transparent;
+  outline: none;
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: all 0.2s;
+  margin-right: 10px;
+}
+
+.icon:hover,
+.icon:focus {
+  transform: scale(1.2);
+}
+
+.googleAuth {
+  background-image: url('./icons/googlePlus.png');
+}
+
+.facebookAuth {
+  background-image: url('./icons/facebook.png');
+}

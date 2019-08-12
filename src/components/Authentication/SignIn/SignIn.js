@@ -1,33 +1,18 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { Link } from 'react-router-dom';
-import style from './Authentication.module.css';
-import img from './img/sq.png';
-
-import css from './SignUp.module.css';
-
-import {
-  getError,
-  isAuthentificated,
-} from '../../redux/session/sessionSelectors';
+import casualPropTypes from '../propTypes';
+import style from '../Authentication.module.css';
+import img from '../img/sq.png';
+import css from '../SignUp.module.css';
+import SocialsAuth from '../SocialsAuth';
 
 class SignIn extends Component {
-  static defaultProps = {
-    errorMessage: '',
-  };
-
   static propTypes = {
-    handleBlur: PropTypes.func.isRequired,
-    handleChange: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    errorMessage: PropTypes.string,
-    values: PropTypes.objectOf(PropTypes.string).isRequired,
-    errors: PropTypes.objectOf(PropTypes.string).isRequired,
-    touched: PropTypes.objectOf(PropTypes.any).isRequired,
     history: ReactRouterPropTypes.history.isRequired,
     authentificated: PropTypes.bool.isRequired,
+    ...casualPropTypes,
   };
 
   componentDidMount() {
@@ -44,6 +29,10 @@ class SignIn extends Component {
   componentWillUnmount() {
     document.body.removeEventListener('keydown', this.handleEnterSubmit);
   }
+
+  handleFacebookSignIn = response => this.props.facebookSignIn(response);
+
+  handleGoogleSignIn = response => this.props.googleSignIn(response);
 
   handleEnterSubmit = ({ code }) =>
     code === 'Enter' || code === 'NumpadEnter'
@@ -111,24 +100,24 @@ class SignIn extends Component {
               <div className={style.inputError}>{errors.password}</div>
             )}
             <p className={style.inputError}>{errorMessage}</p>
+            <SocialsAuth
+              text="Sign in with: "
+              handleAuthFacebook={this.handleFacebookSignIn}
+              handleAuthGoogle={this.handleGoogleSignIn}
+            />
             <button className={style.signInButton} type="submit">
               Sign in
             </button>
-            <Link to="/signup" className={css.link}>
-              <h2 type="button" className={css.linkText}>
-                Sign up
-              </h2>
-            </Link>
           </form>
+          <Link to="/signup" className={css.link}>
+            <h2 type="button" className={`${css.linkText} ${css.linkSignIn}`}>
+              Sign up
+            </h2>
+          </Link>
         </div>
       </div>
     );
   }
 }
 
-const mSTP = state => ({
-  errorMessage: getError(state),
-  authentificated: isAuthentificated(state),
-});
-
-export default connect(mSTP)(SignIn);
+export default SignIn;
