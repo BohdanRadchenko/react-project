@@ -1,8 +1,8 @@
 .button {
-  position: fixed;
   background-color: #f24537;
-  width: 65px;
-  height: 65px;
+  position: fixed;
+  width: 60px;
+  height: 60px;
   border: none;
   border-radius: 50%;
   color: #fff;
@@ -13,26 +13,19 @@
 .button:hover {
   background: linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
   background-color: #c62d1f;
-}
-@media screen and (min-width: 768px) {
-  .button {
-    bottom: 0px;
-    right: 10px;
-  }
+  cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
   .button {
-    bottom: 0px;
-    right: 130px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 767px) {
   .button {
-    bottom: 0px;
-    right: 0px;
-    width: 60px;
-    height: 60px;
+    bottom: 20px;
+    right: 20px;
   }
 }

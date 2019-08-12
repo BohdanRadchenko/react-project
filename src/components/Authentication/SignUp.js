@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import css from './SignUp.module.css';
+import phone from './img/iPhone 62x.png';
 
 import { getError } from '../../redux/session/sessionSelectors';
-import style from './Authentication.module.css';
 import PasswordStrengthMeter from '../PasswordStrengthMeter/PasswordStrengthMeter';
+
+import walletIcon from './img/walletIcon.png';
 
 class SignUp extends Component {
   static defaultProps = {
@@ -46,94 +49,88 @@ class SignUp extends Component {
       touched,
     } = this.props;
     return (
-      <div className={style.modal}>
-        <div>
+      <div className={css.signUpWrapp}>
+        <div className={css.imgWrapp}>
           <img
-            alt="Financ App"
-            className={style.backgroundIMG}
-            // eslint-disable-next-line global-require
-            src={require('./img/sq.png')}
+            src={phone}
+            alt="phone"
+            className={css.phoneBackground}
+            width={291}
+            height={591}
           />
-          <div className={style.iphoneIMG} />
-          <div className={style.test}>
-            <p className={style.financePar}>Finance App</p>
-          </div>
+          <h2 className={css.financeDesctopTitle}>Finance App</h2>
         </div>
-        <div
-          style={{
-            height: 538,
-          }}
-          className={style.formContainer}
-        >
-          <div className={style.signInLogoContainer}>
-            <img
-              src="/static/media/logo.49db5ab8.svg"
-              alt="logo"
-              className={style.signInLogo}
-            />
-            <h1>Wallet</h1>
+        <div className={css.formWrapp}>
+          <div className={css.walletWrapp}>
+            <img src={walletIcon} alt="wallet" className={css.icon} />
+            <h1 className={css.walletTitle}>Wallet</h1>
           </div>
-          <form className={style.formSignIn} onSubmit={handleSubmit}>
+          <form className={css.form} onSubmit={handleSubmit}>
             <input
-              className={style.signInEmail}
+              className={`${css.input} ${css.email} ${
+                css.inputIcon
+              } ${errors.email && css.errorInput}`}
               type="email"
               name="email"
               value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="email*"
+              placeholder="E-mail*"
             />
-            {errors.email && touched.email && (
-              <div className="input-feedback">{errors.email}</div>
-            )}
+            {errors.email && touched.email && <div>{errors.email}</div>}
             <input
-              className={style.signInPassword}
+              className={`${css.input} ${css.password} ${
+                css.inputIcon
+              } ${errors.password && css.errorInput}`}
               type="password"
               name="password"
               value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="password*"
+              placeholder="Password*"
+              autoComplete="off"
             />
             <PasswordStrengthMeter password={values.password} />
             {errors.password && touched.password && (
               <div>{errors.password}</div>
             )}
             <input
-              className={style.signInPassword}
+              className={`${css.input} ${css.password} ${
+                css.inputIcon
+              } ${errors.passwordConfirm && css.errorInput}`}
               type="password"
               name="passwordConfirm"
               value={values.passwordConfirm}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="confirm password*"
+              placeholder="Confirm password*"
+              autoComplete="off"
             />
             {errors.passwordConfirm && touched.passwordConfirm && (
-              <div className="input-feedback">{errors.passwordConfirm}</div>
+              <div>{errors.passwordConfirm}</div>
             )}
             <input
-              className={style.signInName}
+              className={`${css.input} ${css.name} ${
+                css.inputIcon
+              } ${errors.name && css.errorInput}`}
               type="text"
               name="name"
               value={values.name}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="name*"
+              placeholder="Name*"
             />
-            {errors.name && touched.name && (
-              <div className="input-feedback">{errors.name}</div>
-            )}
-            <button className={style.signInButton} type="submit">
+            {errors.name && touched.name && <div>{errors.name}</div>}
+            <button type="submit" className={css.button}>
               Sign up
             </button>
-            <NavLink to="/signin">
-              <button type="button" className={style.signUpLink}>
-                Вход
-              </button>
-            </NavLink>
             <p>{errorMessage}</p>
           </form>
+          <Link to="/signin" className={css.link}>
+            <p className={css.linkText}>Sign in</p>
+          </Link>
         </div>
+        <h3 className={css.financeTitle}>Finance App</h3>
       </div>
     );
   }
