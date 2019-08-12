@@ -1,5 +1,5 @@
-/*eslint-disable*/
 import React, { Component, createRef } from 'react';
+import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import AddTransaction from './AddTransaction/AddTransaction';
 import { transactions } from '../../constans/modalConstants';
@@ -25,6 +25,12 @@ export default class Modal extends Component {
     error: null,
   };
 
+  static propTypes = {
+    onClose: PropTypes.func.isRequired,
+    transactions: PropTypes.arrayOf(PropTypes.any).isRequired,
+    postTransaction: PropTypes.func.isRequired,
+  };
+
   backdropRef = createRef();
 
   componentDidMount() {
@@ -37,9 +43,8 @@ export default class Modal extends Component {
     this.enableScroll();
   }
 
-  //_______________________
+  // _______________________
   preventDefault = e => {
-    e = e || window.event;
     if (e.preventDefault) e.preventDefault();
     e.returnValue = false;
   };
@@ -57,7 +62,7 @@ export default class Modal extends Component {
       window.addEventListener('DOMMouseScroll', this.preventDefault, false);
     document.addEventListener('wheel', this.preventDefault, { passive: false }); // Disable scrolling in Chrome
     window.onwheel = this.preventDefault; // modern standard
-    window.onmousewheel = document.onmousewheel = this.preventDefault; // older browsers, IE
+    window.onmousewheel = this.preventDefault; // older browsers, IE
     window.ontouchmove = this.preventDefault; // mobile
     document.onkeydown = this.preventDefaultForScrollKeys;
   };
@@ -68,12 +73,12 @@ export default class Modal extends Component {
     document.removeEventListener('wheel', this.preventDefault, {
       passive: false,
     }); // Enable scrolling in Chrome
-    window.onmousewheel = document.onmousewheel = null;
+    window.onmousewheel = null;
     window.onwheel = null;
     window.ontouchmove = null;
     document.onkeydown = null;
   };
-  //_______________________
+
   handleKeyPress = e => {
     if (e.code !== 'Escape') return;
     this.props.onClose();
@@ -89,14 +94,15 @@ export default class Modal extends Component {
 
   handleRadioChange = ({ target: { id } }) =>
     this.setState({
-      isCost: id === 'income' ? false : true,
+      isCost: id !== 'income',
       type: id === 'cost' ? transactions.COST : transactions.INCOME,
     });
 
   handleAmountInput = value => {
     if (!value) {
       return;
-    } else if (Number.isNaN(value)) {
+    }
+    if (Number.isNaN(value)) {
       return;
     }
     this.setState({ amount: String(value) });
@@ -119,7 +125,7 @@ export default class Modal extends Component {
     e.preventDefault();
     const { type, category, amount, comments, date } = this.state;
     if (Number(amount) <= 0) {
-      toast.error('Invalid input!');
+      toast.error('Enter amount of transaction!');
       return;
     }
 
@@ -144,8 +150,7 @@ export default class Modal extends Component {
     transactionToAdd.balanceAfter = balanceAfter;
     transactionToAdd.typeBalanceAfter = typeBalanceAfter;
 
-    console.log(transactionToAdd);
-    this.props.postTransaction(transactionToAdd, this.props.token);
+    this.props.postTransaction(transactionToAdd);
     this.reset();
   };
 
@@ -160,13 +165,25 @@ export default class Modal extends Component {
     });
 
   render() {
-    const { isCost, type, comments, amount, date, category } = this.state;
+    const {
+      isCost,
+      type,
+      comments,
+      amount,
+      date,
+      category,
+      error,
+    } = this.state;
+    const { onClose } = this.props;
     return (
       <div
         ref={this.backdropRef}
         onClick={this.handleBackdropClick}
         className={styles.backdrop}
+        role="button"
+        tabIndex={0}
       >
+        {error && <h2>{error.message}</h2>}
         <AddTransaction
           isCost={isCost}
           amount={Number(amount)}
@@ -180,7 +197,7 @@ export default class Modal extends Component {
           handleSelectChange={this.handleSelectChange}
           handleDateChange={this.handleDateChange}
           handleSubmit={this.handleSubmit}
-          handleClose={this.props.onClose}
+          handleClose={onClose}
         />
       </div>
     );

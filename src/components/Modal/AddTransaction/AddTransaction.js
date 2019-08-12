@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, { Component, createRef } from 'react';
 import Media from 'react-media';
 import PropTypes from 'prop-types';
@@ -8,8 +7,31 @@ import DatePicker from 'react-date-picker/dist/entry.nostyle';
 import { categories, transactions } from '../../../constans/modalConstants';
 import styles from '../Modal.module.css';
 
+const style = { style: false };
+
 export default class AddTransaction extends Component {
   state = {};
+
+  static defaultProps = {
+    category: null,
+    date: new Date(),
+  };
+
+  static propTypes = {
+    amount: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    isCost: PropTypes.bool.isRequired,
+    comments: PropTypes.string.isRequired,
+    category: PropTypes.objectOf(PropTypes.string),
+    date: PropTypes.objectOf(PropTypes.object),
+    handleRadioChange: PropTypes.func.isRequired,
+    handleAmountInput: PropTypes.func.isRequired,
+    handleSelectChange: PropTypes.func.isRequired,
+    handleDateChange: PropTypes.func.isRequired,
+    handleTextareaInput: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    handleClose: PropTypes.func.isRequired,
+  };
 
   btnRef = createRef();
 
@@ -40,6 +62,7 @@ export default class AddTransaction extends Component {
                 className={styles.backBtn}
                 refs={this.btnRef}
                 onClick={handleClose}
+                type="button"
               />
             )}
           />
@@ -48,27 +71,31 @@ export default class AddTransaction extends Component {
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.radiosDiv}>
             <div className={styles.innerRadioDiv}>
-              <input
-                type="radio"
-                id="income"
-                name="transaction"
-                checked={type === transactions.INCOME}
-                onChange={handleRadioChange}
-                className={styles.radio}
-              />
-              <label htmlFor="income">Income</label>
+              <label htmlFor="income">
+                <input
+                  type="radio"
+                  id="income"
+                  name="transaction"
+                  checked={type === transactions.INCOME}
+                  onChange={handleRadioChange}
+                  className={styles.radio}
+                />
+                <span className={styles.label}>Income</span>
+              </label>
             </div>
             |
             <div className={styles.innerRadioDiv}>
-              <input
-                className={`${styles.radio} ${styles.radioCost}`}
-                type="radio"
-                id="cost"
-                name="transaction"
-                checked={type === transactions.COST}
-                onChange={handleRadioChange}
-              />
-              <label htmlFor="cost">Cost</label>
+              <label htmlFor="cost">
+                <input
+                  className={`${styles.radio} ${styles.radioCost}`}
+                  type="radio"
+                  id="cost"
+                  name="transaction"
+                  checked={type === transactions.COST}
+                  onChange={handleRadioChange}
+                />
+                <span className={styles.label}>Cost</span>
+              </label>
             </div>
           </div>
           {isCost && (
@@ -82,7 +109,7 @@ export default class AddTransaction extends Component {
           )}
           <div className={styles.inputsDiv}>
             <NumericInput
-              style={false}
+              {...style}
               className="form-control"
               min={0}
               precision={2}
@@ -121,7 +148,3 @@ export default class AddTransaction extends Component {
     );
   }
 }
-
-AddTransaction.propTypes = {
-  amount: PropTypes.number.isRequired,
-};
