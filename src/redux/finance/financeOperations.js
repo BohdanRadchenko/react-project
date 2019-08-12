@@ -43,9 +43,7 @@ export const postTransaction = transaction => (dispatch, getState) => {
         },
       },
     )
-    .then(response => {
-      dispatch(postTransactionSuccesss(transaction));
-    })
+    .then(dispatch(postTransactionSuccesss(transaction)))
     .catch(error => dispatch(postTransactionError(error)));
 };
 

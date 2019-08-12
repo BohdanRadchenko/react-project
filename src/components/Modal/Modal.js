@@ -125,7 +125,7 @@ export default class Modal extends Component {
     e.preventDefault();
     const { type, category, amount, comments, date } = this.state;
     if (Number(amount) <= 0) {
-      toast.error('Invalid input!');
+      toast.error('Enter amount of transaction!');
       return;
     }
 
