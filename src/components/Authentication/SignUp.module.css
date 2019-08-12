@@ -10,6 +10,11 @@
   margin: 0 auto;
 }
 
+.phoneBackground {
+  display: block;
+  height: auto;
+}
+
 .imgWrapp {
   display: none;
 }
@@ -218,7 +223,6 @@
 
   .phoneBackground {
     margin: 0 auto;
-    display: block;
     margin-bottom: 40px;
   }
 
