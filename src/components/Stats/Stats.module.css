@@ -68,6 +68,54 @@
   color: #ff802a;
 }
 
+@media screen and (min-width: 700px) {
+  .container {
+    margin: 0 auto;
+    padding: 0px;
+    display: block;
+    width: 98%;
+    max-width: 700px;
+    height: 680px;
+    margin-left: auto;
+    background-color: #ffffff;
+    border-radius: 6px;
+    -webkit-box-shadow: 0px 38px 69px -12px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0px 38px 69px -12px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 38px 69px -12px rgba(0, 0, 0, 0.6);
+  }
+
+  .title {
+    font-family: MyHelveticaBold;
+    text-transform: uppercase;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 28px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    background-color: #284060;
+    color: white;
+    padding: 20px 0;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+
+  .innerStatsContainer {
+    /* position: absolute;
+    top: 800px; */
+  }
+
+  .innerDiagram {
+    /* position: absolute; */
+    /* left: 40px; */
+    width: 80%;
+    margin: 0 auto;
+    height: 560px;
+    margin-bottom: 80px;
+  }
+}
+
 @media screen and (min-width: 1200px) {
   .container {
     padding: 0px;
