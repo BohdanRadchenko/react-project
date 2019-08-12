@@ -184,8 +184,13 @@
   background-color: transparent;
 }
 
+.errorInput {
+  border: 1px solid red;
+}
+
 .inputError {
   color: red;
+  margin-bottom: 5px;
   text-align: center;
   text-transform: uppercase;
   font-size: 10px;

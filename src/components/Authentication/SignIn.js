@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import style from './Authentication.module.css';
 import img from './img/sq.png';
+
+import css from './SignUp.module.css';
 
 import {
   getError,
@@ -82,7 +84,8 @@ class SignIn extends Component {
 
           <form onSubmit={handleSubmit} className={style.formSignIn}>
             <input
-              className={style.signInEmail}
+              className={`${style.signInEmail} ${errors.email &&
+                style.errorInput}`}
               type="email"
               name="email"
               value={values.email}
@@ -95,7 +98,8 @@ class SignIn extends Component {
               <div className={style.inputError}>{errors.email}</div>
             )}
             <input
-              className={style.signInName}
+              className={`${style.signInName} ${errors.password &&
+                style.errorInput}`}
               type="password"
               name="password"
               value={values.password}
@@ -106,15 +110,15 @@ class SignIn extends Component {
             {errors.password && touched.password && (
               <div className={style.inputError}>{errors.password}</div>
             )}
+            <p className={style.inputError}>{errorMessage}</p>
             <button className={style.signInButton} type="submit">
               Sign in
             </button>
-            <NavLink to="/signUp">
-              <button type="button" className={style.signUpLink}>
+            <Link to="/signup" className={css.link}>
+              <h2 type="button" className={css.linkText}>
                 Sign up
-              </button>
-            </NavLink>
-            <p className={style.inputError}>{errorMessage}</p>
+              </h2>
+            </Link>
           </form>
         </div>
       </div>

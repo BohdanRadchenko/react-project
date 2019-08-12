@@ -133,10 +133,10 @@ class SignUp extends Component {
                 <p className={css.errorText}>{errors.name}</p>
               </div>
             )}
+            <p>{errorMessage}</p>
             <button type="submit" className={css.button}>
               Sign up
             </button>
-            <p>{errorMessage}</p>
           </form>
           <Link to="/signin" className={css.link}>
             <p className={css.linkText}>Sign in</p>
