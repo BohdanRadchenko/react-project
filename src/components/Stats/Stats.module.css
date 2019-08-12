@@ -101,6 +101,12 @@
     border-top-right-radius: 6px;
   }
 
+  .innerStatsContainer {
+    margin: 0 auto;
+    width: 80%;
+    padding-right: 30px;
+  }
+
   .innerDiagram {
     width: 80%;
     margin: 0 auto;
