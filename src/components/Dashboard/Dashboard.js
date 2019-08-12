@@ -73,7 +73,7 @@ class Dashboard extends Component {
   render() {
     const { items, quotesModalIsOpen } = this.state;
 
-    const balance = new Intl.NumberFormat('en', {
+    const balance = new Intl.NumberFormat('ua', {
       // style: 'currency',
       // currency: 'UAH',
       minimumFractionDigits: 2,
