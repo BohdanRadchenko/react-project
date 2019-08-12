@@ -73,7 +73,7 @@ const filterAmount = n => {
   }
 };
 
-const TransactionsTable = ({ items }) => {
+const TransactionsTable = ({ items, onTypeClick }) => {
   return (
     <>
       <div className={styles.container}>
@@ -125,7 +125,7 @@ const TransactionsTable = ({ items }) => {
                   </span>
                 </td>
                 <td className={styles.td} data-label="Balance">
-                  {filterAmount(item.amount)}
+                  {filterAmount(item.balanceAfter)}
                 </td>
               </tr>
             ))}

@@ -9,6 +9,7 @@ import Modal from '../Modal/ModalContainer';
 import styles from './Home.module.css';
 import Welcome from './Welcome/Welcome';
 import SlideTransition from './Slide.module.css';
+import { getTransactions } from '../../redux/finance/financeSelectors';
 
 class Home extends Component {
   state = {
@@ -55,14 +56,13 @@ class Home extends Component {
           query="(min-width: 767px)"
           render={() => isOpenModal && <Modal onClose={this.handleClose} />}
         />
-        {/* {isOpenModal && <Modal onClose={this.handleClose} />} */}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  finance: state.finance.data,
+  finance: getTransactions(state),
 });
 
 export default connect(

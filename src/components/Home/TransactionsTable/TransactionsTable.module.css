@@ -6,15 +6,12 @@
   border-collapse: collapse;
   border-spacing: 0;
   color: #3f4040;
-  font-family: sans-serif;
   font-size: 11px;
 }
 
 ::-webkit-scrollbar {
   width: 0px;
-  /* Remove scrollbar space */
   background: transparent;
-  /* Optional: just make scrollbar invisible */
 }
 
 .incColor {
@@ -50,16 +47,16 @@ tr:nth-last-child(even) {
 @media screen and (max-width: 767px) {
   .container {
     position: relative;
-    margin: 0 auto;
+    margin: 2px auto;
     height: 60vh;
     width: 320px;
     overflow-y: auto;
-    margin-bottom: 50px;
   }
 
   .table {
     margin-top: 40px;
     width: 306px;
+    background-color: #f2f4ee;
   }
 
   .thead {
@@ -111,7 +108,7 @@ tr:nth-last-child(even) {
 @media screen and (min-width: 768px) {
   .container {
     width: 100%;
-    height: 500px;
+    height: 370px;
     overflow-y: auto;
   }
 
