@@ -38,7 +38,6 @@ class Stats extends Component {
     if (items.length !== prevState.length) {
       this.test();
     }
-    // console.log(document.getElementsByClassName('rt-td'));
   }
 
   test = () => {
@@ -57,6 +56,7 @@ class Stats extends Component {
 
   getFilteredItems = () => {
     const { search, items } = this.state;
+    console.log(search);
 
     return filterItems(items, search.year, search.month);
   };
@@ -75,6 +75,8 @@ class Stats extends Component {
 
   render() {
     const { items } = this.state;
+    // console.log(this.getFilteredItems());
+
     return (
       <div className={styles.container}>
         <div className={styles.innerTitle}>
@@ -119,26 +121,6 @@ class Stats extends Component {
                 }
               />
             </div>
-            {/* <div className={styles.total}>
-              <div className={styles.containerText}>
-                <p className={styles.costs}>Costs:</p>
-                <p className={styles.income}>Income:</p>
-              </div>
-              <div className={styles.containerAmount}>
-                <p className={styles.costsTotal}>
-                  {new Intl.NumberFormat('ru', {
-                    style: 'currency',
-                    currency: 'USD',
-                  }).format(this.state.withdrow)}
-                </p>
-                <p className={styles.incomeTotal}>
-                  {new Intl.NumberFormat('ru', {
-                    style: 'currency',
-                    currency: 'USD',
-                  }).format(this.state.deposits)}
-                </p>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
