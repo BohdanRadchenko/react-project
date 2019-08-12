@@ -7,6 +7,8 @@
   border-spacing: 0;
   color: #3f4040;
   font-size: 11px;
+  table-layout: fixed;
+  border-collapse: collapse;
 }
 
 ::-webkit-scrollbar {
@@ -30,6 +32,12 @@
 
 tr:nth-last-child(even) {
   background-color: #f3f6f6;
+}
+
+.th {
+  position: sticky;
+  top: 0px;
+  background-color: #fff;
 }
 
 .th,
@@ -64,6 +72,8 @@ tr:nth-last-child(even) {
   }
 
   .tr {
+    position: sticky;
+
     margin-bottom: 10px;
     display: block;
     background-color: #ffffff;
