@@ -1,12 +1,11 @@
-/*eslint-disable*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import style from './Authentication.module.css';
 import { NavLink } from 'react-router-dom';
+import style from './Authentication.module.css';
+import img from './img/sq.png';
 
-// import { Redirect } from 'react-router-dom';
 import {
   getError,
   isAuthentificated,
@@ -63,15 +62,11 @@ class SignIn extends Component {
     return (
       <div className={style.modal}>
         <div>
-          <img
-            alt="Financ App"
-            className={style.backgroundIMG}
-            // eslint-disable-next-line global-require
-            src={require('./img/sq.png')}
-          />
-          <div className={style.iphoneIMG} />
-          <div className={style.test}>
-            <p className={style.financePar}>Finance App</p>
+          <img alt="Financ App" className={style.backgroundIMG} src={img} />
+          <div className={style.iphoneIMG}>
+            <div className={style.test}>
+              <p className={style.financePar}>Finance App</p>
+            </div>
           </div>
         </div>
 
@@ -97,7 +92,7 @@ class SignIn extends Component {
             />
 
             {errors.email && touched.email && (
-              <div className="input-feedback">{errors.email}</div>
+              <div className={style.inputError}>{errors.email}</div>
             )}
             <input
               className={style.signInName}
@@ -106,20 +101,20 @@ class SignIn extends Component {
               value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="Пароль"
+              placeholder="Password*"
             />
             {errors.password && touched.password && (
-              <div className="input-feedback">{errors.password}</div>
+              <div className={style.inputError}>{errors.password}</div>
             )}
             <button className={style.signInButton} type="submit">
               Sign in
             </button>
             <NavLink to="/signUp">
               <button type="button" className={style.signUpLink}>
-                Регистрация
+                Sign up
               </button>
             </NavLink>
-            <p>{errorMessage}</p>
+            <p className={style.inputError}>{errorMessage}</p>
           </form>
         </div>
       </div>

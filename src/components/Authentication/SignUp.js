@@ -77,7 +77,11 @@ class SignUp extends Component {
               onBlur={handleBlur}
               placeholder="E-mail*"
             />
-            {errors.email && touched.email && <div>{errors.email}</div>}
+            {errors.email && touched.email && (
+              <div>
+                <p className={css.errorText}>{errors.email}</p>
+              </div>
+            )}
             <input
               className={`${css.input} ${css.password} ${
                 css.inputIcon
@@ -92,7 +96,9 @@ class SignUp extends Component {
             />
             <PasswordStrengthMeter password={values.password} />
             {errors.password && touched.password && (
-              <div>{errors.password}</div>
+              <div>
+                <p className={css.errorText}>{errors.password}</p>
+              </div>
             )}
             <input
               className={`${css.input} ${css.password} ${
@@ -107,7 +113,9 @@ class SignUp extends Component {
               autoComplete="off"
             />
             {errors.passwordConfirm && touched.passwordConfirm && (
-              <div>{errors.passwordConfirm}</div>
+              <div>
+                <p className={css.errorText}>{errors.passwordConfirm}</p>
+              </div>
             )}
             <input
               className={`${css.input} ${css.name} ${
@@ -120,7 +128,11 @@ class SignUp extends Component {
               onBlur={handleBlur}
               placeholder="Name*"
             />
-            {errors.name && touched.name && <div>{errors.name}</div>}
+            {errors.name && touched.name && (
+              <div>
+                <p className={css.errorText}>{errors.name}</p>
+              </div>
+            )}
             <button type="submit" className={css.button}>
               Sign up
             </button>
