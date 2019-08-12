@@ -15,7 +15,6 @@ export default class App extends Component {
   render() {
     const { selectedOption } = this.state;
     const { options } = this.props;
-    // console.log(options);
 
     return (
       <Select

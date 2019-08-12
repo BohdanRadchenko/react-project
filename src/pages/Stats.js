@@ -56,8 +56,6 @@ class Stats extends Component {
 
   getFilteredItems = () => {
     const { search, items } = this.state;
-    console.log(search);
-
     return filterItems(items, search.year, search.month);
   };
 
@@ -75,7 +73,6 @@ class Stats extends Component {
 
   render() {
     const { items } = this.state;
-    // console.log(this.getFilteredItems());
 
     return (
       <div className={styles.container}>
