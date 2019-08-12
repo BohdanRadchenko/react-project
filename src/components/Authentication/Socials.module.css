@@ -7,7 +7,7 @@
 
 .wrapper {
   padding-top: 10px;
-  font-family: 'Nova Slim';
+  font-family: 'Nova Slim', 'sans-serif';
   display: flex;
   justify-content: center;
   align-items: center;

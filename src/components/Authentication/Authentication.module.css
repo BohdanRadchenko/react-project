@@ -5,46 +5,6 @@
   src: url('../../assets/fonts/nova-slim-v11-latin-regular.eot');
 }
 
-.password-strength-meter {
-  text-align: left;
-}
-
-.password-strength-meter-progress {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 8px;
-  width: 100%;
-}
-
-.password-strength-meter-progress::-webkit-progress-bar {
-  background-color: #eee;
-  border-radius: 3px;
-  transition: all 0.2s;
-  width: 100%;
-}
-
-.password-strength-meter-progress::-webkit-progress-value {
-  border-radius: 2px;
-  background-size: 35px 20px, 100% 100%, 100% 100%;
-  transition: all 0.2s;
-}
-
-.strength-Weak::-webkit-progress-value {
-  background-color: #37e178;
-}
-
-.strength-Good::-webkit-progress-value {
-  background-color: #e18337;
-}
-
-.strength-Strong::-webkit-progress-value {
-  background-color: #e18337;
-}
-
-.strength-Very-Strong::-webkit-progress-value {
-  background-color: #e18337;
-}
-
 .test {
   align-items: center;
   display: flex;
@@ -57,7 +17,6 @@
   justify-content: center;
   height: 100%;
   padding-top: 120%;
-  font-family: 'Nova Slim';
 }
 
 .formSignIn {
@@ -78,7 +37,7 @@
   top: 0;
   left: 0;
   height: 100vh;
-  font-family: 'Nova Slim';
+  font-family: 'Nova Slim', 'sans-serif';
 }
 
 .signInButton {
