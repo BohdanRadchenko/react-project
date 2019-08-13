@@ -35,6 +35,11 @@
   background-position: center;
 }
 
+.navLinkActive {
+  color: #fff;
+  font-size: 30px;
+}
+
 .navLinkBtn:focus {
   background-color: #66778e;
 }

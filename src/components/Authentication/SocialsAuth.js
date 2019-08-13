@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import GoogleLogin from 'react-google-login';
 import socials from './Socials.module.css';
-
+// set HTTPS=true&&
 const SocialsAuth = ({ text, handleAuthFacebook, handleAuthGoogle }) => (
   <div className={socials.wrapper}>
     <p className={socials.signUpText}>{text}</p>
     <FacebookLogin
       icon="fa-facebook"
-      appId="2427356803992856" // APP ID NOT CREATED YET
+      appId="2427356803992856"
       fields="name,email,picture"
       callback={handleAuthFacebook}
       render={renderProps => (

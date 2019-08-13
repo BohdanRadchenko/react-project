@@ -7,6 +7,7 @@ import style from '../Authentication.module.css';
 import img from '../img/sq.png';
 import css from '../SignUp.module.css';
 import SocialsAuth from '../SocialsAuth';
+import walletIcon from '../img/walletIcon.png';
 
 class SignIn extends Component {
   static propTypes = {
@@ -63,11 +64,7 @@ class SignIn extends Component {
 
         <div className={style.formContainer}>
           <div className={style.signInLogoContainer}>
-            <img
-              src="/static/media/logo.49db5ab8.svg"
-              alt="logo"
-              className={style.signInLogo}
-            />
+            <img src={walletIcon} alt="logo" className={style.signInLogo} />
             <h1>Wallet</h1>
           </div>
 
