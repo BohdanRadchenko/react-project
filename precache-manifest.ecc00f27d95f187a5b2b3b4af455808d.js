@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2f96082fb7087b99bc9cdd4bbc2ab9ac",
+    "revision": "81180e347dc54b5119338bf16d54d934",
     "url": "/react-project/index.html"
   },
   {
@@ -8,24 +8,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-project/static/css/11.39017165.chunk.css"
   },
   {
-    "revision": "f09a3e384941b5176bfc",
-    "url": "/react-project/static/css/dashboard-page.cde2e896.chunk.css"
+    "revision": "ae991aaa321e381046e2",
+    "url": "/react-project/static/css/dashboard-page.dac67e82.chunk.css"
   },
   {
     "revision": "5d2e9d38b2c17e819d34",
     "url": "/react-project/static/css/home-page.650e5fb5.chunk.css"
   },
   {
-    "revision": "f988f429e7c485b48a7d",
+    "revision": "5c4b4391d82c8f58b8d1",
     "url": "/react-project/static/css/main.a4991f73.chunk.css"
   },
   {
-    "revision": "cb85320a4b4cf388f70c",
-    "url": "/react-project/static/css/signIn-page.73f8a02e.chunk.css"
+    "revision": "b789abca98d09704fd10",
+    "url": "/react-project/static/css/signIn-page.a7620bf3.chunk.css"
   },
   {
-    "revision": "56064e3233776fad6b27",
-    "url": "/react-project/static/css/signUp-page.93e0928b.chunk.css"
+    "revision": "23a026b1755948741d48",
+    "url": "/react-project/static/css/signUp-page.01134f23.chunk.css"
   },
   {
     "revision": "82fa7514d5a09c535d12",
@@ -60,7 +60,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-project/static/js/2.d8f2df0f.chunk.js"
   },
   {
-    "revision": "f09a3e384941b5176bfc",
+    "revision": "ae991aaa321e381046e2",
     "url": "/react-project/static/js/dashboard-page.9cf68f8c.chunk.js"
   },
   {
@@ -68,20 +68,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-project/static/js/home-page.efd863ee.chunk.js"
   },
   {
-    "revision": "f988f429e7c485b48a7d",
-    "url": "/react-project/static/js/main.5eaa8d91.chunk.js"
+    "revision": "5c4b4391d82c8f58b8d1",
+    "url": "/react-project/static/js/main.93832cbf.chunk.js"
   },
   {
-    "revision": "4ceccc7e2ad17f2e6fbe",
-    "url": "/react-project/static/js/runtime~main.b2ed37ff.js"
+    "revision": "c3e28ffdfc3973bad467",
+    "url": "/react-project/static/js/runtime~main.ba62615c.js"
   },
   {
-    "revision": "cb85320a4b4cf388f70c",
-    "url": "/react-project/static/js/signIn-page.49b0d059.chunk.js"
+    "revision": "b789abca98d09704fd10",
+    "url": "/react-project/static/js/signIn-page.1ffd3846.chunk.js"
   },
   {
-    "revision": "56064e3233776fad6b27",
-    "url": "/react-project/static/js/signUp-page.395c70cb.chunk.js"
+    "revision": "23a026b1755948741d48",
+    "url": "/react-project/static/js/signUp-page.066e0267.chunk.js"
   },
   {
     "revision": "82fa7514d5a09c535d12",
