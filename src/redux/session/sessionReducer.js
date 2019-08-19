@@ -39,6 +39,7 @@ const error = (state = null, { type, payload }) => {
     case ActionTypes.SIGN_IN_SUCCESS:
     case ActionTypes.SIGN_UP_SUCCESS:
     case ActionTypes.REFRESH_USER_SUCCESS:
+    case ActionTypes.CLEAR_ERROR_MESSAGE:
       return null;
 
     default:

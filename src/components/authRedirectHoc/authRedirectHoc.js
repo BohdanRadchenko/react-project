@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { isAuthentificated } from '../../redux/session/sessionSelectors';
+import { clearErrorMsg } from '../../redux/session/sessionActions';
 
 const authRedirect = BaseComponent => {
   class WithAuthRedirect extends Component {
@@ -10,10 +11,12 @@ const authRedirect = BaseComponent => {
       authentificated: PropTypes.bool.isRequired,
       history: ReactRouterPropTypes.history.isRequired,
       location: ReactRouterPropTypes.location.isRequired,
+      clearError: PropTypes.func.isRequired,
     };
 
     componentDidMount() {
-      const { authentificated, history } = this.props;
+      const { authentificated, history, clearError } = this.props;
+      clearError();
       if (!authentificated) return;
 
       history.replace('/');
@@ -35,8 +38,13 @@ const authRedirect = BaseComponent => {
   }
 
   const mSTP = state => ({ authentificated: isAuthentificated(state) });
-
-  return connect(mSTP)(WithAuthRedirect);
+  const mDTP = {
+    clearError: clearErrorMsg,
+  };
+  return connect(
+    mSTP,
+    mDTP,
+  )(WithAuthRedirect);
 };
 
 export default authRedirect;

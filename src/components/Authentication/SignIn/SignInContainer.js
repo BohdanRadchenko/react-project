@@ -4,8 +4,8 @@ import {
   isAuthentificated,
 } from '../../../redux/session/sessionSelectors';
 import {
-  googleSignIn,
-  facebookSignIn,
+  facebookAuth,
+  googleAuth,
 } from '../../../redux/session/socialOperations';
 import SignIn from './SignIn';
 
@@ -15,8 +15,8 @@ const mSTP = state => ({
 });
 
 const mDTP = {
-  googleSignIn,
-  facebookSignIn,
+  googleAuth,
+  facebookAuth,
 };
 
 export default connect(

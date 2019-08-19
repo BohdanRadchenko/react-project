@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { getError } from '../../../redux/session/sessionSelectors';
 import {
-  facebookSignUp,
-  googleSignUp,
+  facebookAuth,
+  googleAuth,
 } from '../../../redux/session/socialOperations';
 import SignUp from './SignUp';
 
@@ -11,8 +11,8 @@ const mSTP = state => ({
 });
 
 const mDTP = {
-  facebookAuth: facebookSignUp,
-  googleAuth: googleSignUp,
+  facebookAuth,
+  googleAuth,
 };
 
 export default connect(

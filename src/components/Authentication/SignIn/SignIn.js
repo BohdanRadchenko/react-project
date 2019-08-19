@@ -31,9 +31,9 @@ class SignIn extends Component {
     document.body.removeEventListener('keydown', this.handleEnterSubmit);
   }
 
-  handleFacebookSignIn = response => this.props.facebookSignIn(response);
+  handleFacebookSignIn = response => this.props.facebookAuth(response);
 
-  handleGoogleSignIn = response => this.props.googleSignIn(response);
+  handleGoogleSignIn = response => this.props.googleAuth(response);
 
   handleEnterSubmit = ({ code }) =>
     code === 'Enter' || code === 'NumpadEnter'

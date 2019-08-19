@@ -11,6 +11,7 @@ export const ActionTypes = {
   LOGOUT_REQUEST: 'session/LOGOUT_REQUEST',
   LOGOUT_SUCCESS: 'session/LOGOUT_SUCCESS',
   LOGOUT_ERROR: 'session/LOGOUT_ERROR',
+  CLEAR_ERROR_MESSAGE: 'session/CLEAR_ERROR_MESSAGE',
 };
 
 //
@@ -81,4 +82,12 @@ export const refreshUserSuccess = response => ({
 export const refreshUserError = error => ({
   type: ActionTypes.REFRESH_USER_ERROR,
   payload: { error },
+});
+
+//
+// clear error message
+//
+
+export const clearErrorMsg = () => ({
+  type: ActionTypes.CLEAR_ERROR_MESSAGE,
 });

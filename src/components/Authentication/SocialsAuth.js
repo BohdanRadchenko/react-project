@@ -38,7 +38,7 @@ const SocialsAuth = ({ text, handleAuthFacebook, handleAuthGoogle }) => (
 );
 
 SocialsAuth.defaultProps = {
-  text: 'Use this to enter: ',
+  text: 'Sign in with: ',
 };
 
 SocialsAuth.propTypes = {
