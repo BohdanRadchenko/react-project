@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "963f9118c100bd1d9c80fcfae87ac469",
+    "revision": "66c0a4a004a0a9bd11f8030553742d04",
     "url": "/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/11.39017165.chunk.css"
   },
   {
-    "revision": "e5caef1176b0a223df5c",
+    "revision": "07748bf61fc5adb3acbd",
     "url": "/static/css/dashboard-page.8b198d3a.chunk.css"
   },
   {
@@ -16,15 +16,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/home-page.57f5fc46.chunk.css"
   },
   {
-    "revision": "d36f9216b6ae716ab011",
+    "revision": "5482f8c200f2280b39d6",
     "url": "/static/css/main.5efb4b3e.chunk.css"
   },
   {
-    "revision": "cd44394b063536696c30",
+    "revision": "19a2616c1b829ca8e7ef",
     "url": "/static/css/signIn-page.a5ebcc07.chunk.css"
   },
   {
-    "revision": "f0431818e2b0ac5b69d6",
+    "revision": "e7c572d847dc9abcb244",
     "url": "/static/css/signUp-page.4a5c9919.chunk.css"
   },
   {
@@ -40,8 +40,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/1.41df5fe0.chunk.js"
   },
   {
-    "revision": "7da308a9a551d269c935",
-    "url": "/static/js/10.163cfbfc.chunk.js"
+    "revision": "d0e794365abd63eb3b8c",
+    "url": "/static/js/10.108cc65a.chunk.js"
   },
   {
     "revision": "871527820e1c4d699dd6",
@@ -60,28 +60,28 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.d8f2df0f.chunk.js"
   },
   {
-    "revision": "e5caef1176b0a223df5c",
-    "url": "/static/js/dashboard-page.3d97f736.chunk.js"
+    "revision": "07748bf61fc5adb3acbd",
+    "url": "/static/js/dashboard-page.66e50ac4.chunk.js"
   },
   {
     "revision": "26fb7de1b349a540410b",
     "url": "/static/js/home-page.80fe7d5f.chunk.js"
   },
   {
-    "revision": "d36f9216b6ae716ab011",
-    "url": "/static/js/main.9cb517f5.chunk.js"
+    "revision": "5482f8c200f2280b39d6",
+    "url": "/static/js/main.df769903.chunk.js"
   },
   {
-    "revision": "7a10ce980dded3b0cab7",
-    "url": "/static/js/runtime~main.b4a121f2.js"
+    "revision": "bb88744cc9e381126d46",
+    "url": "/static/js/runtime~main.96d45734.js"
   },
   {
-    "revision": "cd44394b063536696c30",
-    "url": "/static/js/signIn-page.45b44920.chunk.js"
+    "revision": "19a2616c1b829ca8e7ef",
+    "url": "/static/js/signIn-page.6512dc1f.chunk.js"
   },
   {
-    "revision": "f0431818e2b0ac5b69d6",
-    "url": "/static/js/signUp-page.d76e0540.chunk.js"
+    "revision": "e7c572d847dc9abcb244",
+    "url": "/static/js/signUp-page.ba0add0e.chunk.js"
   },
   {
     "revision": "34bf3c2463ef8b42a7db",
