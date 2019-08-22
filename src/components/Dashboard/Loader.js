@@ -1,6 +1,7 @@
-/*eslint-disable*/
+/* eslint-disable*/
 import React from 'react';
-import Loaders from '../Dashboard/Currencies/loaders';
+import Loaders from './Currencies/loaders';
+import css from './Loader.module.css';
 
 const Loading = ({ error, timedOut, pastDelay, retry }) => {
   if (error) {
@@ -26,8 +27,11 @@ const Loading = ({ error, timedOut, pastDelay, retry }) => {
   }
 
   if (pastDelay) {
-    // return <div>Loading...</div>;
-    return <Loaders />;
+    return (
+      <div className={css.loaderWrapper}>
+        <Loaders />
+      </div>
+    );
   }
 
   return null;
