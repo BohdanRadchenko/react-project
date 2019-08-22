@@ -88,13 +88,9 @@ export default class Modal extends Component {
     this.props.onClose();
   };
 
-  // handleOpenButtonClick = e => {
-  //   const { isOpen } = this.state;
-  //   this.setState({ isOpen: !isOpen });
-  // };
-
   render() {
     const { quotes } = this.state;
+    const { onClose } = this.props;
     const selectedQuote =
       quotes[Math.floor(Math.random() * Math.floor(quotes.length))];
     return (
@@ -111,10 +107,8 @@ export default class Modal extends Component {
             Usefull advice &#8470;{selectedQuote.id}
           </p>
           <h2 className={styles.modalTitle}>{selectedQuote.title}</h2>
-          {/* <button type="button" onClick={this.handleOpenButtonClick}>
-            More ...
-          </button> */}
         </div>
+        {setTimeout(onClose, 3000)}
       </div>
     );
   }
