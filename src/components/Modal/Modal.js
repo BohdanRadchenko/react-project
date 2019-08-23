@@ -151,6 +151,7 @@ export default class Modal extends Component {
     transactionToAdd.typeBalanceAfter = typeBalanceAfter;
 
     this.props.postTransaction(transactionToAdd);
+    this.props.onClose();
     this.reset();
   };
 
