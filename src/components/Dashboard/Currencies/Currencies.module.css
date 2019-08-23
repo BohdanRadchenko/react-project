@@ -41,55 +41,19 @@
 }
 
 .form {
+  width: 90%;
   height: 380px;
   border-radius: 3px;
   box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
   background-image: url('../../../assets/img/bg.png');
   background-repeat: no-repeat;
   background-position-x: 60%;
-  background-position-y: 140%;
+  background-position-y: 120%;
   border-radius: 3px;
   margin: 0 auto;
-  /* position: absolute;
-  left: 0;
-  bottom: 0; */
-}
-
-@media (max-width: 767px) {
-  .bgi {
-    background-image: url('../../../assets/img/bg.png');
-    background-repeat: no-repeat;
-    background-position-x: 60%;
-    background-position-y: 140%;
-    height: 217px;
-    margin: 0 auto;
-  }
-
-  .form {
-    /* width: 60%; */
-  }
-
-  /* .form {
-    height: 100%; */
-  /* width: 100%; */
-  /* background-image: url('../../../assets/img/bg.png'); */
-  /* background-position-y: 100%; */
-  /* } */
-}
-
-@media (min-width: 768px) and (max-width: 1191px) {
-  .form {
-    width: 250px;
-  }
 }
 
 @media (max-width: 1192px) {
-  .form {
-    /* width: 350px; */
-    height: 190px;
-    background-image: none;
-  }
-
   .historyTr {
     font-size: 15px;
   }
