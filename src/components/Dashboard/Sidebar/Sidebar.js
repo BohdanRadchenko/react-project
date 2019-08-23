@@ -1,4 +1,5 @@
 import React from 'react';
+import Media from 'react-media';
 import PropTypes from 'prop-types';
 import Navigations from '../Navigations/Navigations';
 import Balance from '../Balance/Balance';
@@ -9,9 +10,7 @@ const Sidebar = ({ balance }) => (
   <div className={css.container}>
     <Navigations />
     <Balance balance={balance} />
-    <div className={css.innerCurrencies}>
-      <Currencies />
-    </div>
+    <Media query="(min-width: 767px)" render={() => <Currencies />} />
   </div>
 );
 

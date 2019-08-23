@@ -53,6 +53,17 @@
   margin: 0 auto;
 }
 
+@media (min-width: 767px) and (max-width: 1191px) {
+  .form {
+    width: 320px;
+    height: 180px;
+    background-image: none;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+  }
+}
+
 @media (max-width: 1192px) {
   .historyTr {
     font-size: 15px;

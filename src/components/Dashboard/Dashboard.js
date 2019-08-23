@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import { connect } from 'react-redux';
+import Media from 'react-media';
 import Loader from './Loader';
 import SideBar from './Sidebar/Sidebar';
 import db from '../../db.json';
@@ -92,17 +93,27 @@ class Dashboard extends Component {
             <SideBar balance={balance} />
           </div>
           <div className={styles.rightSideBar}>
-            <Switch>
-              <Route path="/dashboard/home" component={AsyncHome} />
-              <Route path="/dashboard/stats" component={AsyncStats} />
-              <div className={css.AsyncCurrencies}>
-                <Route
-                  path="/dashboard/currencies"
-                  component={AsyncCurrencies}
-                />
-              </div>
-              <Redirect to="/dashboard/home" />
-            </Switch>
+            <Media query="(max-width: 766px)">
+              {screenIsSmall =>
+                screenIsSmall ? (
+                  <Switch>
+                    <Route path="/dashboard/home" component={AsyncHome} />
+                    <Route path="/dashboard/stats" component={AsyncStats} />
+                    <Route
+                      path="/dashboard/currencies"
+                      component={AsyncCurrencies}
+                    />
+                    <Redirect to="/dashboard/home" />
+                  </Switch>
+                ) : (
+                  <Switch>
+                    <Route path="/dashboard/home" component={AsyncHome} />
+                    <Route path="/dashboard/stats" component={AsyncStats} />
+                    <Redirect to="/dashboard/home" />
+                  </Switch>
+                )
+              }
+            </Media>
           </div>
         </div>
       </div>
@@ -111,7 +122,6 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-  // transactions: db,
   transactions: getTransactions(state),
 });
 
