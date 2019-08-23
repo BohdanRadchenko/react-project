@@ -18,7 +18,6 @@ export default class AddTransaction extends Component {
   };
 
   static propTypes = {
-    amount: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
     isCost: PropTypes.bool.isRequired,
     comments: PropTypes.string.isRequired,
@@ -37,7 +36,6 @@ export default class AddTransaction extends Component {
 
   render() {
     const {
-      amount,
       type,
       isCost,
       comments,
@@ -111,10 +109,9 @@ export default class AddTransaction extends Component {
           <div className={styles.inputsDiv}>
             <NumericInput
               {...style}
-              className="form-control"
               min={0}
               precision={2}
-              value={amount}
+              placeholder="0.00"
               onChange={handleAmountInput}
               require="true"
               strict
