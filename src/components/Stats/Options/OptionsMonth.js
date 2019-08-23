@@ -1,16 +1,16 @@
 const OptionsMonth = [
-  { value: 'Jan', label: 'january' },
-  { value: 'Feb', label: 'february' },
-  { value: 'Mar', label: 'march' },
-  { value: 'Apr', label: 'aprile' },
-  { value: 'May', label: 'may' },
-  { value: 'Jun', label: 'june' },
-  { value: 'Jul', label: 'july' },
-  { value: 'Aug', label: 'august' },
-  { value: 'Sep', label: 'september' },
-  { value: 'Oct', label: 'octouber' },
-  { value: 'Nov', label: 'november' },
-  { value: 'Dec', label: 'december' },
+  { value: 'Jan', label: 'January' },
+  { value: 'Feb', label: 'February' },
+  { value: 'Mar', label: 'March' },
+  { value: 'Apr', label: 'April' },
+  { value: 'May', label: 'May' },
+  { value: 'Jun', label: 'June' },
+  { value: 'Jul', label: 'July' },
+  { value: 'Aug', label: 'August' },
+  { value: 'Sep', label: 'September' },
+  { value: 'Oct', label: 'October' },
+  { value: 'Nov', label: 'November' },
+  { value: 'Dec', label: 'December' },
 ];
 
 export default OptionsMonth;
