@@ -67,75 +67,77 @@ export default class AddTransaction extends Component {
           <h2 className={styles.title}>Add a transaction</h2>
         </div>
         <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.radiosDiv}>
-            <div className={styles.innerRadioDiv}>
-              <label htmlFor="income">
-                <input
-                  type="radio"
-                  id="income"
-                  name="transaction"
-                  checked={type === transactions.INCOME}
-                  onChange={handleRadioChange}
-                  className={styles.radio}
-                />
-                <span className={styles.label}>Income</span>
-              </label>
+          <div className={styles.formInnerElements}>
+            <div className={styles.radiosDiv}>
+              <div className={styles.innerRadioDiv}>
+                <label htmlFor="income">
+                  <input
+                    type="radio"
+                    id="income"
+                    name="transaction"
+                    checked={type === transactions.INCOME}
+                    onChange={handleRadioChange}
+                    className={styles.radio}
+                  />
+                  <span className={styles.label}>Income</span>
+                </label>
+              </div>
+              |
+              <div className={styles.innerRadioDiv}>
+                <label htmlFor="cost">
+                  <input
+                    className={`${styles.radio} ${styles.radioCost}`}
+                    type="radio"
+                    id="cost"
+                    name="transaction"
+                    checked={type === transactions.COST}
+                    onChange={handleRadioChange}
+                  />
+                  <span className={styles.label}>Cost</span>
+                </label>
+              </div>
             </div>
-            |
-            <div className={styles.innerRadioDiv}>
-              <label htmlFor="cost">
-                <input
-                  className={`${styles.radio} ${styles.radioCost}`}
-                  type="radio"
-                  id="cost"
-                  name="transaction"
-                  checked={type === transactions.COST}
-                  onChange={handleRadioChange}
-                />
-                <span className={styles.label}>Cost</span>
-              </label>
+            {isCost && (
+              <Select
+                value={category}
+                className={styles.select}
+                options={categories}
+                onChange={handleSelectChange}
+                required
+                maxMenuHeight="100%"
+              />
+            )}
+            <div className={styles.inputsDiv}>
+              <NumericInput
+                {...style}
+                min={0}
+                precision={2}
+                placeholder="0.00"
+                onChange={handleAmountInput}
+                require="true"
+                strict
+                maxLength={13}
+              />
+              <DatePicker
+                value={date}
+                onChange={handleDateChange}
+                maxDate={new Date()}
+                format="dd/MM/yyyy"
+                locale="en"
+                className={`${styles.input} ${styles.dateInput}`}
+                required
+              />
             </div>
-          </div>
-          {isCost && (
-            <Select
-              value={category}
-              className={styles.select}
-              options={categories}
-              onChange={handleSelectChange}
-              required
-              maxMenuHeight="100%"
-            />
-          )}
-          <div className={styles.inputsDiv}>
-            <NumericInput
-              {...style}
-              min={0}
-              precision={2}
-              placeholder="0.00"
-              onChange={handleAmountInput}
-              require="true"
-              strict
-              maxLength={13}
-            />
-            <DatePicker
-              value={date}
-              onChange={handleDateChange}
-              maxDate={new Date()}
-              format="dd/MM/yyyy"
-              locale="en"
-              className={`${styles.input} ${styles.dateInput}`}
-              required
+            <h2 className={styles.comment}>Comment</h2>
+            <textarea
+              cols="20"
+              rows="2"
+              value={comments}
+              placeholder="Add a comment..."
+              onChange={handleTextareaInput}
+              className={styles.textarea}
             />
           </div>
-          <h2 className={styles.comment}>Comment</h2>
-          <textarea
-            cols="20"
-            rows="2"
-            value={comments}
-            placeholder="Add a comment..."
-            onChange={handleTextareaInput}
-            className={styles.textarea}
-          />
           <div className={styles.buttonDiv}>
             <button className={styles.addButton} type="submit">
               Add

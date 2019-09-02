@@ -18,8 +18,9 @@
 
 @media screen and (max-width: 767px) {
   .button {
-    left: 50%;
-    transform: translateX(-50%);
+    position: static;
+    display: block;
+    margin: 0 auto;
   }
 }
 

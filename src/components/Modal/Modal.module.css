@@ -45,7 +45,6 @@ body {
 
 .modal {
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   flex-direction: column;
   justify-content: flex-start;
@@ -80,6 +79,13 @@ body {
 }
 
 .form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.formInnerElements {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -175,34 +181,39 @@ body {
 
 @media screen and (max-width: 767px) {
   .backdrop {
-    width: 100vw;
-    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
     flex-direction: column;
     justify-content: flex-end;
   }
 
   .modal {
-    position: relative;
     background-color: #ffffff;
     width: 100%;
-    height: 93%;
+    height: 100%;
     flex-direction: column;
+    justify-content: space-between;
   }
 
   .titleDiv {
-    height: 40px;
-    padding-left: 50px;
+    height: 8%;
+    padding: 1rem 50px;
     background-color: #3a5374;
     position: relative;
   }
 
   .title {
-    margin-top: 14px;
     color: #fff;
   }
 
+  .form {
+    height: 92%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   .buttonDiv {
-    position: absolute;
     bottom: 0;
     width: 100%;
     height: 68px;
@@ -251,6 +262,11 @@ body {
   .title {
     font-size: 16px;
     font-weight: bold;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
   }
 
   .buttonDiv {
