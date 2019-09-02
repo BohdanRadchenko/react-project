@@ -78,10 +78,5 @@ DiagramTable.defaultProps = {
   items: [],
 };
 DiagramTable.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      category: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
-    }),
-  ),
+  items: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any).isRequired),
 };

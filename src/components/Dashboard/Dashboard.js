@@ -39,7 +39,7 @@ const AsyncCurrencies = Loadable({
 class Dashboard extends Component {
   static propTypes = {
     transactions: PropTypes.arrayOf(
-      PropTypes.objectOf(PropTypes.any.isRequired).isRequired,
+      PropTypes.objectOf(PropTypes.any).isRequired,
     ).isRequired,
   };
 
