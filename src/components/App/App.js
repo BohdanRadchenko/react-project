@@ -5,12 +5,7 @@ import Loadable from 'react-loadable';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import Loader from '../Dashboard/Loader';
 import ProtectedComponent from '../Dashboard/hoc/PrivateRoute';
-
-// import ReactRouterPropTypes from 'react-router-prop-types';
 import { refreshUser } from '../../redux/session/sessionOperations';
-
-// import Modal from '../Modal/ModalContainer';
-// import Home from '../Home/Home';
 import { getTransactions } from '../../redux/finance/financeOperations';
 import { isAuthentificated } from '../../redux/session/sessionSelectors';
 

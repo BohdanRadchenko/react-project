@@ -1,17 +1,14 @@
-/*eslint-disable*/
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import { connect } from 'react-redux';
 import Media from 'react-media';
 import Loader from './Loader';
 import SideBar from './Sidebar/Sidebar';
-import db from '../../db.json';
 import statisticsCount from '../../helpers/statisticsCount';
 import QuotesModal from './Quotes/QuotesModal';
 import styles from './Dashboard.module.css';
-// import ProtectedComponent from './hoc/PrivateRoute';
-// import PrivateRoute from './PrivateRoute';
 import Header from '../Header/Header';
 import css from '../Header/Header.module.css';
 import { getTransactions } from '../../redux/finance/financeSelectors';
@@ -33,15 +30,19 @@ const AsyncStats = Loadable({
 
 const AsyncCurrencies = Loadable({
   loader: () =>
-    import(
-      '../../components/Dashboard/Currencies/Currencies' /* webpackChunkName: "currencies-page" */
-    ),
+    import('./Currencies/Currencies' /* webpackChunkName: "currencies-page" */),
   loading: Loader,
   timeout: 10000,
   delay: 200,
 });
 
 class Dashboard extends Component {
+  static propTypes = {
+    transactions: PropTypes.arrayOf(
+      PropTypes.objectOf(PropTypes.any.isRequired).isRequired,
+    ).isRequired,
+  };
+
   state = {
     items: [],
     quotesModalIsOpen: false,
@@ -59,24 +60,26 @@ class Dashboard extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const { transactions } = this.props;
+    if (prevProps.transactions !== transactions) {
+      this.onUpdate(transactions);
+    }
+  }
+
   handleQuotesModalClose = () => {
     this.setState({ quotesModalIsOpen: false });
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.transactions !== this.props.transactions) {
-      const { transactions } = this.props;
-      this.setState({
-        items: [...transactions],
-      });
-    }
-  }
+  onUpdate = transactions =>
+    this.setState({
+      items: [...transactions],
+    });
+
   render() {
     const { items, quotesModalIsOpen } = this.state;
 
     const balance = new Intl.NumberFormat('ua', {
-      // style: 'currency',
-      // currency: 'UAH',
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     }).format(statisticsCount(items).balance);

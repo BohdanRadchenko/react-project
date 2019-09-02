@@ -1,22 +1,24 @@
-/*eslint-disable*/
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import StatsDiagram from '../components/Stats/StatsDiagram/StatsDiagram';
 import StatsTable from '../components/Stats/StatsTable/StatsTable';
 import StatsSelect from '../components/Stats/StatsSelect/StatsSelect';
 import OptionsMonth from '../components/Stats/Options/OptionsMonth';
 import OptionsYears from '../components/Stats/Options/OptionsYear';
-import statisticsCount from '../helpers/statisticsCount';
 import filterItems from '../helpers/filterItems';
 import colorSwitcher from '../helpers/colorSwitcher';
 import styles from '../components/Stats/Stats.module.css';
 
 class Stats extends Component {
+  static propTypes = {
+    transactions: PropTypes.arrayOf(
+      PropTypes.objectOf(PropTypes.any).isRequired,
+    ).isRequired,
+  };
+
   state = {
     items: [],
-    balance: 0,
-    deposits: 0,
-    withdrow: 0,
     search: {
       month: null,
       year: null,
@@ -24,17 +26,14 @@ class Stats extends Component {
   };
 
   componentDidMount() {
-    const transactions = this.props.transactions;
+    const { transactions } = this.props;
     this.setState({
-      items: [...this.props.transactions],
-      balance: statisticsCount(transactions).balance,
-      deposits: statisticsCount(transactions).deposits,
-      withdrow: statisticsCount(transactions).withdrow,
+      items: [...transactions],
     });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { items, search } = this.state;
+    const { items } = this.state;
     if (items.length !== prevState.length) {
       this.test();
     }
@@ -42,7 +41,7 @@ class Stats extends Component {
 
   test = () => {
     const statsTableLines = document.getElementsByClassName('rt-tr');
-    for (let item of statsTableLines) {
+    for (const item of statsTableLines) {
       item.insertAdjacentHTML(
         'afterbegin',
         `<div style="background-color: ${colorSwitcher(
@@ -86,7 +85,7 @@ class Stats extends Component {
                 items={
                   this.getFilteredItems() !== undefined
                     ? this.getFilteredItems()
-                    : this.state.items
+                    : items
                 }
               />
             </div>
@@ -98,14 +97,14 @@ class Stats extends Component {
                 <StatsSelect
                   options={OptionsMonth}
                   handleSelect={this.getSelectMonth}
-                  label={'Month'}
+                  label="Month"
                 />
               </div>
               <div className={styles.innerSelectYear}>
                 <StatsSelect
                   options={OptionsYears(items)}
                   handleSelect={this.getSelectYears}
-                  label={'Year'}
+                  label="Year"
                 />
               </div>
             </div>
@@ -114,7 +113,7 @@ class Stats extends Component {
                 items={
                   this.getFilteredItems() !== undefined
                     ? this.getFilteredItems()
-                    : this.state.items
+                    : items
                 }
               />
             </div>

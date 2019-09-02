@@ -1,4 +1,3 @@
-/*eslint-disable*/
 const colorSwitcher = value => {
   switch (value) {
     case 'Category':
@@ -21,6 +20,8 @@ const colorSwitcher = value => {
       return '#73AD57';
     case 'Others':
       return '#507C3A';
+    default:
+      return null;
   }
 };
 

@@ -1,5 +1,6 @@
-/* eslint-disable*/
+/*eslint-disable */
 import React from 'react';
+import PropTypes from 'prop-types';
 import Loaders from './Currencies/loaders';
 import css from './Loader.module.css';
 

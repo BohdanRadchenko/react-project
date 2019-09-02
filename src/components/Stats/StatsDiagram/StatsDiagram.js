@@ -1,5 +1,5 @@
-/* eslint-disable */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Pie } from 'react-chartjs-2';
 import 'chartjs-plugin-labels';
 import colorSwitcher from '../../../helpers/colorSwitcher';
@@ -27,9 +27,8 @@ const options = {
 };
 
 const Chart = props => {
-  console.log();
-
-  const filterByWithdraw = props.items
+  const { items } = props;
+  const filterByWithdraw = items
     .filter(el => el.type === '-')
     .map(el => ({
       category: `${el.category}`,
@@ -40,7 +39,7 @@ const Chart = props => {
     filterByWithdraw
       .filter(el => el.category === value)
       .map(el => el.amount)
-      .reduce(function(result, num) {
+      .reduce((result, num) => {
         return result + num;
       }, 0);
 
@@ -88,4 +87,9 @@ const Chart = props => {
 
   return <Pie data={data.chart} options={options} />;
 };
+
+Chart.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.any).isRequired,
+};
+
 export default Chart;

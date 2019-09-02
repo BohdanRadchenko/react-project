@@ -1,8 +1,14 @@
-/*eslint-disable*/
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Select from 'react-select';
 
 export default class App extends Component {
+  static propTypes = {
+    label: PropTypes.string.isRequired,
+    handleSelect: PropTypes.func.isRequired,
+    options: PropTypes.arrayOf(PropTypes.any).isRequired,
+  };
+
   state = {
     selectedOption: { value: ' ', label: this.props.label },
   };

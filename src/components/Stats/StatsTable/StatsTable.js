@@ -1,5 +1,3 @@
-/* eslint-disable */
-/* eslint-disable */
 import React from 'react';
 import ReactTable from 'react-table';
 import PropTypes from 'prop-types';
@@ -8,7 +6,6 @@ import styles from '../Stats.module.css';
 
 const DiagramTable = props => {
   const { items } = props;
-  // console.log(items);
 
   const filterBy = type => items.filter(el => el.type === type);
 
@@ -20,24 +17,16 @@ const DiagramTable = props => {
         amount: el.amount,
       })),
     );
-  const a = type =>
-    Object.assign(
-      [],
-      filterBy(type).map(el => ({
-        category: el.category,
-        amount: el.amount,
-      })),
-    );
 
   const withdrawTotal = data('-')
     .map(el => el.amount)
-    .reduce(function(result, num) {
+    .reduce((result, num) => {
       return result + num;
     }, 0);
 
   const depositsTotal = data('+')
     .map(el => el.amount)
-    .reduce(function(result, num) {
+    .reduce((result, num) => {
       return result + num;
     }, 0);
 
@@ -58,8 +47,6 @@ const DiagramTable = props => {
         ]}
         defaultPageSize={data('-').length}
         showPagination={false}
-        // filtered={[]}
-        // onClick={() => null}
       />
       <div className={styles.total}>
         <div className={styles.containerText}>

@@ -1,25 +1,7 @@
-.innerCurrencies {
-  display: none;
-}
-
 @media screen and (min-width: 768px) {
-  .innerCurrencies {
-    display: block;
-  }
-
   .container {
-    /* position: relative; */
     display: flex;
     justify-content: center;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1190px) {
-  .innerCurrencies {
-    display: none;
-    position: absolute;
-    bottom: 10px;
-    left: 30px;
   }
 }
 
@@ -27,8 +9,5 @@
   .container {
     display: inline-block;
     flex-direction: row;
-  }
-
-  .innerCurrencies {
   }
 }

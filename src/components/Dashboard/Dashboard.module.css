@@ -74,7 +74,6 @@ body {
   font-style: normal;
   font-weight: 400;
   background-color: #f2f4ee;
-  /* max-width: 1192px; */
   margin: 0 auto;
 }
 
@@ -84,11 +83,8 @@ body {
   flex-direction: column;
   width: 100%;
   margin: 0 auto;
-  /* min-height: 677px; */
   font-family: 'Rubik';
   font-weight: normal;
-  /* padding-top: 8px; */
-  /* background-color: #f2f4ee; */
 }
 
 @media screen and (max-width: 767px) {
@@ -97,13 +93,6 @@ body {
     max-width: 100%;
     margin: 0 auto;
   }
-
-  /* .container {
-    display: flex;
-    flex-direction: column;
-    max-width: 90%;
-    margin: 0 auto;
-  } */
 }
 
 @media screen and (min-width: 768px) {
@@ -135,7 +124,6 @@ body {
     position: relative;
     display: flex;
     justify-content: space-around;
-    /* width: 100%; */
     flex-direction: row;
     margin: 0 auto;
     font-family: 'Rubik';

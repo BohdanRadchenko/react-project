@@ -1,6 +1,4 @@
-/*eslint-disable*/
 .nav {
-  /* width: 100%; */
   height: 40px;
   display: flex;
   flex-direction: row;
@@ -70,11 +68,9 @@
 
 @media screen and (min-width: 768px) {
   .nav {
-    /* width: 100%; */
     margin-bottom: 20px;
     margin: 0;
     background-color: transparent;
-    /* margin-bottom: 30px; */
   }
 
   .navLink {
@@ -101,9 +97,6 @@
     color: #a0aab9;
   }
 
-  /* .navText:focus {
-    color: #3a5374;
-  } */
   .navLinkBtn {
     background-color: transparent;
     margin-right: 14px;

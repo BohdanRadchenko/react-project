@@ -1,4 +1,3 @@
-/*eslint-disable*/
 const filterItems = (items, year, month) => {
   if (items.length !== 0) {
     if (month && year) {
